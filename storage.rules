@@ -1,0 +1,8 @@
+rules_version = '2';
+// Single-user app: recordings and private material readable/writable only by the owner.
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isOwner() { return request.auth != null && request.auth.uid == 'OWNER_UID'; }
+    match /{allPaths=**} { allow read, write: if isOwner(); }
+  }
+}

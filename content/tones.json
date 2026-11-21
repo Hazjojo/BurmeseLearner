@@ -1,0 +1,28 @@
+[
+  {
+    "id": "t.ka",
+    "contrast": "creaky / low / high",
+    "options": [
+      { "my": "က", "rom": "ka̰" },
+      { "my": "ကာ", "rom": "kà" },
+      { "my": "ကား", "rom": "ká", "en": "car" }
+    ]
+  },
+  {
+    "id": "t.ma",
+    "contrast": "creaky / low / high",
+    "options": [
+      { "my": "မ", "rom": "ma̰" },
+      { "my": "မာ", "rom": "mà", "en": "hard" },
+      { "my": "မား", "rom": "má" }
+    ]
+  },
+  {
+    "id": "t.na",
+    "contrast": "low / high",
+    "options": [
+      { "my": "နာ", "rom": "nà", "en": "be sore / hurt" },
+      { "my": "နား", "rom": "ná", "en": "ear" }
+    ]
+  }
+]

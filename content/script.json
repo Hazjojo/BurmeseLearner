@@ -1,0 +1,14 @@
+[
+  { "id": "c.ka", "unit": 1, "my": "က", "rom": "ka̰", "en": "consonant k", "note": "Every consonant carries a built-in short creaky 'a'." },
+  { "id": "c.hka", "unit": 1, "my": "ခ", "rom": "hka̰", "en": "consonant hk (aspirated k)", "note": "Puff of air, like the k in 'kit'." },
+  { "id": "c.ga", "unit": 1, "my": "ဂ", "rom": "ga̰", "en": "consonant g" },
+  { "id": "c.nga", "unit": 1, "my": "င", "rom": "nga̰", "en": "consonant ng", "note": "The 'ng' of 'sing', but at the start of a syllable." },
+  { "id": "c.sa", "unit": 1, "my": "စ", "rom": "sa̰", "en": "consonant s" },
+  { "id": "c.hsa", "unit": 1, "my": "ဆ", "rom": "hsa̰", "en": "consonant hs (aspirated s)" },
+  { "id": "c.ma", "unit": 1, "my": "မ", "rom": "ma̰", "en": "consonant m" },
+  { "id": "c.na", "unit": 1, "my": "န", "rom": "na̰", "en": "consonant n" },
+  { "id": "c.la", "unit": 1, "my": "လ", "rom": "la̰", "en": "consonant l" },
+  { "id": "c.pa", "unit": 1, "my": "ပ", "rom": "pa̰", "en": "consonant p" },
+  { "id": "v.aa", "unit": 1, "my": "ကာ", "rom": "kà", "en": "vowel sign ာ: long 'a', low tone", "note": "ာ after a consonant gives low tone (long, level)." },
+  { "id": "v.aa-high", "unit": 1, "my": "ကား", "rom": "ká", "en": "ာ + း: long 'a', high tone", "note": "း (two dots) marks high tone. ကား also means 'car'." }
+]
