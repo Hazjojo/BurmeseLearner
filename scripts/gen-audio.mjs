@@ -10,7 +10,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 
 const provider = process.env.TTS_PROVIDER ?? 'elevenlabs'
 const region = process.env.AZURE_SPEECH_REGION
-const key = process.env.AZURE_SPEECH_KEY ?? 'injected-by-proxy'
+const key = process.env.AZURE_SPEECH_KEY // unset: the dev-session proxy injects it
 const elevenKey = process.env.ELEVENLABS_API_KEY ?? 'injected-by-proxy'
 const elevenModel = process.env.ELEVEN_MODEL ?? 'eleven_v3'
 if (provider === 'azure' && !region) {
@@ -66,7 +66,7 @@ async function tts(text, voice) {
   const res = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
     method: 'POST',
     headers: {
-      'Ocp-Apim-Subscription-Key': key,
+      ...(key ? { 'Ocp-Apim-Subscription-Key': key } : {}),
       'Content-Type': 'application/ssml+xml',
       'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3',
       'User-Agent': 'burmeselearner-audio',
