@@ -1,207 +1,226 @@
 # BurmeseLearner — Vision & Roadmap
 
-> The full evidence behind this document is in [`reports/Effective Burmese learning app.md`](reports/Effective%20Burmese%20learning%20app.md), with raw notes in [`research_notes/`](research_notes/Effective%20Burmese%20learning%20app/). This file is the decision record: what we build, what we don't, and in what order.
+> Evidence: [`reports/Effective Burmese learning app.md`](reports/Effective%20Burmese%20learning%20app.md) (full report) and [`research_notes/`](research_notes/Effective%20Burmese%20learning%20app/) (raw notes). This file is the decision record: what we build, what we don't, and in what order.
 
 ---
 
 ## 1. Vision
 
-**The best way for an English speaker to learn to *understand and speak* everyday Burmese, with nothing in the app that doesn't help you learn.**
+**A personal Burmese learning tool built only around what helps someone learn a language. It has no commercial goals.**
 
-No major app offers a Burmese course (Duolingo doesn't), and nothing on the market trains Burmese tones properly. The opportunity is not "Duolingo for Burmese". It is a focused tool built on the two techniques with the strongest evidence, **spaced retrieval** and **tone/sound perception training**, filled with native audio of real spoken Burmese.
+- **One learner, me.** It's hosted on Firebase only so I can use it on my phone.
+- **No business incentive.** It doesn't need to keep me hooked, sell me anything, or look good in a dashboard. Every feature has to answer one question: *does this help me understand and speak Burmese?*
+- **Goal: to understand and speak everyday spoken Burmese.** Reading is taught because it supports speaking and lets me use real material, not as an end in itself.
 
-### One-line pitch
-*Hear it, recall it, say it, and come back right before you'd forget it.*
-
-### Who it's for (initial)
-Adult English speakers starting from zero who want to **talk to people**: partners and family, travellers, aid and NGO workers, heritage learners. Reading is taught because it supports speaking, not as a separate academic track.
-
----
-
-## 2. Product principles
-
-These are the rules for deciding whether a feature goes in. When in doubt, check here.
-
-1. **Recall over recognition.** The core loop makes you *produce* the answer (say it, recall the meaning, build the word). Multiple choice appears only when you first meet an item. *(Testing effect g ≈ 0.5–0.7; recognition formats transfer poorly.)*
-2. **Spacing does the heavy lifting.** One scheduler (FSRS) for everything: words, phrases, script, tone pairs.
-3. **Audio on everything.** Every Burmese item has native audio. Burmese tone lives in pitch, *length and voice quality*, which text can't show.
-4. **Spoken Burmese first.** Teach the colloquial register and its particles. The literary/written register comes later, if at all.
-5. **Content quality beats feature count.** Most of the budget goes to native recordings and curated material, not code.
-6. **Habit without manipulation.** A goal you choose, a gentle streak tied to clearing due reviews, and freezes. No hearts, no energy, no leagues, no limit on how much you can practise.
-7. **Honest feedback.** We never show a precise-looking score we can't justify. "I didn't catch that, try again" is better than a wrong 43/100.
-8. **Measure learning, not just activity.** Built-in listening and recall checks tell us whether people improve. Streak numbers look good either way.
-9. **Offline-first and cheap to run.** Works on a phone on a bus. Runs on Firebase's free tier in phase 1.
-
-### Deliberately NOT building
-| Out | Why |
-|---|---|
-| Leaderboards, gems, hearts/energy, practice caps | Thin causal evidence; Duolingo's Energy change caused a user backlash |
-| Matching-pair / tap-the-tiles as the main loop | Recognition ≠ recall; feels productive, isn't |
-| Long grammar lessons | Short explicit notes work; lectures don't add more |
-| "Learning style" modes | No evidence |
-| Pure input / "silent period" design | Beginners in a distant language can't reach the ~95–98% known-word coverage needed to understand native material |
-| 0–100 pronunciation scores, pitch-only tone grading | Burmese tone isn't just pitch; speech recognition for Burmese isn't accurate enough |
-| AI-generated curriculum shipped without native review | No AI model reliably produces good colloquial Burmese yet |
+### What "language learning paradise" means here
+Commercial apps are shaped by things that have nothing to do with learning: free-tier limits (hearts/energy), retention and daily-user targets (streaks, leagues, notifications), fixed content for millions of users, and avoiding anything hard. Dropping those lets this app:
+- **Never limit practice.** Study as much or as little as I want.
+- **Be built around my own life.** Phrases from my conversations, tutor sessions and Burmese people I know go straight into the review queue.
+- **Be honest.** Show real retention numbers and what I actually get wrong, not encouragement designed to keep me coming back.
+- **Use the best tools available.** At one-user scale, premium speech/AI services cost cents.
+- **Adapt to me.** Use FSRS settings tuned on my own review history, extra practice on my weak tones, and content chosen to fit my interests.
 
 ---
 
-## 3. The learning loop
+## 2. What the evidence says helps (business-free reading of the research)
+
+The research mixed two kinds of findings: *what makes people learn* and *what keeps users in an app*. Only the first matters here.
+
+### Strong evidence: the core of the app
+| Technique | Evidence | In the app |
+|---|---|---|
+| **Retrieval practice** (recall, don't reread) | Testing beats restudy, g ≈ 0.50, 0.69 at delays >1 day (Rowland 2014). One of only two "high utility" techniques (Dunlosky 2013) | Every review asks me to produce the answer |
+| **Spacing** | Medium-to-large effect across 48 L2 experiments (Kim & Webb 2022) | FSRS schedules everything |
+| **Productive recall** (English → Burmese) | Builds spelling and form knowledge, which recognition doesn't (Nakata) | Production cards unlock once I know a card receptively |
+| **Tone/sound perception training** (high-variability phonetic training, HVPT) | Mandarin tone ID went from 69% to 90% in 8 sessions and held for 6 months (Wang 1999); carries over to production (meta-analysis of 31 studies) | Dedicated tone & sound trainer |
+
+### Moderate evidence: worth building
+| Technique | Evidence | In the app |
+|---|---|---|
+| Short explicit grammar notes | Explicit > implicit instruction (d ≈ 1.13 vs 0.54), with caveats | One-screen notes on particles and sentence endings |
+| Chunks / phrases as units | Collocation instruction d ≈ 1.4 (small studies) | Phrase cards, not just single words |
+| Prompt to self-correct before revealing the answer | Prompts beat simply giving the answer (Lyster & Saito) | Wrong answer → hint → second try → reveal |
+| Lots of input I mostly understand | Helps, but beginners can't reach the 95–98% known-word coverage needed for native material | Graded micro-stories built from words I already know |
+| Speech-recognition pronunciation practice | g ≈ 0.69, but **only with sustained practice**; weaker for tones (g ≈ 0.37) | Phase 2 speaking drills, used regularly |
+| Speaking practice + corrective feedback with real people | Interaction & output research; a chatbot only partly substitutes | Support for a human tutor (see Phase 1.x) |
+
+### Leaving out because there's no learning evidence (it's mostly for engagement)
+Leaderboards, XP, gems, hearts/energy, league notifications, guilt messages, streak-saving lessons, and "learning style" modes. **The streak goes completely.**
+
+### What's left of "motivation" for one person
+The research on lasting motivation points to **autonomy and feeling competent**, not rewards. For a single learner, that means:
+- I choose my daily load (new cards/day) and can pause without penalty
+- Visible, *honest* progress: "you can now tell creaky vs high tone 85% of the time", "you know 640 phrases"
+- Short sessions are fine; regular use with short breaks is what matters
+- Content I care about (my own phrases)
+
+---
+
+## 3. Product principles
+
+1. **Learning first, always.** If a feature doesn't help me learn, it's out.
+2. **Recall over recognition.** Multiple choice only when meeting an item for the first time.
+3. **One scheduler (FSRS) for everything:** words, phrases, script, tone pairs, my own cards.
+4. **Audio on every item.** Burmese tone is pitch + length + voice quality, which text can't show.
+5. **Spoken Burmese first.** Colloquial register and particles; literary register later and optional.
+6. **My life is the curriculum.** Adding a card from a real conversation must take seconds.
+7. **Honest feedback.** No fake precision; "didn't catch that" beats a wrong score.
+8. **No practice limits, no guilt.**
+9. **Works offline on my phone.**
+10. **Keep it simple.** One user means no admin, no multi-tenant logic, no analytics pipeline.
+
+---
+
+## 4. The learning loop
 
 ```
-        ┌──────────── new item (meet it) ────────────┐
-        │  audio + script + meaning + 1-line note    │
-        │  (one easy recognition check)              │
-        └───────────────────┬────────────────────────┘
-                            ▼
-   REVIEW (daily, FSRS-scheduled, recall-first)
-   1. Listen → what does it mean?            (receptive)
-   2. Read Burmese → meaning / sound         (script)
-   3. English → say it in Burmese, hear the  (productive; unlocks once
-      model, grade yourself / build tiles     you know it receptively)
-                            │
-          wrong? → prompt to self-correct ("check the tone") → then reveal
-                            ▼
-   APPLY: tiny graded stories & dialogues using ~98% known words
-                            ▼
-   SPEAK (phase 1.x: record & compare; phase 2: AI role-play)
+  CAPTURE ──► MEET ──► REVIEW (daily, FSRS) ──► APPLY ──► SPEAK
+     ▲                                                      │
+     └──────── phrases from tutors / real conversations ◄───┘
+
+  CAPTURE  course items + my own phrases (type/paste/record; Zawgyi auto-converted)
+  MEET     audio + script + meaning + 1-line note (one easy recognition check)
+  REVIEW   1. listen → meaning   2. read → meaning/sound   3. English → say it / build it
+           wrong → hint ("check the tone") → retry → reveal
+  APPLY    micro-stories & dialogues at ~98% known words
+  SPEAK    record & compare → (phase 2) speaking drills and AI role-play
 ```
 
 Alongside the loop:
-- **Tone & sound trainer:** hear a pair, pick which you heard, get instant feedback. Uses 4–6 different native voices. *(Mandarin learners went from 69% to 90% after 8 sessions and kept the gain for 6 months.)*
-- **Script trainer:** glyphs introduced a few at a time, always with audio, in the same review queue, with picture mnemonics provided. Romanization starts on and fades out.
+- **Tone & sound trainer:** hear a minimal pair, pick which one you heard, get instant feedback, several voices. It automatically gives more practice on the contrasts I keep missing.
+- **Script trainer:** glyphs introduced a few at a time with audio, in the same review queue; romanization fades out as I improve.
 
 ---
 
-## 4. Content strategy (the real work)
+## 5. Content strategy
 
-**This is the biggest risk and the biggest moat.** There's no open colloquial Burmese word list, learner dictionary or colloquial audio corpus. We have to make our own.
+Content is still the hard part. Since this is for personal use, there are more options:
 
-| Asset | Phase 1 target | Source |
-|---|---|---|
-| Core vocabulary + phrases ("chunks") | ~500 items, frequency-ordered, colloquial | Curated by us + native speaker review; myWord (MIT) frequency data as a starting point (written-register bias) |
-| Native audio | Every item, 2+ voices; tone pairs with 4–6 voices | Commissioned native speakers (needs budget/recruitment) |
-| Tone/sound minimal pairs | ~10 sets covering low/high/creaky/checked, aspiration, voiceless nasals | Curated + recorded |
-| Script units | Consonants, medials, vowels, tone marks, asat, stacked consonants | Authored |
-| Grammar notes | ~15 one-screen notes on key particles and sentence endings | Authored, native-checked |
-| Graded micro-stories | ~10 short dialogues/stories by end of 1.x | Authored (AI-drafted allowed only with native review) |
-| Synthetic voice (TTS) | Long-tail fallback only | Azure Burmese voices (Nilar / Thiha), native-reviewed |
+| Source | Use |
+|---|---|
+| **My own phrases** | From conversations, tutors, Burmese people I know. Highest value: relevant and tested in real life |
+| **A tutor** (e.g. italki) | Checks content, records audio, corrects my speaking. The best single "feature" for speaking, according to the interaction research |
+| **Textbooks I own** (e.g. Okell, *Colloquial Burmese*) | Typed in for personal study, following their lesson order |
+| **Okell's *Burmese by Ear*** (SOAS, free download) | Listening material for personal use |
+| **Azure Burmese neural voices (Nilar / Thiha)** | Audio for every item that doesn't have a human recording. The free tier (0.5M characters/month) easily covers one learner. Tone accuracy unverified, so check against a native speaker when possible |
+| myWord frequency lists (MIT), Tatoeba (CC BY), SLR80 (CC BY-SA) | Starting points for frequency order and example sentences (biased toward written Burmese) |
 
-**Rules**
-- Course content lives as **versioned JSON in this repo**, not in the database. It can be reviewed, diffed and cached offline.
-- **Unicode only.** CI fails on Zawgyi-encoded text. Pasted input is detected and converted (`myanmar-tools`).
-- **Every asset records its source and licence.** Share-alike data (OpenSLR SLR80, FLORES+, Wiktionary) is kept in separate, clearly licensed packs. *Burmese by Ear* is linked to, not embedded.
+**Privacy note:** textbook and *Burmese by Ear* material is fine for **personal** study but shouldn't be on a public URL. Files on Firebase Hosting are public to anyone who has the link. So:
+- **Course structure and my own content:** JSON in the repo (keep the GitHub repo **private**).
+- **Copyrighted material & audio:** Cloud Storage or Firestore, readable only by my account (security rules locked to my user ID).
+
+**Starting targets:** ~300 core colloquial items + my own phrases, ~10 tone/sound pair sets, the full script. Grow continuously instead of in big releases.
+
+**Text rules:** Unicode only; Zawgyi detected and converted on input (`myanmar-tools`); text normalized before answers are compared.
 
 ---
 
-## 5. Architecture (phase 1)
+## 6. Architecture
+
+Single user, so this can stay very small.
 
 | Layer | Choice | Notes |
 |---|---|---|
-| Frontend | Vite + React + TypeScript, installable offline web app (PWA via `vite-plugin-pwa`) | Small, fast, offline |
-| Scheduling | `ts-fsrs` 6.x (MIT), FSRS model version pinned, target retention ≈ 0.9 | Runs in the browser |
-| Hosting | Firebase Hosting (free Spark plan) | Each pull request gets its own preview URL via GitHub Actions |
-| Audio | Loudness-normalised `.m4a` (AAC) as static files on Hosting, precached with Workbox (`RangeRequestsPlugin`) | Cloud Storage needs the paid Blaze plan since Feb 2026, so avoid it in phase 1 |
-| Auth | Anonymous sign-in on first launch, linkable to Google/email later | Start learning without signing up |
-| User data | Firestore: settings, card state (`noteId__cardType`), batched review logs | Offline cache via `persistentLocalCache` |
-| Burmese text | Bundled Noto Sans Myanmar; `Intl.Segmenter('my')` for words; custom regex syllable splitter; on-screen Burmese keyboard / tiles | Grapheme splitting ≠ syllables |
-| Testing | Vitest + Firebase emulators (security rules) + Playwright smoke tests | |
+| Frontend | Vite + React + TypeScript, installable PWA (`vite-plugin-pwa`) | Install to phone home screen; works offline |
+| Scheduling | `ts-fsrs` 6.x (MIT), FSRS model version pinned, target retention ≈ 0.9 (adjustable) | Optimize parameters on my own review log once there's enough history |
+| Auth | Google sign-in; **security rules allow only my user ID** | No anonymous/account-linking logic |
+| Data | Firestore: card state + full review log + my own cards | Offline cache (`persistentLocalCache`); syncs between phone and laptop |
+| Audio & private material | Cloud Storage with owner-only rules, cached on the phone for offline use | Needs the Blaze (pay-as-you-go) plan: expect pennies/month; set a **$5 budget alert** |
+| Public app shell | Firebase Hosting | Only the app code is public, no content |
+| Burmese text | Bundled Noto Sans Myanmar; `Intl.Segmenter('my')` for words; custom syllable splitter; on-screen Burmese keyboard / syllable tiles | Grapheme splitting ≠ syllables |
+| Deploy | GitHub Actions → Firebase Hosting | Preview URL for each PR |
+| Phase 2 | Cloud Functions (2nd gen) hold API keys; App Check on; all speech/AI behind one swappable module | Daily spend cap |
 
-**Estimated running cost, phase 1:** about $0–2/month at ~100 active learners.
-
-**Phase 2 additions:** Blaze plan, 2nd-gen Cloud Functions holding API keys as secrets, App Check (required for Firebase AI Logic since Nov 2026), budget alerts, per-user AI rate limits. All speech/AI vendors sit behind **one swappable service module**.
+**Expected cost:** phase 1 ≈ $0–1/month. Phase 2 ≈ a few dollars a month for regular conversation practice.
 
 ---
 
-## 6. Roadmap
+## 7. Roadmap
 
-Phases end on **exit criteria**, not dates.
+Each phase ends on **personal exit criteria**: things I can actually do, not features shipped.
 
 ### Phase 0: Foundations
-- [ ] Decide initial learner focus and app name (see §8)
-- [ ] Find 1–2 native-speaker collaborators (content review + recording); agree pay and rights
-- [ ] Project scaffold: Vite/React/TS, PWA, Firebase project, GitHub Actions deploy + PR previews
-- [ ] Content schema (notes, card types, audio refs, licence/source fields) + validator in CI (Unicode/Zawgyi check, missing audio, schema)
-- [ ] Recording & loudness-normalisation pipeline (script → `.m4a`)
-- [ ] Draft first 100 items + 3 tone pair sets + first script unit
+- [ ] Make the GitHub repo private (if it isn't)
+- [ ] Scaffold: Vite/React/TS, PWA, Firebase project (Blaze + budget alert), Google sign-in locked to my user ID, GitHub Actions deploy
+- [ ] Content schema (items, card types, audio refs, source) + validator (Unicode/Zawgyi check, missing audio)
+- [ ] Audio pipeline: Azure TTS generation + loudness normalization → `.m4a`; slot for human recordings that replace the TTS versions
+- [ ] First 100 items, 3 tone pair sets, first script unit
 
-**Exit:** a deployed empty shell; content validator passing on 100 real items with audio.
+**Exit:** the app opens on my phone, signed in, with real content.
 
-### Phase 1: Core loop (MVP)
-- [ ] FSRS review queue with recall-first card types (listen→meaning, read→meaning, English→say/build)
-- [ ] Production cards unlock after receptive learning
-- [ ] Prompt-then-reveal feedback on wrong answers
-- [ ] Tone & sound perception trainer (multi-voice minimal pairs)
+### Phase 1: Core loop
+- [ ] FSRS review queue with recall-first card types; production cards unlock later
+- [ ] Hint → retry → reveal on wrong answers
+- [ ] Tone & sound perception trainer with adaptive focus on my weak contrasts
 - [ ] Script trainer in the same queue; fading romanization
 - [ ] One-screen grammar notes linked from cards
-- [ ] Today screen: due count, new-item budget, learner-set goal, gentle streak with freezes
-- [ ] Offline: precached content + audio; reviews sync when back online
-- [ ] Anonymous → linked accounts
-- [ ] Built-in learning checks: short listening/recall quiz every ~2 weeks; tone identification test before and after
-- [ ] ~500 items, ~10 tone sets, full script
+- [ ] **Quick add:** new card from phone in seconds (Burmese + meaning, optional voice memo); Zawgyi auto-fix; TTS audio auto-generated
+- [ ] Today screen: due count, new-card budget I set, no streak
+- [ ] Offline review with sync
+- [ ] **Honest progress page:** true retention, cards known, tone-ID accuracy over time, my most-missed items/contrasts
+- [ ] Self-tests: tone-ID check with voices I haven't trained on, every couple of weeks
 
-**Exit:** 5–10 pilot learners use it for 4 weeks; tone-ID accuracy and recall-check scores go up; core loop works fully offline.
+**Exit:** I review daily on my phone for 4 weeks, tone-ID accuracy is measurably up, and adding phrases from real life is effortless.
 
-### Phase 1.x: Input & speaking-lite
-- [ ] Graded micro-stories/dialogues at ~98% known words, unlocked by what you know
-- [ ] **Record & compare:** record yourself, play it back next to the native clip (no score)
-- [ ] Optional pitch + length overlay of your recording vs the native one, presented as "compare", not a verdict
-- [ ] Expand to ~1,000–1,500 items; more voices
-- [ ] Simple anonymous analytics on retention (day 1 / 7 / 14) and learning checks
+### Phase 1.x: Input, speaking-lite, tutor support
+- [ ] Graded micro-stories/dialogues using only my known words (AI-drafted allowed; flagged until checked)
+- [ ] **Record & compare:** record myself next to the native/TTS clip
+- [ ] Pitch + length overlay of my recording vs the reference (presented as "compare", not a grade)
+- [ ] **Tutor mode:** a list of phrases to ask a tutor about, a place to save tutor corrections and recordings, and a "prep for tutor session" view
+- [ ] Tune FSRS parameters on my own review history
+- [ ] Expand content continuously; replace TTS with human audio where available
 
-**Exit:** learners use stories and recording regularly; content pipeline can add ~100 items per batch with native review.
+**Exit:** I can follow short dialogues made from my vocabulary and hold basic exchanges with a tutor.
 
-### Phase 2: Speak with the app (the stretch goal)
-**Gate first, build second.** Burmese speech tech is new and unproven on learner speech, so phase 2 starts with a test.
+### Phase 2: Speak with the app
+Burmese speech tech is new and **unmeasured on learner speech**, so test first.
 
-- [ ] **2a: Speech benchmark.** Record ~30 target phrases from learners + natives. Run them through Azure (my-MM), Google Chirp 3, ElevenLabs Scribe, an OpenAI transcriber and an open MMS fine-tune. Measure character error rate, latency, cost. Also native-rate the Azure Burmese voices.
-  - *Go/no-go:* is the best option good enough to tell "right phrase" from "wrong phrase" on learner speech?
-- [ ] **2b: Speaking drills.** Say the target phrase → speech recognition checks the content → pitch/length overlay with coarse labels ("pitch: good / try higher / a bit long"). If recognition fails: "didn't catch that", show what it heard, allow retry or typing.
-- [ ] **2c: Turn-based role-play.** Learner speaks → Burmese speech-to-text → AI model running a *scripted* scenario (ordering food, taxi, meeting family) limited to known vocabulary and colloquial register → Azure TTS speaks back. Transcript visible, typed fallback, corrections framed as hints. Target: ~2 s to first audio.
-- [ ] Native review of scenario scripts and sampled AI turns; feature labelled as "practice".
-- [ ] Cost controls: per-user daily minutes, budget alerts.
+- [ ] **2a: Personal speech benchmark.** Record ~30 phrases (me + a native/tutor), run them through Azure (my-MM), Google Chirp 3, ElevenLabs Scribe, an OpenAI transcriber and an open model. Compare accuracy and latency; listen critically to the Burmese voices.
+  - *Go/no-go:* can the best one reliably tell when I said the right phrase vs a wrong one?
+- [ ] **2b: Speaking drills.** Say the target → speech recognition checks the content → pitch/length overlay with coarse labels. If recognition fails, show what it heard and let me retry or type.
+- [ ] **2c: Conversation role-play.** I speak → Burmese speech-to-text → AI model running a scenario (market, taxi, family dinner, my real upcoming situations) limited to my known words + a few new ones → Burmese TTS speaks back. Visible transcript, typed fallback, corrections as hints, and the new words from each conversation go into my review queue automatically.
+- [ ] Spot-check AI Burmese with a tutor; feature labelled as practice, not authority.
 
-**Exit:** pilot learners complete role-plays without frustration (low "didn't catch that" rate); no wrong-Burmese incidents in sampled transcripts.
+**Exit:** I can complete everyday role-plays by voice without frustration, and new phrases from them stick in review.
 
 ### Phase 3+: Later / maybe
-- Real-time speech-to-speech conversation (Gemini Live / OpenAI Realtime): **re-test yearly**; Burmese support is unconfirmed today
-- Per-user FSRS parameter tuning (occasional, offline job)
-- Literary/written Burmese reading track; separate paths for heritage learners, travellers and researchers
-- AI-drafted graded readers limited to known words, native-reviewed
-- Optional illustrated memory aids for hard words
-- Native mobile wrapper if the installable web app's limits bite (e.g. iOS background audio)
+- Real-time voice conversation (Gemini Live / OpenAI Realtime) once Burmese is supported: **re-test periodically**. Cost isn't a barrier at one user; Burmese support is
+- Literary/written Burmese reading track (signs, news, Facebook posts)
+- Reading real material with tap-to-look-up and one-tap "add to review"
+- Optional illustrated memory aids for stubborn words
 
 ---
 
-## 7. How we'll know it works
+## 8. Measuring my progress
 
-| Metric | Why |
+Only learning measures, no engagement metrics.
+
+| Measure | How |
 |---|---|
-| Tone identification accuracy (before vs after, unfamiliar voices) | Directly measures the key Burmese skill |
-| Recall-check score on previously learned items | Real retention, not app activity |
-| Items known and retention rate at target (≈90%) | Health of the review system |
-| Day-1 / 7 / 14 retention | Most drop-out happens in the first two weeks |
-| Phase 2: content-recognition success rate, role-play completion | Is speaking practice usable or frustrating? |
-
-Streaks and daily-user counts are tracked but **are not success metrics**.
+| Tone identification | Periodic test using voices I haven't trained on |
+| True retention | FSRS review log: % recalled vs target |
+| Active knowledge | Count of production cards (English → Burmese) mastered |
+| Comprehension | % of a new graded story understood on first listen |
+| Speaking (phase 2) | Speech-recognition success on target phrases; role-plays completed; tutor's judgement |
 
 ---
 
-## 8. Open decisions
+## 9. Open decisions
 
-1. **Primary learner:** partners/family, travellers, aid workers or heritage learners? This affects the first 500 items and the scenario list.
-2. **Native-speaker collaborators:** who, and on what terms (pay, rights to recordings)?
-3. **Accounts:** is anonymous-first OK, or should sign-in be required from the start?
-4. **Romanization:** which system to show while it fades (e.g. MLC transcription vs a simpler learner-friendly one with tone marks)?
-5. **Open source or closed?** This affects which share-alike datasets we can mix in.
+1. **Tutor:** do I have (or want) a native speaker or tutor for checking content, recordings and speaking practice? It's the single biggest quality boost.
+2. **Romanization:** which system to show while it fades (e.g. MLC transcription vs a simpler one with tone marks)?
+3. **Textbook:** which course to follow for structure (e.g. Okell's *Burmese: An Introduction* or *Colloquial Burmese*), if any?
+4. **Repo visibility:** confirm the GitHub repo is private.
+5. **Situations I most need Burmese for:** these drive the first phrases and the phase 2 scenarios.
 
-## 9. Key risks (short version)
+## 10. Risks
 
 | Risk | Mitigation |
 |---|---|
-| Content is the bottleneck | Recruit native collaborators before heavy coding; start with 500 items |
-| Evidence comes from Mandarin/Thai, not Burmese | Treat early users as a pilot with before/after tone tests |
-| Speech recognition misfires on learner speech | Phase 2 gated on our own benchmark; never show low scores for recognition failures |
-| AI or TTS teaches wrong Burmese | Scripts + word lists, native review, label AI as practice |
-| Zawgyi/encoding bugs | Unicode-only, CI check, convert input |
-| Licence mix-ups | Source and licence logged per asset; share-alike data kept separate |
-| Vendor claims unverified | Re-check docs and prices before committing; swappable service module |
+| Content effort stalls the project | Start small (~100 items); quick-add from real life; TTS audio so nothing waits on recordings |
+| TTS teaches subtly wrong tones | Prefer human audio for tone sets; flag TTS-only items; check with a tutor |
+| Evidence comes from Mandarin/Thai, not Burmese | My own tone-ID tests show whether the trainer works for me |
+| Speech recognition misfires on my speech | Phase 2 gated on a personal benchmark; never show a score for a recognition failure |
+| AI produces unnatural Burmese | Scenario scripts + known-word limits; tutor spot checks; AI = practice |
+| Zawgyi/encoding bugs | Unicode-only, convert on input, normalize before comparing |
+| Surprise cloud bill | $5 budget alert, daily caps on AI calls, keys only in Cloud Functions |
