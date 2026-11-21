@@ -14,6 +14,7 @@ import {
   writeBatch,
   type Firestore,
 } from 'firebase/firestore'
+import { getFunctions, httpsCallable } from 'firebase/functions'
 import { deleteObject, getBytes, getMetadata, getStorage, listAll, ref, uploadBytes, type FirebaseStorage } from 'firebase/storage'
 import { mergeStates } from './merge'
 import { emptyState, getRecording, loadLogs, recordedIds, saveLogs, setRecording, type AppState } from './store'
@@ -77,6 +78,12 @@ export class Sync {
     }
   }
   signOut = () => signOut(getAuth(this.app))
+
+  /** Call a server function (functions/src/index.ts). */
+  async call<T>(name: string, data: unknown): Promise<T> {
+    const fn = httpsCallable<unknown, T>(getFunctions(this.app, 'europe-west2'), name, { timeout: 70_000 })
+    return (await fn(data)).data
+  }
 
   private userDoc = () => doc(this.db, 'users', this.user!.uid)
 

@@ -13,6 +13,9 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+      - name: Server functions build & test
+        working-directory: functions
+        run: npm ci && npm run build && npm test
       - uses: actions/upload-artifact@v4
         with: { name: dist, path: dist }
 
@@ -53,3 +56,19 @@ jobs:
           npx -y firebase-tools@15.37.0 deploy --only firestore:rules --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive
           # Storage needs the Blaze plan; skip quietly if it isn't set up yet.
           npx -y firebase-tools@15.37.0 deploy --only storage --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive || echo "Storage not set up yet: recordings stay on-device"
+      - name: Deploy server functions (speech checking & conversation)
+        # Needs the AZURE_SPEECH_KEY repo secret and extra IAM roles on the deploy key (see docs/deploy.md).
+        continue-on-error: true
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          PROJECT: ${{ vars.FIREBASE_PROJECT_ID }}
+        run: |
+          if [ -z "$AZURE_SPEECH_KEY" ]; then echo "AZURE_SPEECH_KEY secret not set: skipping functions"; exit 0; fi
+          echo "$SA" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          gcloud auth activate-service-account --key-file "$RUNNER_TEMP/sa.json" --quiet
+          gcloud services enable aiplatform.googleapis.com secretmanager.googleapis.com cloudfunctions.googleapis.com run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com --project "$PROJECT"
+          (cd functions && npm ci && npm run build)
+          printf %s "$AZURE_SPEECH_KEY" | npx -y firebase-tools@15.37.0 functions:secrets:set AZURE_SPEECH_KEY --data-file=- --project "$PROJECT" --non-interactive --force
+          npx -y firebase-tools@15.37.0 deploy --only functions --project "$PROJECT" --non-interactive --force

@@ -194,3 +194,28 @@ input[type='text'] { font: inherit; width: 100%; background: var(--surface); col
 .option:disabled { opacity: 1; }
 .option:disabled.dim { opacity: 0.4; }
 .option.correct, .option.wrong { color: var(--text); }
+
+/* ---- practice: dialogues & conversation ---- */
+.pb0 { padding-bottom: 0; }
+.lesson-list.flat { margin-left: 0; border-left: 0; padding-left: 0; }
+.chat { display: flex; flex-direction: column; gap: 10px; margin: 14px 0; }
+.bubble { display: flex; flex-direction: column; gap: 4px; max-width: 85%; padding: 10px 14px; border-radius: 16px; border: 1px solid var(--border); background: var(--surface); text-align: left; font: inherit; color: var(--text); }
+.bubble.left { align-self: flex-start; border-bottom-left-radius: 4px; }
+.bubble.right { align-self: flex-end; border-bottom-right-radius: 4px; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
+.bubble.playing { outline: 2px solid var(--accent); }
+.chat-screen { display: flex; flex-direction: column; min-height: 100dvh; }
+.chat-screen .chat { flex: 1; }
+.chat-input { display: flex; flex-direction: column; gap: 8px; }
+.suggestions { display: flex; flex-direction: column; gap: 6px; }
+.line-view { text-align: left; background: var(--surface); border: 1px dashed var(--border); border-radius: 12px; padding: 8px 10px; font: inherit; color: var(--text); cursor: pointer; }
+.heard { display: flex; flex-direction: column; gap: 8px; background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 10px; }
+.btn.mic { font-size: 1.5rem; width: 56px; height: 56px; border-radius: 50%; padding: 0; flex: none; }
+.btn.mic.recording { background: var(--again); color: #fff; border-color: var(--again); animation: pulse 1s infinite; }
+@keyframes pulse { 50% { transform: scale(1.08); } }
+.heard-result { border-radius: 12px; padding: 8px 12px; border: 1px solid var(--border); }
+.heard-result.right { border-color: var(--good); }
+.heard-result.hinted { border-color: var(--hard); }
+.heard-result.wrong { border-color: var(--again); }
+/* Inside the tabbed layout, keep sticky action bars above the tab bar. */
+main .actions { bottom: calc(62px + env(safe-area-inset-bottom)); }
+main .chat-screen { min-height: calc(100dvh - 80px); }

@@ -62,6 +62,16 @@ for (const m of course.modules) {
 }
 for (const id of allItemIds) if (!taught.has(id)) errors.push(`course.json: item ${id} isn't in any lesson`)
 
+// Dialogues: lines are valid Burmese with tone-marked romanization; questions are well formed.
+for (const d of load('dialogues.json')) {
+  if (!lessonIds.has(d.after)) errors.push(`dialogues.json:${d.id}: unknown "after" lesson ${d.after}`)
+  d.lines.forEach((l, i) => {
+    if (!d.speakers[l.s]) errors.push(`dialogues.json:${d.id}#${i}: unknown speaker ${l.s}`)
+    checkEntry('dialogues.json', { ...l, id: undefined }, ['my', 'rom', 'en'])
+  })
+  for (const q of d.questions) if (!(q.answer >= 0 && q.answer < q.options.length)) errors.push(`dialogues.json:${d.id}: bad question answer`)
+}
+
 if (errors.length) {
   console.error(`Content validation failed (${errors.length}):\n  ` + errors.join('\n  '))
   process.exit(1)

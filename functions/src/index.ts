@@ -1,0 +1,148 @@
+// Server side of the speaking features. Keeps the Azure key out of the browser and calls Gemini on the
+// project's own Google Cloud (no extra API key). Only the app's owner can use it (first signed-in caller).
+import { initializeApp } from 'firebase-admin/app'
+import { FieldValue, getFirestore } from 'firebase-admin/firestore'
+import { defineSecret } from 'firebase-functions/params'
+import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https'
+import { GoogleGenAI, Type } from '@google/genai'
+import { buildPrompt, type ConverseInput } from './prompt.js'
+
+initializeApp()
+const db = getFirestore()
+const AZURE_KEY = defineSecret('AZURE_SPEECH_KEY')
+const AZURE_REGION = process.env.AZURE_SPEECH_REGION ?? 'uksouth'
+const REGION = 'europe-west2'
+const DAILY_LIMIT = 400
+const MODELS = (process.env.GEMINI_MODELS ?? 'gemini-3.8-flash,gemini-2.5-flash').split(',')
+
+/** Signed-in owner only (the first account to call claims the app), with a daily cap against runaway costs. */
+async function guard(req: CallableRequest): Promise<string> {
+  const uid = req.auth?.uid
+  if (!uid) throw new HttpsError('unauthenticated', 'Sign in first.')
+  const ownerRef = db.doc('config/owner')
+  const owner = await db.runTransaction(async (t) => {
+    const snap = await t.get(ownerRef)
+    if (!snap.exists) t.set(ownerRef, { uid, claimedAt: FieldValue.serverTimestamp() })
+    return snap.exists ? (snap.data()!.uid as string) : uid
+  })
+  if (owner !== uid) throw new HttpsError('permission-denied', 'This app is private.')
+  const day = new Date().toISOString().slice(0, 10)
+  const usage = db.doc(`usage/${uid}_${day}`)
+  const n = await db.runTransaction(async (t) => {
+    const c = ((await t.get(usage)).data()?.calls as number | undefined) ?? 0
+    t.set(usage, { calls: c + 1 }, { merge: true })
+    return c + 1
+  })
+  if (n > DAILY_LIMIT) throw new HttpsError('resource-exhausted', 'Daily speaking limit reached. Try again tomorrow.')
+  return uid
+}
+
+/** Burmese speech → text with Azure (16 kHz mono WAV, base64). */
+async function recognise(wavBase64: string): Promise<{ text: string; confidence: number | null }> {
+  const res = await fetch(
+    `https://${AZURE_REGION}.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=my-MM&format=detailed`,
+    {
+      method: 'POST',
+      headers: {
+        'Ocp-Apim-Subscription-Key': AZURE_KEY.value(),
+        'Content-Type': 'audio/wav; codecs=audio/pcm; samplerate=16000',
+        Accept: 'application/json',
+      },
+      body: Buffer.from(wavBase64, 'base64'),
+    },
+  )
+  if (!res.ok) throw new HttpsError('internal', `Speech recognition failed (${res.status})`)
+  const j = (await res.json()) as { RecognitionStatus: string; DisplayText?: string; NBest?: { Confidence: number; Display: string }[] }
+  if (j.RecognitionStatus !== 'Success') return { text: '', confidence: null }
+  return { text: j.NBest?.[0]?.Display ?? j.DisplayText ?? '', confidence: j.NBest?.[0]?.Confidence ?? null }
+}
+
+/** Burmese text → speech (mp3, base64). */
+async function synthesise(text: string, voice: string): Promise<string> {
+  const esc = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  const res = await fetch(`https://${AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1`, {
+    method: 'POST',
+    headers: {
+      'Ocp-Apim-Subscription-Key': AZURE_KEY.value(),
+      'Content-Type': 'application/ssml+xml',
+      'X-Microsoft-OutputFormat': 'audio-24khz-48kbitrate-mono-mp3',
+      'User-Agent': 'burmeselearner',
+    },
+    body: `<speak version="1.0" xml:lang="my-MM"><voice name="${voice}"><prosody rate="-10%">${esc}</prosody></voice></speak>`,
+  })
+  if (!res.ok) throw new HttpsError('internal', `Speech synthesis failed (${res.status})`)
+  return Buffer.from(await res.arrayBuffer()).toString('base64')
+}
+
+export const transcribe = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSeconds: 30, memory: '256MiB' }, async (req) => {
+  await guard(req)
+  const wav = (req.data as { wav?: string })?.wav
+  if (typeof wav !== 'string' || wav.length > 3_000_000) throw new HttpsError('invalid-argument', 'Recording missing or too long.')
+  return recognise(wav)
+})
+
+export const speak = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSeconds: 30, memory: '256MiB' }, async (req) => {
+  await guard(req)
+  const { text, voice } = (req.data ?? {}) as { text?: string; voice?: number }
+  if (typeof text !== 'string' || !text.trim() || text.length > 300) throw new HttpsError('invalid-argument', 'Text missing or too long.')
+  return { audio: await synthesise(text, voice === 1 ? 'my-MM-ThihaNeural' : 'my-MM-NilarNeural') }
+})
+
+const REPLY_SCHEMA = {
+  type: Type.OBJECT,
+  properties: {
+    reply: {
+      type: Type.OBJECT,
+      properties: { my: { type: Type.STRING }, rom: { type: Type.STRING }, en: { type: Type.STRING } },
+      required: ['my', 'rom', 'en'],
+    },
+    heard: { type: Type.STRING, description: 'What you understood the learner to mean, in English.' },
+    feedback: { type: Type.STRING, description: 'Short English tip on the learner’s last message, or empty.' },
+    better: {
+      type: Type.OBJECT,
+      description: 'A more natural way to say what the learner meant, if their Burmese was off; otherwise empty strings.',
+      properties: { my: { type: Type.STRING }, rom: { type: Type.STRING }, en: { type: Type.STRING } },
+      required: ['my', 'rom', 'en'],
+    },
+    suggestions: {
+      type: Type.ARRAY,
+      items: {
+        type: Type.OBJECT,
+        properties: { my: { type: Type.STRING }, rom: { type: Type.STRING }, en: { type: Type.STRING } },
+        required: ['my', 'rom', 'en'],
+      },
+    },
+    end: { type: Type.BOOLEAN },
+  },
+  required: ['reply', 'heard', 'feedback', 'better', 'suggestions', 'end'],
+}
+
+let ai: GoogleGenAI | null = null
+async function generate(system: string, prompt: string) {
+  ai ??= new GoogleGenAI({ enterprise: true, project: process.env.GCLOUD_PROJECT, location: 'global' })
+  let lastErr: unknown
+  for (const model of MODELS) {
+    try {
+      const res = await ai.models.generateContent({
+        model,
+        contents: prompt,
+        config: { systemInstruction: system, responseMimeType: 'application/json', responseSchema: REPLY_SCHEMA, temperature: 0.6 },
+      })
+      return JSON.parse(res.text ?? '{}')
+    } catch (e) {
+      lastErr = e
+      if (!/not.?found|404|unsupported|not supported/i.test(String(e))) break
+    }
+  }
+  throw new HttpsError('internal', `AI reply failed: ${lastErr instanceof Error ? lastErr.message : lastErr}`)
+}
+
+export const converse = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSeconds: 60, memory: '512MiB' }, async (req) => {
+  await guard(req)
+  const input = req.data as ConverseInput
+  if (!input?.scenario?.setup || !Array.isArray(input.history) || input.history.length > 60) throw new HttpsError('invalid-argument', 'Bad conversation.')
+  const { system, prompt } = buildPrompt(input)
+  const out = await generate(system, prompt)
+  const audio = out?.reply?.my ? await synthesise(out.reply.my, input.scenario.voice === 1 ? 'my-MM-ThihaNeural' : 'my-MM-NilarNeural') : null
+  return { ...out, audio }
+})

@@ -1,7 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { romTokens, type Item, type ToneSet } from './content'
 import { say, clipsFor } from './lib/speech'
-import { Mm, RecordCompare, Rom } from './components'
+import { Mm, Rom } from './components'
+import { aiAvailable, similarity, transcribe } from './lib/ai'
+import { playBlob, startRecording, type Recorder } from './lib/audio'
 
 export type Outcome = 'right' | 'hinted' | 'wrong'
 
@@ -317,20 +319,79 @@ function Match({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'match
   )
 }
 
-/** Say it aloud, then compare and judge yourself. */
+/** Say it aloud. When signed in, speech recognition checks it; otherwise compare and judge yourself. */
 function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>>) {
   const { item } = ex
   const [revealed, setRevealed] = useState(false)
   const [outcome, setOutcome] = useState<Outcome | null>(null)
+  const [rec, setRec] = useState<Recorder | null>(null)
+  const [checking, setChecking] = useState(false)
+  const [heard, setHeard] = useState<{ text: string; score: number } | null>(null)
+  const mine = useRef<Blob | null>(null)
+  const canCheck = aiAvailable()
   useEffect(() => {
     if (revealed) say(item.my, { itemId: item.id })
   }, [revealed, item])
+
+  const toggle = async () => {
+    if (rec) {
+      const blob = await rec.stop()
+      setRec(null)
+      mine.current = blob
+      if (!canCheck) return
+      setChecking(true)
+      try {
+        const text = await transcribe(blob)
+        const score = similarity(text, item.my)
+        setHeard({ text, score })
+        setRevealed(true)
+      } catch {
+        setHeard({ text: '', score: 0 })
+      } finally {
+        setChecking(false)
+      }
+    } else {
+      try {
+        setHeard(null)
+        setRec(await startRecording())
+      } catch {
+        /* mic denied */
+      }
+    }
+  }
+  const verdict: Outcome | null = heard ? (heard.score >= 0.85 ? 'right' : heard.score >= 0.55 ? 'hinted' : 'wrong') : null
+
   return (
     <>
       <div className="prompt">
         <div className="muted small">Say it out loud in Burmese</div>
         <div className="en big">{item.en}</div>
-        <RecordCompare my={item.my} itemId={item.id} />
+        <div className="row gap-sm wrap">
+          <button className={`btn mic ${rec ? 'recording' : ''}`} onClick={toggle} disabled={checking || !!outcome} aria-label={rec ? 'Stop' : 'Record'}>
+            {rec ? '■' : '🎙'}
+          </button>
+          <span className="small muted">{rec ? 'Recording… tap to stop' : checking ? 'Listening…' : canCheck ? 'Tap, say it, tap again' : 'Record yourself to compare'}</span>
+          {mine.current && !rec && (
+            <button className="btn small" onClick={() => playBlob(mine.current!)}>
+              ▶ Me
+            </button>
+          )}
+        </div>
+        {heard && (
+          <div className={`heard-result ${verdict}`}>
+            {heard.text ? (
+              <>
+                <span className="small">I heard:</span> <Mm text={heard.text} size="sm" />
+                <div className="small">
+                  {verdict === 'right' ? 'That matches ✓' : verdict === 'hinted' ? 'Close: compare with the answer' : "That doesn't match yet"}
+                  <span className="muted"> (tones can't be checked: listen and compare)</span>
+                </div>
+              </>
+            ) : (
+              <span className="small">I didn't catch that. Try again, a little slower.</span>
+            )}
+          </div>
+        )}
         {revealed && <Answer item={item} showRom={showRom || true} />}
         {revealed && <PlayBig my={item.my} itemId={item.id} autoPlay={false} />}
       </div>
@@ -340,6 +401,17 @@ function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>
         <div className="actions">
           <button className="btn primary wide" onClick={() => setRevealed(true)}>
             Show answer
+          </button>
+        </div>
+      ) : heard?.text && verdict ? (
+        <div className="actions row gap-sm">
+          {verdict !== 'right' && (
+            <button className="btn wide" onClick={() => setOutcome('right')}>
+              I said it right
+            </button>
+          )}
+          <button className="btn primary wide" onClick={() => setOutcome(verdict)}>
+            Continue
           </button>
         </div>
       ) : (

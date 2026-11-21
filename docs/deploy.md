@@ -50,3 +50,15 @@ Recordings then upload automatically and appear on every device you sign in on.
 ## Testing sync locally
 
 `npm run test:sync` runs the sync integration test against the Firebase emulators (needs Java).
+
+
+## 4. Speaking features (speech checking & AI conversation)
+
+A small server function (`functions/`) checks your spoken Burmese with Azure speech recognition and runs the conversation partner with Gemini on this Google Cloud project. One-time setup:
+
+1. **Azure key → GitHub.** Repo *Settings → Secrets and variables → Actions → New repository secret*: name `AZURE_SPEECH_KEY`, value = *KEY 1* from the Azure Speech resource (*Keys and Endpoint*).
+2. **Let the deploy key deploy functions.** Google Cloud console → *IAM* → edit the `firebase-adminsdk-…` principal → add roles: **Editor**, **Cloud Functions Admin**, **Cloud Run Admin**, **Secret Manager Admin**, **Service Account User**.
+3. Push or re-run CI. The *Deploy server functions* step enables the needed APIs, stores the Azure key in Secret Manager and deploys.
+4. If conversation replies fail with a permission error: IAM → the *Default compute service account* (`<number>-compute@developer.gserviceaccount.com`) → add **Vertex AI User**.
+
+Costs at one learner's scale: Azure speech recognition free tier (5 audio hours/month), Gemini Flash a few pence per hour of conversation, Cloud Functions free tier. The function caps usage at 400 calls/day and only answers the first account that uses it (yours).

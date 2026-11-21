@@ -4,7 +4,8 @@ import { getScheduler } from './lib/srs'
 import type { Sync } from './lib/sync'
 import { Course, Home, LessonView, ReviewView } from './screens/Learn'
 import { Phrasebook, Settings } from './screens/Other'
-import { Tones } from './screens/Tones'
+import { Practice } from './screens/Practice'
+import { setAISync } from './lib/ai'
 import { QuickAdd } from './screens/QuickAdd'
 import { SyncPanel } from './screens/SyncPanel'
 
@@ -35,6 +36,7 @@ export default function App() {
         .then((sy) => {
           if (!sy) return
           setSync(sy)
+          setAISync(sy)
           sy.onChange(() => bump((x) => x + 1))
           listeners.rec = (id, blob) => sy.uploadRecording(id, blob)
           listeners.log = (l) => sy.pushLog(l)
@@ -85,7 +87,7 @@ export default function App() {
       <main>
         {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} />}
         {tab === 'course' && <Course state={state} onLesson={openLesson} />}
-        {tab === 'tones' && <Tones state={state} update={update} />}
+        {tab === 'tones' && <Practice state={state} update={update} sync={sync} />}
         {tab === 'phrases' && <Phrasebook state={state} update={update} onAdd={() => setOverlay({ kind: 'add' })} />}
         {tab === 'settings' && (
           <>
@@ -99,7 +101,7 @@ export default function App() {
           [
             ['home', '🏠', 'Home'],
             ['course', '📚', 'Course'],
-            ['tones', '👂', 'Ear'],
+            ['tones', '🎧', 'Practice'],
             ['phrases', '📖', 'Phrases'],
             ['settings', '⚙️', 'Settings'],
           ] as const
