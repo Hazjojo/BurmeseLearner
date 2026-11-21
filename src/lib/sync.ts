@@ -1,7 +1,7 @@
 // Cloud sync (Firestore + Cloud Storage), loaded lazily and only when the app is served by Firebase Hosting.
 // Everything still works offline and locally; the cloud copy keeps phone and laptop in step and acts as a backup.
 import { initializeApp, type FirebaseApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithRedirect, signOut, type User } from 'firebase/auth'
+import { getAuth, getRedirectResult, GoogleAuthProvider, onAuthStateChanged, signInWithPopup, signInWithRedirect, signOut, type User } from 'firebase/auth'
 import {
   collection,
   doc,
@@ -56,6 +56,8 @@ export class Sync {
   }
 
   watchUser(onSignedIn: (u: User) => void) {
+    // Surface errors from a redirect sign-in instead of silently coming back signed out.
+    getRedirectResult(getAuth(this.app)).catch((e) => this.set('error', `Sign-in failed: ${e instanceof Error ? e.message : e}`))
     onAuthStateChanged(getAuth(this.app), (u) => {
       this.user = u
       if (u) onSignedIn(u)
