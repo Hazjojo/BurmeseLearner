@@ -30,6 +30,19 @@ for (const set of load('tones.json')) {
   else set.options.forEach((o, i) => checkEntry('tones.json', { ...o, id: undefined }, ['my', 'rom']))
 }
 
+const speakIds = new Set(load('speaking.json').map((e) => e.id))
+const verbForms = load('verbforms.json')
+for (const pat of load('patterns.json')) {
+  checkEntry('patterns.json', { id: pat.id, en: pat.en }, ['id', 'en'])
+  if (!speakIds.has(pat.from)) errors.push(`patterns.json:${pat.id}: "from" ${pat.from} is not a speaking item`)
+  if (!pat.my?.includes('{v}') || !Array.isArray(pat.rom) || pat.rom.length !== 2) errors.push(`patterns.json:${pat.id}: needs my with {v} and rom [afterOpen, afterChecked]`)
+  else for (const [vid] of Object.entries(verbForms)) {
+    if (!speakIds.has(vid)) errors.push(`verbforms.json: ${vid} is not a speaking item`)
+    const v = load('speaking.json').find((e) => e.id === vid)
+    if (v) for (const p of burmeseProblems(pat.my.replace('{v}', v.my))) errors.push(`patterns.json:${pat.id}+${vid}: ${p}`)
+  }
+}
+
 if (errors.length) {
   console.error(`Content validation failed (${errors.length}):\n  ` + errors.join('\n  '))
   process.exit(1)

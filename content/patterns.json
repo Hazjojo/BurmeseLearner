@@ -1,0 +1,8 @@
+[
+  { "id": "pat.statement", "from": "p.go", "my": "{v}တယ်", "rom": ["{v} dè", "{v} tè"], "en": "I {base} / I {past}", "note": "Verb + တယ် = plain statement (present or past from context)." },
+  { "id": "pat.neg", "from": "p.not-go", "my": "မ{v}ဘူး", "rom": ["mə-{v} bú", "mə-{v} bú"], "en": "I don't {base}", "note": "မ + verb + ဘူး = negative." },
+  { "id": "pat.future", "from": "p.will-go", "my": "{v}မယ်", "rom": ["{v} mè", "{v} mè"], "en": "I will {base}", "note": "Verb + မယ် = future / intention." },
+  { "id": "pat.future-q", "from": "p.will-you-go", "my": "{v}မလား", "rom": ["{v} mə-lá", "{v} mə-lá"], "en": "Will you {base}?", "note": "Verb + မလား = future yes/no question." },
+  { "id": "pat.want", "from": "p.want-eat", "my": "{v}ချင်တယ်", "rom": ["{v} jìn dè", "{v} chìn dè"], "en": "I want to {base}", "note": "Verb + ချင်တယ် = want to." },
+  { "id": "pat.request", "from": "p.sit-please", "my": "{v}ပါ", "rom": ["{v} bà", "{v} pà"], "en": "Please {base}", "note": "Verb + ပါ = polite request." }
+]

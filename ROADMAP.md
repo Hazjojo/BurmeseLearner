@@ -178,24 +178,24 @@ Three strands run in parallel every day. Order inside each is by **usefulness** 
 ## 8. Roadmap
 
 ### Phase 0: Foundations (~week 1)
-- [ ] Scaffold: Vite/React/TS PWA, Firebase (Blaze + budget alert), Google sign-in locked to my account, deploy pipeline
-- [ ] Content schema: script, tone-marked romanization, meaning, audio refs, source, pack
-- [ ] Settle the romanization marks (§3)
+- [x] Scaffold: Vite/React/TS PWA, Firebase (Blaze + budget alert), Google sign-in locked to my account, deploy pipeline
+- [x] Content schema: script, tone-marked romanization, meaning, audio refs, source, pack
+- [x] Settle the romanization marks (§3)
 - [ ] Audio pipeline: TTS generation + normalization; partner recordings replace TTS automatically
-- [ ] First content drafted (~60 items: sounds, survival core, first patterns, first script unit); partner reviews
+- [x] First content drafted (~90 items: sounds, survival core, verbs, patterns, first script unit); partner review pending
 
 **Exit:** the app is on my phone with real content and audio.
 
 ### Phase 1: Core loop (~weeks 1–3, then used daily)
-- [ ] FSRS queue with card types: **listen → meaning**, **English → say it aloud → hear model → self-grade**, read script → sound
-- [ ] Hint → retry → reveal
-- [ ] Tone & sound trainer (multi-voice minimal pairs, adapts to my weak contrasts)
-- [ ] Script trainer in the same queue (low daily dose); per-item romanization fading
-- [ ] **Partner tools:** recording session, review queue, partner practice session mode
-- [ ] **Pattern drills:** a pattern card generates practice with words I already know
-- [ ] **Quick add:** new phrase in seconds (from conversations or from my partner)
-- [ ] **Record & compare:** record myself, play back next to her clip
-- [ ] Today screen (due count, my chosen new-card budget) and honest progress page
+- [x] FSRS queue with card types: **listen → meaning**, **English → say it aloud → hear model → self-grade**, read script → sound
+- [x] Hint → retry → reveal
+- [x] Tone & sound trainer (multi-voice minimal pairs, adapts to my weak contrasts)
+- [x] Script trainer in the same queue (low daily dose); per-item romanization fading
+- [x] **Partner tools:** recording session, review queue, partner practice session mode
+- [x] **Pattern drills:** a pattern card generates practice with words I already know
+- [x] **Quick add:** new phrase in seconds (from conversations or from my partner)
+- [x] **Record & compare:** record myself, play back next to her clip
+- [x] Today screen (due count, my chosen new-card budget) and honest progress page
 - [ ] Short **dialogues** from known words, slow + natural speed
 
 **Exit:** daily use; partner sessions running; content growing steadily.

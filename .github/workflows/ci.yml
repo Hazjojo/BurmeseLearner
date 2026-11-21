@@ -16,9 +16,19 @@ jobs:
       - uses: actions/upload-artifact@v4
         with: { name: dist, path: dist }
 
+  sync-test:
+    # Cloud sync against the Firebase emulators (needs Java, which the runner has).
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npm run test:sync
+
   deploy:
     # Runs only once the Firebase project is set up (see docs/deploy.md).
-    needs: build
+    needs: [build, sync-test]
     if: github.event_name == 'push' && vars.FIREBASE_PROJECT_ID != ''
     runs-on: ubuntu-latest
     steps:
@@ -31,3 +41,12 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
           projectId: ${{ vars.FIREBASE_PROJECT_ID }}
           channelId: live
+      - name: Deploy security rules
+        env:
+          SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+        run: |
+          echo "$SA" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          npx -y firebase-tools@15.37.0 deploy --only firestore:rules --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive
+          # Storage needs the Blaze plan; skip quietly if it isn't set up yet.
+          npx -y firebase-tools@15.37.0 deploy --only storage --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive || echo "Storage not set up yet: recordings stay on-device"

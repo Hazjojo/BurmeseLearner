@@ -1,15 +1,26 @@
 import { get, set, del, keys } from 'idb-keyval'
 import type { StoredCard, StoredLog } from './srs'
+import type { Item } from '../content'
 
 export interface Settings {
   speaker: 'm' | 'f' | 'both'
   newPerDay: number
   showRom: boolean
+  /** Hide romanization on the question side once an item is well known (tap to show). */
+  fadeRom: boolean
   desiredRetention: number
 }
 export interface ItemMeta {
   checked?: boolean
   note?: string
+}
+export interface ToneTrial {
+  t: string
+  set: string
+  /** index of the option played */
+  asked: number
+  /** index the learner chose */
+  chose: number
 }
 export interface AppState {
   version: 1
@@ -18,10 +29,24 @@ export interface AppState {
   /** itemId → ISO date first met */
   introduced: Record<string, string>
   meta: Record<string, ItemMeta>
+  /** Items I added myself (quick add). */
+  custom: Item[]
+  toneLog: ToneTrial[]
+  /** ISO time of the last local change (used when merging with the cloud copy). */
+  updatedAt: string
 }
 
-export const DEFAULT_SETTINGS: Settings = { speaker: 'both', newPerDay: 8, showRom: true, desiredRetention: 0.9 }
-const emptyState = (): AppState => ({ version: 1, settings: { ...DEFAULT_SETTINGS }, cards: {}, introduced: {}, meta: {} })
+export const DEFAULT_SETTINGS: Settings = { speaker: 'both', newPerDay: 8, showRom: true, fadeRom: true, desiredRetention: 0.9 }
+export const emptyState = (): AppState => ({
+  version: 1,
+  settings: { ...DEFAULT_SETTINGS },
+  cards: {},
+  introduced: {},
+  meta: {},
+  custom: [],
+  toneLog: [],
+  updatedAt: new Date(0).toISOString(),
+})
 
 const STATE_KEY = 'state'
 const LOG_KEY = 'revlog'
@@ -38,16 +63,27 @@ export async function loadState(): Promise<AppState> {
 }
 export const saveState = (s: AppState) => set(STATE_KEY, s)
 
+/** Hooks for cloud sync (set by the app when signed in). */
+export const listeners: { rec?: (id: string, blob?: Blob) => void; log?: (l: StoredLog) => void } = {}
+
 export async function appendLog(log: StoredLog) {
+  listeners.log?.(log)
   const logs = ((await get(LOG_KEY)) as StoredLog[] | undefined) ?? []
   logs.push(log)
   await set(LOG_KEY, logs)
 }
 export const loadLogs = async () => ((await get(LOG_KEY)) as StoredLog[] | undefined) ?? []
+export const saveLogs = (logs: StoredLog[]) => set(LOG_KEY, logs)
 
 export const getRecording = (itemId: string) => get(recKey(itemId)) as Promise<Blob | undefined>
-export const setRecording = (itemId: string, blob: Blob) => set(recKey(itemId), blob)
-export const deleteRecording = (itemId: string) => del(recKey(itemId))
+export async function setRecording(itemId: string, blob: Blob, notify = true) {
+  await set(recKey(itemId), blob)
+  if (notify) listeners.rec?.(itemId, blob)
+}
+export async function deleteRecording(itemId: string) {
+  await del(recKey(itemId))
+  listeners.rec?.(itemId, undefined)
+}
 export async function recordedIds(): Promise<Set<string>> {
   const ks = (await keys()) as string[]
   return new Set(ks.filter((k) => typeof k === 'string' && k.startsWith('rec:')).map((k) => k.slice(4)))
@@ -81,6 +117,6 @@ export async function importBackup(file: File) {
   await set(LOG_KEY, data.logs ?? [])
   for (const [id, url] of Object.entries(data.recordings ?? {})) {
     const blob = await (await fetch(url as string)).blob()
-    await setRecording(id, blob)
+    await setRecording(id, blob, false)
   }
 }

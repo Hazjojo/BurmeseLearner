@@ -1,28 +1,144 @@
 [
-  {
-    "id": "t.ka",
-    "contrast": "creaky / low / high",
-    "options": [
-      { "my": "က", "rom": "ka̰" },
-      { "my": "ကာ", "rom": "kà" },
-      { "my": "ကား", "rom": "ká", "en": "car" }
-    ]
-  },
-  {
-    "id": "t.ma",
-    "contrast": "creaky / low / high",
-    "options": [
-      { "my": "မ", "rom": "ma̰" },
-      { "my": "မာ", "rom": "mà", "en": "hard" },
-      { "my": "မား", "rom": "má" }
-    ]
-  },
-  {
-    "id": "t.na",
-    "contrast": "low / high",
-    "options": [
-      { "my": "နာ", "rom": "nà", "en": "be sore / hurt" },
-      { "my": "နား", "rom": "ná", "en": "ear" }
-    ]
-  }
+ {
+  "id": "t.ka",
+  "contrast": "creaky / low / high",
+  "options": [
+   {
+    "my": "က",
+    "rom": "ka̰"
+   },
+   {
+    "my": "ကာ",
+    "rom": "kà"
+   },
+   {
+    "my": "ကား",
+    "rom": "ká",
+    "en": "car"
+   }
+  ]
+ },
+ {
+  "id": "t.ma",
+  "contrast": "creaky / low / high",
+  "options": [
+   {
+    "my": "မ",
+    "rom": "ma̰"
+   },
+   {
+    "my": "မာ",
+    "rom": "mà",
+    "en": "hard"
+   },
+   {
+    "my": "မား",
+    "rom": "má"
+   }
+  ]
+ },
+ {
+  "id": "t.na",
+  "contrast": "low / high",
+  "options": [
+   {
+    "my": "နာ",
+    "rom": "nà",
+    "en": "be sore / hurt"
+   },
+   {
+    "my": "နား",
+    "rom": "ná",
+    "en": "ear"
+   }
+  ]
+ },
+ {
+  "id": "a.k",
+  "contrast": "unaspirated / aspirated",
+  "options": [
+   {
+    "my": "ကာ",
+    "rom": "kà"
+   },
+   {
+    "my": "ခါ",
+    "rom": "hkà"
+   }
+  ]
+ },
+ {
+  "id": "a.p",
+  "contrast": "unaspirated / aspirated",
+  "options": [
+   {
+    "my": "ပါ",
+    "rom": "pà"
+   },
+   {
+    "my": "ဖာ",
+    "rom": "hpà"
+   }
+  ]
+ },
+ {
+  "id": "a.t",
+  "contrast": "unaspirated / aspirated",
+  "options": [
+   {
+    "my": "တာ",
+    "rom": "tà"
+   },
+   {
+    "my": "ထာ",
+    "rom": "htà"
+   }
+  ]
+ },
+ {
+  "id": "n.m",
+  "contrast": "voiced / voiceless nasal",
+  "options": [
+   {
+    "my": "မာ",
+    "rom": "mà"
+   },
+   {
+    "my": "မှာ",
+    "rom": "hmà"
+   }
+  ]
+ },
+ {
+  "id": "n.n",
+  "contrast": "voiced / voiceless nasal",
+  "options": [
+   {
+    "my": "နာ",
+    "rom": "nà"
+   },
+   {
+    "my": "နှာ",
+    "rom": "hnà"
+   }
+  ]
+ },
+ {
+  "id": "c.k",
+  "contrast": "checked / creaky / high",
+  "options": [
+   {
+    "my": "ကတ်",
+    "rom": "kaʔ"
+   },
+   {
+    "my": "က",
+    "rom": "ka̰"
+   },
+   {
+    "my": "ကား",
+    "rom": "ká"
+   }
+  ]
+ }
 ]

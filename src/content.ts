@@ -1,6 +1,8 @@
 import speaking from '../content/speaking.json'
 import script from '../content/script.json'
 import tones from '../content/tones.json'
+import patterns from '../content/patterns.json'
+import verbForms from '../content/verbforms.json'
 
 export type Strand = 'speak' | 'script'
 
@@ -14,6 +16,10 @@ export interface Item {
   lit?: string
   note?: string
   speaker?: 'm' | 'f'
+  /** Set for pattern drills generated from a pattern × verb. */
+  drill?: { pattern: string; from: string; verb: string }
+  /** Set for items I added myself. */
+  custom?: boolean
 }
 
 export interface ToneSet {
@@ -22,15 +28,48 @@ export interface ToneSet {
   options: { my: string; rom: string; en?: string }[]
 }
 
+interface Pattern {
+  id: string
+  from: string
+  my: string
+  rom: [string, string]
+  en: string
+  note?: string
+}
+
 /** Card types. recog: Burmese → meaning. prod: English → say it. glyph: script → sound. */
 export type CardType = 'recog' | 'prod' | 'glyph'
 
-export const ITEMS: Item[] = [
+export const BASE_ITEMS: Item[] = [
   ...(speaking as Omit<Item, 'strand'>[]).map((i) => ({ ...i, strand: 'speak' as const })),
   ...(script as Omit<Item, 'strand'>[]).map((i) => ({ ...i, strand: 'script' as const })),
 ]
-export const ITEM_BY_ID = new Map(ITEMS.map((i) => [i.id, i]))
+const BASE_BY_ID = new Map(BASE_ITEMS.map((i) => [i.id, i]))
 export const TONE_SETS = tones as ToneSet[]
+export const PATTERNS = patterns as Pattern[]
+
+/** Pattern drills: every pattern × every verb, e.g. "I want to drink" → သောက်ချင်တယ်. */
+export const DRILLS: Item[] = PATTERNS.flatMap((pat) =>
+  Object.entries(verbForms as Record<string, { base: string; past: string }>).map(([verbId, forms]) => {
+    const v = BASE_BY_ID.get(verbId)!
+    const checked = v.rom.endsWith('ʔ')
+    return {
+      id: `g.${pat.id}.${verbId}`,
+      strand: 'speak' as const,
+      unit: 100,
+      my: pat.my.replace('{v}', v.my),
+      rom: pat.rom[checked ? 1 : 0].replace('{v}', v.rom),
+      en: pat.en.replace('{base}', forms.base).replace('{past}', forms.past),
+      note: pat.note,
+      drill: { pattern: pat.id, from: pat.from, verb: verbId },
+    }
+  }),
+)
+const DRILL_BY_ID = new Map(DRILLS.map((i) => [i.id, i]))
+
+export function getItem(id: string, custom: Item[] = []): Item | undefined {
+  return BASE_BY_ID.get(id) ?? DRILL_BY_ID.get(id) ?? custom.find((c) => c.id === id)
+}
 
 export const cardKey = (itemId: string, type: CardType) => `${itemId}__${type}`
 export const parseKey = (key: string) => {
@@ -39,13 +78,15 @@ export const parseKey = (key: string) => {
 }
 export const firstCardType = (item: Item): CardType => (item.strand === 'script' ? 'glyph' : 'recog')
 
-/** Items in learning order: units interleave strands so script is a small daily dose. */
-export function learningOrder(speaker: 'm' | 'f' | 'both'): Item[] {
+/**
+ * Items in learning order. My own items come first (they're from real life);
+ * course units interleave strands so script is a small daily dose.
+ */
+export function learningOrder(speaker: 'm' | 'f' | 'both', custom: Item[] = []): Item[] {
   const ok = (i: Item) => speaker === 'both' || !i.speaker || i.speaker === speaker
-  const speak = ITEMS.filter((i) => i.strand === 'speak' && ok(i))
-  const scr = ITEMS.filter((i) => i.strand === 'script')
-  // Roughly 1 script item for every 3 speaking items.
-  const out: Item[] = []
+  const speak = BASE_ITEMS.filter((i) => i.strand === 'speak' && ok(i))
+  const scr = BASE_ITEMS.filter((i) => i.strand === 'script')
+  const out: Item[] = [...custom]
   let s = 0
   for (let i = 0; i < speak.length; i++) {
     out.push(speak[i])

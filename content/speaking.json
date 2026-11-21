@@ -1,61 +1,501 @@
 [
-  { "id": "s.hello", "unit": 1, "my": "မင်္ဂလာပါ", "rom": "mìn-gə-là-bà", "en": "Hello", "note": "Polite greeting, any time of day. Literally 'it is auspicious'." },
-  { "id": "s.how-are-you", "unit": 1, "my": "နေကောင်းလား", "rom": "nèi káun lá", "en": "How are you?", "lit": "stay well + ?", "note": "လား turns a statement into a yes/no question." },
-  { "id": "s.im-well", "unit": 1, "my": "နေကောင်းပါတယ်", "rom": "nèi káun bà dè", "en": "I'm well", "note": "ပါ adds politeness; တယ် ends a statement." },
-  { "id": "s.thank-you", "unit": 1, "my": "ကျေးဇူးတင်ပါတယ်", "rom": "kyéi-zú tìn bà dè", "en": "Thank you" },
-  { "id": "s.its-ok", "unit": 1, "my": "ရပါတယ်", "rom": "ya̰ bà dè", "en": "It's OK / No problem", "note": "Also a reply to 'thank you' or 'sorry'." },
-  { "id": "s.yes", "unit": 1, "my": "ဟုတ်ကဲ့", "rom": "houʔ kḛ", "en": "Yes (polite)" },
-  { "id": "s.no", "unit": 1, "my": "မဟုတ်ဘူး", "rom": "mə-houʔ bú", "en": "No / That's not right", "note": "Negation frame: မ + verb + ဘူး." },
-  { "id": "s.sorry", "unit": 1, "my": "တောင်းပန်ပါတယ်", "rom": "táun-bàn bà dè", "en": "Sorry / I apologise" },
-  { "id": "s.i-male", "unit": 1, "speaker": "m", "my": "ကျွန်တော်", "rom": "kyə-nàw", "en": "I / me (male speaker)", "note": "Polite 'I' used by men." },
-  { "id": "s.i-female", "unit": 1, "speaker": "f", "my": "ကျွန်မ", "rom": "kyə-ma̰", "en": "I / me (female speaker)", "note": "Polite 'I' used by women." },
-  { "id": "s.nice-to-meet", "unit": 1, "my": "တွေ့ရတာ ဝမ်းသာပါတယ်", "rom": "twḛ ya̰ dà wún-thà bà dè", "en": "Nice to meet you", "lit": "getting to meet = glad" },
-  { "id": "s.going-now", "unit": 1, "my": "သွားတော့မယ်", "rom": "thwá da̰w mè", "en": "I'll be going now (goodbye)", "note": "Common way to say goodbye when leaving." },
-
-  { "id": "r.dont-understand", "unit": 2, "my": "နားမလည်ဘူး", "rom": "ná mə-lè bú", "en": "I don't understand", "lit": "ear not understand", "note": "Negation frame again: မ + လည် + ဘူး." },
-  { "id": "r.slowly", "unit": 2, "my": "ဖြည်းဖြည်း ပြောပါ", "rom": "hpyé-hpyé pyáw bà", "en": "Please speak slowly", "note": "Verb + ပါ = polite request." },
-  { "id": "r.again", "unit": 2, "my": "ထပ်ပြောပါဦး", "rom": "htaʔ pyáw bà ú", "en": "Please say it again", "note": "ဦး softens a request: 'please, (once more)'." },
-  { "id": "r.what-is-this", "unit": 2, "my": "ဒါ ဘာလဲ", "rom": "dà bà lé", "en": "What is this?", "note": "လဲ ends a question-word question (what/where/how)." },
-  { "id": "r.how-say", "unit": 2, "my": "မြန်မာလို ဘယ်လို ပြောလဲ", "rom": "myəmà lò bè-lò pyáw lé", "en": "How do you say it in Burmese?", "lit": "Burmese-way how say ?" },
-  { "id": "r.learning", "unit": 2, "my": "မြန်မာစကား သင်နေတယ်", "rom": "myəmà zəgá thìn nèi dè", "en": "I'm learning Burmese", "note": "Verb + နေ = ongoing action ('-ing')." },
-  { "id": "r.a-little", "unit": 2, "my": "မြန်မာစကား နည်းနည်း ပြောတတ်ပါတယ်", "rom": "myəmà zəgá né-né pyáw daʔ bà dè", "en": "I can speak a little Burmese", "note": "Verb + တတ် = know how to." },
-
-  { "id": "m.my-name-male", "unit": 3, "speaker": "m", "my": "ကျွန်တော့်နာမည် ___ ပါ", "rom": "kyə-na̰w nàn-mè ___ bà", "en": "My name is ___ (male speaker)", "note": "ကျွန်တော် becomes ကျွန်တော့် (creaky) when it means 'my'." },
-  { "id": "m.my-name-female", "unit": 3, "speaker": "f", "my": "ကျွန်မနာမည် ___ ပါ", "rom": "kyə-ma̰ nàn-mè ___ bà", "en": "My name is ___ (female speaker)" },
-  { "id": "m.whats-your-name", "unit": 3, "my": "နာမည် ဘယ်လို ခေါ်လဲ", "rom": "nàn-mè bè-lò hkàw lé", "en": "What's your name?", "lit": "name how call ?" },
-  { "id": "m.where-from", "unit": 3, "my": "ဘယ်က လာလဲ", "rom": "bè ga̰ là lé", "en": "Where are you from?", "lit": "where from come ?" },
-  { "id": "m.from-england", "unit": 3, "my": "အင်္ဂလန်က လာပါတယ်", "rom": "ìn-gə-làn ga̰ là bà dè", "en": "I'm from England", "note": "Noun + က = 'from'." },
-  { "id": "m.really", "unit": 3, "my": "ဟုတ်လား", "rom": "houʔ lá", "en": "Really? / Is that so?" },
-  { "id": "m.good", "unit": 3, "my": "ကောင်းတယ်", "rom": "káun dè", "en": "It's good" },
-  { "id": "m.glad", "unit": 3, "my": "ဝမ်းသာပါတယ်", "rom": "wún-thà bà dè", "en": "I'm glad / happy" },
-
-  { "id": "f.eaten-yet", "unit": 4, "my": "ထမင်းစားပြီးပြီလား", "rom": "htə-mín sá pyí bì lá", "en": "Have you eaten?", "note": "A very common friendly greeting, like 'how are you?'." },
-  { "id": "f.eaten", "unit": 4, "my": "စားပြီးပြီ", "rom": "sá pyí bì", "en": "I've already eaten", "note": "Verb + ပြီးပြီ = already done." },
-  { "id": "f.delicious", "unit": 4, "my": "စားလို့ကောင်းတယ်", "rom": "sá lo̰ káun dè", "en": "It's delicious", "lit": "eat-for good" },
-  { "id": "f.rice", "unit": 4, "my": "ထမင်း", "rom": "htə-mín", "en": "rice / a meal" },
-  { "id": "f.water", "unit": 4, "my": "ရေ", "rom": "yèi", "en": "water" },
-  { "id": "f.mother", "unit": 4, "my": "အမေ", "rom": "ə-mèi", "en": "mother" },
-  { "id": "f.father", "unit": 4, "my": "အဖေ", "rom": "ə-hpèi", "en": "father" },
-
-  { "id": "p.go", "unit": 5, "my": "သွားတယ်", "rom": "thwá dè", "en": "(I) go / went", "note": "PATTERN — verb + တယ် = a plain statement. Burmese often drops 'I/you' when it's obvious." },
-  { "id": "p.not-go", "unit": 5, "my": "မသွားဘူး", "rom": "mə-thwá bú", "en": "(I'm) not going / didn't go", "note": "PATTERN — မ + verb + ဘူး = negative." },
-  { "id": "p.will-go", "unit": 5, "my": "သွားမယ်", "rom": "thwá mè", "en": "(I) will go", "note": "PATTERN — verb + မယ် = future / intention." },
-  { "id": "p.will-you-go", "unit": 5, "my": "သွားမလား", "rom": "thwá mə-lá", "en": "Will you go?", "note": "PATTERN — verb + မလား = future yes/no question." },
-  { "id": "p.where-go", "unit": 5, "my": "ဘယ်သွားမလဲ", "rom": "bè thwá mə-lé", "en": "Where are you going?", "note": "PATTERN — question word + verb + မလဲ." },
-  { "id": "p.want-eat", "unit": 5, "my": "စားချင်တယ်", "rom": "sá jìn dè", "en": "(I) want to eat", "note": "PATTERN — verb + ချင် = want to." },
-  { "id": "p.like", "unit": 5, "my": "ကြိုက်တယ်", "rom": "kyaiʔ tè", "en": "(I) like it", "note": "After a checked syllable, တယ် stays 'tè' (no voicing)." },
-  { "id": "p.like-q", "unit": 5, "my": "ကြိုက်လား", "rom": "kyaiʔ lá", "en": "Do you like it?" },
-  { "id": "p.have", "unit": 5, "my": "ရှိတယ်", "rom": "shḭ dè", "en": "There is / (I) have", "note": "PATTERN — ရှိ = exist / have." },
-  { "id": "p.sit-please", "unit": 5, "my": "ထိုင်ပါ", "rom": "htàin bà", "en": "Please sit down", "note": "PATTERN — verb + ပါ = polite request." },
-
-  { "id": "n.1", "unit": 6, "my": "တစ်", "rom": "tiʔ", "en": "one (1)", "note": "Before another word it often reduces to 'tə'." },
-  { "id": "n.2", "unit": 6, "my": "နှစ်", "rom": "hniʔ", "en": "two (2)", "note": "Voiceless n — breathe out through the nose." },
-  { "id": "n.3", "unit": 6, "my": "သုံး", "rom": "thóun", "en": "three (3)" },
-  { "id": "n.4", "unit": 6, "my": "လေး", "rom": "léi", "en": "four (4)" },
-  { "id": "n.5", "unit": 6, "my": "ငါး", "rom": "ngá", "en": "five (5)", "note": "Same word as 'fish' — context tells them apart." },
-  { "id": "n.6", "unit": 6, "my": "ခြောက်", "rom": "chauʔ", "en": "six (6)" },
-  { "id": "n.7", "unit": 6, "my": "ခုနစ်", "rom": "hkṵn-hniʔ", "en": "seven (7)" },
-  { "id": "n.8", "unit": 6, "my": "ရှစ်", "rom": "shiʔ", "en": "eight (8)" },
-  { "id": "n.9", "unit": 6, "my": "ကိုး", "rom": "kó", "en": "nine (9)" },
-  { "id": "n.10", "unit": 6, "my": "တစ်ဆယ်", "rom": "tə-hsè", "en": "ten (10)" }
+ {
+  "id": "s.hello",
+  "unit": 1,
+  "my": "မင်္ဂလာပါ",
+  "rom": "mìn-gə-là-bà",
+  "en": "Hello",
+  "note": "Polite greeting, any time of day. Literally 'it is auspicious'."
+ },
+ {
+  "id": "s.how-are-you",
+  "unit": 1,
+  "my": "နေကောင်းလား",
+  "rom": "nèi káun lá",
+  "en": "How are you?",
+  "lit": "stay well + ?",
+  "note": "လား turns a statement into a yes/no question."
+ },
+ {
+  "id": "s.im-well",
+  "unit": 1,
+  "my": "နေကောင်းပါတယ်",
+  "rom": "nèi káun bà dè",
+  "en": "I'm well",
+  "note": "ပါ adds politeness; တယ် ends a statement."
+ },
+ {
+  "id": "s.thank-you",
+  "unit": 1,
+  "my": "ကျေးဇူးတင်ပါတယ်",
+  "rom": "kyéi-zú tìn bà dè",
+  "en": "Thank you"
+ },
+ {
+  "id": "s.its-ok",
+  "unit": 1,
+  "my": "ရပါတယ်",
+  "rom": "ya̰ bà dè",
+  "en": "It's OK / No problem",
+  "note": "Also a reply to 'thank you' or 'sorry'."
+ },
+ {
+  "id": "s.yes",
+  "unit": 1,
+  "my": "ဟုတ်ကဲ့",
+  "rom": "houʔ kḛ",
+  "en": "Yes (polite)"
+ },
+ {
+  "id": "s.no",
+  "unit": 1,
+  "my": "မဟုတ်ဘူး",
+  "rom": "mə-houʔ bú",
+  "en": "No / That's not right",
+  "note": "Negation frame: မ + verb + ဘူး."
+ },
+ {
+  "id": "s.sorry",
+  "unit": 1,
+  "my": "တောင်းပန်ပါတယ်",
+  "rom": "táun-bàn bà dè",
+  "en": "Sorry / I apologise"
+ },
+ {
+  "id": "s.i-male",
+  "unit": 1,
+  "speaker": "m",
+  "my": "ကျွန်တော်",
+  "rom": "kyə-nàw",
+  "en": "I / me (male speaker)",
+  "note": "Polite 'I' used by men."
+ },
+ {
+  "id": "s.i-female",
+  "unit": 1,
+  "speaker": "f",
+  "my": "ကျွန်မ",
+  "rom": "kyə-ma̰",
+  "en": "I / me (female speaker)",
+  "note": "Polite 'I' used by women."
+ },
+ {
+  "id": "s.nice-to-meet",
+  "unit": 1,
+  "my": "တွေ့ရတာ ဝမ်းသာပါတယ်",
+  "rom": "twḛ ya̰ dà wún-thà bà dè",
+  "en": "Nice to meet you",
+  "lit": "getting to meet = glad"
+ },
+ {
+  "id": "s.going-now",
+  "unit": 1,
+  "my": "သွားတော့မယ်",
+  "rom": "thwá da̰w mè",
+  "en": "I'll be going now (goodbye)",
+  "note": "Common way to say goodbye when leaving."
+ },
+ {
+  "id": "r.dont-understand",
+  "unit": 2,
+  "my": "နားမလည်ဘူး",
+  "rom": "ná mə-lè bú",
+  "en": "I don't understand",
+  "lit": "ear not understand",
+  "note": "Negation frame again: မ + လည် + ဘူး."
+ },
+ {
+  "id": "r.slowly",
+  "unit": 2,
+  "my": "ဖြည်းဖြည်း ပြောပါ",
+  "rom": "hpyé-hpyé pyáw bà",
+  "en": "Please speak slowly",
+  "note": "Verb + ပါ = polite request."
+ },
+ {
+  "id": "r.again",
+  "unit": 2,
+  "my": "ထပ်ပြောပါဦး",
+  "rom": "htaʔ pyáw bà ú",
+  "en": "Please say it again",
+  "note": "ဦး softens a request: 'please, (once more)'."
+ },
+ {
+  "id": "r.what-is-this",
+  "unit": 2,
+  "my": "ဒါ ဘာလဲ",
+  "rom": "dà bà lé",
+  "en": "What is this?",
+  "note": "လဲ ends a question-word question (what/where/how)."
+ },
+ {
+  "id": "r.how-say",
+  "unit": 2,
+  "my": "မြန်မာလို ဘယ်လို ပြောလဲ",
+  "rom": "myəmà lò bè-lò pyáw lé",
+  "en": "How do you say it in Burmese?",
+  "lit": "Burmese-way how say ?"
+ },
+ {
+  "id": "r.learning",
+  "unit": 2,
+  "my": "မြန်မာစကား သင်နေတယ်",
+  "rom": "myəmà zəgá thìn nèi dè",
+  "en": "I'm learning Burmese",
+  "note": "Verb + နေ = ongoing action ('-ing')."
+ },
+ {
+  "id": "r.a-little",
+  "unit": 2,
+  "my": "မြန်မာစကား နည်းနည်း ပြောတတ်ပါတယ်",
+  "rom": "myəmà zəgá né-né pyáw daʔ bà dè",
+  "en": "I can speak a little Burmese",
+  "note": "Verb + တတ် = know how to."
+ },
+ {
+  "id": "m.my-name-male",
+  "unit": 3,
+  "speaker": "m",
+  "my": "ကျွန်တော့်နာမည် ___ ပါ",
+  "rom": "kyə-na̰w nàn-mè ___ bà",
+  "en": "My name is ___ (male speaker)",
+  "note": "ကျွန်တော် becomes ကျွန်တော့် (creaky) when it means 'my'."
+ },
+ {
+  "id": "m.my-name-female",
+  "unit": 3,
+  "speaker": "f",
+  "my": "ကျွန်မနာမည် ___ ပါ",
+  "rom": "kyə-ma̰ nàn-mè ___ bà",
+  "en": "My name is ___ (female speaker)"
+ },
+ {
+  "id": "m.whats-your-name",
+  "unit": 3,
+  "my": "နာမည် ဘယ်လို ခေါ်လဲ",
+  "rom": "nàn-mè bè-lò hkàw lé",
+  "en": "What's your name?",
+  "lit": "name how call ?"
+ },
+ {
+  "id": "m.where-from",
+  "unit": 3,
+  "my": "ဘယ်က လာလဲ",
+  "rom": "bè ga̰ là lé",
+  "en": "Where are you from?",
+  "lit": "where from come ?"
+ },
+ {
+  "id": "m.from-england",
+  "unit": 3,
+  "my": "အင်္ဂလန်က လာပါတယ်",
+  "rom": "ìn-gə-làn ga̰ là bà dè",
+  "en": "I'm from England",
+  "note": "Noun + က = 'from'."
+ },
+ {
+  "id": "m.really",
+  "unit": 3,
+  "my": "ဟုတ်လား",
+  "rom": "houʔ lá",
+  "en": "Really? / Is that so?"
+ },
+ {
+  "id": "m.good",
+  "unit": 3,
+  "my": "ကောင်းတယ်",
+  "rom": "káun dè",
+  "en": "It's good"
+ },
+ {
+  "id": "m.glad",
+  "unit": 3,
+  "my": "ဝမ်းသာပါတယ်",
+  "rom": "wún-thà bà dè",
+  "en": "I'm glad / happy"
+ },
+ {
+  "id": "f.eaten-yet",
+  "unit": 4,
+  "my": "ထမင်းစားပြီးပြီလား",
+  "rom": "htə-mín sá pyí bì lá",
+  "en": "Have you eaten?",
+  "note": "A very common friendly greeting, like 'how are you?'."
+ },
+ {
+  "id": "f.eaten",
+  "unit": 4,
+  "my": "စားပြီးပြီ",
+  "rom": "sá pyí bì",
+  "en": "I've already eaten",
+  "note": "Verb + ပြီးပြီ = already done."
+ },
+ {
+  "id": "f.delicious",
+  "unit": 4,
+  "my": "စားလို့ကောင်းတယ်",
+  "rom": "sá lo̰ káun dè",
+  "en": "It's delicious",
+  "lit": "eat-for good"
+ },
+ {
+  "id": "f.rice",
+  "unit": 4,
+  "my": "ထမင်း",
+  "rom": "htə-mín",
+  "en": "rice / a meal"
+ },
+ {
+  "id": "f.water",
+  "unit": 4,
+  "my": "ရေ",
+  "rom": "yèi",
+  "en": "water"
+ },
+ {
+  "id": "f.mother",
+  "unit": 4,
+  "my": "အမေ",
+  "rom": "ə-mèi",
+  "en": "mother"
+ },
+ {
+  "id": "f.father",
+  "unit": 4,
+  "my": "အဖေ",
+  "rom": "ə-hpèi",
+  "en": "father"
+ },
+ {
+  "id": "v.go",
+  "unit": 5,
+  "my": "သွား",
+  "rom": "thwá",
+  "en": "go",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.come",
+  "unit": 5,
+  "my": "လာ",
+  "rom": "là",
+  "en": "come",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.eat",
+  "unit": 5,
+  "my": "စား",
+  "rom": "sá",
+  "en": "eat",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.drink",
+  "unit": 5,
+  "my": "သောက်",
+  "rom": "thauʔ",
+  "en": "drink",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.speak",
+  "unit": 5,
+  "my": "ပြော",
+  "rom": "pyáw",
+  "en": "speak / say",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.sit",
+  "unit": 5,
+  "my": "ထိုင်",
+  "rom": "htàin",
+  "en": "sit",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.sleep",
+  "unit": 5,
+  "my": "အိပ်",
+  "rom": "eiʔ",
+  "en": "sleep",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.look",
+  "unit": 5,
+  "my": "ကြည့်",
+  "rom": "kyḭ",
+  "en": "look / watch",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.do",
+  "unit": 5,
+  "my": "လုပ်",
+  "rom": "louʔ",
+  "en": "do / work",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "v.buy",
+  "unit": 5,
+  "my": "ဝယ်",
+  "rom": "wè",
+  "en": "buy",
+  "note": "VERB — combine with the sentence patterns."
+ },
+ {
+  "id": "p.go",
+  "unit": 5,
+  "my": "သွားတယ်",
+  "rom": "thwá dè",
+  "en": "(I) go / went",
+  "note": "PATTERN — verb + တယ် = a plain statement. Burmese often drops 'I/you' when it's obvious."
+ },
+ {
+  "id": "p.not-go",
+  "unit": 5,
+  "my": "မသွားဘူး",
+  "rom": "mə-thwá bú",
+  "en": "(I'm) not going / didn't go",
+  "note": "PATTERN — မ + verb + ဘူး = negative."
+ },
+ {
+  "id": "p.will-go",
+  "unit": 5,
+  "my": "သွားမယ်",
+  "rom": "thwá mè",
+  "en": "(I) will go",
+  "note": "PATTERN — verb + မယ် = future / intention."
+ },
+ {
+  "id": "p.will-you-go",
+  "unit": 5,
+  "my": "သွားမလား",
+  "rom": "thwá mə-lá",
+  "en": "Will you go?",
+  "note": "PATTERN — verb + မလား = future yes/no question."
+ },
+ {
+  "id": "p.where-go",
+  "unit": 5,
+  "my": "ဘယ်သွားမလဲ",
+  "rom": "bè thwá mə-lé",
+  "en": "Where are you going?",
+  "note": "PATTERN — question word + verb + မလဲ."
+ },
+ {
+  "id": "p.want-eat",
+  "unit": 5,
+  "my": "စားချင်တယ်",
+  "rom": "sá jìn dè",
+  "en": "(I) want to eat",
+  "note": "PATTERN — verb + ချင် = want to."
+ },
+ {
+  "id": "p.like",
+  "unit": 5,
+  "my": "ကြိုက်တယ်",
+  "rom": "kyaiʔ tè",
+  "en": "(I) like it",
+  "note": "After a checked syllable, တယ် stays 'tè' (no voicing)."
+ },
+ {
+  "id": "p.like-q",
+  "unit": 5,
+  "my": "ကြိုက်လား",
+  "rom": "kyaiʔ lá",
+  "en": "Do you like it?"
+ },
+ {
+  "id": "p.have",
+  "unit": 5,
+  "my": "ရှိတယ်",
+  "rom": "shḭ dè",
+  "en": "There is / (I) have",
+  "note": "PATTERN — ရှိ = exist / have."
+ },
+ {
+  "id": "p.sit-please",
+  "unit": 5,
+  "my": "ထိုင်ပါ",
+  "rom": "htàin bà",
+  "en": "Please sit down",
+  "note": "PATTERN — verb + ပါ = polite request."
+ },
+ {
+  "id": "n.1",
+  "unit": 6,
+  "my": "တစ်",
+  "rom": "tiʔ",
+  "en": "one (1)",
+  "note": "Before another word it often reduces to 'tə'."
+ },
+ {
+  "id": "n.2",
+  "unit": 6,
+  "my": "နှစ်",
+  "rom": "hniʔ",
+  "en": "two (2)",
+  "note": "Voiceless n — breathe out through the nose."
+ },
+ {
+  "id": "n.3",
+  "unit": 6,
+  "my": "သုံး",
+  "rom": "thóun",
+  "en": "three (3)"
+ },
+ {
+  "id": "n.4",
+  "unit": 6,
+  "my": "လေး",
+  "rom": "léi",
+  "en": "four (4)"
+ },
+ {
+  "id": "n.5",
+  "unit": 6,
+  "my": "ငါး",
+  "rom": "ngá",
+  "en": "five (5)",
+  "note": "Same word as 'fish' — context tells them apart."
+ },
+ {
+  "id": "n.6",
+  "unit": 6,
+  "my": "ခြောက်",
+  "rom": "chauʔ",
+  "en": "six (6)"
+ },
+ {
+  "id": "n.7",
+  "unit": 6,
+  "my": "ခုနစ်",
+  "rom": "hkṵn-hniʔ",
+  "en": "seven (7)"
+ },
+ {
+  "id": "n.8",
+  "unit": 6,
+  "my": "ရှစ်",
+  "rom": "shiʔ",
+  "en": "eight (8)"
+ },
+ {
+  "id": "n.9",
+  "unit": 6,
+  "my": "ကိုး",
+  "rom": "kó",
+  "en": "nine (9)"
+ },
+ {
+  "id": "n.10",
+  "unit": 6,
+  "my": "တစ်ဆယ်",
+  "rom": "tə-hsè",
+  "en": "ten (10)"
+ }
 ]
