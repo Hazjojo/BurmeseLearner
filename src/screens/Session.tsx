@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo, useState } from 'react'
 import { cardKey, DRILLS, firstCardType, getItem, learningOrder, parseKey, type Item } from '../content'
-import { formatInterval, isDue, isEstablished, newCard, previewDue, Rating, review, type Grade, type StoredCard } from '../lib/srs'
+import { isDue, isEstablished, newCard, Rating, review, type Grade, type StoredCard } from '../lib/srs'
 import { appendLog, type AppState } from '../lib/store'
 import { splitRom } from '../lib/checks.js'
 import { Mm, PlayButton, RecordCompare, Rom } from '../components'
@@ -172,11 +172,7 @@ function CardView({ entryKey, state, pos, total, onGrade }: { entryKey: string; 
   const [revealed, setRevealed] = useState(false)
   const [hint, setHint] = useState<string | null>(null)
   const [forceRom, setForceRom] = useState(false)
-  const [preview, setPreview] = useState<Record<number, Date>>({})
   const card = state.cards[entryKey]
-  useEffect(() => {
-    if (revealed) (card ? Promise.resolve(card) : newCard()).then((c) => previewDue(c)).then(setPreview)
-  }, [revealed, card])
   if (!item) return null // content removed since the card was created
 
   const s = state.settings
@@ -245,7 +241,6 @@ function CardView({ entryKey, state, pos, total, onGrade }: { entryKey: string; 
             ).map(([g, lbl, cls]) => (
               <button key={g} className={`btn grade ${cls}`} disabled={!!hint && g === Rating.Easy} onClick={() => onGrade(g as Grade)}>
                 {lbl}
-                <span className="small">{preview[g] ? formatInterval(preview[g]) : ''}</span>
               </button>
             ))}
           </div>
