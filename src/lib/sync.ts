@@ -206,8 +206,8 @@ export async function initSync(): Promise<Sync | null> {
   } catch {
     return null
   }
-  // Use the hosting domain for auth so sign-in works in Safari / installed web apps.
-  if (/\.(web\.app|firebaseapp\.com)$/.test(location.hostname)) config.authDomain = location.hostname
+  // Keep Firebase's default authDomain (<project>.firebaseapp.com): its sign-in handler is already
+  // registered with Google, so no OAuth client changes are needed.
   const app = initializeApp(config)
   const db = initializeFirestore(app, { localCache: persistentLocalCache({ tabManager: persistentMultipleTabManager() }) })
   return new Sync(app, db)
