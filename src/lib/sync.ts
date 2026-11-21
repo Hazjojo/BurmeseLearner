@@ -194,6 +194,8 @@ function stateDoc(s: AppState) {
 
 /** Returns a Sync instance when served from Firebase Hosting, otherwise null (local-only mode). */
 export async function initSync(): Promise<Sync | null> {
+  // Firebase Hosting serves the app at the root; anywhere else (e.g. GitHub Pages) is local-only.
+  if (import.meta.env.BASE_URL !== '/') return null
   let config: Record<string, string>
   try {
     const res = await fetch('/__/firebase/init.json')

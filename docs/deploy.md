@@ -1,5 +1,20 @@
 # Getting it on your phone (one-time setup)
 
+## Quickest: GitHub Pages (1 click, no accounts)
+
+The app works fully on its own: progress and recordings are stored on the phone. To publish it:
+
+1. In the GitHub repo: **Settings → Pages → Build and deployment → Source: "GitHub Actions"**.
+2. Re-run the *GitHub Pages* workflow (*Actions* tab → GitHub Pages → *Run workflow*), or push any change.
+3. Open **https://hazjojo.github.io/BurmeseLearner/** on your phone and add it to the home screen. It works offline.
+
+Use *Settings → Export backup* now and then: without cloud sync, the phone is the only copy. Firebase (below) adds sync and cloud backup later. Progress doesn't move between the two addresses automatically, but export → import carries it over.
+
+---
+
+## Firebase (adds cloud sync)
+
+
 Every push to `main` is built and tested by GitHub Actions. Once the steps below are done, it is also **deployed** to Firebase.
 
 ## 1. Hosting (~10 min, free)
