@@ -3,6 +3,7 @@ import script from '../content/script.json'
 import tones from '../content/tones.json'
 import patterns from '../content/patterns.json'
 import verbForms from '../content/verbforms.json'
+import course from '../content/course.json'
 
 export type Strand = 'speak' | 'script'
 
@@ -94,3 +95,36 @@ export function learningOrder(speaker: 'm' | 'f' | 'both', custom: Item[] = []):
   }
   return out.concat(scr.slice(s))
 }
+
+// ---------------- Course structure ----------------
+
+export interface Lesson {
+  id: string
+  title: string
+  kind?: 'phrases' | 'tones' | 'script'
+  intro: string[]
+  items?: string[]
+  toneSets?: string[]
+  drills?: string[]
+}
+export interface Module {
+  id: string
+  title: string
+  summary: string
+  lessons: Lesson[]
+}
+export const MODULES = (course as { modules: Module[] }).modules
+export const LESSONS: (Lesson & { module: Module })[] = MODULES.flatMap((m) => m.lessons.map((l) => ({ ...l, module: m })))
+export const lessonById = (id: string) => LESSONS.find((l) => l.id === id)
+export const lessonKind = (l: Lesson) => l.kind ?? 'phrases'
+
+/** Lesson items, filtered by which form of "I" the learner uses. */
+export function lessonItems(l: Lesson, speaker: 'm' | 'f' | 'both'): Item[] {
+  return (l.items ?? [])
+    .map((id) => getItem(id)!)
+    .filter((i) => i && (speaker === 'both' || !i.speaker || i.speaker === speaker))
+}
+export const toneSetById = (id: string) => TONE_SETS.find((s) => s.id === id)
+
+/** Romanization split into word tiles (space-separated groups). */
+export const romTokens = (rom: string) => rom.split(/\s+/).filter((t) => t && t !== '___')

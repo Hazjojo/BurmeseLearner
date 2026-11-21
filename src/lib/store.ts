@@ -32,6 +32,8 @@ export interface AppState {
   /** Items I added myself (quick add). */
   custom: Item[]
   toneLog: ToneTrial[]
+  /** lessonId → when completed and score (0–1). */
+  lessons: Record<string, { at: string; score: number }>
   /** ISO time of the last local change (used when merging with the cloud copy). */
   updatedAt: string
 }
@@ -45,6 +47,7 @@ export const emptyState = (): AppState => ({
   meta: {},
   custom: [],
   toneLog: [],
+  lessons: {},
   updatedAt: new Date(0).toISOString(),
 })
 

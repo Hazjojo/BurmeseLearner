@@ -99,22 +99,19 @@ Burmese has **no standard romanization**. That matters because **Burmese spellin
 
 ---
 
-## 5. My partner's role
+## 5. Audio & native input (updated)
 
-She is the most valuable resource in this project. The **interaction research** (speaking + feedback with a real person) is the strongest evidence for building speaking skill, and she speaks the Yangon Burmese I want to learn.
+**Decision (Nov 2026):** my partner is for real conversation practice only; she won't record or check content for the app. So:
+- **All app audio is generated with Azure neural TTS** (my-MM Nilar, female, and Thiha, male) by `scripts/gen-audio.mjs`. That's two voices for ear training, and it's free at this scale.
+- Content accuracy relies on careful authoring, cross-checking against published resources, and corrections I pick up in real conversations (quick-add).
+- Partner mode is removed from the app.
 
-She doesn't need her own login: everything happens **on my phone**, handed to her. Keep the asks small and specific, so it never feels like a job:
-| Ask | How the app helps |
-|---|---|
-| **Record audio** for phrases (~5–10 min sessions) | "Recording session" screen: shows a phrase, she taps record, next. Auto-trims and normalises |
-| **Check phrases & romanization** | "Check" screen: tick / fix / comment |
-| **Tell me how people actually say things** | Notes on natural phrasing, politeness, what's too formal |
-| **Practise with me** (~10 min a few times a week) | **Partner session mode:** the app picks due speaking items and role-play prompts, she marks each one ✓ / try again and notes corrections, results feed FSRS |
-| Record a few tone minimal pairs | The tone trainer needs several voices; hers + TTS (+ anyone else willing) |
+## 5b. App structure (updated)
 
-No professional tutor for now; this can be revisited later.
-
----
+- **Course → modules → lessons.** Each lesson: a short explanation → meet the new phrases (audio, script, tone-coloured romanization) → varied practice (choose the meaning by sound or text, match pairs, choose the Burmese, build it from word tiles, say it aloud) → done screen.
+- **Reviews** bring learned items back on the FSRS schedule, in a format that suits how well I know them (multiple choice while new, recall, tiles and speaking once established). Answers are marked automatically wherever possible.
+- **Ear training** tab: endless adaptive tone & sound discrimination with both voices.
+- **Phrasebook:** search everything, plus quick-add of my own phrases straight into reviews.
 
 ## 6. Content strategy
 

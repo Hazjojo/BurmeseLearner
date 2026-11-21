@@ -1,0 +1,226 @@
+{
+  "modules": [
+    {
+      "id": "m1",
+      "title": "First conversations",
+      "summary": "Greet people, thank them, and say who you are.",
+      "lessons": [
+        {
+          "id": "m1.l1",
+          "title": "Hello & thank you",
+          "intro": [
+            "Burmese is spoken with tones: each syllable's pitch, length and voice quality are part of the word. The coloured romanization shows the tone of every syllable (blue low, red high, purple creaky, green checked, grey weak).",
+            "Politeness is built into sentence endings. ပါ (bà) softens almost anything, and တယ် (dè) ends a plain statement. You'll hear both all the time."
+          ],
+          "items": ["s.hello", "s.thank-you", "s.its-ok", "s.sorry"]
+        },
+        {
+          "id": "m1.l2",
+          "title": "How are you?",
+          "intro": [
+            "Add လား (lá) to the end of a sentence and it becomes a yes/no question. နေကောင်း means 'to be well', so နေကောင်းလား is literally 'well?'.",
+            "Burmese usually drops 'I' and 'you' when it's obvious who you mean."
+          ],
+          "items": ["s.how-are-you", "s.im-well", "s.yes", "s.no"]
+        },
+        {
+          "id": "m1.l3",
+          "title": "About me",
+          "intro": [
+            "The polite word for 'I' depends on who's speaking: men say ကျွန်တော် (kyə-nàw), women say ကျွန်မ (kyə-ma̰). Set which one you use in Settings.",
+            "Word order is subject, object, verb: the verb always comes last. က (ga̰) after a place means 'from'."
+          ],
+          "items": ["s.i-male", "s.i-female", "m.my-name-male", "m.my-name-female", "m.whats-your-name", "m.where-from", "m.from-england"]
+        },
+        {
+          "id": "m1.l4",
+          "title": "Small talk",
+          "intro": ["A handful of reactions keeps a conversation going even when you understand very little: 'really?', 'good', 'nice to meet you'."],
+          "items": ["s.nice-to-meet", "m.really", "m.good", "m.glad", "s.going-now"]
+        }
+      ]
+    },
+    {
+      "id": "m2",
+      "title": "The sounds of Burmese",
+      "summary": "Train your ear for the tones and sounds English doesn't have.",
+      "lessons": [
+        {
+          "id": "m2.l1",
+          "kind": "tones",
+          "title": "The four tones",
+          "intro": [
+            "Burmese has four tones. They differ in pitch, but also in length and voice quality, so listen for all three.",
+            "Low (à): long and level, relaxed. High (á): long, starts high and often falls at the end. Creaky (a̰): short, with a tense, slightly creaky voice. Checked (aʔ): very short, cut off sharply by a catch in the throat.",
+            "In the script, ာ alone usually gives low tone, း (two dots) marks high tone, and a bare consonant or ့ (dot below) gives creaky."
+          ],
+          "toneSets": ["t.ka", "t.ma", "t.na", "c.k"]
+        },
+        {
+          "id": "m2.l2",
+          "kind": "tones",
+          "title": "Breathy consonants",
+          "intro": [
+            "Burmese separates plain consonants from aspirated ones, said with a puff of air. English has both sounds but never uses the difference to change a word: the p in 'spin' is plain, the p in 'pin' is aspirated.",
+            "In romanization an h in front marks the puff: hk, hp, ht, hs."
+          ],
+          "toneSets": ["a.k", "a.p", "a.t"]
+        },
+        {
+          "id": "m2.l3",
+          "kind": "tones",
+          "title": "Breathy nasals",
+          "intro": [
+            "Burmese also has voiceless m, n, ng and l: breathe out through your nose before the sound. They're written hm, hn, hng, hl.",
+            "You've already met one: နှစ် (hniʔ) 'two'."
+          ],
+          "toneSets": ["n.m", "n.n"]
+        }
+      ]
+    },
+    {
+      "id": "m3",
+      "title": "When you're stuck",
+      "summary": "Phrases that rescue a conversation when you're lost.",
+      "lessons": [
+        {
+          "id": "m3.l1",
+          "title": "I don't understand",
+          "intro": [
+            "Negatives wrap the verb: မ (mə) before it and ဘူး (bú) at the end. နားလည် is 'understand', so နားမလည်ဘူး is 'don't understand'.",
+            "A verb followed by ပါ (bà) is a polite request: 'please do…'."
+          ],
+          "items": ["r.dont-understand", "r.slowly", "r.again"]
+        },
+        {
+          "id": "m3.l2",
+          "title": "What's this called?",
+          "intro": [
+            "Questions with a question word (what, where, how) end in လဲ (lé), not လား. ဘာ (bà) is 'what', ဘယ်လို (bè-lò) is 'how'.",
+            "Telling people you're learning usually earns patience and encouragement."
+          ],
+          "items": ["r.what-is-this", "r.how-say", "r.learning", "r.a-little"]
+        }
+      ]
+    },
+    {
+      "id": "m4",
+      "title": "Building sentences",
+      "summary": "A few patterns plus a few verbs let you say hundreds of things.",
+      "lessons": [
+        {
+          "id": "m4.l1",
+          "title": "Everyday verbs",
+          "intro": [
+            "Burmese verbs never change form: no 'go/goes/went'. Time and mood come from small words after the verb.",
+            "Learn these ten verbs as building blocks. The next lessons plug them into patterns."
+          ],
+          "items": ["v.go", "v.come", "v.eat", "v.drink", "v.speak", "v.sit", "v.sleep", "v.look", "v.do", "v.buy"]
+        },
+        {
+          "id": "m4.l2",
+          "title": "Statements & negatives",
+          "intro": [
+            "Verb + တယ် (dè) is a plain statement, present or past depending on context: သွားတယ် 'I go / I went'.",
+            "မ + verb + ဘူး is the negative: မသွားဘူး 'I'm not going / I didn't go'.",
+            "After a checked syllable (ending in ʔ), တယ် is said 'tè', without the d sound."
+          ],
+          "items": ["p.go", "p.not-go", "p.like"],
+          "drills": ["pat.statement", "pat.neg"]
+        },
+        {
+          "id": "m4.l3",
+          "title": "Future & questions",
+          "intro": [
+            "Verb + မယ် (mè) talks about the future or an intention: သွားမယ် 'I'll go'.",
+            "Verb + မလား (mə-lá) asks a yes/no question about the future; a question word + verb + မလဲ (mə-lé) asks an open one."
+          ],
+          "items": ["p.will-go", "p.will-you-go", "p.where-go", "p.like-q"],
+          "drills": ["pat.future", "pat.future-q"]
+        },
+        {
+          "id": "m4.l4",
+          "title": "Wanting & asking",
+          "intro": [
+            "Verb + ချင်တယ် (jìn dè) means 'want to'. Verb + ပါ (bà) is a polite request.",
+            "ရှိတယ် (shḭ dè) means 'there is' or 'I have'."
+          ],
+          "items": ["p.want-eat", "p.sit-please", "p.have"],
+          "drills": ["pat.want", "pat.request"]
+        }
+      ]
+    },
+    {
+      "id": "m5",
+      "title": "Food & family",
+      "summary": "Mealtime phrases and the people around the table.",
+      "lessons": [
+        {
+          "id": "m5.l1",
+          "title": "Have you eaten?",
+          "intro": [
+            "'Have you eaten?' is a friendly everyday greeting, much like 'how are you?'.",
+            "Verb + ပြီးပြီ (pyí bì) means 'already done'."
+          ],
+          "items": ["f.eaten-yet", "f.eaten", "f.delicious", "f.rice", "f.water"]
+        },
+        {
+          "id": "m5.l2",
+          "title": "Mum & dad",
+          "intro": ["အ (ə) at the start of many family words is a weak, unstressed syllable."],
+          "items": ["f.mother", "f.father"]
+        }
+      ]
+    },
+    {
+      "id": "m6",
+      "title": "Numbers",
+      "summary": "Count from one to ten.",
+      "lessons": [
+        {
+          "id": "m6.l1",
+          "title": "One to five",
+          "intro": ["Numbers are worth knowing early: prices, ages, times. Watch the tones: they're what separates similar-sounding numbers."],
+          "items": ["n.1", "n.2", "n.3", "n.4", "n.5"]
+        },
+        {
+          "id": "m6.l2",
+          "title": "Six to ten",
+          "intro": ["ခုနစ် 'seven' is written with two syllables but said quickly as one and a half."],
+          "items": ["n.6", "n.7", "n.8", "n.9", "n.10"]
+        }
+      ]
+    },
+    {
+      "id": "m7",
+      "title": "Reading the script",
+      "summary": "Learn the Burmese alphabet a few letters at a time.",
+      "lessons": [
+        {
+          "id": "m7.l1",
+          "kind": "script",
+          "title": "First consonants",
+          "intro": [
+            "Burmese script is an abugida: each consonant letter already contains a vowel, a short creaky 'a'. Other vowels and tones are marks added around the consonant.",
+            "Many letters are built from circles. Look for the small differences: an opening, a tail, a second loop."
+          ],
+          "items": ["c.ka", "c.hka", "c.ga", "c.nga", "c.sa"]
+        },
+        {
+          "id": "m7.l2",
+          "kind": "script",
+          "title": "More consonants",
+          "intro": ["ဆ (hs) is the aspirated partner of စ (s): notice the extra stroke."],
+          "items": ["c.hsa", "c.ma", "c.na", "c.la", "c.pa"]
+        },
+        {
+          "id": "m7.l3",
+          "kind": "script",
+          "title": "Long a and high tone",
+          "intro": ["ာ after a consonant gives a long 'a' in low tone. Add း (two dots) and it becomes high tone. Same letter, same vowel, different word."],
+          "items": ["v.aa", "v.aa-high"]
+        }
+      ]
+    }
+  ]
+}

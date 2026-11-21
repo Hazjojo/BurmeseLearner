@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { splitRom } from './lib/checks.js'
-import { getRecording, setRecording } from './lib/store'
+import { setRecording } from './lib/store'
+import { say } from './lib/speech'
 import { playBlob, startRecording, type Recorder } from './lib/audio'
 
 /** Burmese script, sized for reading. */
@@ -41,31 +42,17 @@ export function ToneLegend() {
   )
 }
 
-/** Plays the native recording for an item, if one exists. Optionally auto-plays once. */
-export function PlayButton({ itemId, autoPlay = false, version = 0 }: { itemId: string; autoPlay?: boolean; version?: number }) {
-  const [blob, setBlob] = useState<Blob | undefined>()
-  const [loaded, setLoaded] = useState(false)
+/** Plays the item: my own recording if I made one, else the generated voice. */
+export function PlayButton({ my, itemId, autoPlay = false }: { my: string; itemId?: string; autoPlay?: boolean }) {
   useEffect(() => {
-    let live = true
-    setLoaded(false)
-    getRecording(itemId).then((b) => {
-      if (!live) return
-      setBlob(b)
-      setLoaded(true)
-      if (b && autoPlay) playBlob(b)
-    })
-    return () => {
-      live = false
-    }
-  }, [itemId, autoPlay, version])
-  if (!loaded) return null
-  if (!blob) return <span className="muted small">no audio yet</span>
+    if (autoPlay) say(my, { itemId })
+  }, [my, itemId, autoPlay])
   return (
     <span className="row gap-sm">
-      <button className="btn icon" onClick={() => playBlob(blob)} aria-label="Play">
-        ▶
+      <button className="btn icon" onClick={() => say(my, { itemId })} aria-label="Play">
+        🔊
       </button>
-      <button className="btn icon" onClick={() => playBlob(blob, 0.7)} aria-label="Play slowly">
+      <button className="btn icon" onClick={() => say(my, { itemId, rate: 0.7 })} aria-label="Play slowly">
         🐢
       </button>
     </span>
@@ -104,7 +91,7 @@ export function RecordSlot({ itemId, onSaved }: { itemId: string; onSaved?: () =
 }
 
 /** Record yourself and play it back next to the model. Nothing is saved, no score. */
-export function RecordCompare({ itemId }: { itemId: string }) {
+export function RecordCompare({ my, itemId }: { my: string; itemId?: string }) {
   const [rec, setRec] = useState<Recorder | null>(null)
   const mine = useRef<Blob | null>(null)
   const [hasMine, setHasMine] = useState(false)
@@ -113,21 +100,20 @@ export function RecordCompare({ itemId }: { itemId: string }) {
       mine.current = await rec.stop()
       setRec(null)
       setHasMine(true)
-      const model = await getRecording(itemId)
-      if (model) await playBlob(model)
+      await say(my, { itemId })
       await playBlob(mine.current)
     } else {
       try {
         setRec(await startRecording())
       } catch {
-        /* mic denied: silently ignore */
+        /* mic denied: ignore */
       }
     }
   }
   return (
     <span className="row gap-sm">
       <button className={`btn small ${rec ? 'danger' : ''}`} onClick={toggle}>
-        {rec ? '■ Stop' : '🎙 Say it & compare'}
+        {rec ? '■ Stop' : '🎙 Record myself'}
       </button>
       {hasMine && !rec && (
         <button className="btn small" onClick={() => mine.current && playBlob(mine.current)}>

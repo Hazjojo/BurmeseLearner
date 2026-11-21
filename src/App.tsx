@@ -2,18 +2,19 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { listeners, loadState, saveState, type AppState } from './lib/store'
 import { getScheduler } from './lib/srs'
 import type { Sync } from './lib/sync'
-import { Session } from './screens/Session'
-import { Browse, Partner, Settings, Today } from './screens/Other'
+import { Course, Home, LessonView, ReviewView } from './screens/Learn'
+import { Phrasebook, Settings } from './screens/Other'
 import { Tones } from './screens/Tones'
 import { QuickAdd } from './screens/QuickAdd'
 import { SyncPanel } from './screens/SyncPanel'
 
-type Tab = 'today' | 'tones' | 'browse' | 'partner' | 'settings'
+type Tab = 'home' | 'course' | 'tones' | 'phrases' | 'settings'
+type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | null
 
 export default function App() {
   const [state, setState] = useState<AppState | null>(null)
-  const [tab, setTab] = useState<Tab>('today')
-  const [overlay, setOverlay] = useState<'session' | 'add' | null>(null)
+  const [tab, setTab] = useState<Tab>('home')
+  const [overlay, setOverlay] = useState<Overlay>(null)
   const [sync, setSync] = useState<Sync | null>(null)
   const [, bump] = useState(0)
   const latest = useRef<AppState | null>(null)
@@ -61,34 +62,31 @@ export default function App() {
 
   if (!state) return <div className="screen center muted">Loading…</div>
 
-  if (overlay === 'session') return <Session state={state} update={update} onExit={() => setOverlay(null)} />
-  if (overlay === 'add') return <QuickAdd update={update} onDone={() => setOverlay(null)} />
+  const close = () => setOverlay(null)
+  if (overlay?.kind === 'lesson') return <LessonView key={overlay.id} lessonId={overlay.id} state={state} update={update} onExit={close} />
+  if (overlay?.kind === 'review') return <ReviewView state={state} update={update} onExit={close} />
+  if (overlay?.kind === 'add') return <QuickAdd update={update} onDone={close} />
 
+  const banner =
+    sync && !sync.user ? (
+      <div className="banner">
+        <span className="small">Sign in to sync progress across your devices.</span>
+        <button className="btn small primary" onClick={() => sync.signIn().catch((e) => alert(e instanceof Error ? e.message : String(e)))}>
+          Sign in with Google
+        </button>
+      </div>
+    ) : sync?.status === 'error' ? (
+      <div className="banner error small">⚠ Sync problem: {sync.lastError}</div>
+    ) : null
+
+  const openLesson = (id: string) => setOverlay({ kind: 'lesson', id })
   return (
     <div className="app">
       <main>
-        {tab === 'today' && (
-          <Today
-            state={state}
-            onStart={() => setOverlay('session')}
-            onAdd={() => setOverlay('add')}
-            banner={
-              sync && !sync.user ? (
-                <div className="banner">
-                  <span className="small">Sign in to sync progress across your devices.</span>
-                  <button className="btn small primary" onClick={() => sync.signIn().catch((e) => alert(e instanceof Error ? e.message : String(e)))}>
-                    Sign in with Google
-                  </button>
-                </div>
-              ) : sync?.status === 'error' ? (
-                <div className="banner error small">⚠ Sync problem: {sync.lastError}</div>
-              ) : null
-            }
-          />
-        )}
+        {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} />}
+        {tab === 'course' && <Course state={state} onLesson={openLesson} />}
         {tab === 'tones' && <Tones state={state} update={update} />}
-        {tab === 'browse' && <Browse state={state} update={update} onAdd={() => setOverlay('add')} />}
-        {tab === 'partner' && <Partner state={state} update={update} />}
+        {tab === 'phrases' && <Phrasebook state={state} update={update} onAdd={() => setOverlay({ kind: 'add' })} />}
         {tab === 'settings' && (
           <>
             <Settings state={state} update={update} />
@@ -99,14 +97,15 @@ export default function App() {
       <nav className="tabs">
         {(
           [
-            ['today', 'Today'],
-            ['tones', 'Tones'],
-            ['browse', 'Items'],
-            ['partner', 'Partner'],
-            ['settings', 'Settings'],
+            ['home', '🏠', 'Home'],
+            ['course', '📚', 'Course'],
+            ['tones', '👂', 'Ear'],
+            ['phrases', '📖', 'Phrases'],
+            ['settings', '⚙️', 'Settings'],
           ] as const
-        ).map(([t, label]) => (
+        ).map(([t, icon, label]) => (
           <button key={t} className={tab === t ? 'active' : ''} onClick={() => setTab(t)}>
+            <span className="tab-icon">{icon}</span>
             {label}
             {t === 'settings' && sync?.status === 'error' ? ' ⚠' : ''}
           </button>

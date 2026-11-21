@@ -50,6 +50,7 @@ export function mergeStates(local: AppState, remote: AppState): AppState {
     meta: { ...older.meta, ...newer.meta },
     custom,
     toneLog,
+    lessons: { ...older.lessons, ...newer.lessons },
     updatedAt: newer.updatedAt,
   }
 }

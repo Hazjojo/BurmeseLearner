@@ -43,6 +43,25 @@ for (const pat of load('patterns.json')) {
   }
 }
 
+// Course: every lesson references real content, and every course item is taught somewhere.
+const course = load('course.json')
+const allItemIds = new Set([...load('speaking.json'), ...load('script.json')].map((e) => e.id))
+const toneIds = new Set(load('tones.json').map((t) => t.id))
+const patIds = new Set(load('patterns.json').map((p) => p.id))
+const taught = new Set()
+const lessonIds = new Set()
+for (const m of course.modules) {
+  for (const l of m.lessons) {
+    if (lessonIds.has(l.id)) errors.push(`course.json: duplicate lesson id ${l.id}`)
+    lessonIds.add(l.id)
+    if (!l.title || !Array.isArray(l.intro) || !l.intro.length) errors.push(`course.json:${l.id}: needs title and intro`)
+    for (const id of l.items ?? []) allItemIds.has(id) ? taught.add(id) : errors.push(`course.json:${l.id}: unknown item ${id}`)
+    for (const id of l.toneSets ?? []) if (!toneIds.has(id)) errors.push(`course.json:${l.id}: unknown tone set ${id}`)
+    for (const id of l.drills ?? []) if (!patIds.has(id)) errors.push(`course.json:${l.id}: unknown pattern ${id}`)
+  }
+}
+for (const id of allItemIds) if (!taught.has(id)) errors.push(`course.json: item ${id} isn't in any lesson`)
+
 if (errors.length) {
   console.error(`Content validation failed (${errors.length}):\n  ` + errors.join('\n  '))
   process.exit(1)

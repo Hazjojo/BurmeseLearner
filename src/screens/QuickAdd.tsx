@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import type { Item } from '../content'
+import { cardKey, type Item } from '../content'
+import { newCard } from '../lib/srs'
 import { cleanBurmese } from '../lib/myanmar'
 import { romProblems } from '../lib/checks.js'
 import type { AppState } from '../lib/store'
@@ -19,8 +20,9 @@ export function QuickAdd({ update, onDone }: { update: Update; onDone: () => voi
   const romIssues = rom.trim() ? romProblems(rom.trim().normalize('NFC')) : []
   const canSave = cleaned.text && en.trim()
 
-  const save = () => {
+  const save = async () => {
     const id = `u.${Date.now().toString(36)}`
+    const card = await newCard()
     const item: Item = {
       id,
       strand: 'speak',
@@ -31,7 +33,13 @@ export function QuickAdd({ update, onDone }: { update: Update; onDone: () => voi
       note: note.trim() || undefined,
       custom: true,
     }
-    update((s) => ({ ...s, custom: [...s.custom, item] }))
+    // My own phrases skip lessons and go straight into reviews.
+    update((s) => ({
+      ...s,
+      custom: [...s.custom, item],
+      cards: { ...s.cards, [cardKey(id, 'recog')]: card },
+      introduced: { ...s.introduced, [id]: new Date().toISOString() },
+    }))
     setSavedId(id)
   }
 
@@ -39,13 +47,13 @@ export function QuickAdd({ update, onDone }: { update: Update; onDone: () => voi
     return (
       <div className="screen">
         <h2>Added ✓</h2>
-        <p className="muted">It will come up first among your new items.</p>
+        <p className="muted">It's been added to your reviews.</p>
         <div className="card">
           <div className="stack">
             <Mm text={cleaned.text} size="lg" />
             {rom && <Rom rom={rom} />}
             <div>{en}</div>
-            <p className="small muted">Got a native speaker nearby? Record it now:</p>
+            <p className="small muted">Optional: record how it sounds, so you hear it in reviews.</p>
             <RecordSlot itemId={savedId} />
           </div>
         </div>
