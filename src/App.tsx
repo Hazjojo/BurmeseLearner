@@ -67,7 +67,25 @@ export default function App() {
   return (
     <div className="app">
       <main>
-        {tab === 'today' && <Today state={state} onStart={() => setOverlay('session')} onAdd={() => setOverlay('add')} />}
+        {tab === 'today' && (
+          <Today
+            state={state}
+            onStart={() => setOverlay('session')}
+            onAdd={() => setOverlay('add')}
+            banner={
+              sync && !sync.user ? (
+                <div className="banner">
+                  <span className="small">Sign in to sync progress across your devices.</span>
+                  <button className="btn small primary" onClick={() => sync.signIn().catch((e) => alert(e instanceof Error ? e.message : String(e)))}>
+                    Sign in with Google
+                  </button>
+                </div>
+              ) : sync?.status === 'error' ? (
+                <div className="banner error small">⚠ Sync problem: {sync.lastError}</div>
+              ) : null
+            }
+          />
+        )}
         {tab === 'tones' && <Tones state={state} update={update} />}
         {tab === 'browse' && <Browse state={state} update={update} onAdd={() => setOverlay('add')} />}
         {tab === 'partner' && <Partner state={state} update={update} />}

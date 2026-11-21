@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { BASE_ITEMS, getItem, learningOrder, parseKey, TONE_SETS, type Item } from '../content'
 import { isEstablished } from '../lib/srs'
 import { deleteRecording, exportBackup, importBackup, loadLogs, recordedIds, type AppState, type Settings as S } from '../lib/store'
@@ -8,7 +8,7 @@ import { toneRecId, toneTakes } from './Tones'
 
 type Update = (fn: (s: AppState) => AppState) => void
 
-export function Today({ state, onStart, onAdd }: { state: AppState; onStart: () => void; onAdd: () => void }) {
+export function Today({ state, onStart, onAdd, banner }: { state: AppState; onStart: () => void; onAdd: () => void; banner?: ReactNode }) {
   const queue = useMemo(() => buildQueue(state), [state])
   const dueCount = queue.filter((e) => e.kind === 'card').length
   const newCount = queue.filter((e) => e.kind === 'meet').length
@@ -41,6 +41,7 @@ export function Today({ state, onStart, onAdd }: { state: AppState; onStart: () 
       <h1>
         <Mm text="မင်္ဂလာပါ" size="md" />
       </h1>
+      {banner}
       <div className="tiles">
         <div className="tile">
           <b>{dueCount}</b>
