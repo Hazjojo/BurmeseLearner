@@ -34,7 +34,8 @@ Without the steps below, everything is stored on the phone only (use *Settings �
 
 1. Firebase console → *Build* → **Authentication** → *Get started* → *Sign-in method* → enable **Google**.
 2. *Build* → **Firestore Database** → *Create database* → choose a European location (e.g. `europe-west2`, London) → start in **production mode**. The security rules in `firestore.rules` are deployed by CI and only let you read your own data.
-3. Push or re-run CI so the rules deploy, then in the app: *Settings → Cloud sync → Sign in with Google*.
+3. Let the deploy key update security rules: Google Cloud console → *IAM* → edit the `firebase-adminsdk-…@<project-id>.iam.gserviceaccount.com` principal → add the roles **Firebase Rules Admin** and **Service Usage Consumer**.
+4. Push or re-run CI so the rules deploy, then in the app: *Settings → Cloud sync → Sign in with Google*.
 
 ## 3. Syncing recordings (Blaze plan, pennies per month)
 
