@@ -42,6 +42,9 @@ jobs:
           projectId: ${{ vars.FIREBASE_PROJECT_ID }}
           channelId: live
       - name: Deploy security rules
+        # The default Firebase deploy key can't change rules (needs extra IAM roles), so this is best-effort.
+        # Rules can also be pasted in the console: Firestore → Rules (see firestore.rules).
+        continue-on-error: true
         env:
           SA: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
         run: |
