@@ -219,3 +219,4 @@ input[type='text'] { font: inherit; width: 100%; background: var(--surface); col
 /* Inside the tabbed layout, keep sticky action bars above the tab bar. */
 main .actions { bottom: calc(62px + env(safe-area-inset-bottom)); }
 main .chat-screen { min-height: calc(100dvh - 80px); }
+.error-box { white-space: pre-wrap; word-break: break-word; background: var(--surface); border: 1px solid var(--again); border-radius: 10px; padding: 10px; font-size: 0.8rem; }

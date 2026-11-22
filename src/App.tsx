@@ -8,6 +8,7 @@ import { Practice } from './screens/Practice'
 import { setAISync } from './lib/ai'
 import { QuickAdd } from './screens/QuickAdd'
 import { SyncPanel } from './screens/SyncPanel'
+import { ErrorBoundary } from './ErrorBoundary'
 
 type Tab = 'home' | 'course' | 'tones' | 'phrases' | 'settings'
 type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | null
@@ -65,9 +66,14 @@ export default function App() {
   if (!state) return <div className="screen center muted">Loading…</div>
 
   const close = () => setOverlay(null)
-  if (overlay?.kind === 'lesson') return <LessonView key={overlay.id} lessonId={overlay.id} state={state} update={update} onExit={close} />
-  if (overlay?.kind === 'review') return <ReviewView state={state} update={update} onExit={close} />
-  if (overlay?.kind === 'add') return <QuickAdd update={update} onDone={close} />
+  const guard = (node: React.ReactNode) => (
+    <ErrorBoundary key={`${tab}-${overlay?.kind ?? ''}`} onReset={() => (setOverlay(null), setTab('home'))}>
+      {node}
+    </ErrorBoundary>
+  )
+  if (overlay?.kind === 'lesson') return guard(<LessonView key={overlay.id} lessonId={overlay.id} state={state} update={update} onExit={close} />)
+  if (overlay?.kind === 'review') return guard(<ReviewView state={state} update={update} onExit={close} />)
+  if (overlay?.kind === 'add') return guard(<QuickAdd update={update} onDone={close} />)
 
   const banner =
     sync && !sync.user ? (
@@ -85,6 +91,7 @@ export default function App() {
   return (
     <div className="app">
       <main>
+        {guard(<>
         {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} />}
         {tab === 'course' && <Course state={state} onLesson={openLesson} />}
         {tab === 'tones' && <Practice state={state} update={update} sync={sync} />}
@@ -95,6 +102,7 @@ export default function App() {
             <SyncPanel sync={sync} onSyncNow={async () => sync && replace(await sync.fullSync(latest.current!))} />
           </>
         )}
+        </>)}
       </main>
       <nav className="tabs">
         {(

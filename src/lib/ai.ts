@@ -34,7 +34,28 @@ export function converse(input: {
   speaker: 'm' | 'f' | 'both'
 }): Promise<AIReply> {
   if (!sync) throw new Error('Sign in to use conversation practice.')
-  return sync.call<AIReply>('converse', input)
+  return sync.call<unknown>('converse', input).then(cleanReply)
+}
+
+const str = (v: unknown): string => (typeof v === 'string' ? v : v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v))
+const line = (v: unknown): Line => {
+  const o = (v && typeof v === 'object' ? v : {}) as Record<string, unknown>
+  return { my: str(o.my), rom: str(o.rom), en: str(o.en) }
+}
+/** The AI's JSON can be slightly off-shape; make every field safe to render. */
+export function cleanReply(raw: unknown): AIReply {
+  const r = (raw && typeof raw === 'object' ? raw : {}) as Record<string, unknown>
+  const reply = line(r.reply)
+  if (!reply.my) throw new Error('The AI sent an empty reply. Please try again.')
+  return {
+    reply,
+    heard: str(r.heard),
+    feedback: str(r.feedback),
+    better: line(r.better),
+    suggestions: Array.isArray(r.suggestions) ? r.suggestions.map(line).filter((l) => l.my) : [],
+    end: r.end === true,
+    audio: typeof r.audio === 'string' ? r.audio : null,
+  }
 }
 
 export async function speakText(text: string, voice = 0): Promise<Blob> {
