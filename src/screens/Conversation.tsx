@@ -106,7 +106,10 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
   const bottom = useRef<HTMLDivElement>(null)
   const known = useRef(knownItems(state).map((i) => `${i.my} — ${i.en}`))
 
-  useEffect(() => bottom.current?.scrollIntoView({ behavior: 'smooth' }), [turns, heard, busy])
+  useEffect(() => {
+    // Braces matter: newer browsers return a Promise from scrollIntoView, and React would treat it as a cleanup function.
+    bottom.current?.scrollIntoView({ behavior: 'smooth' })
+  }, [turns, heard, busy])
   useEffect(() => {
     send(null)
   }, []) // eslint-disable-line react-hooks/exhaustive-deps

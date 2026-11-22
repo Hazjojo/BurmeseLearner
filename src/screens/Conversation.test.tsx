@@ -19,7 +19,8 @@ vi.mock('../lib/ai', async (orig) => ({
 }))
 
 import { Conversation } from './Conversation'
-Element.prototype.scrollIntoView = () => {}
+// Mimic newer browsers, where scrollIntoView returns a Promise (this used to crash the screen).
+Element.prototype.scrollIntoView = (() => Promise.resolve()) as never
 HTMLMediaElement.prototype.play = () => Promise.resolve()
 
 describe('Conversation', () => {

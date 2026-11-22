@@ -52,7 +52,9 @@ interface ExProps<E extends Exercise> {
 /** Bottom bar after answering: verdict, the right answer, Continue. */
 function Feedback({ outcome, children, onContinue }: { outcome: Outcome; children?: React.ReactNode; onContinue: () => void }) {
   const ref = useRef<HTMLButtonElement>(null)
-  useEffect(() => ref.current?.focus(), [])
+  useEffect(() => {
+    ref.current?.focus()
+  }, [])
   return (
     <div className={`feedback ${outcome === 'wrong' ? 'bad' : 'good'}`}>
       <div className="feedback-title">{outcome === 'wrong' ? 'Not quite' : outcome === 'hinted' ? 'Got there ✓' : 'Correct ✓'}</div>
