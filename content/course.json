@@ -309,6 +309,861 @@
       ],
       "icon": "🔢",
       "color": "#2563c9"
+    },
+    {
+      "id": "m8",
+      "title": "Questions",
+      "summary": "Ask who, what, where, when, why, how and how much, and answer simply.",
+      "icon": "❓",
+      "color": "#6a46b0",
+      "lessons": [
+        {
+          "id": "m8.l1",
+          "title": "What & who",
+          "intro": [
+            "Almost every Burmese question word is built from ဘာ (bà) 'what' or ဘယ် (bè) 'which'. ဘယ် + သူ 'person' gives ဘယ်သူ (bè-thù) 'who'.",
+            "The question word sits where the answer would go, and the sentence ends in လဲ (lé). Yes/no questions end in လား (lá) instead: ချင်လား (jìn lá) 'do you want to…?'."
+          ],
+          "items": [
+            "q.what",
+            "q.who",
+            "q.who-is",
+            "q.what-doing",
+            "q.what-eat",
+            "q.want-eat-q"
+          ],
+          "drills": [
+            "pat.want-q"
+          ]
+        },
+        {
+          "id": "m8.l2",
+          "title": "Where & when",
+          "intro": [
+            "ဘယ်မှာ (bè-hmà) means 'where (at)'. Answer with ဒီမှာ (dì-hmà) 'here' or ဟိုမှာ (hò-hmà) 'over there': same pattern, different first word.",
+            "ဘယ်တော့ (bè-da̰w) asks 'when' about the future. For a clock time, ask ဘယ်အချိန် (bè ə-chèin) 'what time'."
+          ],
+          "items": [
+            "q.where",
+            "q.toilet",
+            "q.here",
+            "q.there",
+            "q.when",
+            "q.when-come",
+            "q.what-time"
+          ]
+        },
+        {
+          "id": "m8.l3",
+          "title": "Why, how & which",
+          "intro": [
+            "ဘာလို့ (bà-lo̰) is 'why'. To answer 'because…', put လို့ (lo̰) after the reason: အလုပ်များလို့ 'because I'm busy'.",
+            "ဘယ်လို (bè-lò) is 'how', and ဘယ်ဟာ (bè-hà) is 'which one'. Handy when someone offers you a choice of dishes."
+          ],
+          "items": [
+            "q.why",
+            "q.why-not-come",
+            "q.because-busy",
+            "q.how",
+            "q.how-go",
+            "q.which",
+            "q.which-like"
+          ],
+          "drills": [
+            "pat.why-not"
+          ]
+        },
+        {
+          "id": "m8.l4",
+          "title": "How much & simple answers",
+          "intro": [
+            "ဘယ်လောက် (bè-lauʔ) is 'how much', for prices and amounts. 'How many' needs a counting word: ယောက် (yauʔ) for people, ခု (hkṵ) for things.",
+            "Short answers matter as much as questions. ရှိလား 'is there…?' gets ရှိတယ် 'there is' or မရှိဘူး 'there isn't'. And မသိဘူး 'I don't know' is always allowed."
+          ],
+          "items": [
+            "q.how-much",
+            "q.how-many-people",
+            "q.how-many-things",
+            "q.is-there",
+            "q.isnt",
+            "q.dont-know",
+            "q.can-i"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m9",
+      "title": "People & family",
+      "summary": "Brothers, sisters, children and elders, and how to talk to them.",
+      "icon": "👪",
+      "color": "#ad3f66",
+      "lessons": [
+        {
+          "id": "m9.l1",
+          "title": "Brothers & sisters",
+          "intro": [
+            "Burmese has no single word for 'brother' or 'sister': it always says older or younger. အစ်ကို (ə-kò) is an older brother, အစ်မ (ə-ma̰) an older sister.",
+            "These words are also used to address people a bit older than you, even strangers: calling a young man အစ်ကို is friendly and polite."
+          ],
+          "items": [
+            "fam.older-brother",
+            "fam.older-sister",
+            "fam.younger-brother",
+            "fam.younger-sister",
+            "fam.siblings-q",
+            "fam.one-older-brother"
+          ]
+        },
+        {
+          "id": "m9.l2",
+          "title": "Husband, wife & children",
+          "intro": [
+            "သား (thá) is 'son' and သမီး (thə-mí) is 'daughter'. Parents also call their children သား and သမီး directly, like 'son!' or 'sweetheart'.",
+            "Questions about marriage and children are normal friendly small talk in Myanmar, not nosy."
+          ],
+          "items": [
+            "fam.husband",
+            "fam.wife",
+            "fam.son",
+            "fam.daughter",
+            "fam.children-q",
+            "fam.married-q"
+          ]
+        },
+        {
+          "id": "m9.l3",
+          "title": "This is my…",
+          "intro": [
+            "To introduce someone, say ဒါ (dà) 'this', then the person, then ပါ (bà): ဒါ ကျွန်တော့် အမေပါ 'this is my mother'.",
+            "'My' is just 'I' placed before the noun. ကျွန်တော် (men) becomes creaky ကျွန်တော့် (kyə-na̰w); ကျွန်မ (women) stays the same."
+          ],
+          "items": [
+            "fam.family",
+            "fam.parents",
+            "fam.grandmother",
+            "fam.grandfather",
+            "fam.this-is-mother-m",
+            "fam.this-is-mother-f",
+            "fam.partner"
+          ]
+        },
+        {
+          "id": "m9.l4",
+          "title": "Aunty, uncle & age",
+          "intro": [
+            "People rarely use a bare first name. Older women are အန်တီ (àn-tì) 'aunty' and older men ဦးလေး (ú-léi) 'uncle', even if they're not relatives. Many people also call their partner's parents အမေ and အဖေ.",
+            "Before a name, ဦး (ú) and ဒေါ် (dàw) show respect to older men and women: ဦးအောင်, ဒေါ်ခင်. For people around your own age, use ကို (kò) for men and မ (ma̰) for women.",
+            "Asking someone's age is normal and polite: it tells people which of these words to use."
+          ],
+          "items": [
+            "fam.aunty",
+            "fam.uncle",
+            "fam.u",
+            "fam.daw",
+            "fam.how-old",
+            "fam.age-30"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m10",
+      "title": "Feelings & health",
+      "summary": "Say how you feel, and look after someone who isn't well.",
+      "icon": "🤒",
+      "color": "#2b7a8c",
+      "lessons": [
+        {
+          "id": "m10.l1",
+          "title": "Tired & hungry",
+          "intro": [
+            "Feelings are verbs in Burmese, so they take the same endings as any verb: ပင်ပန်းတယ် 'I'm tired', ဗိုက်ဆာလား 'are you hungry?'.",
+            "Many feelings are described through the body. ဗိုက် (baiʔ) is 'stomach': a hungry stomach is ဗိုက်ဆာ, a full one ဗိုက်ပြည့်."
+          ],
+          "items": [
+            "feel.tired",
+            "feel.sleepy",
+            "feel.hungry",
+            "feel.hungry-q",
+            "feel.thirsty",
+            "feel.full"
+          ]
+        },
+        {
+          "id": "m10.l2",
+          "title": "Hot, cold & sick",
+          "intro": [
+            "You already know နေကောင်းလား 'how are you?' (literally 'are you well?'). Put it in the negative frame and you have 'I'm not well': နေမကောင်းဘူး.",
+            "Aches use the body part + the feeling: ခေါင်း 'head' + ကိုက် 'ache' = a headache."
+          ],
+          "items": [
+            "feel.hot",
+            "feel.cold",
+            "feel.sick",
+            "feel.fever",
+            "feel.headache",
+            "feel.stomachache",
+            "feel.medicine-q"
+          ]
+        },
+        {
+          "id": "m10.l3",
+          "title": "Are you OK?",
+          "intro": [
+            "အဆင်ပြေလား (ə-hsìn pyèi lá) is the everyday 'are you OK? / is everything alright?'. It works for people, plans and situations.",
+            "Burmese families take care of each other out loud: expect to hear 'rest!', 'be careful!' and 'get well soon' a lot. ပါစေ (bà zèi) at the end makes a wish: 'may it be so'."
+          ],
+          "items": [
+            "feel.are-you-ok",
+            "feel.im-ok",
+            "feel.whats-wrong",
+            "feel.rest",
+            "feel.careful",
+            "feel.take-care",
+            "feel.get-well"
+          ]
+        },
+        {
+          "id": "m10.l4",
+          "title": "Happy, sad & bored",
+          "intro": [
+            "စိတ် (seiʔ) means 'mind': many feelings are built on it. စိတ် + ပူ 'hot' = worried, literally a hot mind.",
+            "To tell someone not to do something, wrap the verb: မ + verb + ပါနဲ့ (bà nḛ). စိတ်မပူပါနဲ့ 'don't worry'."
+          ],
+          "items": [
+            "feel.happy",
+            "feel.having-fun-q",
+            "feel.sad",
+            "feel.bored",
+            "feel.worried",
+            "feel.dont-worry"
+          ],
+          "drills": [
+            "pat.dont"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m11",
+      "title": "Numbers & money",
+      "summary": "Count to ten thousand, ask prices and pay.",
+      "icon": "💰",
+      "color": "#a0521a",
+      "lessons": [
+        {
+          "id": "m11.l1",
+          "title": "Eleven to twenty",
+          "intro": [
+            "Eleven to nineteen are just 'ten + number': ဆယ့်တစ် (hsḛ-tiʔ) is 'ten-one'. Notice ဆယ် 'ten' turns creaky (ဆယ့်) when another number follows it.",
+            "Twenty is 'two tens', နှစ်ဆယ်. The 'two' shrinks to a quick, weak hnə, just as 'one' does in တစ်ဆယ် (tə-hsè)."
+          ],
+          "items": [
+            "num.11",
+            "num.12",
+            "num.15",
+            "num.19",
+            "num.20"
+          ]
+        },
+        {
+          "id": "m11.l2",
+          "title": "Tens & combining",
+          "intro": [
+            "Tens are 'number + ten'. The ten changes its sound: after an open syllable it's voiced to zè (သုံးဆယ် thóun-zè), after a checked one (ʔ) it stays hsè (ခြောက်ဆယ် chauʔ-hsè).",
+            "တစ် 'one', နှစ် 'two' and ခုနစ် 'seven' shrink to weak syllables (tə, hnə, hkṵn-hnə) before ten, hundred and thousand. Bigger numbers are simply stacked: နှစ်ဆယ့်ငါး 'two-ten-five' is 25."
+          ],
+          "items": [
+            "num.30",
+            "num.50",
+            "num.60",
+            "num.70",
+            "num.25"
+          ]
+        },
+        {
+          "id": "m11.l3",
+          "title": "Hundreds & thousands",
+          "intro": [
+            "ရာ (yà) is a hundred, ထောင် (htàun) a thousand and သောင်း (tháun) ten thousand. With kyat, prices run into thousands quickly, so these are the numbers you'll hear most at the market.",
+            "When more numbers follow, the bigger unit turns creaky: တစ်ရာ့ငါးဆယ် 150, တစ်ထောင့်ငါးရာ 1,500."
+          ],
+          "items": [
+            "num.100",
+            "num.150",
+            "num.1000",
+            "num.1500",
+            "num.5000",
+            "num.10000"
+          ]
+        },
+        {
+          "id": "m11.l4",
+          "title": "How much is it?",
+          "intro": [
+            "ဘယ်လောက်လဲ (bè-lauʔ lé) 'how much?' works for any price. ဈေး (zéi) means 'price' (and also 'market'): 'price big' is expensive, 'price plentiful' is cheap.",
+            "A little friendly bargaining is normal at markets, less so in shops with fixed prices. A smile and နည်းနည်း လျှော့ပေးပါ go a long way."
+          ],
+          "items": [
+            "q.how-much",
+            "num.kyat",
+            "num.expensive",
+            "num.cheap",
+            "num.bit-cheaper",
+            "num.comes-to",
+            "num.pay"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m12",
+      "title": "Time & days",
+      "summary": "Today, tomorrow, days of the week and telling the time.",
+      "icon": "🕐",
+      "color": "#4a4fb0",
+      "lessons": [
+        {
+          "id": "m12.l1",
+          "title": "Today & tomorrow",
+          "intro": [
+            "Time words usually go at the start of the sentence: မနက်ဖြန် သွားမယ် 'tomorrow (I) will go'. Burmese verbs never change, so these words do much of the work English does with tenses.",
+            "ဒီ (dì) means 'this': ဒီနေ့ 'this day' is today."
+          ],
+          "items": [
+            "time.today",
+            "time.tomorrow",
+            "time.yesterday",
+            "time.now",
+            "time.later",
+            "q.when-come"
+          ]
+        },
+        {
+          "id": "m12.l2",
+          "title": "Morning to night",
+          "intro": [
+            "မနက် (mə-neʔ) is the morning, နေ့လည် (nḛ-lè) the middle of the day, ညနေ (nya̰-nèi) late afternoon into evening, and ည (nya̰) night.",
+            "Put ဒီ in front again for 'this…': ဒီည 'tonight'."
+          ],
+          "items": [
+            "time.morning",
+            "time.afternoon",
+            "time.evening",
+            "time.night",
+            "time.tonight",
+            "time.every-day"
+          ]
+        },
+        {
+          "id": "m12.l3",
+          "title": "Days of the week",
+          "intro": [
+            "Day names are said with နေ့ (nḛ, 'day') after them.",
+            "The day you were born on matters in Myanmar: it's tied to astrology and often decides the first letter of a person's name. Ask your partner's family which day they were born on!"
+          ],
+          "items": [
+            "time.monday",
+            "time.tuesday",
+            "time.wednesday",
+            "time.thursday",
+            "time.friday",
+            "time.saturday",
+            "time.sunday"
+          ]
+        },
+        {
+          "id": "m12.l4",
+          "title": "What time is it?",
+          "intro": [
+            "'What time is it?' is literally 'how many hours has it become?'. Hours are number + နာရီ (nà-yì): ငါးနာရီ 'five o'clock'. Add ခွဲ (hkwé, 'half') for half past.",
+            "Put morning or evening in front to be clear: ညနေ ငါးနာရီ is 5 pm, မနက် ငါးနာရီ 5 am."
+          ],
+          "items": [
+            "time.what-day",
+            "time.what-time",
+            "time.hour",
+            "time.five-oclock",
+            "time.half-past",
+            "time.see-you-tomorrow",
+            "time.see-you-later"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m13",
+      "title": "Counting things",
+      "summary": "Counter words for people, animals, cups and more.",
+      "icon": "🧮",
+      "color": "#0f7068",
+      "lessons": [
+        {
+          "id": "m13.l1",
+          "title": "Counting people",
+          "intro": [
+            "When you count things in Burmese you add a counter word after the number, a bit like 'two cups of…' or 'three head of cattle' in English. The order is noun + number + counter: လူ သုံးယောက် 'person three (counter)' = three people.",
+            "ယောက် (yauʔ) counts people. The noun is dropped when it's obvious: just သုံးယောက်ပါ 'three, please'."
+          ],
+          "items": [
+            "cls.person",
+            "cls.yauk",
+            "cls.one-person",
+            "cls.three-people",
+            "q.how-many-people",
+            "cls.four-of-us"
+          ]
+        },
+        {
+          "id": "m13.l2",
+          "title": "Animals & things",
+          "intro": [
+            "ကောင် (kàun) counts animals. ခု (hkṵ) is the general counter for objects: if you're not sure which counter to use, ခု usually works.",
+            "The sound changes you met with numbers happen here too: တစ် and နှစ် shrink to tə and hnə, and the counter is often voiced after an open syllable (သုံးခု thóun-gṵ)."
+          ],
+          "items": [
+            "cls.kaung",
+            "cls.dog",
+            "cls.cat",
+            "cls.two-dogs",
+            "cls.khu",
+            "cls.one-of-these",
+            "q.how-many-things"
+          ]
+        },
+        {
+          "id": "m13.l3",
+          "title": "Cups, bottles & plates",
+          "intro": [
+            "Drinks are counted by their container: ခွက် (hkweʔ) for cups and glasses, ပုလင်း (bə-lín) for bottles. ပွဲ (pwé) counts servings of food.",
+            "To order, say the thing, the amount, then ပေးပါ 'please give': လက်ဖက်ရည် နှစ်ခွက် ပေးပါ. Burmese tea (လက်ဖက်ရည်) is strong, sweet milk tea; the teashop is where people meet and chat."
+          ],
+          "items": [
+            "cls.tea",
+            "cls.coffee",
+            "cls.kwet",
+            "cls.two-teas",
+            "cls.bottle",
+            "cls.water-bottle",
+            "cls.pwe"
+          ]
+        },
+        {
+          "id": "m13.l4",
+          "title": "Round & flat things",
+          "intro": [
+            "လုံး (lóun) counts round things: eggs, fruit, balls. ရွက် (yweʔ) means 'leaf' and counts flat sheets: leaves, paper and banknotes."
+          ],
+          "items": [
+            "cls.loun",
+            "cls.two-eggs",
+            "cls.ywet",
+            "cls.paper",
+            "cls.two-notes"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m14",
+      "title": "Food & drink 2",
+      "summary": "Order at a tea shop, name dishes and tastes, and finish the meal.",
+      "icon": "🍜",
+      "color": "#9a4a1f",
+      "lessons": [
+        {
+          "id": "m14.l1",
+          "title": "At the tea shop",
+          "intro": [
+            "Tea shops are the heart of daily life in Yangon. လက်ဖက်ရည် (lə-hpeʔ-yèi) is the sweet milky tea you order; the pot of plain green tea, ရေနွေးကြမ်း (yèi-nwéi-gyán), sits on the table for free.",
+            "To order, name the thing, add how many, then ပေးပါ (péi bà) 'please give'. You call the young waiters ညီလေး (nyì-léi) 'little brother'. It's friendly, not rude."
+          ],
+          "items": [
+            "cls.tea",
+            "cls.coffee",
+            "food.plain-tea",
+            "food.waiter",
+            "food.what-drink",
+            "food.one-tea"
+          ]
+        },
+        {
+          "id": "m14.l2",
+          "title": "Dishes",
+          "intro": [
+            "မုန့်ဟင်းခါး (mo̰un-hín-gá), fish noodle soup, is the classic Burmese breakfast.",
+            "Meat words end in သား (thá) 'flesh': ကြက် is chicken, so ကြက်သား is chicken meat. ဟင်း (hín) is any curry or dish eaten with rice."
+          ],
+          "items": [
+            "food.mohinga",
+            "food.noodles",
+            "food.curry",
+            "food.chicken",
+            "food.pork",
+            "food.fish",
+            "food.vegetables"
+          ]
+        },
+        {
+          "id": "m14.l3",
+          "title": "Spicy, sweet, salty, sour",
+          "intro": [
+            "Tastes are verbs in Burmese, so 'it's spicy' is just စပ်တယ် (saʔ tè): taste + တယ်.",
+            "Family will often ask if you can handle chilli. နိုင် (nàin) after a verb means 'be able to'."
+          ],
+          "items": [
+            "food.fruit",
+            "food.spicy",
+            "food.sweet",
+            "food.salty",
+            "food.sour",
+            "food.can-eat-spicy",
+            "food.less-spicy"
+          ]
+        },
+        {
+          "id": "m14.l4",
+          "title": "More, enough & the bill",
+          "intro": [
+            "Hosts keep filling your plate. နည်းနည်း ထပ်ပေးပါ asks for a little more; တော်ပြီ (tàw bì) or ဗိုက်ပြည့်ပြီ politely says you've had enough.",
+            "ပြီ (bì) at the end means 'now / already': a change has happened. At a tea shop, say ပိုက်ဆံ ရှင်းမယ် when you want to pay."
+          ],
+          "items": [
+            "food.is-there",
+            "food.more",
+            "food.enough",
+            "feel.full",
+            "food.how-much",
+            "food.pay"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m15",
+      "title": "Getting around",
+      "summary": "Places, directions and taxi phrases for getting about town.",
+      "icon": "🚕",
+      "color": "#2c6b8a",
+      "lessons": [
+        {
+          "id": "m15.l1",
+          "title": "Places",
+          "intro": [
+            "Learn the places you'll need most. Many are compounds: ဆေး (medicine) + ရုံ (building) = ဆေးရုံ hospital; လေ (air) + ဆိပ် (port) = လေဆိပ် airport.",
+            "Notice the sound change: ဆိပ် is hseiʔ on its own but zeiʔ inside လေဆိပ်."
+          ],
+          "items": [
+            "go.home",
+            "go.market",
+            "go.shop",
+            "go.hospital",
+            "go.station",
+            "go.airport"
+          ]
+        },
+        {
+          "id": "m15.l2",
+          "title": "Where is it?",
+          "intro": [
+            "မှာ (hmà) after a word means 'at / in'. ဘယ်မှာ (bè-hmà) is 'where', so 'X where?' is X ဘယ်မှာလဲ.",
+            "ဒီ (dì) is 'this', ဟို (hò) is 'that over there': ဒီမှာ 'here', ဟိုမှာ 'over there'."
+          ],
+          "items": [
+            "go.toilet",
+            "go.where-is-toilet",
+            "go.where-is",
+            "q.here",
+            "q.there",
+            "go.near",
+            "go.far"
+          ]
+        },
+        {
+          "id": "m15.l3",
+          "title": "Left, right, straight",
+          "intro": [
+            "ဘက် (beʔ) means 'side': ဘယ်ဘက် left side, ညာဘက် right side. Careful: ဘယ် also means 'which / where', and the context tells you which.",
+            "Add a verb + ပါ to give directions politely: ကွေ့ပါ 'please turn', သွားပါ 'please go'."
+          ],
+          "items": [
+            "go.left",
+            "go.right",
+            "go.straight",
+            "go.turn-left",
+            "go.turn-right"
+          ]
+        },
+        {
+          "id": "m15.l4",
+          "title": "Taking a taxi",
+          "intro": [
+            "Yangon taxis usually have no meter, so agree the price before you get in: say where you're going, then ask ဘယ်လောက်လဲ 'how much?'.",
+            "ကို (gò) after a place marks where you're going: ဈေးကို သွားမယ် 'I'll go to the market'."
+          ],
+          "items": [
+            "go.taxi",
+            "go.want-go-to",
+            "go.how-much-to",
+            "go.how-far",
+            "go.drive-slowly",
+            "go.stop-here"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m16",
+      "title": "Daily life",
+      "summary": "Talk about your day, what you're doing, and whether you're busy.",
+      "icon": "🏠",
+      "color": "#5b6b2a",
+      "lessons": [
+        {
+          "id": "m16.l1",
+          "title": "Morning to night",
+          "intro": [
+            "Time words go at the start of the sentence: မနက် ရေချိုးတယ် 'In the morning I shower'.",
+            "There are new verbs here. Try them with the patterns you know: နိုးတယ် 'I woke up', နိုးပြီးပြီ 'I'm already up'."
+          ],
+          "items": [
+            "time.morning",
+            "time.evening",
+            "time.night",
+            "time.every-day",
+            "v.wake-up",
+            "v.wash",
+            "day.shower"
+          ],
+          "drills": [
+            "pat.statement",
+            "pat.future"
+          ]
+        },
+        {
+          "id": "m16.l2",
+          "title": "At home",
+          "intro": [
+            "Verb + နေ (nèi) means you're in the middle of doing something, like English '-ing': ချက်နေတယ် 'I'm cooking'.",
+            "ကြည့် (kyḭ) 'look' also means 'watch', so watching TV is တီဗွီ ကြည့် (tì-bwì kyḭ)."
+          ],
+          "items": [
+            "day.at-home",
+            "v.cook",
+            "day.cooking",
+            "day.watch-tv",
+            "v.read",
+            "v.rest"
+          ],
+          "drills": [
+            "pat.want",
+            "pat.request"
+          ]
+        },
+        {
+          "id": "m16.l3",
+          "title": "Work & study",
+          "intro": [
+            "အလုပ် (ə-louʔ) is 'work, a job'. It comes from လုပ် 'do', which you already know, so 'I'm working' is အလုပ်လုပ်နေတယ်.",
+            "ပြန် (pyàn) means 'go back, return'. With အိမ် 'home' it's how you say you're heading home."
+          ],
+          "items": [
+            "day.go-to-work",
+            "day.at-work",
+            "day.working",
+            "v.learn",
+            "day.studying",
+            "v.go-back",
+            "day.go-home"
+          ],
+          "drills": [
+            "pat.neg",
+            "pat.future-q"
+          ]
+        },
+        {
+          "id": "m16.l4",
+          "title": "Busy or free?",
+          "intro": [
+            "ဘာလုပ်နေလဲ 'what are you doing?' is how many phone calls start.",
+            "အား (á) means 'to have free time'. So အားလား is 'are you free?', and မအားဘူး 'not free' is the usual way to say you're busy."
+          ],
+          "items": [
+            "q.what-doing",
+            "day.busy",
+            "day.not-free",
+            "day.free-q",
+            "day.free",
+            "feel.tired"
+          ],
+          "drills": [
+            "pat.already-done"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m17",
+      "title": "Past & plans",
+      "summary": "Say what you did, what you will do, what you must and can do.",
+      "icon": "⏳",
+      "color": "#3d5a99",
+      "lessons": [
+        {
+          "id": "m17.l1",
+          "title": "Did it, done it, not yet",
+          "intro": [
+            "Plain verb + တယ် can already mean past, and time words like မနေ့က 'yesterday' usually do the work. To make the past clear, add ခဲ့ (gḛ): သွားခဲ့တယ် 'I went'.",
+            "Verb + ပြီးပြီ (pyí bì) means 'already done'. For 'not yet', wrap the verb in မ … သေးဘူး: မစားရသေးဘူး 'I haven't eaten yet'."
+          ],
+          "items": [
+            "tense.went",
+            "time.yesterday",
+            "tense.where-yesterday",
+            "tense.drank-already",
+            "tense.done",
+            "tense.not-yet-eaten"
+          ],
+          "drills": [
+            "pat.past",
+            "pat.already-done"
+          ]
+        },
+        {
+          "id": "m17.l2",
+          "title": "Plans & must",
+          "intro": [
+            "You already know မယ် (mè) for the future and ချင်တယ် (jìn dè) for 'want to'. Add တော့ before မယ် for 'about to, right now': စားတော့မယ် 'I'm going to eat now'.",
+            "ရ (ya̰) after a verb means 'have to': သွားရမယ် 'I have to go'. Say it when you need to leave a family visit."
+          ],
+          "items": [
+            "time.tomorrow",
+            "tense.tomorrow-what",
+            "tense.about-to-eat",
+            "tense.must-go",
+            "tense.must-work",
+            "tense.want-go-myanmar",
+            "tense.dont-have-to"
+          ],
+          "drills": [
+            "pat.must",
+            "pat.future",
+            "pat.want"
+          ]
+        },
+        {
+          "id": "m17.l3",
+          "title": "Have you ever…?",
+          "intro": [
+            "ဖူး (hpú) after a verb means 'have ever done'. ရောက်ဖူးလား 'have you ever been (there)?' is a favourite question for visitors.",
+            "For 'never', use the usual negative: မ + verb + ဖူးဘူး. After an open syllable ဖူး usually sounds like bú."
+          ],
+          "items": [
+            "tense.arrived",
+            "tense.ever-been-q",
+            "tense.been-once",
+            "tense.never-been",
+            "tense.ever-eaten-mohinga"
+          ],
+          "drills": [
+            "pat.ever-q"
+          ]
+        },
+        {
+          "id": "m17.l4",
+          "title": "Can & can't",
+          "intro": [
+            "Burmese has two words for 'can'. နိုင် (nàin) is being able to or having the chance: လာနိုင်တယ် 'I can come'. တတ် (daʔ) is a learned skill: ရေကူးတတ်တယ် 'I can swim'.",
+            "To ask permission, use verb + လို့ရလား: ထိုင်လို့ရလား 'Can I sit?'"
+          ],
+          "items": [
+            "tense.can-come",
+            "tense.cant-come",
+            "tense.can-cook-q",
+            "tense.cant-swim",
+            "tense.may-i-sit"
+          ],
+          "drills": [
+            "pat.can"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m18",
+      "title": "Opinions & small talk",
+      "summary": "Share what you think, react, compliment the food and chat about the weather.",
+      "icon": "☕",
+      "color": "#a0522d",
+      "lessons": [
+        {
+          "id": "m18.l1",
+          "title": "I think, I like",
+          "intro": [
+            "ထင်တယ် (htìn dè) 'I think' goes at the end, after the opinion: ကောင်းမယ် ထင်တယ် 'I think it'll be good'.",
+            "ကြိုက်တယ် is 'like'. Put အရမ်း (ə-yán) 'very' in front to make it stronger."
+          ],
+          "items": [
+            "talk.i-think",
+            "talk.think-good",
+            "talk.what-think",
+            "talk.like-a-lot",
+            "talk.dont-like",
+            "q.dont-know"
+          ]
+        },
+        {
+          "id": "m18.l2",
+          "title": "Good, beautiful, fun",
+          "intro": [
+            "Describing words work like verbs: လှတယ် 'is beautiful', ကောင်းတယ် 'is good'. Make them negative the same way: မကောင်းဘူး 'not good'.",
+            "စရာကောင်းတယ် after a verb means 'worth doing': ပျော်စရာကောင်းတယ် 'it's fun'."
+          ],
+          "items": [
+            "talk.not-good",
+            "talk.beautiful",
+            "talk.very-beautiful",
+            "talk.interesting",
+            "talk.fun",
+            "talk.great"
+          ]
+        },
+        {
+          "id": "m18.l3",
+          "title": "Me too & agreeing",
+          "intro": [
+            "လည်း (lé) after a word means 'too, also': ကျွန်မလည်း ကြိုက်တယ် 'I like it too'.",
+            "Burmese conversation avoids flat disagreement. မထင်ဘူး 'I don't think so' or ဖြစ်နိုင်တယ် 'maybe' are gentle ways to disagree."
+          ],
+          "items": [
+            "talk.thats-right",
+            "talk.agree",
+            "talk.like-too-m",
+            "talk.like-too-f",
+            "talk.same",
+            "talk.dont-think-so",
+            "talk.maybe"
+          ]
+        },
+        {
+          "id": "m18.l4",
+          "title": "Compliments & weather",
+          "intro": [
+            "Praising the food is the best compliment you can give at a family meal. Say it often!",
+            "Weather is easy small talk: Yangon is usually hot or rainy. ဒီနေ့ 'today' + အရမ်းပူတယ် 'really hot' will always get a reply."
+          ],
+          "items": [
+            "talk.food-delicious",
+            "talk.good-cook",
+            "talk.nice-home",
+            "talk.hot-today",
+            "talk.raining",
+            "talk.cold",
+            "talk.learning-for-family"
+          ]
+        }
+      ]
     }
   ],
   "scriptModules": [
@@ -540,6 +1395,187 @@
             "n.5",
             "f.rice",
             "s.hello"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s4",
+      "title": "Reading practice",
+      "summary": "Read real words and phrases from each speaking module.",
+      "icon": "📖",
+      "color": "#2563c9",
+      "lessons": [
+        {
+          "id": "s4.m8",
+          "kind": "script",
+          "title": "Read: Questions",
+          "intro": [
+            "Question words all start with ဘ: spot ဘာ 'what' and ဘယ် 'which' at the front, and လဲ or လား at the end."
+          ],
+          "items": [
+            "q.what",
+            "q.who",
+            "q.where",
+            "q.why",
+            "q.dont-know"
+          ]
+        },
+        {
+          "id": "s4.m9",
+          "kind": "script",
+          "title": "Read: Family",
+          "intro": [
+            "Many family words start with the vowel carrier အ. Look for the letter that follows it: ကို, မ, ဖွား, ဘိုး."
+          ],
+          "items": [
+            "fam.older-brother",
+            "fam.older-sister",
+            "fam.son",
+            "fam.daughter",
+            "fam.grandmother",
+            "fam.family"
+          ]
+        },
+        {
+          "id": "s4.m10",
+          "kind": "script",
+          "title": "Read: Feelings",
+          "intro": [
+            "Feelings are verbs, so most of these end in တယ်. Read the word in front of it to find the feeling."
+          ],
+          "items": [
+            "feel.hot",
+            "feel.tired",
+            "feel.hungry",
+            "feel.sad",
+            "feel.happy"
+          ]
+        },
+        {
+          "id": "s4.m11",
+          "kind": "script",
+          "title": "Read: Numbers & money",
+          "intro": [
+            "Prices on market signs are usually written in Burmese digits (၁၀၀၀ = 1,000), but you'll also see numbers spelled out. Look for ဆယ်, ရာ and ထောင်: the shape of each tells you the size of the number."
+          ],
+          "items": [
+            "num.20",
+            "num.100",
+            "num.1000",
+            "num.kyat",
+            "q.how-much",
+            "num.expensive"
+          ]
+        },
+        {
+          "id": "s4.m12",
+          "kind": "script",
+          "title": "Read: Time & days",
+          "intro": [
+            "နေ့ 'day' appears in lots of time words: ဒီနေ့, မနေ့က, and every day of the week. Spot it first, then read the rest."
+          ],
+          "items": [
+            "time.today",
+            "time.tomorrow",
+            "time.now",
+            "time.night",
+            "time.saturday",
+            "time.see-you-tomorrow"
+          ]
+        },
+        {
+          "id": "s4.m13",
+          "kind": "script",
+          "title": "Read: Counting things",
+          "intro": [
+            "Counters are short, common words, so they're good reading practice. Find the number in each phrase; the counter is the syllable right after it."
+          ],
+          "items": [
+            "cls.person",
+            "cls.one-person",
+            "cls.three-people",
+            "q.how-many-people",
+            "cls.water-bottle"
+          ]
+        },
+        {
+          "id": "s4.m14",
+          "kind": "script",
+          "title": "Read: Food & drink",
+          "intro": [
+            "Tea-shop and kitchen words. Look for သား (meat) at the end of the meat words."
+          ],
+          "items": [
+            "cls.coffee",
+            "food.curry",
+            "food.fish",
+            "food.chicken",
+            "food.fruit"
+          ]
+        },
+        {
+          "id": "s4.m15",
+          "kind": "script",
+          "title": "Read: Places",
+          "intro": [
+            "Places around town. Spot အိမ် (home) inside အိမ်သာ (toilet)."
+          ],
+          "items": [
+            "go.home",
+            "go.market",
+            "go.shop",
+            "go.toilet",
+            "go.hospital",
+            "q.here"
+          ]
+        },
+        {
+          "id": "s4.m16",
+          "kind": "script",
+          "title": "Read: Daily life",
+          "intro": [
+            "Short words for times of day and new verbs. Several are a single syllable."
+          ],
+          "items": [
+            "time.morning",
+            "time.night",
+            "v.cook",
+            "v.read",
+            "v.rest",
+            "day.free"
+          ]
+        },
+        {
+          "id": "s4.m17",
+          "kind": "script",
+          "title": "Read: Past & plans",
+          "intro": [
+            "Look for the little words after the verb: ခဲ့ (past), ပြီ (already), ရ (must), နိုင် (can), ဖူး (ever)."
+          ],
+          "items": [
+            "tense.went",
+            "tense.done",
+            "tense.not-yet-eaten",
+            "tense.must-go",
+            "tense.can-come",
+            "tense.never-been"
+          ]
+        },
+        {
+          "id": "s4.m18",
+          "kind": "script",
+          "title": "Read: Opinions & small talk",
+          "intro": [
+            "Short sentences you'll say at every family meal. Spot the negative frame မ … ဘူး."
+          ],
+          "items": [
+            "talk.i-think",
+            "talk.beautiful",
+            "talk.dont-like",
+            "talk.thats-right",
+            "talk.raining",
+            "talk.cold"
           ]
         }
       ]

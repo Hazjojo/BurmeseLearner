@@ -1,8 +1,156 @@
 [
-  { "id": "pat.statement", "from": "p.go", "my": "{v}တယ်", "rom": ["{v} dè", "{v} tè"], "en": "I {base} / I {past}", "note": "Verb + တယ် = plain statement (present or past from context)." },
-  { "id": "pat.neg", "from": "p.not-go", "my": "မ{v}ဘူး", "rom": ["mə-{v} bú", "mə-{v} bú"], "en": "I don't {base}", "note": "မ + verb + ဘူး = negative." },
-  { "id": "pat.future", "from": "p.will-go", "my": "{v}မယ်", "rom": ["{v} mè", "{v} mè"], "en": "I will {base}", "note": "Verb + မယ် = future / intention." },
-  { "id": "pat.future-q", "from": "p.will-you-go", "my": "{v}မလား", "rom": ["{v} mə-lá", "{v} mə-lá"], "en": "Will you {base}?", "note": "Verb + မလား = future yes/no question." },
-  { "id": "pat.want", "from": "p.want-eat", "my": "{v}ချင်တယ်", "rom": ["{v} jìn dè", "{v} chìn dè"], "en": "I want to {base}", "note": "Verb + ချင်တယ် = want to." },
-  { "id": "pat.request", "from": "p.sit-please", "my": "{v}ပါ", "rom": ["{v} bà", "{v} pà"], "en": "Please {base}", "note": "Verb + ပါ = polite request." }
+ {
+  "id": "pat.statement",
+  "from": "p.go",
+  "my": "{v}တယ်",
+  "rom": [
+   "{v} dè",
+   "{v} tè"
+  ],
+  "en": "I {base} / I {past}",
+  "note": "Verb + တယ် = plain statement (present or past from context)."
+ },
+ {
+  "id": "pat.neg",
+  "from": "p.not-go",
+  "my": "မ{v}ဘူး",
+  "rom": [
+   "mə-{v} bú",
+   "mə-{v} bú"
+  ],
+  "en": "I don't {base}",
+  "note": "မ + verb + ဘူး = negative."
+ },
+ {
+  "id": "pat.future",
+  "from": "p.will-go",
+  "my": "{v}မယ်",
+  "rom": [
+   "{v} mè",
+   "{v} mè"
+  ],
+  "en": "I will {base}",
+  "note": "Verb + မယ် = future / intention."
+ },
+ {
+  "id": "pat.future-q",
+  "from": "p.will-you-go",
+  "my": "{v}မလား",
+  "rom": [
+   "{v} mə-lá",
+   "{v} mə-lá"
+  ],
+  "en": "Will you {base}?",
+  "note": "Verb + မလား = future yes/no question."
+ },
+ {
+  "id": "pat.want",
+  "from": "p.want-eat",
+  "my": "{v}ချင်တယ်",
+  "rom": [
+   "{v} jìn dè",
+   "{v} chìn dè"
+  ],
+  "en": "I want to {base}",
+  "note": "Verb + ချင်တယ် = want to."
+ },
+ {
+  "id": "pat.request",
+  "from": "p.sit-please",
+  "my": "{v}ပါ",
+  "rom": [
+   "{v} bà",
+   "{v} pà"
+  ],
+  "en": "Please {base}",
+  "note": "Verb + ပါ = polite request."
+ },
+ {
+  "id": "pat.want-q",
+  "from": "q.want-eat-q",
+  "my": "{v}ချင်လား",
+  "rom": [
+   "{v} jìn lá",
+   "{v} chìn lá"
+  ],
+  "en": "Do you want to {base}?",
+  "note": "Verb + ချင်လား = 'do you want to…?'."
+ },
+ {
+  "id": "pat.why-not",
+  "from": "q.why-not-come",
+  "my": "ဘာလို့ မ{v}တာလဲ",
+  "rom": [
+   "bà-lo̰ mə-{v} dà lé",
+   "bà-lo̰ mə-{v} tà lé"
+  ],
+  "en": "Why didn't you {base}?",
+  "note": "ဘာလို့ + negative verb + တာလဲ = 'why didn't you…?'."
+ },
+ {
+  "id": "pat.dont",
+  "from": "feel.dont-worry",
+  "my": "မ{v}ပါနဲ့",
+  "rom": [
+   "mə-{v} bà nḛ",
+   "mə-{v} pà nḛ"
+  ],
+  "en": "Please don't {base}",
+  "note": "မ + verb + ပါနဲ့ = polite 'don't'."
+ },
+ {
+  "id": "pat.already-done",
+  "from": "f.eaten",
+  "my": "{v}ပြီးပြီ",
+  "rom": [
+   "{v} pyí bì",
+   "{v} pyí bì"
+  ],
+  "en": "I already {past}",
+  "note": "Verb + ပြီးပြီ = already done."
+ },
+ {
+  "id": "pat.past",
+  "from": "tense.went",
+  "my": "{v}ခဲ့တယ်",
+  "rom": [
+   "{v} gḛ dè",
+   "{v} hkḛ dè"
+  ],
+  "en": "I {past}",
+  "note": "Verb + ခဲ့တယ် = clearly past."
+ },
+ {
+  "id": "pat.must",
+  "from": "tense.must-go",
+  "my": "{v}ရမယ်",
+  "rom": [
+   "{v} ya̰ mè",
+   "{v} ya̰ mè"
+  ],
+  "en": "I have to {base}",
+  "note": "Verb + ရမယ် = have to / must."
+ },
+ {
+  "id": "pat.can",
+  "from": "tense.can-come",
+  "my": "{v}နိုင်တယ်",
+  "rom": [
+   "{v} nàin dè",
+   "{v} nàin dè"
+  ],
+  "en": "I can {base}",
+  "note": "Verb + နိုင်တယ် = can, be able to."
+ },
+ {
+  "id": "pat.ever-q",
+  "from": "tense.ever-been-q",
+  "my": "{v}ဖူးလား",
+  "rom": [
+   "{v} bú lá",
+   "{v} hpú lá"
+  ],
+  "en": "Have you ever had the chance to {base}?",
+  "note": "Verb + ဖူးလား = have you ever …?"
+ }
 ]

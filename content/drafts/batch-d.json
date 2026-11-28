@@ -343,7 +343,7 @@
       "id": "tense.can-cook-q",
       "unit": 17,
       "my": "ထမင်းချက်တတ်လား",
-      "rom": "htə-mín chaʔ taʔ lá",
+      "rom": "htə-mín cheʔ taʔ lá",
       "en": "Can you cook?",
       "emoji": "🍳",
       "note": "Verb + တတ် = know how to (a learned skill). After a checked syllable it's taʔ, otherwise daʔ."
@@ -464,7 +464,8 @@
       "my": "သိပ်ကောင်းတာပဲ",
       "rom": "theiʔ káun dà bé",
       "en": "That's great!",
-      "emoji": "🙌"
+      "emoji": "🙌",
+      "note": "သိပ် (theiʔ) = very."
     },
     {
       "id": "talk.thats-right",
@@ -539,7 +540,7 @@
       "id": "talk.good-cook",
       "unit": 18,
       "my": "ဟင်းချက်တော်တယ်",
-      "rom": "hín chaʔ tàw dè",
+      "rom": "hín cheʔ tàw dè",
       "en": "You're a great cook",
       "emoji": "👩‍🍳",
       "note": "ဟင်း = curry / dishes, တော် = skilled, good at."
@@ -563,11 +564,11 @@
     {
       "id": "talk.raining",
       "unit": 18,
-      "my": "မိုးရွာတယ်",
-      "rom": "mó ywà dè",
+      "my": "မိုးရွာနေတယ်",
+      "rom": "mó ywà nèi dè",
       "en": "It's raining",
       "emoji": "🌧️",
-      "lit": "sky/rain falls"
+      "lit": "rain falling -ing"
     },
     {
       "id": "talk.cold",
@@ -768,7 +769,7 @@
         {
           "s": "B",
           "my": "အရမ်းစားလို့ကောင်းတယ် ဟင်းချက်တော်တယ်",
-          "rom": "ə-yán sá lo̰ káun dè hín chaʔ tàw dè",
+          "rom": "ə-yán sá lo̰ káun dè hín cheʔ tàw dè",
           "en": "It's really delicious. You're a great cook."
         },
         {
@@ -787,7 +788,7 @@
           "s": "A",
           "my": "ဒီနေ့ အရမ်းပူတယ် နော်",
           "rom": "dì-nḛ ə-yán pù dè nàw",
-          "en": "It's really hot today, isn't it?"
+          "en": "It's really hot today, isn't it? (နော် = isn't it?)"
         },
         {
           "s": "B",
@@ -872,30 +873,5 @@
       ]
     }
   ],
-  "uncertain": [
-    {
-      "id": "pat.ever-q",
-      "why": "Voicing of ဖူး after an open syllable: written bú (as commonly heard), but some speakers keep hpú. Check with partner."
-    },
-    {
-      "id": "tense.ever-eaten-mohinga",
-      "why": "Same ဖူး voicing question (sá bú lá vs sá hpú lá)."
-    },
-    {
-      "id": "talk.interesting",
-      "why": "Voicing in စိတ်ဝင်စား (wìn zá vs wìn sá) not fully certain."
-    },
-    {
-      "id": "talk.agree",
-      "why": "Whether တူ is voiced (tù vs dù) in သဘောတူတယ် in normal speech."
-    },
-    {
-      "id": "talk.learning-for-family",
-      "why": "ချစ်သူ means boyfriend/girlfriend; for a spouse, the learner may prefer ကျွန်တော့်မိန်းမ / ကျွန်မယောက်ျား (my wife/husband). Also check ချစ်သူ့ (creaky possessive) spelling."
-    },
-    {
-      "id": "tense.not-yet-eaten",
-      "why": "Both မစားရသေးဘူး and မစားသေးဘူး are used; chose the version with ရ. Confirm which sounds more natural to the family."
-    }
-  ]
+  "uncertain": []
 }

@@ -1,81 +1,1301 @@
 [
-  {
-    "id": "d.meeting",
-    "title": "Meeting someone new",
-    "after": "m1.l3",
-    "speakers": { "A": { "name": "Su", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
-    "lines": [
-      { "s": "A", "my": "မင်္ဂလာပါ", "rom": "mìn-gə-là-bà", "en": "Hello." },
-      { "s": "B", "my": "မင်္ဂလာပါ", "rom": "mìn-gə-là-bà", "en": "Hello." },
-      { "s": "A", "my": "နေကောင်းလား", "rom": "nèi káun lá", "en": "How are you?" },
-      { "s": "B", "my": "နေကောင်းပါတယ်", "rom": "nèi káun bà dè", "en": "I'm well." },
-      { "s": "A", "my": "နာမည် ဘယ်လို ခေါ်လဲ", "rom": "nàn-mè bè-lò hkàw lé", "en": "What's your name?" },
-      { "s": "B", "my": "ကျွန်တော့်နာမည် သူရ ပါ", "rom": "kyə-na̰w nàn-mè thù-ya̰ bà", "en": "My name is Thura." },
-      { "s": "A", "my": "ဘယ်က လာလဲ", "rom": "bè ga̰ là lé", "en": "Where are you from?" },
-      { "s": "B", "my": "အင်္ဂလန်က လာပါတယ်", "rom": "ìn-gə-làn ga̰ là bà dè", "en": "I'm from England." },
-      { "s": "A", "my": "တွေ့ရတာ ဝမ်းသာပါတယ်", "rom": "twḛ ya̰ dà wún-thà bà dè", "en": "Nice to meet you." }
-    ],
-    "questions": [
-      { "q": "What's the man's name?", "options": ["Thura", "Aung", "Zaw", "Min"], "answer": 0 },
-      { "q": "Where is he from?", "options": ["England", "Myanmar", "America", "Thailand"], "answer": 0 }
-    ]
+ {
+  "id": "d.meeting",
+  "title": "Meeting someone new",
+  "after": "m1.l3",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
   },
-  {
-    "id": "d.learning",
-    "title": "I'm learning Burmese",
-    "after": "m3.l2",
-    "speakers": { "A": { "name": "Su", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
-    "lines": [
-      { "s": "A", "my": "မြန်မာစကား ပြောတတ်လား", "rom": "myəmà zəgá pyáw daʔ lá", "en": "Can you speak Burmese?" },
-      { "s": "B", "my": "နည်းနည်း ပြောတတ်ပါတယ်", "rom": "né-né pyáw daʔ bà dè", "en": "I can speak a little." },
-      { "s": "B", "my": "မြန်မာစကား သင်နေတယ်", "rom": "myəmà zəgá thìn nèi dè", "en": "I'm learning Burmese." },
-      { "s": "A", "my": "ဟုတ်လား ကောင်းတယ်", "rom": "houʔ lá káun dè", "en": "Really? That's good." },
-      { "s": "B", "my": "ဒါ ဘာလဲ", "rom": "dà bà lé", "en": "What's this?" },
-      { "s": "A", "my": "ရေ", "rom": "yèi", "en": "Water." },
-      { "s": "B", "my": "ထပ်ပြောပါဦး", "rom": "htaʔ pyáw bà ú", "en": "Please say it again." },
-      { "s": "A", "my": "ရေ", "rom": "yèi", "en": "Water." },
-      { "s": "B", "my": "ကျေးဇူးတင်ပါတယ်", "rom": "kyéi-zú tìn bà dè", "en": "Thank you." }
+  "lines": [
+   {
+    "s": "A",
+    "my": "မင်္ဂလာပါ",
+    "rom": "mìn-gə-là-bà",
+    "en": "Hello."
+   },
+   {
+    "s": "B",
+    "my": "မင်္ဂလာပါ",
+    "rom": "mìn-gə-là-bà",
+    "en": "Hello."
+   },
+   {
+    "s": "A",
+    "my": "နေကောင်းလား",
+    "rom": "nèi káun lá",
+    "en": "How are you?"
+   },
+   {
+    "s": "B",
+    "my": "နေကောင်းပါတယ်",
+    "rom": "nèi káun bà dè",
+    "en": "I'm well."
+   },
+   {
+    "s": "A",
+    "my": "နာမည် ဘယ်လို ခေါ်လဲ",
+    "rom": "nàn-mè bè-lò hkàw lé",
+    "en": "What's your name?"
+   },
+   {
+    "s": "B",
+    "my": "ကျွန်တော့်နာမည် သူရ ပါ",
+    "rom": "kyə-na̰w nàn-mè thù-ya̰ bà",
+    "en": "My name is Thura."
+   },
+   {
+    "s": "A",
+    "my": "ဘယ်က လာလဲ",
+    "rom": "bè ga̰ là lé",
+    "en": "Where are you from?"
+   },
+   {
+    "s": "B",
+    "my": "အင်္ဂလန်က လာပါတယ်",
+    "rom": "ìn-gə-làn ga̰ là bà dè",
+    "en": "I'm from England."
+   },
+   {
+    "s": "A",
+    "my": "တွေ့ရတာ ဝမ်းသာပါတယ်",
+    "rom": "twḛ ya̰ dà wún-thà bà dè",
+    "en": "Nice to meet you."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What's the man's name?",
+    "options": [
+     "Thura",
+     "Aung",
+     "Zaw",
+     "Min"
     ],
-    "questions": [
-      { "q": "How much Burmese can the man speak?", "options": ["A little", "None at all", "He's fluent", "Only numbers"], "answer": 0 },
-      { "q": "What does he ask about?", "options": ["Water", "Rice", "A car", "Her name"], "answer": 0 }
-    ]
+    "answer": 0
+   },
+   {
+    "q": "Where is he from?",
+    "options": [
+     "England",
+     "Myanmar",
+     "America",
+     "Thailand"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.learning",
+  "title": "I'm learning Burmese",
+  "after": "m3.l2",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
   },
-  {
-    "id": "d.going",
-    "title": "Where are you going?",
-    "after": "m4.l4",
-    "speakers": { "A": { "name": "Su", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
-    "lines": [
-      { "s": "A", "my": "ဘယ်သွားမလဲ", "rom": "bè thwá mə-lé", "en": "Where are you going?" },
-      { "s": "B", "my": "ထမင်း သွားစားမယ်", "rom": "htə-mín thwá sá mè", "en": "I'm going to eat." },
-      { "s": "B", "my": "လာမလား", "rom": "là mə-lá", "en": "Will you come?" },
-      { "s": "A", "my": "ဟုတ်ကဲ့ သွားမယ်", "rom": "houʔ kḛ thwá mè", "en": "Yes, I'll go." },
-      { "s": "B", "my": "ဘာ သောက်ချင်လဲ", "rom": "bà thauʔ chìn lé", "en": "What do you want to drink?" },
-      { "s": "A", "my": "ရေ သောက်ချင်တယ်", "rom": "yèi thauʔ chìn dè", "en": "I want to drink water." }
+  "lines": [
+   {
+    "s": "A",
+    "my": "မြန်မာစကား ပြောတတ်လား",
+    "rom": "myəmà zəgá pyáw daʔ lá",
+    "en": "Can you speak Burmese?"
+   },
+   {
+    "s": "B",
+    "my": "နည်းနည်း ပြောတတ်ပါတယ်",
+    "rom": "né-né pyáw daʔ bà dè",
+    "en": "I can speak a little."
+   },
+   {
+    "s": "B",
+    "my": "မြန်မာစကား သင်နေတယ်",
+    "rom": "myəmà zəgá thìn nèi dè",
+    "en": "I'm learning Burmese."
+   },
+   {
+    "s": "A",
+    "my": "ဟုတ်လား ကောင်းတယ်",
+    "rom": "houʔ lá káun dè",
+    "en": "Really? That's good."
+   },
+   {
+    "s": "B",
+    "my": "ဒါ ဘာလဲ",
+    "rom": "dà bà lé",
+    "en": "What's this?"
+   },
+   {
+    "s": "A",
+    "my": "ရေ",
+    "rom": "yèi",
+    "en": "Water."
+   },
+   {
+    "s": "B",
+    "my": "ထပ်ပြောပါဦး",
+    "rom": "htaʔ pyáw bà ú",
+    "en": "Please say it again."
+   },
+   {
+    "s": "A",
+    "my": "ရေ",
+    "rom": "yèi",
+    "en": "Water."
+   },
+   {
+    "s": "B",
+    "my": "ကျေးဇူးတင်ပါတယ်",
+    "rom": "kyéi-zú tìn bà dè",
+    "en": "Thank you."
+   }
+  ],
+  "questions": [
+   {
+    "q": "How much Burmese can the man speak?",
+    "options": [
+     "A little",
+     "None at all",
+     "He's fluent",
+     "Only numbers"
     ],
-    "questions": [
-      { "q": "Where is the man going?", "options": ["To eat", "Home", "To work", "To sleep"], "answer": 0 },
-      { "q": "What does the woman want to drink?", "options": ["Water", "Tea", "Coffee", "Nothing"], "answer": 0 }
-    ]
+    "answer": 0
+   },
+   {
+    "q": "What does he ask about?",
+    "options": [
+     "Water",
+     "Rice",
+     "A car",
+     "Her name"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.going",
+  "title": "Where are you going?",
+  "after": "m4.l4",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
   },
-  {
-    "id": "d.meal",
-    "title": "Have you eaten?",
-    "after": "m5.l1",
-    "speakers": { "A": { "name": "Su", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
-    "lines": [
-      { "s": "A", "my": "ထမင်းစားပြီးပြီလား", "rom": "htə-mín sá pyí bì lá", "en": "Have you eaten?" },
-      { "s": "B", "my": "မစားရသေးဘူး", "rom": "mə-sá ya̰ thé bú", "en": "Not yet." },
-      { "s": "A", "my": "စားမလား", "rom": "sá mə-lá", "en": "Will you eat?" },
-      { "s": "B", "my": "ဟုတ်ကဲ့ စားမယ်", "rom": "houʔ kḛ sá mè", "en": "Yes, I'll eat." },
-      { "s": "A", "my": "ရေ သောက်မလား", "rom": "yèi thauʔ mə-lá", "en": "Will you have some water?" },
-      { "s": "B", "my": "ဟုတ်ကဲ့ ကျေးဇူးတင်ပါတယ်", "rom": "houʔ kḛ kyéi-zú tìn bà dè", "en": "Yes, thank you." },
-      { "s": "B", "my": "စားလို့ကောင်းတယ်", "rom": "sá lo̰ káun dè", "en": "It's delicious." }
+  "lines": [
+   {
+    "s": "A",
+    "my": "ဘယ်သွားမလဲ",
+    "rom": "bè thwá mə-lé",
+    "en": "Where are you going?"
+   },
+   {
+    "s": "B",
+    "my": "ထမင်း သွားစားမယ်",
+    "rom": "htə-mín thwá sá mè",
+    "en": "I'm going to eat."
+   },
+   {
+    "s": "B",
+    "my": "လာမလား",
+    "rom": "là mə-lá",
+    "en": "Will you come?"
+   },
+   {
+    "s": "A",
+    "my": "ဟုတ်ကဲ့ သွားမယ်",
+    "rom": "houʔ kḛ thwá mè",
+    "en": "Yes, I'll go."
+   },
+   {
+    "s": "B",
+    "my": "ဘာ သောက်ချင်လဲ",
+    "rom": "bà thauʔ chìn lé",
+    "en": "What do you want to drink?"
+   },
+   {
+    "s": "A",
+    "my": "ရေ သောက်ချင်တယ်",
+    "rom": "yèi thauʔ chìn dè",
+    "en": "I want to drink water."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Where is the man going?",
+    "options": [
+     "To eat",
+     "Home",
+     "To work",
+     "To sleep"
     ],
-    "questions": [
-      { "q": "Had the man already eaten?", "options": ["No, not yet", "Yes", "He isn't hungry", "He doesn't say"], "answer": 0 },
-      { "q": "What does he think of the food?", "options": ["It's delicious", "It's too spicy", "He doesn't like it", "It's cold"], "answer": 0 }
-    ]
-  }
+    "answer": 0
+   },
+   {
+    "q": "What does the woman want to drink?",
+    "options": [
+     "Water",
+     "Tea",
+     "Coffee",
+     "Nothing"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.meal",
+  "title": "Have you eaten?",
+  "after": "m5.l1",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ထမင်းစားပြီးပြီလား",
+    "rom": "htə-mín sá pyí bì lá",
+    "en": "Have you eaten?"
+   },
+   {
+    "s": "B",
+    "my": "မစားရသေးဘူး",
+    "rom": "mə-sá ya̰ thé bú",
+    "en": "Not yet."
+   },
+   {
+    "s": "A",
+    "my": "စားမလား",
+    "rom": "sá mə-lá",
+    "en": "Will you eat?"
+   },
+   {
+    "s": "B",
+    "my": "ဟုတ်ကဲ့ စားမယ်",
+    "rom": "houʔ kḛ sá mè",
+    "en": "Yes, I'll eat."
+   },
+   {
+    "s": "A",
+    "my": "ရေ သောက်မလား",
+    "rom": "yèi thauʔ mə-lá",
+    "en": "Will you have some water?"
+   },
+   {
+    "s": "B",
+    "my": "ဟုတ်ကဲ့ ကျေးဇူးတင်ပါတယ်",
+    "rom": "houʔ kḛ kyéi-zú tìn bà dè",
+    "en": "Yes, thank you."
+   },
+   {
+    "s": "B",
+    "my": "စားလို့ကောင်းတယ်",
+    "rom": "sá lo̰ káun dè",
+    "en": "It's delicious."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Had the man already eaten?",
+    "options": [
+     "No, not yet",
+     "Yes",
+     "He isn't hungry",
+     "He doesn't say"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "What does he think of the food?",
+    "options": [
+     "It's delicious",
+     "It's too spicy",
+     "He doesn't like it",
+     "It's cold"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.questions",
+  "title": "So many questions",
+  "after": "m8.l4",
+  "speakers": {
+   "A": {
+    "name": "Hnin",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ဘာလုပ်နေလဲ",
+    "rom": "bà louʔ nèi lé",
+    "en": "What are you doing?"
+   },
+   {
+    "s": "B",
+    "my": "မြန်မာစကား သင်နေတယ်",
+    "rom": "myəmà zəgá thìn nèi dè",
+    "en": "I'm learning Burmese."
+   },
+   {
+    "s": "A",
+    "my": "ဘာလို့လဲ",
+    "rom": "bà-lo̰ lé",
+    "en": "Why?"
+   },
+   {
+    "s": "B",
+    "my": "မြန်မာပြည် သွားမလို့ပါ",
+    "rom": "myəmà-pyì thwá mə-lo̰ bà",
+    "en": "Because I'm going to Myanmar (မြန်မာပြည်). Verb + မလို့ = 'because I'm going to…'."
+   },
+   {
+    "s": "A",
+    "my": "ဘယ်တော့ သွားမလဲ",
+    "rom": "bè-da̰w thwá mə-lé",
+    "en": "When are you going?"
+   },
+   {
+    "s": "B",
+    "my": "မသိဘူး",
+    "rom": "mə-thḭ bú",
+    "en": "I don't know."
+   },
+   {
+    "s": "A",
+    "my": "ဘယ်နှစ်ယောက် သွားမလဲ",
+    "rom": "bè-hnə-yauʔ thwá mə-lé",
+    "en": "How many of you are going?"
+   },
+   {
+    "s": "B",
+    "my": "နှစ်ယောက်",
+    "rom": "hnə-yauʔ",
+    "en": "Two of us."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Why is Thura learning Burmese?",
+    "options": [
+     "He's going to Myanmar",
+     "For his job",
+     "He's bored",
+     "His teacher told him to"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "When is he going?",
+    "options": [
+     "He doesn't know",
+     "Tomorrow",
+     "Next year",
+     "Never"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.family",
+  "title": "Meet my family",
+  "after": "m9.l4",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ဒါ ကျွန်မ အမေပါ",
+    "rom": "dà kyə-ma̰ ə-mèi bà",
+    "en": "This is my mother."
+   },
+   {
+    "s": "B",
+    "my": "မင်္ဂလာပါ အန်တီ",
+    "rom": "mìn-gə-là-bà àn-tì",
+    "en": "Hello, aunty."
+   },
+   {
+    "s": "A",
+    "my": "ဒါ ကျွန်မ အစ်ကိုပါ",
+    "rom": "dà kyə-ma̰ ə-kò bà",
+    "en": "And this is my older brother."
+   },
+   {
+    "s": "B",
+    "my": "မောင်နှမ ဘယ်နှစ်ယောက် ရှိလဲ",
+    "rom": "màun-hnə-ma̰ bè-hnə-yauʔ shḭ lé",
+    "en": "How many brothers and sisters do you have?"
+   },
+   {
+    "s": "A",
+    "my": "အစ်ကို တစ်ယောက် ညီမ တစ်ယောက် ရှိတယ်",
+    "rom": "ə-kò tə-yauʔ nyì-ma̰ tə-yauʔ shḭ dè",
+    "en": "One older brother and one younger sister."
+   },
+   {
+    "s": "B",
+    "my": "ညီမ အသက် ဘယ်လောက် ရှိပြီလဲ",
+    "rom": "nyì-ma̰ ə-theʔ bè-lauʔ shḭ bì lé",
+    "en": "How old is your younger sister?"
+   },
+   {
+    "s": "A",
+    "my": "ဆယ်နှစ် ရှိပြီ",
+    "rom": "hsè-hniʔ shḭ bì",
+    "en": "She's ten (နှစ် here means 'years')."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Who does Su introduce first?",
+    "options": [
+     "Her mother",
+     "Her father",
+     "Her younger sister",
+     "Her grandmother"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "How old is Su's younger sister?",
+    "options": [
+     "Ten",
+     "Three",
+     "Thirty",
+     "Two"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.unwell",
+  "title": "Not feeling well",
+  "after": "m10.l3",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "အဆင်ပြေလား",
+    "rom": "ə-hsìn pyèi lá",
+    "en": "Are you OK?"
+   },
+   {
+    "s": "B",
+    "my": "နေမကောင်းဘူး",
+    "rom": "nèi mə-káun bú",
+    "en": "I'm not well."
+   },
+   {
+    "s": "A",
+    "my": "ဘာဖြစ်တာလဲ",
+    "rom": "bà hpyiʔ tà lé",
+    "en": "What's wrong?"
+   },
+   {
+    "s": "B",
+    "my": "ခေါင်းကိုက်တယ် ပင်ပန်းတယ်",
+    "rom": "hkáun kaiʔ tè pìn-bán dè",
+    "en": "I have a headache. I'm tired."
+   },
+   {
+    "s": "A",
+    "my": "ဆေးသောက်ပြီးပြီလား",
+    "rom": "hséi thauʔ pyí bì lá",
+    "en": "Have you taken any medicine?"
+   },
+   {
+    "s": "B",
+    "my": "သောက်ပြီးပြီ",
+    "rom": "thauʔ pyí bì",
+    "en": "Yes, I have."
+   },
+   {
+    "s": "A",
+    "my": "အနားယူပါ",
+    "rom": "ə-ná yù bà",
+    "en": "Get some rest."
+   },
+   {
+    "s": "A",
+    "my": "မြန်မြန် နေကောင်းပါစေ",
+    "rom": "myàn-myàn nèi káun bà zèi",
+    "en": "Get well soon."
+   },
+   {
+    "s": "B",
+    "my": "ကျေးဇူးတင်ပါတယ်",
+    "rom": "kyéi-zú tìn bà dè",
+    "en": "Thank you."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What's wrong with Thura?",
+    "options": [
+     "A headache and tiredness",
+     "A stomach ache",
+     "He's hungry",
+     "He's cold"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Has he taken medicine?",
+    "options": [
+     "Yes",
+     "No",
+     "He doesn't have any",
+     "He doesn't know"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.market",
+  "title": "At the market",
+  "after": "m11.l4",
+  "speakers": {
+   "A": {
+    "name": "Hnin",
+    "voice": 0
+   },
+   "B": {
+    "name": "Kyaw",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "B",
+    "my": "ဒါ ဘယ်လောက်လဲ",
+    "rom": "dà bè-lauʔ lé",
+    "en": "How much is this?"
+   },
+   {
+    "s": "A",
+    "my": "သုံးထောင်ပါ",
+    "rom": "thóun-dàun bà",
+    "en": "Three thousand."
+   },
+   {
+    "s": "B",
+    "my": "ဈေးကြီးတယ်",
+    "rom": "zéi-gyí dè",
+    "en": "That's expensive."
+   },
+   {
+    "s": "A",
+    "my": "ဈေးမကြီးပါဘူး",
+    "rom": "zéi mə-kyí bà bú",
+    "en": "It's not expensive!"
+   },
+   {
+    "s": "B",
+    "my": "နည်းနည်း လျှော့ပေးပါ",
+    "rom": "né-né sho̰ péi bà",
+    "en": "A bit cheaper, please."
+   },
+   {
+    "s": "A",
+    "my": "နှစ်ထောင့်ငါးရာ ရပါတယ်",
+    "rom": "hnə-hta̰un ngá-yà ya̰ bà dè",
+    "en": "Two thousand five hundred is OK."
+   },
+   {
+    "s": "B",
+    "my": "ကောင်းပြီ၊ ဝယ်မယ်",
+    "rom": "káun bì, wè mè",
+    "en": "Good, I'll buy it."
+   },
+   {
+    "s": "A",
+    "my": "ကျေးဇူးတင်ပါတယ်",
+    "rom": "kyéi-zú tìn bà dè",
+    "en": "Thank you."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What was the first price?",
+    "options": [
+     "3,000 kyat",
+     "2,500 kyat",
+     "5,000 kyat",
+     "1,500 kyat"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "What price did they agree on?",
+    "options": [
+     "2,500 kyat",
+     "3,000 kyat",
+     "2,000 kyat",
+     "1,000 kyat"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.plans",
+  "title": "Tomorrow evening",
+  "after": "m12.l4",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Zaw",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "မနက်ဖြန် လာမလား",
+    "rom": "mə-neʔ-hpyàn là mə-lá",
+    "en": "Will you come tomorrow?"
+   },
+   {
+    "s": "B",
+    "my": "မနက်ဖြန် စနေနေ့ ဟုတ်လား",
+    "rom": "mə-neʔ-hpyàn sə-nèi-nḛ houʔ lá",
+    "en": "Tomorrow is Saturday, right?"
+   },
+   {
+    "s": "A",
+    "my": "ဟုတ်ကဲ့",
+    "rom": "houʔ kḛ",
+    "en": "Yes."
+   },
+   {
+    "s": "B",
+    "my": "ဟုတ်ကဲ့၊ လာမယ်",
+    "rom": "houʔ kḛ, là mè",
+    "en": "OK, I'll come."
+   },
+   {
+    "s": "A",
+    "my": "ဘယ်နှစ်နာရီ လာမလဲ",
+    "rom": "bè-hnə-nà-yì là mə-lé",
+    "en": "What time will you come?"
+   },
+   {
+    "s": "B",
+    "my": "ညနေ ငါးနာရီ လာမယ်",
+    "rom": "nya̰-nèi ngá-nà-yì là mè",
+    "en": "I'll come at five in the evening."
+   },
+   {
+    "s": "A",
+    "my": "ကောင်းတယ်၊ ထမင်း လာစားပါ",
+    "rom": "káun dè, htə-mín là sá bà",
+    "en": "Great, come and eat with us."
+   },
+   {
+    "s": "B",
+    "my": "ကျေးဇူးတင်ပါတယ်၊ မနက်ဖြန် တွေ့မယ်",
+    "rom": "kyéi-zú tìn bà dè, mə-neʔ-hpyàn twḛ mè",
+    "en": "Thank you. See you tomorrow."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What day is tomorrow?",
+    "options": [
+     "Saturday",
+     "Sunday",
+     "Friday",
+     "Monday"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "When will Zaw come?",
+    "options": [
+     "5 in the evening",
+     "5 in the morning",
+     "Half past five",
+     "At night"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.teashop",
+  "title": "At the teashop",
+  "after": "m13.l3",
+  "speakers": {
+   "A": {
+    "name": "Aung",
+    "voice": 1
+   },
+   "B": {
+    "name": "May",
+    "voice": 0
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ဘယ်နှစ်ယောက်လဲ",
+    "rom": "bè-hnə-yauʔ lé",
+    "en": "How many people?"
+   },
+   {
+    "s": "B",
+    "my": "သုံးယောက်ပါ",
+    "rom": "thóun-yauʔ pà",
+    "en": "Three of us."
+   },
+   {
+    "s": "A",
+    "my": "ဘာ သောက်မလဲ",
+    "rom": "bà thauʔ mə-lé",
+    "en": "What would you like to drink?"
+   },
+   {
+    "s": "B",
+    "my": "လက်ဖက်ရည် နှစ်ခွက်နဲ့ ကော်ဖီ တစ်ခွက် ပေးပါ",
+    "rom": "lə-hpeʔ-yèi hnə-hkweʔ nḛ kàw-hpì tə-hkweʔ péi bà",
+    "en": "Two teas and (နဲ့) one coffee, please."
+   },
+   {
+    "s": "A",
+    "my": "ရေ ရော",
+    "rom": "yèi yàw",
+    "en": "And water? (ရော = 'what about…?')"
+   },
+   {
+    "s": "B",
+    "my": "ရေ တစ်ပုလင်း ပေးပါ",
+    "rom": "yèi tə-bə-lín péi bà",
+    "en": "A bottle of water, please."
+   },
+   {
+    "s": "A",
+    "my": "ဟုတ်ကဲ့",
+    "rom": "houʔ kḛ",
+    "en": "Sure."
+   }
+  ],
+  "questions": [
+   {
+    "q": "How many people are there?",
+    "options": [
+     "Three",
+     "Two",
+     "Four",
+     "One"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "What drinks did May order?",
+    "options": [
+     "Two teas, one coffee and a bottle of water",
+     "Three teas",
+     "Two coffees and one tea",
+     "One tea and two bottles of water"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.tea-shop",
+  "title": "At the tea shop",
+  "after": "m14.l4",
+  "speakers": {
+   "A": {
+    "name": "Aung",
+    "voice": 1
+   },
+   "B": {
+    "name": "Hnin",
+    "voice": 0
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ဘာသောက်မလဲ",
+    "rom": "bà thauʔ mə-lé",
+    "en": "What would you like to drink?"
+   },
+   {
+    "s": "B",
+    "my": "လက်ဖက်ရည် တစ်ခွက် ပေးပါ",
+    "rom": "lə-hpeʔ-yèi tə-hkweʔ péi bà",
+    "en": "One tea, please."
+   },
+   {
+    "s": "A",
+    "my": "ဘာစားမလဲ",
+    "rom": "bà sá mə-lé",
+    "en": "What would you like to eat?"
+   },
+   {
+    "s": "B",
+    "my": "မုန့်ဟင်းခါး ရှိလား",
+    "rom": "mo̰un-hín-gá shḭ lá",
+    "en": "Do you have mohinga?"
+   },
+   {
+    "s": "A",
+    "my": "ရှိပါတယ်",
+    "rom": "shḭ bà dè",
+    "en": "Yes, we do."
+   },
+   {
+    "s": "B",
+    "my": "အစပ် လျှော့ပေးပါ",
+    "rom": "ə-saʔ sha̰w péi bà",
+    "en": "Not too spicy, please."
+   },
+   {
+    "s": "A",
+    "my": "ဟုတ်ကဲ့",
+    "rom": "houʔ kḛ",
+    "en": "OK."
+   },
+   {
+    "s": "B",
+    "my": "စားလို့ကောင်းတယ်",
+    "rom": "sá lo̰ káun dè",
+    "en": "It's delicious."
+   },
+   {
+    "s": "B",
+    "my": "ညီလေး ပိုက်ဆံ ရှင်းမယ်",
+    "rom": "nyì-léi paiʔ-hsàn shín mè",
+    "en": "Excuse me, the bill please."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What does Hnin drink?",
+    "options": [
+     "Tea",
+     "Coffee",
+     "Water",
+     "Plain green tea"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "What does she ask about the mohinga?",
+    "options": [
+     "Not too spicy",
+     "Extra spicy",
+     "A big bowl",
+     "No fish"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.taxi",
+  "title": "Taking a taxi",
+  "after": "m15.l4",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Zaw",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ဈေးကို သွားချင်တယ်",
+    "rom": "zéi gò thwá jìn dè",
+    "en": "I want to go to the market."
+   },
+   {
+    "s": "A",
+    "my": "ဘယ်လောက်လဲ",
+    "rom": "bè-lauʔ lé",
+    "en": "How much?"
+   },
+   {
+    "s": "B",
+    "my": "သုံးထောင်ပါ",
+    "rom": "thóun-dàun bà",
+    "en": "Three thousand (kyats)."
+   },
+   {
+    "s": "A",
+    "my": "ဘယ်လောက် ဝေးလဲ",
+    "rom": "bè-lauʔ wéi lé",
+    "en": "How far is it?"
+   },
+   {
+    "s": "B",
+    "my": "သိပ်မဝေးပါဘူး",
+    "rom": "theiʔ mə-wéi bà bú",
+    "en": "It's not very (သိပ်) far."
+   },
+   {
+    "s": "A",
+    "my": "ညာဘက် ကွေ့ပါ",
+    "rom": "nyà-beʔ kwḛ bà",
+    "en": "Turn right, please."
+   },
+   {
+    "s": "A",
+    "my": "ဒီမှာ ရပ်ပါ",
+    "rom": "dì-hmà yaʔ pà",
+    "en": "Stop here, please."
+   },
+   {
+    "s": "A",
+    "my": "ကျေးဇူးတင်ပါတယ်",
+    "rom": "kyéi-zú tìn bà dè",
+    "en": "Thank you."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Where is Su going?",
+    "options": [
+     "The market",
+     "The airport",
+     "The hospital",
+     "Home"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "How much is the fare?",
+    "options": [
+     "3,000 kyats",
+     "5,000 kyats",
+     "1,000 kyats",
+     "10,000 kyats"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.what-doing",
+  "title": "What are you doing?",
+  "after": "m16.l4",
+  "speakers": {
+   "A": {
+    "name": "Mya",
+    "voice": 0
+   },
+   "B": {
+    "name": "Kyaw",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "B",
+    "my": "ဘာလုပ်နေလဲ",
+    "rom": "bà louʔ nèi lé",
+    "en": "What are you doing?"
+   },
+   {
+    "s": "A",
+    "my": "ရုံးမှာ ရှိတယ်",
+    "rom": "yóun-hmà shḭ dè",
+    "en": "I'm at the office."
+   },
+   {
+    "s": "A",
+    "my": "အလုပ်များနေတယ်",
+    "rom": "ə-louʔ myá nèi dè",
+    "en": "I'm busy."
+   },
+   {
+    "s": "B",
+    "my": "ဘယ်အချိန် အိမ်ပြန်မလဲ",
+    "rom": "bè ə-chèin èin pyàn mə-lé",
+    "en": "What time are you coming home?"
+   },
+   {
+    "s": "A",
+    "my": "ခြောက်နာရီ ပြန်မယ်",
+    "rom": "chauʔ nà-yì pyàn mè",
+    "en": "I'll come home at six."
+   },
+   {
+    "s": "B",
+    "my": "ထမင်းချက်နေတယ်",
+    "rom": "htə-mín cheʔ nèi dè",
+    "en": "I'm cooking."
+   },
+   {
+    "s": "B",
+    "my": "ပင်ပန်းနေလား",
+    "rom": "pìn-bán nèi lá",
+    "en": "Are you tired?"
+   },
+   {
+    "s": "A",
+    "my": "နည်းနည်း ပင်ပန်းတယ်",
+    "rom": "né-né pìn-bán dè",
+    "en": "A little tired."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What is Kyaw doing?",
+    "options": [
+     "Cooking",
+     "Watching TV",
+     "Working",
+     "Sleeping"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "When will Mya come home?",
+    "options": [
+     "At six",
+     "At ten",
+     "In the morning",
+     "Tomorrow"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.past-plans",
+  "title": "Yesterday and tomorrow",
+  "after": "m17.l3",
+  "speakers": {
+   "A": {
+    "name": "Su",
+    "voice": 0
+   },
+   "B": {
+    "name": "Aung",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "မနေ့က ဘယ်သွားလဲ",
+    "rom": "mə-nḛ ga̰ bè thwá lé",
+    "en": "Where did you go yesterday?"
+   },
+   {
+    "s": "B",
+    "my": "ဈေး သွားခဲ့တယ်",
+    "rom": "zéi thwá gḛ dè",
+    "en": "I went to the market."
+   },
+   {
+    "s": "A",
+    "my": "ထမင်းစားပြီးပြီလား",
+    "rom": "htə-mín sá pyí bì lá",
+    "en": "Have you eaten?"
+   },
+   {
+    "s": "B",
+    "my": "မစားရသေးဘူး",
+    "rom": "mə-sá ya̰ théi bú",
+    "en": "Not yet."
+   },
+   {
+    "s": "A",
+    "my": "မုန့်ဟင်းခါး စားမလား",
+    "rom": "mo̰un-hín-gá sá mə-lá",
+    "en": "Will you have some mohinga?"
+   },
+   {
+    "s": "B",
+    "my": "စားမယ်",
+    "rom": "sá mè",
+    "en": "Yes, I will."
+   },
+   {
+    "s": "A",
+    "my": "ပုဂံ ရောက်ဖူးလား",
+    "rom": "bə-gàn yauʔ hpú lá",
+    "en": "Have you ever been to Bagan?"
+   },
+   {
+    "s": "B",
+    "my": "မရောက်ဖူးဘူး သွားချင်တယ်",
+    "rom": "mə-yauʔ hpú bú thwá jìn dè",
+    "en": "I've never been. I want to go."
+   }
+  ],
+  "questions": [
+   {
+    "q": "Where did Aung go yesterday?",
+    "options": [
+     "To the market",
+     "To Bagan",
+     "To work",
+     "Nowhere"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "Has Aung been to Bagan?",
+    "options": [
+     "No, but he wants to go",
+     "Yes, once",
+     "Yes, many times",
+     "He's going tomorrow"
+    ],
+    "answer": 0
+   }
+  ]
+ },
+ {
+  "id": "d.dinner-talk",
+  "title": "Dinner with the family",
+  "after": "m18.l4",
+  "speakers": {
+   "A": {
+    "name": "Khin",
+    "voice": 0
+   },
+   "B": {
+    "name": "Thura",
+    "voice": 1
+   }
+  },
+  "lines": [
+   {
+    "s": "A",
+    "my": "ထမင်းစားပါ",
+    "rom": "htə-mín sá bà",
+    "en": "Please, eat."
+   },
+   {
+    "s": "B",
+    "my": "ကျေးဇူးတင်ပါတယ်",
+    "rom": "kyéi-zú tìn bà dè",
+    "en": "Thank you."
+   },
+   {
+    "s": "A",
+    "my": "စားလို့ကောင်းလား",
+    "rom": "sá lo̰ káun lá",
+    "en": "Is it tasty?"
+   },
+   {
+    "s": "B",
+    "my": "အရမ်းစားလို့ကောင်းတယ် ဟင်းချက်တော်တယ်",
+    "rom": "ə-yán sá lo̰ káun dè hín cheʔ tàw dè",
+    "en": "It's really delicious. You're a great cook."
+   },
+   {
+    "s": "A",
+    "my": "မြန်မာ အစားအစာ ကြိုက်လား",
+    "rom": "myəmà ə-sá ə-sà kyaiʔ lá",
+    "en": "Do you like Myanmar food?"
+   },
+   {
+    "s": "B",
+    "my": "အရမ်းကြိုက်တယ်",
+    "rom": "ə-yán kyaiʔ tè",
+    "en": "I really like it."
+   },
+   {
+    "s": "A",
+    "my": "ဒီနေ့ အရမ်းပူတယ် နော်",
+    "rom": "dì-nḛ ə-yán pù dè nàw",
+    "en": "It's really hot today, isn't it? (နော် = isn't it?)"
+   },
+   {
+    "s": "B",
+    "my": "ဟုတ်တယ် အရမ်းပူတယ်",
+    "rom": "houʔ tè ə-yán pù dè",
+    "en": "Yes, it's really hot."
+   }
+  ],
+  "questions": [
+   {
+    "q": "What does Thura think of the food?",
+    "options": [
+     "It's really delicious",
+     "It's too spicy",
+     "He doesn't like it",
+     "He hasn't tried it"
+    ],
+    "answer": 0
+   },
+   {
+    "q": "What's the weather like?",
+    "options": [
+     "Really hot",
+     "Raining",
+     "Cold",
+     "Windy"
+    ],
+    "answer": 0
+   }
+  ]
+ }
 ]

@@ -18,19 +18,22 @@ if (!reading) {
 }
 const files = readdirSync(new URL('drafts/', root)).filter((f) => f.endsWith('.json')).sort()
 // The same Burmese phrase written in two modules becomes one item; later references point to the first.
-const byText = new Map(speaking.map((i) => [i.my, i.id]))
+const byText = new Map(speaking.map((i) => [i.my, i]))
+// Only treat it as the same item if the meaning matches too (ငါး is both 'five' and 'fish').
+const norm = (e) => e.toLowerCase().replace(/\(.*?\)|[^a-z ]/g, '').trim()
+const sameMeaning = (a, b) => { const x = norm(a), y = norm(b); return x === y || x.includes(y) || y.includes(x) }
 for (const f of files) {
   const d = load(`drafts/${f}`)
   const alias = new Map()
   for (const it of d.items ?? []) {
     const dup = byText.get(it.my)
-    if (dup && dup !== it.id && !it.speaker) {
-      alias.set(it.id, dup)
-      console.log(`  ${it.id} duplicates ${dup}: merged`)
+    if (dup && dup.id !== it.id && !it.speaker && sameMeaning(dup.en, it.en)) {
+      alias.set(it.id, dup.id)
+      console.log(`  ${it.id} duplicates ${dup.id}: merged`)
       continue
     }
     if (!has(speaking, it.id)) speaking.push(it)
-    byText.set(it.my, it.id)
+    if (!byText.has(it.my)) byText.set(it.my, it)
   }
   const fix = (ids) => [...new Set((ids ?? []).map((id) => alias.get(id) ?? id))]
   for (const m of d.modules ?? []) for (const l of m.lessons) l.items = fix(l.items)

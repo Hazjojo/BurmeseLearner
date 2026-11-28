@@ -26,7 +26,15 @@ export default defineConfig({
         ],
       },
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,woff,woff2,json,mp3}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,woff,woff2,json}'],
+        // Audio (~17 MB) is cached the first time each clip plays, rather than all downloaded up front.
+        runtimeCaching: [
+          {
+            urlPattern: ({ url }) => url.pathname.includes('/audio/'),
+            handler: 'CacheFirst',
+            options: { cacheName: 'audio', expiration: { maxEntries: 3000 } },
+          },
+        ],
         // Never answer Firebase's reserved URLs (sign-in handler, init.json) with the cached app shell,
         // or the Google sign-in redirect lands back in the app instead of completing (endless loop).
         navigateFallbackDenylist: [/^\/__\//],

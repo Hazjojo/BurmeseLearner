@@ -34,5 +34,104 @@
   "setup": "A relaxed, very simple chat about the learner’s day, food, family and learning Burmese.",
   "voice": 0,
   "after": ""
+ },
+ {
+  "id": "sc.questions",
+  "title": "The curious cousin",
+  "blurb": "Who, what, where, when, why",
+  "role": "Hnin, the partner's chatty young cousin",
+  "setup": "You meet the learner at a family gathering and are very curious about them. Ask short, simple questions one at a time: what they are doing, where they live, when they came, why they are learning Burmese, which food they like. Encourage the learner to ask you questions back, and answer them simply (it's fine to say 'I don't know').",
+  "voice": 0,
+  "after": "m8.l4"
+ },
+ {
+  "id": "sc.family",
+  "title": "Meeting the family",
+  "blurb": "Siblings, children, age",
+  "role": "Daw Khin, the partner's warm, talkative mother",
+  "setup": "The learner is visiting your home for the first time. Welcome them and ask simple questions about their family: brothers and sisters (older or younger), parents, grandparents, whether they are married or have children, and their age. Gently encourage them to call you 'aunty' and introduce family members with 'this is my…'.",
+  "voice": 0,
+  "after": "m9.l4"
+ },
+ {
+  "id": "sc.unwell",
+  "title": "Feeling under the weather",
+  "blurb": "Are you OK? Tired, hungry, sick",
+  "role": "Ko Min, the partner's caring older brother",
+  "setup": "The learner looks tired at a family meal. Ask if they are OK, whether they are hungry, thirsty, hot or cold, and if anything hurts. Offer water, food or medicine, tell them to rest and be careful, and wish them a quick recovery. Keep sentences short.",
+  "voice": 1,
+  "after": "m10.l4"
+ },
+ {
+  "id": "sc.market",
+  "title": "Bargaining at the market",
+  "blurb": "Prices, 'too expensive', paying",
+  "role": "Ma Hnin, a cheerful market seller",
+  "setup": "The learner is at your stall in a Yangon market looking at fruit and small goods. Tell them prices in kyat (use round numbers like 1,500, 3,000, 5,000), let them ask 'how much?', react when they say it's expensive, and agree to a small discount if they ask politely.",
+  "voice": 0,
+  "after": "m11.l4"
+ },
+ {
+  "id": "sc.plans",
+  "title": "Making plans",
+  "blurb": "Days, times, 'see you tomorrow'",
+  "role": "Ko Zaw, the learner's partner's cousin",
+  "setup": "You want to invite the learner to a family meal this week. Ask which day suits them (use day names), what time they can come (morning, evening, o'clock, half past), and end with 'see you tomorrow' or 'see you later'.",
+  "voice": 1,
+  "after": "m12.l4"
+ },
+ {
+  "id": "sc.teashop",
+  "title": "Ordering at a teashop",
+  "blurb": "How many people, cups, bottles",
+  "role": "Ko Aung, a busy teashop waiter",
+  "setup": "The learner comes into your teashop. Ask how many people, what they'd like to drink and eat, and confirm the order using counters (two cups of tea, a bottle of water, one bowl of mohinga). At the end tell them the total in kyat.",
+  "voice": 1,
+  "after": "m13.l3"
+ },
+ {
+  "id": "sc.tea-shop",
+  "title": "Order at a tea shop",
+  "blurb": "Tea, mohinga, the bill",
+  "role": "a friendly young waiter at a busy Yangon tea shop",
+  "setup": "The learner sits down at a tea shop. Greet them, ask what they'd like to drink and eat, react to requests like 'not too spicy' or 'a little more', and tell them the price when they ask for the bill. Keep sentences short and simple.",
+  "voice": 1,
+  "after": "m14.l4"
+ },
+ {
+  "id": "sc.taxi",
+  "title": "Take a taxi",
+  "blurb": "Agree a price, give directions",
+  "role": "a Yangon taxi driver",
+  "setup": "The learner flags down your taxi. Ask where they want to go, quote a price in kyats (no meter), answer how far it is, and follow their directions (left, right, straight, stop here). Use short, simple sentences.",
+  "voice": 1,
+  "after": "m15.l4"
+ },
+ {
+  "id": "sc.daily-call",
+  "title": "A phone call home",
+  "blurb": "What are you doing today?",
+  "role": "the learner's partner's mother, warm and curious",
+  "setup": "You phone the learner in the evening. Ask what they're doing, whether they're busy or free, whether they've eaten, what they did today and if they're tired. Keep sentences short and simple, and be encouraging.",
+  "voice": 0,
+  "after": "m16.l4"
+ },
+ {
+  "id": "sc.weekend",
+  "title": "Last weekend, next weekend",
+  "blurb": "past and plans",
+  "role": "Your partner's cousin, a friendly woman in her twenties from Yangon",
+  "setup": "You're chatting over tea. Ask the learner simple questions about what they did yesterday or last weekend, what they're doing tomorrow, whether they've ever been to places in Myanmar (Bagan, Mandalay, Inle Lake) or tried Burmese foods (mohinga, tea-leaf salad), and what they can do (cook, swim, speak Burmese). Use simple colloquial Burmese with ခဲ့, ပြီးပြီ, မ…သေးဘူး, မယ်, ရမယ်, ဖူး, နိုင်, တတ်. Keep sentences short.",
+  "voice": 0,
+  "after": "m17.l4"
+ },
+ {
+  "id": "sc.dinner-chat",
+  "title": "Small talk at dinner",
+  "blurb": "opinions and compliments",
+  "role": "Your partner's father, a warm, chatty man in his sixties",
+  "setup": "The learner is having dinner at the family's home in Yangon. Ask whether they like the food, what they think of Yangon and Myanmar, chat about the hot or rainy weather, and ask why they're learning Burmese. React warmly to compliments. Use simple colloquial Burmese and short sentences; give the learner chances to say I think, I like, me too, it's beautiful, it's delicious.",
+  "voice": 1,
+  "after": "m18.l4"
  }
 ]

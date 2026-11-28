@@ -561,5 +561,2283 @@
   "rom": "tə-hsè",
   "en": "ten (10)",
   "emoji": "🔟"
+ },
+ {
+  "id": "q.what",
+  "unit": 8,
+  "my": "ဘာ",
+  "rom": "bà",
+  "en": "what",
+  "note": "Question words go where the answer would be; end the sentence with လဲ.",
+  "emoji": "❓"
+ },
+ {
+  "id": "q.who",
+  "unit": 8,
+  "my": "ဘယ်သူ",
+  "rom": "bè-thù",
+  "en": "who",
+  "lit": "which person",
+  "emoji": "🧑"
+ },
+ {
+  "id": "q.who-is",
+  "unit": 8,
+  "my": "သူ ဘယ်သူလဲ",
+  "rom": "thù bè-thù lé",
+  "en": "Who is he / she?",
+  "note": "သူ means both 'he' and 'she'.",
+  "emoji": "🕵️"
+ },
+ {
+  "id": "q.what-doing",
+  "unit": 8,
+  "my": "ဘာလုပ်နေလဲ",
+  "rom": "bà louʔ nèi lé",
+  "en": "What are you doing?",
+  "lit": "what do -ing ?",
+  "note": "A common friendly opener, a bit like 'what are you up to?'.",
+  "emoji": "🤷"
+ },
+ {
+  "id": "q.what-eat",
+  "unit": 8,
+  "my": "ဘာစားမလဲ",
+  "rom": "bà sá mə-lé",
+  "en": "What will you eat?",
+  "emoji": "🍜"
+ },
+ {
+  "id": "q.want-eat-q",
+  "unit": 8,
+  "my": "စားချင်လား",
+  "rom": "sá jìn lá",
+  "en": "Do you want to eat?",
+  "note": "Verb + ချင်လား = 'do you want to…?'.",
+  "emoji": "🍽️"
+ },
+ {
+  "id": "q.where",
+  "unit": 8,
+  "my": "ဘယ်မှာ",
+  "rom": "bè-hmà",
+  "en": "where (at)",
+  "note": "မှာ means 'at'. 'Where to?' is just ဘယ် before the verb: ဘယ်သွားမလဲ.",
+  "emoji": "📍"
+ },
+ {
+  "id": "q.toilet",
+  "unit": 8,
+  "my": "အိမ်သာ ဘယ်မှာလဲ",
+  "rom": "èin-thà bè-hmà lé",
+  "en": "Where's the toilet?",
+  "emoji": "🚻"
+ },
+ {
+  "id": "q.here",
+  "unit": 8,
+  "my": "ဒီမှာ",
+  "rom": "dì-hmà",
+  "en": "here",
+  "emoji": "👇"
+ },
+ {
+  "id": "q.there",
+  "unit": 8,
+  "my": "ဟိုမှာ",
+  "rom": "hò-hmà",
+  "en": "over there",
+  "emoji": "👉"
+ },
+ {
+  "id": "q.when",
+  "unit": 8,
+  "my": "ဘယ်တော့",
+  "rom": "bè-da̰w",
+  "en": "when (in the future)",
+  "note": "For the past, say ဘယ်တုန်းက (bè-dóun-ga̰) 'when did…?'.",
+  "emoji": "📅"
+ },
+ {
+  "id": "q.when-come",
+  "unit": 8,
+  "my": "ဘယ်တော့ လာမလဲ",
+  "rom": "bè-da̰w là mə-lé",
+  "en": "When will you come?",
+  "emoji": "🗓️"
+ },
+ {
+  "id": "q.what-time",
+  "unit": 8,
+  "my": "ဘယ်အချိန်",
+  "rom": "bè ə-chèin",
+  "en": "what time / when",
+  "lit": "which time",
+  "note": "ဘယ်အချိန် သွားမလဲ 'what time are you going?'.",
+  "emoji": "⏰"
+ },
+ {
+  "id": "q.why",
+  "unit": 8,
+  "my": "ဘာလို့လဲ",
+  "rom": "bà-lo̰ lé",
+  "en": "Why?",
+  "lit": "what-because ?",
+  "emoji": "🤔"
+ },
+ {
+  "id": "q.why-not-come",
+  "unit": 8,
+  "my": "ဘာလို့ မလာတာလဲ",
+  "rom": "bà-lo̰ mə-là dà lé",
+  "en": "Why didn't you come?",
+  "note": "Verb + တာလဲ asks about something that already happened.",
+  "emoji": "🚪"
+ },
+ {
+  "id": "q.because-busy",
+  "unit": 8,
+  "my": "အလုပ်များလို့",
+  "rom": "ə-louʔ myá lo̰",
+  "en": "Because I'm busy",
+  "lit": "work many because",
+  "note": "Reason + လို့ = 'because…'.",
+  "emoji": "💼"
+ },
+ {
+  "id": "q.how",
+  "unit": 8,
+  "my": "ဘယ်လို",
+  "rom": "bè-lò",
+  "en": "how",
+  "lit": "which way",
+  "emoji": "🛠️"
+ },
+ {
+  "id": "q.how-go",
+  "unit": 8,
+  "my": "ဘယ်လို သွားမလဲ",
+  "rom": "bè-lò thwá mə-lé",
+  "en": "How will you get there?",
+  "lit": "how go will ?",
+  "emoji": "🚕"
+ },
+ {
+  "id": "q.which",
+  "unit": 8,
+  "my": "ဘယ်ဟာလဲ",
+  "rom": "bè-hà lé",
+  "en": "Which one?",
+  "emoji": "☝️"
+ },
+ {
+  "id": "q.which-like",
+  "unit": 8,
+  "my": "ဘယ်ဟာ ကြိုက်လဲ",
+  "rom": "bè-hà kyaiʔ lé",
+  "en": "Which one do you like?",
+  "emoji": "🤩"
+ },
+ {
+  "id": "q.how-much",
+  "unit": 8,
+  "my": "ဒါ ဘယ်လောက်လဲ",
+  "rom": "dà bè-lauʔ lé",
+  "en": "How much is this?",
+  "note": "ဘယ်လောက် = how much: prices, amounts, distances.",
+  "emoji": "💰"
+ },
+ {
+  "id": "q.how-many-people",
+  "unit": 8,
+  "my": "ဘယ်နှစ်ယောက်လဲ",
+  "rom": "bè-hnə-yauʔ lé",
+  "en": "How many people?",
+  "note": "ယောက် is the counting word for people.",
+  "emoji": "👥"
+ },
+ {
+  "id": "q.how-many-things",
+  "unit": 8,
+  "my": "ဘယ်နှစ်ခုလဲ",
+  "rom": "bè-hnə-hkṵ lé",
+  "en": "How many (things)?",
+  "note": "ခု is the general counting word for things.",
+  "emoji": "🔢"
+ },
+ {
+  "id": "q.is-there",
+  "unit": 8,
+  "my": "ရေ ရှိလား",
+  "rom": "yèi shḭ lá",
+  "en": "Is there any water? / Do you have water?",
+  "note": "Thing + ရှိလား = 'is there…? / do you have…?'.",
+  "emoji": "🚰"
+ },
+ {
+  "id": "q.isnt",
+  "unit": 8,
+  "my": "မရှိဘူး",
+  "rom": "mə-shḭ bú",
+  "en": "There isn't / I don't have any",
+  "emoji": "🫙"
+ },
+ {
+  "id": "q.dont-know",
+  "unit": 8,
+  "my": "မသိဘူး",
+  "rom": "mə-thḭ bú",
+  "en": "I don't know",
+  "emoji": "🤷‍♀️"
+ },
+ {
+  "id": "q.can-i",
+  "unit": 8,
+  "my": "ရလား",
+  "rom": "ya̰ lá",
+  "en": "Is that OK? / Can I?",
+  "note": "Answer ရပါတယ် 'that's fine'.",
+  "emoji": "🙆"
+ },
+ {
+  "id": "fam.older-brother",
+  "unit": 9,
+  "my": "အစ်ကို",
+  "rom": "ə-kò",
+  "en": "older brother",
+  "note": "Also a friendly way to address a man a little older than you.",
+  "emoji": "👦"
+ },
+ {
+  "id": "fam.older-sister",
+  "unit": 9,
+  "my": "အစ်မ",
+  "rom": "ə-ma̰",
+  "en": "older sister",
+  "note": "Also a friendly way to address a woman a little older than you.",
+  "emoji": "👧"
+ },
+ {
+  "id": "fam.younger-brother",
+  "unit": 9,
+  "my": "ညီ",
+  "rom": "nyì",
+  "en": "younger brother",
+  "note": "A man's younger brother. A woman calls her younger brother မောင် (màun).",
+  "emoji": "🧒"
+ },
+ {
+  "id": "fam.younger-sister",
+  "unit": 9,
+  "my": "ညီမ",
+  "rom": "nyì-ma̰",
+  "en": "younger sister",
+  "note": "Traditionally a woman's younger sister; men may say နှမ (hnə-ma̰), but ညီမ is widely heard.",
+  "emoji": "👧"
+ },
+ {
+  "id": "fam.siblings-q",
+  "unit": 9,
+  "my": "မောင်နှမ ဘယ်နှစ်ယောက် ရှိလဲ",
+  "rom": "màun-hnə-ma̰ bè-hnə-yauʔ shḭ lé",
+  "en": "How many brothers and sisters do you have?",
+  "lit": "siblings how-many-people exist ?",
+  "emoji": "👨‍👩‍👧‍👦"
+ },
+ {
+  "id": "fam.one-older-brother",
+  "unit": 9,
+  "my": "အစ်ကို တစ်ယောက် ရှိတယ်",
+  "rom": "ə-kò tə-yauʔ shḭ dè",
+  "en": "I have one older brother",
+  "note": "Person + number + ယောက်. တစ် 'one' shortens to tə.",
+  "emoji": "☝️"
+ },
+ {
+  "id": "fam.husband",
+  "unit": 9,
+  "my": "ယောက်ျား",
+  "rom": "yauʔ-kyá",
+  "en": "husband",
+  "note": "Everyday word. The politer word is အမျိုးသား (ə-myó-thá).",
+  "emoji": "🤵"
+ },
+ {
+  "id": "fam.wife",
+  "unit": 9,
+  "my": "မိန်းမ",
+  "rom": "méin-ma̰",
+  "en": "wife",
+  "note": "Everyday word (also 'woman'). The politer word is အမျိုးသမီး (ə-myó-thə-mí).",
+  "emoji": "👰"
+ },
+ {
+  "id": "fam.son",
+  "unit": 9,
+  "my": "သား",
+  "rom": "thá",
+  "en": "son",
+  "emoji": "👦"
+ },
+ {
+  "id": "fam.daughter",
+  "unit": 9,
+  "my": "သမီး",
+  "rom": "thə-mí",
+  "en": "daughter",
+  "emoji": "👧"
+ },
+ {
+  "id": "fam.children-q",
+  "unit": 9,
+  "my": "ကလေး ရှိလား",
+  "rom": "kə-lé shḭ lá",
+  "en": "Do you have children?",
+  "note": "ကလေး = child, kid.",
+  "emoji": "👶"
+ },
+ {
+  "id": "fam.married-q",
+  "unit": 9,
+  "my": "အိမ်ထောင် ရှိလား",
+  "rom": "èin-dàun shḭ lá",
+  "en": "Are you married?",
+  "lit": "household exist ?",
+  "emoji": "💍"
+ },
+ {
+  "id": "fam.family",
+  "unit": 9,
+  "my": "မိသားစု",
+  "rom": "mḭ-thá-zṵ",
+  "en": "family",
+  "lit": "mother-child-group",
+  "emoji": "👨‍👩‍👧"
+ },
+ {
+  "id": "fam.parents",
+  "unit": 9,
+  "my": "မိဘ",
+  "rom": "mḭ-ba̰",
+  "en": "parents",
+  "lit": "mother-father",
+  "emoji": "👫"
+ },
+ {
+  "id": "fam.grandmother",
+  "unit": 9,
+  "my": "အဖွား",
+  "rom": "ə-hpwá",
+  "en": "grandmother",
+  "note": "Also used to address any elderly woman.",
+  "emoji": "👵"
+ },
+ {
+  "id": "fam.grandfather",
+  "unit": 9,
+  "my": "အဘိုး",
+  "rom": "ə-hpó",
+  "en": "grandfather",
+  "note": "Also used to address any elderly man.",
+  "emoji": "👴"
+ },
+ {
+  "id": "fam.this-is-mother-m",
+  "unit": 9,
+  "speaker": "m",
+  "my": "ဒါ ကျွန်တော့် အမေပါ",
+  "rom": "dà kyə-na̰w ə-mèi bà",
+  "en": "This is my mother (male speaker)",
+  "emoji": "👩"
+ },
+ {
+  "id": "fam.this-is-mother-f",
+  "unit": 9,
+  "speaker": "f",
+  "my": "ဒါ ကျွန်မ အမေပါ",
+  "rom": "dà kyə-ma̰ ə-mèi bà",
+  "en": "This is my mother (female speaker)",
+  "emoji": "👩"
+ },
+ {
+  "id": "fam.partner",
+  "unit": 9,
+  "my": "ချစ်သူ",
+  "rom": "chiʔ-thù",
+  "en": "boyfriend / girlfriend",
+  "lit": "love-person",
+  "emoji": "💑"
+ },
+ {
+  "id": "fam.aunty",
+  "unit": 9,
+  "my": "အန်တီ",
+  "rom": "àn-tì",
+  "en": "aunty",
+  "note": "From English. Polite way to address an older woman, such as a friend's mother.",
+  "emoji": "👩‍🦳"
+ },
+ {
+  "id": "fam.uncle",
+  "unit": 9,
+  "my": "ဦးလေး",
+  "rom": "ú-léi",
+  "en": "uncle",
+  "note": "Polite way to address an older man, related or not.",
+  "emoji": "👨‍🦳"
+ },
+ {
+  "id": "fam.u",
+  "unit": 9,
+  "my": "ဦး",
+  "rom": "ú",
+  "en": "U (title for an older man)",
+  "note": "Goes before the name: ဦးအောင် 'U Aung'.",
+  "emoji": "🎩"
+ },
+ {
+  "id": "fam.daw",
+  "unit": 9,
+  "my": "ဒေါ်",
+  "rom": "dàw",
+  "en": "Daw (title for an older woman)",
+  "note": "Goes before the name: ဒေါ်ခင် 'Daw Khin'.",
+  "emoji": "🌸"
+ },
+ {
+  "id": "fam.how-old",
+  "unit": 9,
+  "my": "အသက် ဘယ်လောက် ရှိပြီလဲ",
+  "rom": "ə-theʔ bè-lauʔ shḭ bì lé",
+  "en": "How old are you?",
+  "lit": "age how-much exist now ?",
+  "emoji": "🎂"
+ },
+ {
+  "id": "fam.age-30",
+  "unit": 9,
+  "my": "အသက် သုံးဆယ် ရှိပြီ",
+  "rom": "ə-theʔ thóun-zè shḭ bì",
+  "en": "I'm thirty",
+  "note": "သုံး 'three' + ဆယ် 'ten' = thirty. ဆယ် is voiced to 'zè' after သုံး.",
+  "emoji": "🎉"
+ },
+ {
+  "id": "feel.tired",
+  "unit": 10,
+  "my": "ပင်ပန်းတယ်",
+  "rom": "pìn-bán dè",
+  "en": "I'm tired",
+  "note": "Tired from effort, work or travel.",
+  "emoji": "😩"
+ },
+ {
+  "id": "feel.sleepy",
+  "unit": 10,
+  "my": "အိပ်ချင်တယ်",
+  "rom": "eiʔ chìn dè",
+  "en": "I'm sleepy",
+  "lit": "want to sleep",
+  "emoji": "😴"
+ },
+ {
+  "id": "feel.hungry",
+  "unit": 10,
+  "my": "ဗိုက်ဆာတယ်",
+  "rom": "baiʔ hsà dè",
+  "en": "I'm hungry",
+  "lit": "stomach hungry",
+  "emoji": "🍽️"
+ },
+ {
+  "id": "feel.hungry-q",
+  "unit": 10,
+  "my": "ဗိုက်ဆာလား",
+  "rom": "baiʔ hsà lá",
+  "en": "Are you hungry?",
+  "emoji": "🍲"
+ },
+ {
+  "id": "feel.thirsty",
+  "unit": 10,
+  "my": "ရေဆာတယ်",
+  "rom": "yèi hsà dè",
+  "en": "I'm thirsty",
+  "lit": "water hungry",
+  "emoji": "🥤"
+ },
+ {
+  "id": "feel.full",
+  "unit": 10,
+  "my": "ဗိုက်ပြည့်ပြီ",
+  "rom": "baiʔ pyḭ bì",
+  "en": "I'm full",
+  "note": "Useful when the family keeps refilling your plate.",
+  "emoji": "😌"
+ },
+ {
+  "id": "feel.hot",
+  "unit": 10,
+  "my": "ပူတယ်",
+  "rom": "pù dè",
+  "en": "It's hot",
+  "note": "For weather or things. For feeling hot and sticky, people say အိုက်တယ် (aiʔ tè).",
+  "emoji": "🥵"
+ },
+ {
+  "id": "feel.cold",
+  "unit": 10,
+  "my": "ချမ်းတယ်",
+  "rom": "chán dè",
+  "en": "I'm cold",
+  "note": "How you feel. For cold weather or a cold drink, say အေးတယ် (èi dè).",
+  "emoji": "🥶"
+ },
+ {
+  "id": "feel.sick",
+  "unit": 10,
+  "my": "နေမကောင်းဘူး",
+  "rom": "nèi mə-káun bú",
+  "en": "I'm not well / I'm sick",
+  "lit": "not well",
+  "emoji": "🤒"
+ },
+ {
+  "id": "feel.fever",
+  "unit": 10,
+  "my": "ဖျားနေတယ်",
+  "rom": "hpyá nèi dè",
+  "en": "I have a fever",
+  "emoji": "🌡️"
+ },
+ {
+  "id": "feel.headache",
+  "unit": 10,
+  "my": "ခေါင်းကိုက်တယ်",
+  "rom": "hkáun kaiʔ tè",
+  "en": "I have a headache",
+  "lit": "head aches",
+  "emoji": "🤕"
+ },
+ {
+  "id": "feel.stomachache",
+  "unit": 10,
+  "my": "ဗိုက်နာတယ်",
+  "rom": "baiʔ nà dè",
+  "en": "I have a stomach ache",
+  "lit": "stomach hurts",
+  "emoji": "🤢"
+ },
+ {
+  "id": "feel.medicine-q",
+  "unit": 10,
+  "my": "ဆေးသောက်ပြီးပြီလား",
+  "rom": "hséi thauʔ pyí bì lá",
+  "en": "Have you taken your medicine?",
+  "lit": "medicine drink already ?",
+  "note": "You 'drink' medicine in Burmese, even tablets.",
+  "emoji": "💊"
+ },
+ {
+  "id": "feel.are-you-ok",
+  "unit": 10,
+  "my": "အဆင်ပြေလား",
+  "rom": "ə-hsìn pyèi lá",
+  "en": "Are you OK? / Is everything alright?",
+  "emoji": "🫂"
+ },
+ {
+  "id": "feel.im-ok",
+  "unit": 10,
+  "my": "အဆင်ပြေပါတယ်",
+  "rom": "ə-hsìn pyèi bà dè",
+  "en": "I'm fine / It's all fine",
+  "emoji": "👌"
+ },
+ {
+  "id": "feel.whats-wrong",
+  "unit": 10,
+  "my": "ဘာဖြစ်တာလဲ",
+  "rom": "bà hpyiʔ tà lé",
+  "en": "What's wrong? / What happened?",
+  "lit": "what happened ?",
+  "emoji": "😟"
+ },
+ {
+  "id": "feel.rest",
+  "unit": 10,
+  "my": "အနားယူပါ",
+  "rom": "ə-ná yù bà",
+  "en": "Get some rest",
+  "lit": "take a rest, please",
+  "emoji": "🛌"
+ },
+ {
+  "id": "feel.careful",
+  "unit": 10,
+  "my": "သတိထားပါ",
+  "rom": "thə-dḭ htá bà",
+  "en": "Be careful! / Watch out!",
+  "lit": "keep awareness",
+  "emoji": "⚠️"
+ },
+ {
+  "id": "feel.take-care",
+  "unit": 10,
+  "my": "ဂရုစိုက်ပါ",
+  "rom": "gə-yṵ saiʔ pà",
+  "en": "Take care",
+  "note": "Look after yourself; also said when someone leaves on a trip.",
+  "emoji": "💛"
+ },
+ {
+  "id": "feel.get-well",
+  "unit": 10,
+  "my": "မြန်မြန် နေကောင်းပါစေ",
+  "rom": "myàn-myàn nèi káun bà zèi",
+  "en": "Get well soon",
+  "lit": "quickly be-well may-it-be",
+  "note": "ပါစေ at the end turns a sentence into a wish.",
+  "emoji": "💐"
+ },
+ {
+  "id": "feel.happy",
+  "unit": 10,
+  "my": "ပျော်တယ်",
+  "rom": "pyàw dè",
+  "en": "I'm happy / I'm having fun",
+  "emoji": "😄"
+ },
+ {
+  "id": "feel.having-fun-q",
+  "unit": 10,
+  "my": "ပျော်လား",
+  "rom": "pyàw lá",
+  "en": "Are you having fun?",
+  "emoji": "🥳"
+ },
+ {
+  "id": "feel.sad",
+  "unit": 10,
+  "my": "ဝမ်းနည်းတယ်",
+  "rom": "wún-né dè",
+  "en": "I'm sad",
+  "note": "The opposite of ဝမ်းသာ 'glad'.",
+  "emoji": "😢"
+ },
+ {
+  "id": "feel.bored",
+  "unit": 10,
+  "my": "ပျင်းတယ်",
+  "rom": "pyín dè",
+  "en": "I'm bored",
+  "note": "Also means 'lazy', depending on context.",
+  "emoji": "🥱"
+ },
+ {
+  "id": "feel.worried",
+  "unit": 10,
+  "my": "စိတ်ပူတယ်",
+  "rom": "seiʔ pù dè",
+  "en": "I'm worried",
+  "lit": "mind hot",
+  "emoji": "😰"
+ },
+ {
+  "id": "feel.dont-worry",
+  "unit": 10,
+  "my": "စိတ်မပူပါနဲ့",
+  "rom": "seiʔ mə-pù bà nḛ",
+  "en": "Don't worry",
+  "note": "မ + verb + ပါနဲ့ = please don't.",
+  "emoji": "🤗"
+ },
+ {
+  "id": "num.11",
+  "unit": 11,
+  "my": "ဆယ့်တစ်",
+  "rom": "hsḛ-tiʔ",
+  "en": "eleven (11)",
+  "emoji": "1️⃣",
+  "note": "ဆယ် 'ten' turns creaky (ဆယ့်) when another number follows it.",
+  "lit": "ten-one"
+ },
+ {
+  "id": "num.12",
+  "unit": 11,
+  "my": "ဆယ့်နှစ်",
+  "rom": "hsḛ-hniʔ",
+  "en": "twelve (12)",
+  "emoji": "🕛",
+  "lit": "ten-two"
+ },
+ {
+  "id": "num.15",
+  "unit": 11,
+  "my": "ဆယ့်ငါး",
+  "rom": "hsḛ-ngá",
+  "en": "fifteen (15)",
+  "emoji": "🖐️",
+  "lit": "ten-five"
+ },
+ {
+  "id": "num.19",
+  "unit": 11,
+  "my": "ဆယ့်ကိုး",
+  "rom": "hsḛ-kó",
+  "en": "nineteen (19)",
+  "emoji": "🔢",
+  "lit": "ten-nine"
+ },
+ {
+  "id": "num.20",
+  "unit": 11,
+  "my": "နှစ်ဆယ်",
+  "rom": "hnə-hsè",
+  "en": "twenty (20)",
+  "emoji": "✌️",
+  "note": "နှစ် 'two' shrinks to a weak hnə before ten, hundred and thousand.",
+  "lit": "two-ten"
+ },
+ {
+  "id": "num.25",
+  "unit": 11,
+  "my": "နှစ်ဆယ့်ငါး",
+  "rom": "hnə-hsḛ-ngá",
+  "en": "twenty-five (25)",
+  "emoji": "🎂",
+  "note": "Just stack the parts: two-ten-five.",
+  "lit": "two-ten-five"
+ },
+ {
+  "id": "num.30",
+  "unit": 11,
+  "my": "သုံးဆယ်",
+  "rom": "thóun-zè",
+  "en": "thirty (30)",
+  "emoji": "🔢",
+  "note": "After an open syllable, ဆယ် is voiced: zè.",
+  "lit": "three-ten"
+ },
+ {
+  "id": "num.50",
+  "unit": 11,
+  "my": "ငါးဆယ်",
+  "rom": "ngá-zè",
+  "en": "fifty (50)",
+  "emoji": "🔢",
+  "lit": "five-ten"
+ },
+ {
+  "id": "num.60",
+  "unit": 11,
+  "my": "ခြောက်ဆယ်",
+  "rom": "chauʔ-hsè",
+  "en": "sixty (60)",
+  "emoji": "🔢",
+  "note": "After a checked syllable (ʔ) there's no voicing: hsè stays hsè.",
+  "lit": "six-ten"
+ },
+ {
+  "id": "num.70",
+  "unit": 11,
+  "my": "ခုနစ်ဆယ်",
+  "rom": "hkṵn-hnə-hsè",
+  "en": "seventy (70)",
+  "emoji": "🔢",
+  "note": "ခုနစ် 'seven' also shrinks its last syllable before ten.",
+  "lit": "seven-ten"
+ },
+ {
+  "id": "num.100",
+  "unit": 11,
+  "my": "တစ်ရာ",
+  "rom": "tə-yà",
+  "en": "one hundred (100)",
+  "emoji": "💯",
+  "lit": "one-hundred"
+ },
+ {
+  "id": "num.150",
+  "unit": 11,
+  "my": "တစ်ရာ့ငါးဆယ်",
+  "rom": "tə-ya̰ ngá-zè",
+  "en": "one hundred and fifty (150)",
+  "emoji": "🔢",
+  "note": "ရာ turns creaky (ရာ့) when more numbers follow.",
+  "lit": "one-hundred five-ten"
+ },
+ {
+  "id": "num.1000",
+  "unit": 11,
+  "my": "တစ်ထောင်",
+  "rom": "tə-htàun",
+  "en": "one thousand (1,000)",
+  "emoji": "🔢",
+  "lit": "one-thousand"
+ },
+ {
+  "id": "num.1500",
+  "unit": 11,
+  "my": "တစ်ထောင့်ငါးရာ",
+  "rom": "tə-hta̰un ngá-yà",
+  "en": "one thousand five hundred (1,500)",
+  "emoji": "🔢",
+  "note": "ထောင် turns creaky (ထောင့်) when more numbers follow.",
+  "lit": "one-thousand five-hundred"
+ },
+ {
+  "id": "num.5000",
+  "unit": 11,
+  "my": "ငါးထောင်",
+  "rom": "ngá-dàun",
+  "en": "five thousand (5,000)",
+  "emoji": "💵",
+  "note": "ထောင် is voiced to dàun after an open syllable.",
+  "lit": "five-thousand"
+ },
+ {
+  "id": "num.10000",
+  "unit": 11,
+  "my": "တစ်သောင်း",
+  "rom": "tə-tháun",
+  "en": "ten thousand (10,000)",
+  "emoji": "💰",
+  "note": "Burmese has its own word for 10,000, very handy for prices.",
+  "lit": "one-ten-thousand"
+ },
+ {
+  "id": "num.kyat",
+  "unit": 11,
+  "my": "ကျပ်",
+  "rom": "kyaʔ",
+  "en": "kyat (Myanmar money)",
+  "emoji": "💴",
+  "note": "Comes after the number: ငါးထောင် ကျပ် '5,000 kyat'. Often left out when the price is obvious."
+ },
+ {
+  "id": "num.expensive",
+  "unit": 11,
+  "my": "ဈေးကြီးတယ်",
+  "rom": "zéi-gyí dè",
+  "en": "It's expensive",
+  "emoji": "💸",
+  "lit": "price big"
+ },
+ {
+  "id": "num.cheap",
+  "unit": 11,
+  "my": "ဈေးပေါတယ်",
+  "rom": "zéi pàw dè",
+  "en": "It's cheap",
+  "emoji": "🪙",
+  "lit": "price plentiful"
+ },
+ {
+  "id": "num.bit-cheaper",
+  "unit": 11,
+  "my": "နည်းနည်း လျှော့ပေးပါ",
+  "rom": "né-né sho̰ péi bà",
+  "en": "A bit cheaper, please",
+  "emoji": "🤏",
+  "note": "Verb + ပေးပါ = 'please do it for me'. လျှော့ means 'reduce'.",
+  "lit": "a little reduce give please"
+ },
+ {
+  "id": "num.comes-to",
+  "unit": 11,
+  "my": "ဘယ်လောက် ကျလဲ",
+  "rom": "bè-lauʔ kya̰ lé",
+  "en": "How much does it come to?",
+  "emoji": "🧾",
+  "note": "Use this for a total, e.g. when paying at a restaurant.",
+  "lit": "how-much come-to ?"
+ },
+ {
+  "id": "num.pay",
+  "unit": 11,
+  "my": "ငွေရှင်းမယ်",
+  "rom": "ngwèi shín mè",
+  "en": "I'd like to pay (the bill)",
+  "emoji": "💳",
+  "note": "Say this to the waiter when you want the bill.",
+  "lit": "money settle will"
+ },
+ {
+  "id": "time.today",
+  "unit": 12,
+  "my": "ဒီနေ့",
+  "rom": "dì-nḛ",
+  "en": "today",
+  "emoji": "📅",
+  "lit": "this day"
+ },
+ {
+  "id": "time.tomorrow",
+  "unit": 12,
+  "my": "မနက်ဖြန်",
+  "rom": "mə-neʔ-hpyàn",
+  "en": "tomorrow",
+  "emoji": "➡️"
+ },
+ {
+  "id": "time.yesterday",
+  "unit": 12,
+  "my": "မနေ့က",
+  "rom": "mə-nḛ-ga̰",
+  "en": "yesterday",
+  "emoji": "⬅️",
+  "note": "The က (ga̰) at the end marks a time in the past."
+ },
+ {
+  "id": "time.now",
+  "unit": 12,
+  "my": "အခု",
+  "rom": "ə-hkṵ",
+  "en": "now",
+  "emoji": "⏱️",
+  "note": "Often shortened to ခု (hkṵ)."
+ },
+ {
+  "id": "time.later",
+  "unit": 12,
+  "my": "နောက်မှ",
+  "rom": "nauʔ-hma̰",
+  "en": "later",
+  "emoji": "⏳",
+  "lit": "after-only"
+ },
+ {
+  "id": "time.morning",
+  "unit": 12,
+  "my": "မနက်",
+  "rom": "mə-neʔ",
+  "en": "morning",
+  "emoji": "🌅"
+ },
+ {
+  "id": "time.afternoon",
+  "unit": 12,
+  "my": "နေ့လည်",
+  "rom": "nḛ-lè",
+  "en": "midday / early afternoon",
+  "emoji": "🌞",
+  "lit": "day-middle"
+ },
+ {
+  "id": "time.evening",
+  "unit": 12,
+  "my": "ညနေ",
+  "rom": "nya̰-nèi",
+  "en": "evening / late afternoon",
+  "emoji": "🌇"
+ },
+ {
+  "id": "time.night",
+  "unit": 12,
+  "my": "ည",
+  "rom": "nya̰",
+  "en": "night",
+  "emoji": "🌙"
+ },
+ {
+  "id": "time.tonight",
+  "unit": 12,
+  "my": "ဒီည",
+  "rom": "dì-nya̰",
+  "en": "tonight",
+  "emoji": "🌃",
+  "lit": "this night"
+ },
+ {
+  "id": "time.every-day",
+  "unit": 12,
+  "my": "နေ့တိုင်း",
+  "rom": "nḛ-dáin",
+  "en": "every day",
+  "emoji": "🔁",
+  "lit": "day-each"
+ },
+ {
+  "id": "time.monday",
+  "unit": 12,
+  "my": "တနင်္လာနေ့",
+  "rom": "tə-nìn-là-nḛ",
+  "en": "Monday",
+  "emoji": "🌙"
+ },
+ {
+  "id": "time.tuesday",
+  "unit": 12,
+  "my": "အင်္ဂါနေ့",
+  "rom": "ìn-gà-nḛ",
+  "en": "Tuesday",
+  "emoji": "🔴"
+ },
+ {
+  "id": "time.wednesday",
+  "unit": 12,
+  "my": "ဗုဒ္ဓဟူးနေ့",
+  "rom": "bouʔ-də-hú-nḛ",
+  "en": "Wednesday",
+  "emoji": "🟢"
+ },
+ {
+  "id": "time.thursday",
+  "unit": 12,
+  "my": "ကြာသပတေးနေ့",
+  "rom": "kyà-thə-bə-déi-nḛ",
+  "en": "Thursday",
+  "emoji": "🟡"
+ },
+ {
+  "id": "time.friday",
+  "unit": 12,
+  "my": "သောကြာနေ့",
+  "rom": "thauʔ-kyà-nḛ",
+  "en": "Friday",
+  "emoji": "🔵"
+ },
+ {
+  "id": "time.saturday",
+  "unit": 12,
+  "my": "စနေနေ့",
+  "rom": "sə-nèi-nḛ",
+  "en": "Saturday",
+  "emoji": "🟣"
+ },
+ {
+  "id": "time.sunday",
+  "unit": 12,
+  "my": "တနင်္ဂနွေနေ့",
+  "rom": "tə-nìn-gə-nwèi-nḛ",
+  "en": "Sunday",
+  "emoji": "☀️"
+ },
+ {
+  "id": "time.what-day",
+  "unit": 12,
+  "my": "ဒီနေ့ ဘာနေ့လဲ",
+  "rom": "dì-nḛ bà-nḛ lé",
+  "en": "What day is it today?",
+  "emoji": "🗓️",
+  "lit": "today what day ?"
+ },
+ {
+  "id": "time.what-time",
+  "unit": 12,
+  "my": "အခု ဘယ်နှစ်နာရီ ရှိပြီလဲ",
+  "rom": "ə-hkṵ bè-hnə-nà-yì shḭ bì lé",
+  "en": "What time is it now?",
+  "emoji": "🕰️",
+  "lit": "now how-many hours has-become ?"
+ },
+ {
+  "id": "time.hour",
+  "unit": 12,
+  "my": "နာရီ",
+  "rom": "nà-yì",
+  "en": "hour / o'clock / clock / watch",
+  "emoji": "⌚",
+  "note": "Number + နာရီ is both '5 o'clock' and '5 hours'."
+ },
+ {
+  "id": "time.five-oclock",
+  "unit": 12,
+  "my": "ငါးနာရီ",
+  "rom": "ngá-nà-yì",
+  "en": "five o'clock / five hours",
+  "emoji": "🕔"
+ },
+ {
+  "id": "time.half-past",
+  "unit": 12,
+  "my": "ငါးနာရီခွဲ",
+  "rom": "ngá-nà-yì hkwé",
+  "en": "half past five",
+  "emoji": "🕠",
+  "note": "ခွဲ = 'half', added after the hour.",
+  "lit": "five hour half"
+ },
+ {
+  "id": "time.see-you-tomorrow",
+  "unit": 12,
+  "my": "မနက်ဖြန် တွေ့မယ်",
+  "rom": "mə-neʔ-hpyàn twḛ mè",
+  "en": "See you tomorrow",
+  "emoji": "👋",
+  "lit": "tomorrow meet will"
+ },
+ {
+  "id": "time.see-you-later",
+  "unit": 12,
+  "my": "နောက်မှ တွေ့မယ်",
+  "rom": "nauʔ-hma̰ twḛ mè",
+  "en": "See you later",
+  "emoji": "🙋",
+  "lit": "later meet will"
+ },
+ {
+  "id": "cls.person",
+  "unit": 13,
+  "my": "လူ",
+  "rom": "lù",
+  "en": "person / people",
+  "emoji": "🧍"
+ },
+ {
+  "id": "cls.yauk",
+  "unit": 13,
+  "my": "ယောက်",
+  "rom": "yauʔ",
+  "en": "(counter for people)",
+  "emoji": "👥",
+  "note": "Comes after the number: noun + number + ယောက်."
+ },
+ {
+  "id": "cls.one-person",
+  "unit": 13,
+  "my": "တစ်ယောက်",
+  "rom": "tə-yauʔ",
+  "en": "one person",
+  "emoji": "☝️",
+  "note": "Like ten, hundred and thousand, counters make တစ် 'one' shrink to tə."
+ },
+ {
+  "id": "cls.three-people",
+  "unit": 13,
+  "my": "လူ သုံးယောက်",
+  "rom": "lù thóun-yauʔ",
+  "en": "three people",
+  "emoji": "👨‍👩‍👦",
+  "lit": "person three counter"
+ },
+ {
+  "id": "cls.four-of-us",
+  "unit": 13,
+  "my": "လေးယောက်ပါ",
+  "rom": "léi-yauʔ pà",
+  "en": "There are four of us",
+  "emoji": "4️⃣",
+  "note": "ပါ is said 'pà' after a checked syllable.",
+  "lit": "four counter (polite)"
+ },
+ {
+  "id": "cls.kaung",
+  "unit": 13,
+  "my": "ကောင်",
+  "rom": "kàun",
+  "en": "(counter for animals)",
+  "emoji": "🐾"
+ },
+ {
+  "id": "cls.dog",
+  "unit": 13,
+  "my": "ခွေး",
+  "rom": "hkwéi",
+  "en": "dog",
+  "emoji": "🐕"
+ },
+ {
+  "id": "cls.cat",
+  "unit": 13,
+  "my": "ကြောင်",
+  "rom": "kyàun",
+  "en": "cat",
+  "emoji": "🐈"
+ },
+ {
+  "id": "cls.two-dogs",
+  "unit": 13,
+  "my": "ခွေး နှစ်ကောင်",
+  "rom": "hkwéi hnə-kàun",
+  "en": "two dogs",
+  "emoji": "🐕",
+  "lit": "dog two counter"
+ },
+ {
+  "id": "cls.khu",
+  "unit": 13,
+  "my": "ခု",
+  "rom": "hkṵ",
+  "en": "(general counter for things)",
+  "emoji": "📦",
+  "note": "If you don't know the right counter, ခု usually works for objects."
+ },
+ {
+  "id": "cls.one-of-these",
+  "unit": 13,
+  "my": "ဒါ တစ်ခု ပေးပါ",
+  "rom": "dà tə-hkṵ péi bà",
+  "en": "One of these, please",
+  "emoji": "👉",
+  "lit": "this one-counter give please"
+ },
+ {
+  "id": "cls.tea",
+  "unit": 13,
+  "my": "လက်ဖက်ရည်",
+  "rom": "lə-hpeʔ-yèi",
+  "en": "tea (Burmese milk tea)",
+  "emoji": "🍵",
+  "lit": "tea-leaf liquid"
+ },
+ {
+  "id": "cls.coffee",
+  "unit": 13,
+  "my": "ကော်ဖီ",
+  "rom": "kàw-hpì",
+  "en": "coffee",
+  "emoji": "☕"
+ },
+ {
+  "id": "cls.kwet",
+  "unit": 13,
+  "my": "ခွက်",
+  "rom": "hkweʔ",
+  "en": "(counter for cups and glasses) / cup",
+  "emoji": "🥤"
+ },
+ {
+  "id": "cls.two-teas",
+  "unit": 13,
+  "my": "လက်ဖက်ရည် နှစ်ခွက် ပေးပါ",
+  "rom": "lə-hpeʔ-yèi hnə-hkweʔ péi bà",
+  "en": "Two cups of tea, please",
+  "emoji": "🍵",
+  "lit": "tea two cup give please"
+ },
+ {
+  "id": "cls.bottle",
+  "unit": 13,
+  "my": "ပုလင်း",
+  "rom": "bə-lín",
+  "en": "bottle / (counter for bottles)",
+  "emoji": "🍾"
+ },
+ {
+  "id": "cls.water-bottle",
+  "unit": 13,
+  "my": "ရေ တစ်ပုလင်း",
+  "rom": "yèi tə-bə-lín",
+  "en": "a bottle of water",
+  "emoji": "💧",
+  "lit": "water one bottle"
+ },
+ {
+  "id": "cls.pwe",
+  "unit": 13,
+  "my": "မုန့်ဟင်းခါး တစ်ပွဲ",
+  "rom": "mo̰un-hín-gá tə-bwé",
+  "en": "one bowl of mohinga",
+  "emoji": "🍜",
+  "note": "ပွဲ (pwé) counts servings or plates of food.",
+  "lit": "mohinga one serving"
+ },
+ {
+  "id": "cls.loun",
+  "unit": 13,
+  "my": "လုံး",
+  "rom": "lóun",
+  "en": "(counter for round things)",
+  "emoji": "⚪"
+ },
+ {
+  "id": "cls.two-eggs",
+  "unit": 13,
+  "my": "ကြက်ဥ နှစ်လုံး",
+  "rom": "kyeʔ-ṵ hnə-lóun",
+  "en": "two eggs",
+  "emoji": "🥚",
+  "lit": "egg two round-counter"
+ },
+ {
+  "id": "cls.ywet",
+  "unit": 13,
+  "my": "ရွက်",
+  "rom": "yweʔ",
+  "en": "(counter for sheets, leaves, banknotes)",
+  "emoji": "🍃"
+ },
+ {
+  "id": "cls.paper",
+  "unit": 13,
+  "my": "စာရွက် တစ်ရွက်",
+  "rom": "sà-yweʔ tə-yweʔ",
+  "en": "one sheet of paper",
+  "emoji": "📄",
+  "note": "Paper is literally 'writing-leaf', so its counter is the same word.",
+  "lit": "writing-leaf one sheet"
+ },
+ {
+  "id": "cls.two-notes",
+  "unit": 13,
+  "my": "ထောင်တန် နှစ်ရွက်",
+  "rom": "htàun-dàn hnə-yweʔ",
+  "en": "two 1,000-kyat notes",
+  "emoji": "💵",
+  "note": "ထောင်တန် = 'thousand-worth' note.",
+  "lit": "thousand-worth two sheet"
+ },
+ {
+  "id": "food.plain-tea",
+  "unit": 14,
+  "my": "ရေနွေးကြမ်း",
+  "rom": "yèi-nwéi-gyán",
+  "en": "plain green tea",
+  "lit": "hot water, coarse",
+  "note": "Free on every tea-shop table; pour yourself a cup.",
+  "emoji": "🫖"
+ },
+ {
+  "id": "food.waiter",
+  "unit": 14,
+  "my": "ညီလေး",
+  "rom": "nyì-léi",
+  "en": "(calling a young waiter) Excuse me!",
+  "lit": "little brother",
+  "note": "The normal friendly way to call a young male waiter.",
+  "emoji": "🙋"
+ },
+ {
+  "id": "food.what-drink",
+  "unit": 14,
+  "my": "ဘာသောက်မလဲ",
+  "rom": "bà thauʔ mə-lé",
+  "en": "What would you like to drink?",
+  "lit": "what drink will ?",
+  "emoji": "🥤"
+ },
+ {
+  "id": "food.one-tea",
+  "unit": 14,
+  "my": "လက်ဖက်ရည် တစ်ခွက် ပေးပါ",
+  "rom": "lə-hpeʔ-yèi tə-hkweʔ péi bà",
+  "en": "One tea, please",
+  "lit": "tea one-cup give please",
+  "note": "ခွက် counts cups and glasses. ပေးပါ = please give.",
+  "emoji": "☝️"
+ },
+ {
+  "id": "food.mohinga",
+  "unit": 14,
+  "my": "မုန့်ဟင်းခါး",
+  "rom": "mo̰un-hín-gá",
+  "en": "mohinga (fish noodle soup)",
+  "note": "The national breakfast dish.",
+  "emoji": "🍲"
+ },
+ {
+  "id": "food.noodles",
+  "unit": 14,
+  "my": "ခေါက်ဆွဲ",
+  "rom": "hkauʔ-hswé",
+  "en": "noodles",
+  "emoji": "🍜"
+ },
+ {
+  "id": "food.curry",
+  "unit": 14,
+  "my": "ဟင်း",
+  "rom": "hín",
+  "en": "curry / dish (eaten with rice)",
+  "emoji": "🍛"
+ },
+ {
+  "id": "food.chicken",
+  "unit": 14,
+  "my": "ကြက်သား",
+  "rom": "kyeʔ-thá",
+  "en": "chicken (meat)",
+  "emoji": "🍗"
+ },
+ {
+  "id": "food.pork",
+  "unit": 14,
+  "my": "ဝက်သား",
+  "rom": "weʔ-thá",
+  "en": "pork",
+  "lit": "pig meat",
+  "emoji": "🥓"
+ },
+ {
+  "id": "food.fish",
+  "unit": 14,
+  "my": "ငါး",
+  "rom": "ngá",
+  "en": "fish",
+  "note": "Same word as 'five'.",
+  "emoji": "🐟"
+ },
+ {
+  "id": "food.vegetables",
+  "unit": 14,
+  "my": "ဟင်းသီးဟင်းရွက်",
+  "rom": "hín-thí-hín-yweʔ",
+  "en": "vegetables",
+  "lit": "curry-fruit curry-leaf",
+  "emoji": "🥬"
+ },
+ {
+  "id": "food.fruit",
+  "unit": 14,
+  "my": "သစ်သီး",
+  "rom": "thiʔ-thí",
+  "en": "fruit",
+  "emoji": "🍎"
+ },
+ {
+  "id": "food.spicy",
+  "unit": 14,
+  "my": "စပ်တယ်",
+  "rom": "saʔ tè",
+  "en": "It's spicy",
+  "emoji": "🌶️"
+ },
+ {
+  "id": "food.sweet",
+  "unit": 14,
+  "my": "ချိုတယ်",
+  "rom": "chò dè",
+  "en": "It's sweet",
+  "emoji": "🍬"
+ },
+ {
+  "id": "food.salty",
+  "unit": 14,
+  "my": "ငန်တယ်",
+  "rom": "ngàn dè",
+  "en": "It's salty",
+  "emoji": "🧂"
+ },
+ {
+  "id": "food.sour",
+  "unit": 14,
+  "my": "ချဉ်တယ်",
+  "rom": "chìn dè",
+  "en": "It's sour",
+  "emoji": "🍋"
+ },
+ {
+  "id": "food.can-eat-spicy",
+  "unit": 14,
+  "my": "အစပ် စားနိုင်လား",
+  "rom": "ə-saʔ sá nàin lá",
+  "en": "Can you eat spicy food?",
+  "note": "Verb + နိုင် = be able to. Reply: နည်းနည်း စားနိုင်ပါတယ် 'I can a little'.",
+  "emoji": "🥵"
+ },
+ {
+  "id": "food.less-spicy",
+  "unit": 14,
+  "my": "အစပ် လျှော့ပေးပါ",
+  "rom": "ə-saʔ sha̰w péi bà",
+  "en": "Not too spicy, please",
+  "lit": "spiciness reduce for-me please",
+  "note": "Verb + ပေး = do it for someone.",
+  "emoji": "🙏"
+ },
+ {
+  "id": "food.is-there",
+  "unit": 14,
+  "my": "___ ရှိလား",
+  "rom": "___ shḭ lá",
+  "en": "Do you have ___?",
+  "lit": "___ exist ?",
+  "emoji": "🔎"
+ },
+ {
+  "id": "food.more",
+  "unit": 14,
+  "my": "နည်းနည်း ထပ်ပေးပါ",
+  "rom": "né-né htaʔ péi bà",
+  "en": "A little more, please",
+  "lit": "a little again give please",
+  "emoji": "➕"
+ },
+ {
+  "id": "food.enough",
+  "unit": 14,
+  "my": "တော်ပြီ",
+  "rom": "tàw bì",
+  "en": "That's enough (thanks)",
+  "emoji": "✋"
+ },
+ {
+  "id": "food.how-much",
+  "unit": 14,
+  "my": "ဘယ်လောက်ကျလဲ",
+  "rom": "bè-lauʔ kya̰ lé",
+  "en": "How much does it come to?",
+  "emoji": "💰"
+ },
+ {
+  "id": "food.pay",
+  "unit": 14,
+  "my": "ပိုက်ဆံ ရှင်းမယ်",
+  "rom": "paiʔ-hsàn shín mè",
+  "en": "The bill, please / I'd like to pay",
+  "lit": "money settle will",
+  "emoji": "🧾"
+ },
+ {
+  "id": "go.home",
+  "unit": 15,
+  "my": "အိမ်",
+  "rom": "èin",
+  "en": "home / house",
+  "emoji": "🏠"
+ },
+ {
+  "id": "go.market",
+  "unit": 15,
+  "my": "ဈေး",
+  "rom": "zéi",
+  "en": "market",
+  "emoji": "🛍️"
+ },
+ {
+  "id": "go.shop",
+  "unit": 15,
+  "my": "ဆိုင်",
+  "rom": "hsàin",
+  "en": "shop",
+  "emoji": "🏪"
+ },
+ {
+  "id": "go.hospital",
+  "unit": 15,
+  "my": "ဆေးရုံ",
+  "rom": "hséi-yòun",
+  "en": "hospital",
+  "lit": "medicine building",
+  "emoji": "🏥"
+ },
+ {
+  "id": "go.station",
+  "unit": 15,
+  "my": "ဘူတာ",
+  "rom": "bù-dà",
+  "en": "train station",
+  "note": "A bus station is ကားဂိတ် (ká-geiʔ).",
+  "emoji": "🚉"
+ },
+ {
+  "id": "go.airport",
+  "unit": 15,
+  "my": "လေဆိပ်",
+  "rom": "lèi-zeiʔ",
+  "en": "airport",
+  "lit": "air port",
+  "emoji": "✈️"
+ },
+ {
+  "id": "go.toilet",
+  "unit": 15,
+  "my": "အိမ်သာ",
+  "rom": "èin-thà",
+  "en": "toilet",
+  "emoji": "🚻"
+ },
+ {
+  "id": "go.where-is-toilet",
+  "unit": 15,
+  "my": "အိမ်သာ ဘယ်မှာလဲ",
+  "rom": "èin-thà bè-hmà lé",
+  "en": "Where is the toilet?",
+  "emoji": "🚽"
+ },
+ {
+  "id": "go.where-is",
+  "unit": 15,
+  "my": "___ ဘယ်မှာလဲ",
+  "rom": "___ bè-hmà lé",
+  "en": "Where is ___?",
+  "lit": "___ where-at ?",
+  "emoji": "📍"
+ },
+ {
+  "id": "go.near",
+  "unit": 15,
+  "my": "နီးတယ်",
+  "rom": "ní dè",
+  "en": "It's near",
+  "emoji": "📏"
+ },
+ {
+  "id": "go.far",
+  "unit": 15,
+  "my": "ဝေးတယ်",
+  "rom": "wéi dè",
+  "en": "It's far",
+  "emoji": "🗺️"
+ },
+ {
+  "id": "go.left",
+  "unit": 15,
+  "my": "ဘယ်ဘက်",
+  "rom": "bè-beʔ",
+  "en": "left",
+  "lit": "left side",
+  "emoji": "⬅️"
+ },
+ {
+  "id": "go.right",
+  "unit": 15,
+  "my": "ညာဘက်",
+  "rom": "nyà-beʔ",
+  "en": "right",
+  "lit": "right side",
+  "emoji": "➡️"
+ },
+ {
+  "id": "go.straight",
+  "unit": 15,
+  "my": "တည့်တည့် သွားပါ",
+  "rom": "tḛ-dḛ thwá bà",
+  "en": "Go straight ahead, please",
+  "emoji": "⬆️"
+ },
+ {
+  "id": "go.turn-left",
+  "unit": 15,
+  "my": "ဘယ်ဘက် ကွေ့ပါ",
+  "rom": "bè-beʔ kwḛ bà",
+  "en": "Turn left, please",
+  "emoji": "↩️"
+ },
+ {
+  "id": "go.turn-right",
+  "unit": 15,
+  "my": "ညာဘက် ကွေ့ပါ",
+  "rom": "nyà-beʔ kwḛ bà",
+  "en": "Turn right, please",
+  "emoji": "↪️"
+ },
+ {
+  "id": "go.taxi",
+  "unit": 15,
+  "my": "တက္ကစီ",
+  "rom": "teʔ-kə-sì",
+  "en": "taxi",
+  "emoji": "🚕"
+ },
+ {
+  "id": "go.want-go-to",
+  "unit": 15,
+  "my": "___ ကို သွားချင်တယ်",
+  "rom": "___ gò thwá jìn dè",
+  "en": "I want to go to ___",
+  "note": "ကို after a place = 'to'.",
+  "emoji": "🧭"
+ },
+ {
+  "id": "go.how-much-to",
+  "unit": 15,
+  "my": "___ ကို ဘယ်လောက်လဲ",
+  "rom": "___ gò bè-lauʔ lé",
+  "en": "How much to ___?",
+  "emoji": "💵"
+ },
+ {
+  "id": "go.how-far",
+  "unit": 15,
+  "my": "ဘယ်လောက် ဝေးလဲ",
+  "rom": "bè-lauʔ wéi lé",
+  "en": "How far is it?",
+  "lit": "how much far ?",
+  "emoji": "📐"
+ },
+ {
+  "id": "go.drive-slowly",
+  "unit": 15,
+  "my": "ဖြည်းဖြည်း မောင်းပါ",
+  "rom": "hpyé-hpyé máun bà",
+  "en": "Please drive slowly",
+  "emoji": "🐢"
+ },
+ {
+  "id": "go.stop-here",
+  "unit": 15,
+  "my": "ဒီမှာ ရပ်ပါ",
+  "rom": "dì-hmà yaʔ pà",
+  "en": "Stop here, please",
+  "note": "After the checked syllable ရပ်, ပါ stays 'pà'.",
+  "emoji": "🛑"
+ },
+ {
+  "id": "v.wake-up",
+  "unit": 16,
+  "my": "နိုး",
+  "rom": "nó",
+  "en": "wake up",
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "⏰"
+ },
+ {
+  "id": "v.wash",
+  "unit": 16,
+  "my": "ဆေး",
+  "rom": "hséi",
+  "en": "wash (hands, dishes)",
+  "note": "VERB — combine with the sentence patterns. Same word as 'medicine'.",
+  "emoji": "🧼"
+ },
+ {
+  "id": "day.shower",
+  "unit": 16,
+  "my": "ရေချိုးမယ်",
+  "rom": "yèi-chó mè",
+  "en": "I'm going to have a shower",
+  "lit": "water bathe will",
+  "emoji": "🚿"
+ },
+ {
+  "id": "day.at-home",
+  "unit": 16,
+  "my": "အိမ်မှာ ရှိတယ်",
+  "rom": "èin-hmà shḭ dè",
+  "en": "I'm at home",
+  "emoji": "🏡"
+ },
+ {
+  "id": "v.cook",
+  "unit": 16,
+  "my": "ချက်",
+  "rom": "cheʔ",
+  "en": "cook",
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🍳"
+ },
+ {
+  "id": "day.cooking",
+  "unit": 16,
+  "my": "ထမင်းချက်နေတယ်",
+  "rom": "htə-mín cheʔ nèi dè",
+  "en": "I'm cooking",
+  "lit": "rice cook -ing",
+  "note": "Verb + နေ = in the middle of doing.",
+  "emoji": "🥘"
+ },
+ {
+  "id": "day.watch-tv",
+  "unit": 16,
+  "my": "တီဗွီ ကြည့်နေတယ်",
+  "rom": "tì-bwì kyḭ nèi dè",
+  "en": "I'm watching TV",
+  "emoji": "📺"
+ },
+ {
+  "id": "v.read",
+  "unit": 16,
+  "my": "ဖတ်",
+  "rom": "hpaʔ",
+  "en": "read",
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "📖"
+ },
+ {
+  "id": "v.rest",
+  "unit": 16,
+  "my": "နား",
+  "rom": "ná",
+  "en": "rest",
+  "note": "VERB — combine with the sentence patterns. Same word as 'ear'.",
+  "emoji": "🛋️"
+ },
+ {
+  "id": "day.go-to-work",
+  "unit": 16,
+  "my": "အလုပ်သွားမယ်",
+  "rom": "ə-louʔ thwá mè",
+  "en": "I'm going to work",
+  "emoji": "💼"
+ },
+ {
+  "id": "day.at-work",
+  "unit": 16,
+  "my": "ရုံးမှာ ရှိတယ်",
+  "rom": "yóun-hmà shḭ dè",
+  "en": "I'm at the office",
+  "emoji": "🏢"
+ },
+ {
+  "id": "day.working",
+  "unit": 16,
+  "my": "အလုပ်လုပ်နေတယ်",
+  "rom": "ə-louʔ louʔ nèi dè",
+  "en": "I'm working",
+  "lit": "work do -ing",
+  "emoji": "👩‍💻"
+ },
+ {
+  "id": "v.learn",
+  "unit": 16,
+  "my": "သင်",
+  "rom": "thìn",
+  "en": "learn",
+  "note": "VERB — combine with the sentence patterns. It can also mean 'teach'.",
+  "emoji": "🎓"
+ },
+ {
+  "id": "day.studying",
+  "unit": 16,
+  "my": "စာကြည့်နေတယ်",
+  "rom": "sà-gyḭ nèi dè",
+  "en": "I'm studying",
+  "lit": "letters look-at -ing",
+  "note": "ကြည့် 'look' is voiced here: gyḭ.",
+  "emoji": "📚"
+ },
+ {
+  "id": "v.go-back",
+  "unit": 16,
+  "my": "ပြန်",
+  "rom": "pyàn",
+  "en": "go back / return",
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🔙"
+ },
+ {
+  "id": "day.go-home",
+  "unit": 16,
+  "my": "အိမ်ပြန်မယ်",
+  "rom": "èin pyàn mè",
+  "en": "I'm going home",
+  "lit": "home return will",
+  "emoji": "🏘️"
+ },
+ {
+  "id": "day.busy",
+  "unit": 16,
+  "my": "အလုပ်များနေတယ်",
+  "rom": "ə-louʔ myá nèi dè",
+  "en": "I'm busy (with work)",
+  "lit": "work is many",
+  "emoji": "😵‍💫"
+ },
+ {
+  "id": "day.not-free",
+  "unit": 16,
+  "my": "မအားဘူး",
+  "rom": "mə-á bú",
+  "en": "I'm busy / not free",
+  "lit": "not free",
+  "emoji": "⏳"
+ },
+ {
+  "id": "day.free-q",
+  "unit": 16,
+  "my": "အားလား",
+  "rom": "á lá",
+  "en": "Are you free?",
+  "emoji": "❔"
+ },
+ {
+  "id": "day.free",
+  "unit": 16,
+  "my": "အားတယ်",
+  "rom": "á dè",
+  "en": "I'm free",
+  "emoji": "😎"
+ },
+ {
+  "id": "tense.went",
+  "unit": 17,
+  "my": "သွားခဲ့တယ်",
+  "rom": "thwá gḛ dè",
+  "en": "I went",
+  "emoji": "🚶",
+  "note": "ခဲ့ (gḛ) after a verb makes it clearly past. After a checked syllable it's said hkḛ."
+ },
+ {
+  "id": "tense.where-yesterday",
+  "unit": 17,
+  "my": "မနေ့က ဘယ်သွားလဲ",
+  "rom": "mə-nḛ ga̰ bè thwá lé",
+  "en": "Where did you go yesterday?",
+  "emoji": "🗺️",
+  "note": "No past marker needed: မနေ့က 'yesterday' already sets the time."
+ },
+ {
+  "id": "tense.drank-already",
+  "unit": 17,
+  "my": "သောက်ပြီးပြီ",
+  "rom": "thauʔ pyí bì",
+  "en": "I've already had a drink",
+  "emoji": "🥤",
+  "note": "Verb + ပြီးပြီ (pyí bì) = already done.",
+  "lit": "drink finish already"
+ },
+ {
+  "id": "tense.done",
+  "unit": 17,
+  "my": "ပြီးပြီ",
+  "rom": "pyí bì",
+  "en": "Done! / Finished",
+  "emoji": "✅"
+ },
+ {
+  "id": "tense.not-yet-eaten",
+  "unit": 17,
+  "my": "မစားရသေးဘူး",
+  "rom": "mə-sá ya̰ théi bú",
+  "en": "I haven't eaten yet",
+  "emoji": "🍽️",
+  "note": "မ + verb + (ရ)သေးဘူး = not yet. The answer to 'Have you eaten?' when you haven't."
+ },
+ {
+  "id": "tense.tomorrow-what",
+  "unit": 17,
+  "my": "မနက်ဖြန် ဘာလုပ်မလဲ",
+  "rom": "mə-neʔ hpyàn bà louʔ mə-lé",
+  "en": "What are you doing tomorrow?",
+  "emoji": "❓"
+ },
+ {
+  "id": "tense.about-to-eat",
+  "unit": 17,
+  "my": "စားတော့မယ်",
+  "rom": "sá da̰w mè",
+  "en": "I'm going to eat now",
+  "emoji": "🥢",
+  "note": "တော့မယ် (da̰w mè) = about to, going to right now."
+ },
+ {
+  "id": "tense.must-go",
+  "unit": 17,
+  "my": "သွားရမယ်",
+  "rom": "thwá ya̰ mè",
+  "en": "I have to go",
+  "emoji": "🏃",
+  "note": "Verb + ရမယ် (ya̰ mè) = have to / must."
+ },
+ {
+  "id": "tense.must-work",
+  "unit": 17,
+  "my": "အလုပ်လုပ်ရမယ်",
+  "rom": "ə-louʔ louʔ ya̰ mè",
+  "en": "I have to work",
+  "emoji": "💼",
+  "lit": "work do must"
+ },
+ {
+  "id": "tense.want-go-myanmar",
+  "unit": 17,
+  "my": "မြန်မာပြည် သွားချင်တယ်",
+  "rom": "myəmà pyì thwá jìn dè",
+  "en": "I want to go to Myanmar",
+  "emoji": "✈️"
+ },
+ {
+  "id": "tense.dont-have-to",
+  "unit": 17,
+  "my": "မသွားလည်း ရပါတယ်",
+  "rom": "mə-thwá lé ya̰ bà dè",
+  "en": "You don't have to go",
+  "emoji": "🙆",
+  "note": "မ + verb + လည်း ရတယ် = it's fine not to…",
+  "lit": "even not going, it's OK"
+ },
+ {
+  "id": "tense.arrived",
+  "unit": 17,
+  "my": "ရောက်ပြီ",
+  "rom": "yauʔ pyì",
+  "en": "We're here! / I've arrived",
+  "emoji": "📍",
+  "note": "ရောက် (yauʔ) = arrive, get to. Verb + ပြီ = it has happened now."
+ },
+ {
+  "id": "tense.ever-been-q",
+  "unit": 17,
+  "my": "ပုဂံ ရောက်ဖူးလား",
+  "rom": "bə-gàn yauʔ hpú lá",
+  "en": "Have you ever been to Bagan?",
+  "emoji": "🛕",
+  "note": "Verb + ဖူး (hpú) = have ever done it."
+ },
+ {
+  "id": "tense.been-once",
+  "unit": 17,
+  "my": "တစ်ခါ ရောက်ဖူးတယ်",
+  "rom": "tə-hkà yauʔ hpú dè",
+  "en": "I've been once",
+  "emoji": "☝️"
+ },
+ {
+  "id": "tense.never-been",
+  "unit": 17,
+  "my": "မရောက်ဖူးဘူး",
+  "rom": "mə-yauʔ hpú bú",
+  "en": "I've never been",
+  "emoji": "🙅",
+  "note": "မ + verb + ဖူးဘူး = have never."
+ },
+ {
+  "id": "tense.ever-eaten-mohinga",
+  "unit": 17,
+  "my": "မုန့်ဟင်းခါး စားဖူးလား",
+  "rom": "mo̰un-hín-gá sá bú lá",
+  "en": "Have you ever had mohinga?",
+  "emoji": "🍜",
+  "note": "After an open syllable ဖူး is usually voiced: bú."
+ },
+ {
+  "id": "tense.can-come",
+  "unit": 17,
+  "my": "လာနိုင်တယ်",
+  "rom": "là nàin dè",
+  "en": "I can come",
+  "emoji": "👍",
+  "note": "Verb + နိုင်တယ် = can (be able to, have the chance)."
+ },
+ {
+  "id": "tense.cant-come",
+  "unit": 17,
+  "my": "မလာနိုင်ဘူး",
+  "rom": "mə-là nàin bú",
+  "en": "I can't come",
+  "emoji": "👎"
+ },
+ {
+  "id": "tense.can-cook-q",
+  "unit": 17,
+  "my": "ထမင်းချက်တတ်လား",
+  "rom": "htə-mín cheʔ taʔ lá",
+  "en": "Can you cook?",
+  "emoji": "🍳",
+  "note": "Verb + တတ် = know how to (a learned skill). After a checked syllable it's taʔ, otherwise daʔ."
+ },
+ {
+  "id": "tense.cant-swim",
+  "unit": 17,
+  "my": "ရေမကူးတတ်ဘူး",
+  "rom": "yèi mə-kú daʔ bú",
+  "en": "I can't swim",
+  "emoji": "🏊",
+  "lit": "water not-swim know-how"
+ },
+ {
+  "id": "tense.may-i-sit",
+  "unit": 17,
+  "my": "ထိုင်လို့ရလား",
+  "rom": "htàin lo̰ ya̰ lá",
+  "en": "Can I sit down?",
+  "emoji": "🪑",
+  "note": "Verb + လို့ရလား = may I…? / is it OK to…?"
+ },
+ {
+  "id": "talk.i-think",
+  "unit": 18,
+  "my": "ထင်တယ်",
+  "rom": "htìn dè",
+  "en": "I think so",
+  "emoji": "💭"
+ },
+ {
+  "id": "talk.think-good",
+  "unit": 18,
+  "my": "ကောင်းမယ် ထင်တယ်",
+  "rom": "káun mè htìn dè",
+  "en": "I think it'll be good",
+  "emoji": "🤔",
+  "note": "The opinion comes first, ထင်တယ် 'I think' comes last."
+ },
+ {
+  "id": "talk.what-think",
+  "unit": 18,
+  "my": "ဘယ်လို ထင်လဲ",
+  "rom": "bè-lò htìn lé",
+  "en": "What do you think?",
+  "emoji": "🗣️"
+ },
+ {
+  "id": "talk.like-a-lot",
+  "unit": 18,
+  "my": "အရမ်းကြိုက်တယ်",
+  "rom": "ə-yán kyaiʔ tè",
+  "en": "I really like it",
+  "emoji": "😍",
+  "note": "အရမ်း (ə-yán) = very, really."
+ },
+ {
+  "id": "talk.dont-like",
+  "unit": 18,
+  "my": "မကြိုက်ဘူး",
+  "rom": "mə-kyaiʔ bú",
+  "en": "I don't like it",
+  "emoji": "😕"
+ },
+ {
+  "id": "talk.not-good",
+  "unit": 18,
+  "my": "မကောင်းဘူး",
+  "rom": "mə-káun bú",
+  "en": "It's not good",
+  "emoji": "👎"
+ },
+ {
+  "id": "talk.beautiful",
+  "unit": 18,
+  "my": "လှတယ်",
+  "rom": "hla̰ dè",
+  "en": "It's beautiful / pretty",
+  "emoji": "🌸"
+ },
+ {
+  "id": "talk.very-beautiful",
+  "unit": 18,
+  "my": "အရမ်းလှတယ်",
+  "rom": "ə-yán hla̰ dè",
+  "en": "It's really beautiful",
+  "emoji": "✨"
+ },
+ {
+  "id": "talk.interesting",
+  "unit": 18,
+  "my": "စိတ်ဝင်စားစရာ ကောင်းတယ်",
+  "rom": "seiʔ wìn zá zə-yà káun dè",
+  "en": "It's interesting",
+  "emoji": "🧐",
+  "note": "Verb + စရာကောင်းတယ် = it's worth …-ing.",
+  "lit": "heart-enter worth good"
+ },
+ {
+  "id": "talk.fun",
+  "unit": 18,
+  "my": "ပျော်စရာ ကောင်းတယ်",
+  "rom": "pyàw zə-yà káun dè",
+  "en": "It's fun",
+  "emoji": "🎉"
+ },
+ {
+  "id": "talk.great",
+  "unit": 18,
+  "my": "သိပ်ကောင်းတာပဲ",
+  "rom": "theiʔ káun dà bé",
+  "en": "That's great!",
+  "emoji": "🙌",
+  "note": "သိပ် (theiʔ) = very."
+ },
+ {
+  "id": "talk.thats-right",
+  "unit": 18,
+  "my": "ဟုတ်တယ်",
+  "rom": "houʔ tè",
+  "en": "That's right / Yes, it is",
+  "emoji": "👌"
+ },
+ {
+  "id": "talk.agree",
+  "unit": 18,
+  "my": "သဘောတူတယ်",
+  "rom": "thə-bàw tù dè",
+  "en": "I agree",
+  "emoji": "🤝"
+ },
+ {
+  "id": "talk.like-too-m",
+  "unit": 18,
+  "my": "ကျွန်တော်လည်း ကြိုက်တယ်",
+  "rom": "kyə-nàw lé kyaiʔ tè",
+  "en": "I like it too",
+  "emoji": "🙋‍♂️",
+  "note": "လည်း (lé) after a word = also, too.",
+  "speaker": "m"
+ },
+ {
+  "id": "talk.like-too-f",
+  "unit": 18,
+  "my": "ကျွန်မလည်း ကြိုက်တယ်",
+  "rom": "kyə-ma̰ lé kyaiʔ tè",
+  "en": "I like it too",
+  "emoji": "🙋‍♀️",
+  "note": "လည်း (lé) after a word = also, too.",
+  "speaker": "f"
+ },
+ {
+  "id": "talk.same",
+  "unit": 18,
+  "my": "အတူတူပဲ",
+  "rom": "ə-tù-dù bé",
+  "en": "Same here / It's the same",
+  "emoji": "🟰"
+ },
+ {
+  "id": "talk.dont-think-so",
+  "unit": 18,
+  "my": "မထင်ဘူး",
+  "rom": "mə-htìn bú",
+  "en": "I don't think so",
+  "emoji": "🙃",
+  "note": "A soft way to disagree."
+ },
+ {
+  "id": "talk.maybe",
+  "unit": 18,
+  "my": "ဖြစ်နိုင်တယ်",
+  "rom": "hpyiʔ nàin dè",
+  "en": "Maybe / It's possible",
+  "emoji": "🤞"
+ },
+ {
+  "id": "talk.food-delicious",
+  "unit": 18,
+  "my": "မြန်မာ အစားအစာ စားလို့ကောင်းတယ်",
+  "rom": "myəmà ə-sá ə-sà sá lo̰ káun dè",
+  "en": "Myanmar food is delicious",
+  "emoji": "🍛"
+ },
+ {
+  "id": "talk.good-cook",
+  "unit": 18,
+  "my": "ဟင်းချက်တော်တယ်",
+  "rom": "hín cheʔ tàw dè",
+  "en": "You're a great cook",
+  "emoji": "👩‍🍳",
+  "note": "ဟင်း = curry / dishes, တော် = skilled, good at."
+ },
+ {
+  "id": "talk.nice-home",
+  "unit": 18,
+  "my": "အိမ် လှတယ်",
+  "rom": "èin hla̰ dè",
+  "en": "Your home is lovely",
+  "emoji": "🏡"
+ },
+ {
+  "id": "talk.hot-today",
+  "unit": 18,
+  "my": "ဒီနေ့ အရမ်းပူတယ်",
+  "rom": "dì-nḛ ə-yán pù dè",
+  "en": "It's really hot today",
+  "emoji": "☀️"
+ },
+ {
+  "id": "talk.raining",
+  "unit": 18,
+  "my": "မိုးရွာနေတယ်",
+  "rom": "mó ywà nèi dè",
+  "en": "It's raining",
+  "emoji": "🌧️",
+  "lit": "rain falling -ing"
+ },
+ {
+  "id": "talk.cold",
+  "unit": 18,
+  "my": "အေးတယ်",
+  "rom": "éi dè",
+  "en": "It's cold / cool",
+  "emoji": "❄️"
+ },
+ {
+  "id": "talk.learning-for-family",
+  "unit": 18,
+  "my": "ချစ်သူ့ မိသားစုအတွက် မြန်မာစကား သင်နေတာပါ",
+  "rom": "chiʔ thṵ mḭ-thá-zṵ ə-tweʔ myəmà zəgá thìn nèi dà bà",
+  "en": "I'm learning Burmese for my partner's family",
+  "emoji": "❤️",
+  "note": "အတွက် (ə-tweʔ) = for. ချစ်သူ = partner, sweetheart."
  }
 ]

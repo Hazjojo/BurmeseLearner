@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
-import { DRILLS, getItem } from './content'
+import { DRILLS, getItem, PATTERNS } from './content'
+import verbForms from '../content/verbforms.json'
 
 describe('pattern drills', () => {
   it('builds Burmese and voicing-aware romanization', () => {
@@ -12,6 +13,6 @@ describe('pattern drills', () => {
     expect(getItem('g.pat.neg.v.go')!.my).toBe('မသွားဘူး')
   })
   it('generates every pattern × verb', () => {
-    expect(DRILLS.length).toBe(60)
+    expect(DRILLS.length).toBe(PATTERNS.length * Object.keys(verbForms).length)
   })
 })

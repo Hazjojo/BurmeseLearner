@@ -1,12 +1,70 @@
 {
-  "v.go": { "base": "go", "past": "went" },
-  "v.come": { "base": "come", "past": "came" },
-  "v.eat": { "base": "eat", "past": "ate" },
-  "v.drink": { "base": "drink", "past": "drank" },
-  "v.speak": { "base": "speak", "past": "spoke" },
-  "v.sit": { "base": "sit", "past": "sat" },
-  "v.sleep": { "base": "sleep", "past": "slept" },
-  "v.look": { "base": "look", "past": "looked" },
-  "v.do": { "base": "do", "past": "did" },
-  "v.buy": { "base": "buy", "past": "bought" }
+ "v.go": {
+  "base": "go",
+  "past": "went"
+ },
+ "v.come": {
+  "base": "come",
+  "past": "came"
+ },
+ "v.eat": {
+  "base": "eat",
+  "past": "ate"
+ },
+ "v.drink": {
+  "base": "drink",
+  "past": "drank"
+ },
+ "v.speak": {
+  "base": "speak",
+  "past": "spoke"
+ },
+ "v.sit": {
+  "base": "sit",
+  "past": "sat"
+ },
+ "v.sleep": {
+  "base": "sleep",
+  "past": "slept"
+ },
+ "v.look": {
+  "base": "look",
+  "past": "looked"
+ },
+ "v.do": {
+  "base": "do",
+  "past": "did"
+ },
+ "v.buy": {
+  "base": "buy",
+  "past": "bought"
+ },
+ "v.wake-up": {
+  "base": "wake up",
+  "past": "woke up"
+ },
+ "v.wash": {
+  "base": "wash",
+  "past": "washed"
+ },
+ "v.cook": {
+  "base": "cook",
+  "past": "cooked"
+ },
+ "v.read": {
+  "base": "read",
+  "past": "read"
+ },
+ "v.rest": {
+  "base": "rest",
+  "past": "rested"
+ },
+ "v.learn": {
+  "base": "learn",
+  "past": "learned"
+ },
+ "v.go-back": {
+  "base": "go back",
+  "past": "went back"
+ }
 }

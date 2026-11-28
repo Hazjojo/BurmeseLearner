@@ -6,7 +6,7 @@
         {
           "id": "m14.l1", "title": "At the tea shop",
           "intro": [
-            "Tea shops are the heart of daily life in Yangon. လက်ဖက်ရည် (lə-hpeʔ-yèi) is the sweet milky tea you order; the pot of plain green tea, ရေနွေးကြမ်း (yèi-nwéi-ján), sits on the table for free.",
+            "Tea shops are the heart of daily life in Yangon. လက်ဖက်ရည် (lə-hpeʔ-yèi) is the sweet milky tea you order; the pot of plain green tea, ရေနွေးကြမ်း (yèi-nwéi-gyán), sits on the table for free.",
             "To order, name the thing, add how many, then ပေးပါ (péi bà) 'please give'. You call the young waiters ညီလေး (nyì-léi) 'little brother'. It's friendly, not rude."
           ],
           "items": ["food.tea", "food.coffee", "food.plain-tea", "food.waiter", "food.what-drink", "food.one-tea"]
@@ -119,7 +119,7 @@
   "items": [
     { "id": "food.tea", "unit": 14, "my": "လက်ဖက်ရည်", "rom": "lə-hpeʔ-yèi", "en": "tea (sweet milky tea)", "lit": "tea-leaf water", "note": "The tea-shop tea, made with condensed milk.", "emoji": "🍵" },
     { "id": "food.coffee", "unit": 14, "my": "ကော်ဖီ", "rom": "kàw-hpì", "en": "coffee", "emoji": "☕" },
-    { "id": "food.plain-tea", "unit": 14, "my": "ရေနွေးကြမ်း", "rom": "yèi-nwéi-ján", "en": "plain green tea", "lit": "hot water, coarse", "note": "Free on every tea-shop table; pour yourself a cup.", "emoji": "🫖" },
+    { "id": "food.plain-tea", "unit": 14, "my": "ရေနွေးကြမ်း", "rom": "yèi-nwéi-gyán", "en": "plain green tea", "lit": "hot water, coarse", "note": "Free on every tea-shop table; pour yourself a cup.", "emoji": "🫖" },
     { "id": "food.waiter", "unit": 14, "my": "ညီလေး", "rom": "nyì-léi", "en": "(calling a young waiter) Excuse me!", "lit": "little brother", "note": "The normal friendly way to call a young male waiter.", "emoji": "🙋" },
     { "id": "food.what-drink", "unit": 14, "my": "ဘာသောက်မလဲ", "rom": "bà thauʔ mə-lé", "en": "What would you like to drink?", "lit": "what drink will ?", "emoji": "🥤" },
     { "id": "food.one-tea", "unit": 14, "my": "လက်ဖက်ရည် တစ်ခွက် ပေးပါ", "rom": "lə-hpeʔ-yèi tə-hkweʔ péi bà", "en": "One tea, please", "lit": "tea one-cup give please", "note": "ခွက် counts cups and glasses. ပေးပါ = please give.", "emoji": "☝️" },
@@ -129,7 +129,7 @@
     { "id": "food.chicken", "unit": 14, "my": "ကြက်သား", "rom": "kyeʔ-thá", "en": "chicken (meat)", "emoji": "🍗" },
     { "id": "food.pork", "unit": 14, "my": "ဝက်သား", "rom": "weʔ-thá", "en": "pork", "lit": "pig meat", "emoji": "🥓" },
     { "id": "food.fish", "unit": 14, "my": "ငါး", "rom": "ngá", "en": "fish", "note": "Same word as 'five'.", "emoji": "🐟" },
-    { "id": "food.vegetables", "unit": 14, "my": "ဟင်းသီးဟင်းရွက်", "rom": "hín-thí-hín-ywaʔ", "en": "vegetables", "lit": "curry-fruit curry-leaf", "emoji": "🥬" },
+    { "id": "food.vegetables", "unit": 14, "my": "ဟင်းသီးဟင်းရွက်", "rom": "hín-thí-hín-yweʔ", "en": "vegetables", "lit": "curry-fruit curry-leaf", "emoji": "🥬" },
     { "id": "food.fruit", "unit": 14, "my": "သစ်သီး", "rom": "thiʔ-thí", "en": "fruit", "emoji": "🍎" },
     { "id": "food.spicy", "unit": 14, "my": "စပ်တယ်", "rom": "saʔ tè", "en": "It's spicy", "emoji": "🌶️" },
     { "id": "food.sweet", "unit": 14, "my": "ချိုတယ်", "rom": "chò dè", "en": "It's sweet", "emoji": "🍬" },
@@ -186,7 +186,7 @@
     { "id": "day.at-work", "unit": 16, "my": "ရုံးမှာ ရှိတယ်", "rom": "yóun-hmà shḭ dè", "en": "I'm at the office", "emoji": "🏢" },
     { "id": "day.working", "unit": 16, "my": "အလုပ်လုပ်နေတယ်", "rom": "ə-louʔ louʔ nèi dè", "en": "I'm working", "lit": "work do -ing", "emoji": "👩‍💻" },
     { "id": "v.learn", "unit": 16, "my": "သင်", "rom": "thìn", "en": "learn", "note": "VERB — combine with the sentence patterns. It can also mean 'teach'.", "emoji": "🎓" },
-    { "id": "day.studying", "unit": 16, "my": "စာကျက်နေတယ်", "rom": "sà kyeʔ nèi dè", "en": "I'm studying", "lit": "lessons memorise -ing", "emoji": "📚" },
+    { "id": "day.studying", "unit": 16, "my": "စာကြည့်နေတယ်", "rom": "sà-gyḭ nèi dè", "en": "I'm studying", "lit": "letters look-at -ing", "note": "ကြည့် 'look' is voiced here: gyḭ.", "emoji": "📚" },
     { "id": "v.go-back", "unit": 16, "my": "ပြန်", "rom": "pyàn", "en": "go back / return", "note": "VERB — combine with the sentence patterns.", "emoji": "🔙" },
     { "id": "day.go-home", "unit": 16, "my": "အိမ်ပြန်မယ်", "rom": "èin pyàn mè", "en": "I'm going home", "lit": "home return will", "emoji": "🏘️" },
     { "id": "day.what-doing", "unit": 16, "my": "ဘာလုပ်နေလဲ", "rom": "bà louʔ nèi lé", "en": "What are you doing?", "emoji": "🤔" },
@@ -236,7 +236,7 @@
         { "s": "A", "my": "ဘယ်လောက်လဲ", "rom": "bè-lauʔ lé", "en": "How much?" },
         { "s": "B", "my": "သုံးထောင်ပါ", "rom": "thóun-dàun bà", "en": "Three thousand (kyats)." },
         { "s": "A", "my": "ဘယ်လောက် ဝေးလဲ", "rom": "bè-lauʔ wéi lé", "en": "How far is it?" },
-        { "s": "B", "my": "သိပ်မဝေးပါဘူး", "rom": "theiʔ mə-wéi bà bú", "en": "It's not very far." },
+        { "s": "B", "my": "သိပ်မဝေးပါဘူး", "rom": "theiʔ mə-wéi bà bú", "en": "It's not very (သိပ်) far." },
         { "s": "A", "my": "ညာဘက် ကွေ့ပါ", "rom": "nyà-beʔ kwḛ bà", "en": "Turn right, please." },
         { "s": "A", "my": "ဒီမှာ ရပ်ပါ", "rom": "dì-hmà yaʔ pà", "en": "Stop here, please." },
         { "s": "A", "my": "ကျေးဇူးတင်ပါတယ်", "rom": "kyéi-zú tìn bà dè", "en": "Thank you." }
@@ -275,13 +275,5 @@
     { "id": "s4.m15", "title": "Read: Places", "intro": ["Places around town. Spot အိမ် (home) inside အိမ်သာ (toilet)."], "items": ["go.home", "go.market", "go.shop", "go.toilet", "go.hospital", "go.here"] },
     { "id": "s4.m16", "title": "Read: Daily life", "intro": ["Short words for times of day and new verbs. Several are a single syllable."], "items": ["day.morning", "day.night", "v.cook", "v.read", "v.rest", "day.free"] }
   ],
-  "uncertain": [
-    { "id": "food.less-spicy", "why": "ပေး after an open syllable may be voiced in speech (sha̰w béi bà); I wrote péi. Also check this is the phrasing the family would use (alternative: အစပ် သိပ်မထည့်ပါနဲ့)." },
-    { "id": "food.plain-tea", "why": "Voicing of ကြမ်း in ရေနွေးကြမ်း written as 'ján'; please confirm." },
-    { "id": "day.shower", "why": "ချိုး in ရေချိုး written unvoiced 'chó'; it may be voiced 'jó' in Yangon speech." },
-    { "id": "day.evening", "why": "Tone of ည in ညနေ written creaky 'nya̰'; confirm it isn't said with another tone in this compound." },
-    { "id": "go.station", "why": "ဘူတာ is the train station; check whether 'station' should rather be the bus station ကားဂိတ်, which is more used in Yangon." },
-    { "id": "go.taxi", "why": "တက္ကစီ is the usual word, but some people say အငှားကား; confirm which the family uses." },
-    { "id": "food.one-tea", "why": "ခွက် after တစ် written 'tə-hkweʔ'; it may be voiced 'tə-gweʔ' in fast speech." }
-  ]
+  "uncertain": []
 }
