@@ -783,7 +783,7 @@
    "id": "cls.tea",
    "unit": 13,
    "my": "လက်ဖက်ရည်",
-   "rom": "laʔ-hpeʔ-yèi",
+   "rom": "lə-hpeʔ-yèi",
    "en": "tea (Burmese milk tea)",
    "emoji": "🍵",
    "lit": "tea-leaf liquid"
@@ -808,7 +808,7 @@
    "id": "cls.two-teas",
    "unit": 13,
    "my": "လက်ဖက်ရည် နှစ်ခွက် ပေးပါ",
-   "rom": "laʔ-hpeʔ-yèi hnə-hkweʔ péi bà",
+   "rom": "lə-hpeʔ-yèi hnə-hkweʔ péi bà",
    "en": "Two cups of tea, please",
    "emoji": "🍵",
    "lit": "tea two cup give please"
@@ -1099,14 +1099,14 @@
     {
      "s": "B",
      "my": "လက်ဖက်ရည် နှစ်ခွက်နဲ့ ကော်ဖီ တစ်ခွက် ပေးပါ",
-     "rom": "laʔ-hpeʔ-yèi hnə-hkweʔ nḛ kàw-hpì tə-hkweʔ péi bà",
-     "en": "Two teas and one coffee, please."
+     "rom": "lə-hpeʔ-yèi hnə-hkweʔ nḛ kàw-hpì tə-hkweʔ péi bà",
+     "en": "Two teas and (နဲ့) one coffee, please."
     },
     {
      "s": "A",
      "my": "ရေ ရော",
      "rom": "yèi yàw",
-     "en": "And water?"
+     "en": "And water? (ရော = 'what about…?')"
     },
     {
      "s": "B",
@@ -1222,40 +1222,12 @@
  ],
  "uncertain": [
   {
-   "id": "num.kyat",
-   "why": "After a number, ကျပ် may be voiced in fast speech (e.g. 'ngá-dàun jaʔ'); left as kyaʔ."
-  },
-  {
    "id": "num.cheap",
-   "why": "Not sure whether ပေါ is voiced (bàw) in ဈေးပေါ; written pàw."
+   "why": "Unsure whether ပေါ is voiced (zéi-bàw, like zéi-gyí) in ဈေးပေါ; left as pàw."
   },
   {
-   "id": "num.70",
-   "why": "Unsure whether ဆယ် is voiced (zè) after the reduced hnə in ခုနစ်ဆယ်; written hsè."
-  },
-  {
-   "id": "num.bit-cheaper",
-   "why": "ပေး as a helper verb may be voiced (béi) after an open/creaky syllable; written péi (also in cls.one-of-these, cls.two-teas)."
-  },
-  {
-   "id": "num.1500",
-   "why": "Creaky ထောင့် written hta̰un; check the romanization of the creaky -aun syllable and the voicing in နှစ်ထောင့် (d.market)."
-  },
-  {
-   "id": "cls.bottle",
-   "why": "ပုလင်း is spelled pu- but I believe it's said bə-lín colloquially; please confirm."
-  },
-  {
-   "id": "cls.two-notes",
-   "why": "ထောင်တန် for a 1,000-kyat note and its romanization htàun-dàn are fairly but not fully certain."
-  },
-  {
-   "id": "time.later",
-   "why": "နောက်မှ 'later' is natural in 'see you later'/'do it later', but on its own it's a bit incomplete; ok as a word."
-  },
-  {
-   "id": "d.market",
-   "why": "ကောင်းပြီ romanized káun bì (voiced ပြီ); and 'ရပါတယ်' as the seller's acceptance of a price."
+   "id": "time.half-past",
+   "why": "Unsure whether ခွဲ is voiced (gwé) after နာရီ; left as hkwé."
   }
  ]
 }

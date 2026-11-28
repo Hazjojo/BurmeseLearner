@@ -171,7 +171,7 @@
 
     { "id": "fam.older-brother", "unit": 9, "my": "အစ်ကို", "rom": "ə-kò", "en": "older brother", "note": "Also a friendly way to address a man a little older than you.", "emoji": "👦" },
     { "id": "fam.older-sister", "unit": 9, "my": "အစ်မ", "rom": "ə-ma̰", "en": "older sister", "note": "Also a friendly way to address a woman a little older than you.", "emoji": "👧" },
-    { "id": "fam.younger-brother", "unit": 9, "my": "ညီ", "rom": "nyì", "en": "younger brother", "note": "Traditionally a man's younger brother; women often say မောင် (màun) for theirs.", "emoji": "🧒" },
+    { "id": "fam.younger-brother", "unit": 9, "my": "ညီ", "rom": "nyì", "en": "younger brother", "note": "A man's younger brother. A woman calls her younger brother မောင် (màun).", "emoji": "🧒" },
     { "id": "fam.younger-sister", "unit": 9, "my": "ညီမ", "rom": "nyì-ma̰", "en": "younger sister", "note": "Traditionally a woman's younger sister; men may say နှမ (hnə-ma̰), but ညီမ is widely heard.", "emoji": "👧" },
     { "id": "fam.siblings-q", "unit": 9, "my": "မောင်နှမ ဘယ်နှစ်ယောက် ရှိလဲ", "rom": "màun-hnə-ma̰ bè-hnə-yauʔ shḭ lé", "en": "How many brothers and sisters do you have?", "lit": "siblings how-many-people exist ?", "emoji": "👨‍👩‍👧‍👦" },
     { "id": "fam.one-older-brother", "unit": 9, "my": "အစ်ကို တစ်ယောက် ရှိတယ်", "rom": "ə-kò tə-yauʔ shḭ dè", "en": "I have one older brother", "note": "Person + number + ယောက်. တစ် 'one' shortens to tə.", "emoji": "☝️" },
@@ -179,7 +179,7 @@
     { "id": "fam.wife", "unit": 9, "my": "မိန်းမ", "rom": "méin-ma̰", "en": "wife", "note": "Everyday word (also 'woman'). The politer word is အမျိုးသမီး (ə-myó-thə-mí).", "emoji": "👰" },
     { "id": "fam.son", "unit": 9, "my": "သား", "rom": "thá", "en": "son", "emoji": "👦" },
     { "id": "fam.daughter", "unit": 9, "my": "သမီး", "rom": "thə-mí", "en": "daughter", "emoji": "👧" },
-    { "id": "fam.children-q", "unit": 9, "my": "ကလေး ရှိလား", "rom": "hkə-lé shḭ lá", "en": "Do you have children?", "note": "ကလေး = child, kid.", "emoji": "👶" },
+    { "id": "fam.children-q", "unit": 9, "my": "ကလေး ရှိလား", "rom": "kə-lé shḭ lá", "en": "Do you have children?", "note": "ကလေး = child, kid.", "emoji": "👶" },
     { "id": "fam.married-q", "unit": 9, "my": "အိမ်ထောင် ရှိလား", "rom": "èin-dàun shḭ lá", "en": "Are you married?", "lit": "household exist ?", "emoji": "💍" },
     { "id": "fam.family", "unit": 9, "my": "မိသားစု", "rom": "mḭ-thá-zṵ", "en": "family", "lit": "mother-child-group", "emoji": "👨‍👩‍👧" },
     { "id": "fam.parents", "unit": 9, "my": "မိဘ", "rom": "mḭ-ba̰", "en": "parents", "lit": "mother-father", "emoji": "👫" },
@@ -193,14 +193,14 @@
     { "id": "fam.u", "unit": 9, "my": "ဦး", "rom": "ú", "en": "U (title for an older man)", "note": "Goes before the name: ဦးအောင် 'U Aung'.", "emoji": "🎩" },
     { "id": "fam.daw", "unit": 9, "my": "ဒေါ်", "rom": "dàw", "en": "Daw (title for an older woman)", "note": "Goes before the name: ဒေါ်ခင် 'Daw Khin'.", "emoji": "🌸" },
     { "id": "fam.how-old", "unit": 9, "my": "အသက် ဘယ်လောက် ရှိပြီလဲ", "rom": "ə-theʔ bè-lauʔ shḭ bì lé", "en": "How old are you?", "lit": "age how-much exist now ?", "emoji": "🎂" },
-    { "id": "fam.age-30", "unit": 9, "my": "အသက် သုံးဆယ် ရှိပြီ", "rom": "ə-theʔ thóun-zè shḭ bì", "en": "I'm thirty", "note": "သုံး 'three' + ဆယ် 'ten' = thirty. ဆယ် is said 'zè' after another number.", "emoji": "🎉" },
+    { "id": "fam.age-30", "unit": 9, "my": "အသက် သုံးဆယ် ရှိပြီ", "rom": "ə-theʔ thóun-zè shḭ bì", "en": "I'm thirty", "note": "သုံး 'three' + ဆယ် 'ten' = thirty. ဆယ် is voiced to 'zè' after သုံး.", "emoji": "🎉" },
 
     { "id": "feel.tired", "unit": 10, "my": "ပင်ပန်းတယ်", "rom": "pìn-bán dè", "en": "I'm tired", "note": "Tired from effort, work or travel.", "emoji": "😩" },
     { "id": "feel.sleepy", "unit": 10, "my": "အိပ်ချင်တယ်", "rom": "eiʔ chìn dè", "en": "I'm sleepy", "lit": "want to sleep", "emoji": "😴" },
     { "id": "feel.hungry", "unit": 10, "my": "ဗိုက်ဆာတယ်", "rom": "baiʔ hsà dè", "en": "I'm hungry", "lit": "stomach hungry", "emoji": "🍽️" },
     { "id": "feel.hungry-q", "unit": 10, "my": "ဗိုက်ဆာလား", "rom": "baiʔ hsà lá", "en": "Are you hungry?", "emoji": "🍲" },
     { "id": "feel.thirsty", "unit": 10, "my": "ရေဆာတယ်", "rom": "yèi hsà dè", "en": "I'm thirsty", "lit": "water hungry", "emoji": "🥤" },
-    { "id": "feel.full", "unit": 10, "my": "ဗိုက်ပြည့်ပြီ", "rom": "baiʔ pyḛ bì", "en": "I'm full", "note": "Useful when the family keeps refilling your plate.", "emoji": "😌" },
+    { "id": "feel.full", "unit": 10, "my": "ဗိုက်ပြည့်ပြီ", "rom": "baiʔ pyḭ bì", "en": "I'm full", "note": "Useful when the family keeps refilling your plate.", "emoji": "😌" },
     { "id": "feel.hot", "unit": 10, "my": "ပူတယ်", "rom": "pù dè", "en": "It's hot", "note": "For weather or things. For feeling hot and sticky, people say အိုက်တယ် (aiʔ tè).", "emoji": "🥵" },
     { "id": "feel.cold", "unit": 10, "my": "ချမ်းတယ်", "rom": "chán dè", "en": "I'm cold", "note": "How you feel. For cold weather or a cold drink, say အေးတယ် (èi dè).", "emoji": "🥶" },
     { "id": "feel.sick", "unit": 10, "my": "နေမကောင်းဘူး", "rom": "nèi mə-káun bú", "en": "I'm not well / I'm sick", "lit": "not well", "emoji": "🤒" },
@@ -237,7 +237,7 @@
         { "s": "A", "my": "ဘာလုပ်နေလဲ", "rom": "bà louʔ nèi lé", "en": "What are you doing?" },
         { "s": "B", "my": "မြန်မာစကား သင်နေတယ်", "rom": "myəmà zəgá thìn nèi dè", "en": "I'm learning Burmese." },
         { "s": "A", "my": "ဘာလို့လဲ", "rom": "bà-lo̰ lé", "en": "Why?" },
-        { "s": "B", "my": "မြန်မာပြည် သွားမလို့ပါ", "rom": "myəmà-pyì thwá mə-lo̰ bà", "en": "Because I'm going to Myanmar." },
+        { "s": "B", "my": "မြန်မာပြည် သွားမလို့ပါ", "rom": "myəmà-pyì thwá mə-lo̰ bà", "en": "Because I'm going to Myanmar (မြန်မာပြည်). Verb + မလို့ = 'because I'm going to…'." },
         { "s": "A", "my": "ဘယ်တော့ သွားမလဲ", "rom": "bè-da̰w thwá mə-lé", "en": "When are you going?" },
         { "s": "B", "my": "မသိဘူး", "rom": "mə-thḭ bú", "en": "I don't know." },
         { "s": "A", "my": "ဘယ်နှစ်ယောက် သွားမလဲ", "rom": "bè-hnə-yauʔ thwá mə-lé", "en": "How many of you are going?" },
@@ -260,7 +260,7 @@
         { "s": "B", "my": "မောင်နှမ ဘယ်နှစ်ယောက် ရှိလဲ", "rom": "màun-hnə-ma̰ bè-hnə-yauʔ shḭ lé", "en": "How many brothers and sisters do you have?" },
         { "s": "A", "my": "အစ်ကို တစ်ယောက် ညီမ တစ်ယောက် ရှိတယ်", "rom": "ə-kò tə-yauʔ nyì-ma̰ tə-yauʔ shḭ dè", "en": "One older brother and one younger sister." },
         { "s": "B", "my": "ညီမ အသက် ဘယ်လောက် ရှိပြီလဲ", "rom": "nyì-ma̰ ə-theʔ bè-lauʔ shḭ bì lé", "en": "How old is your younger sister?" },
-        { "s": "A", "my": "ဆယ်နှစ် ရှိပြီ", "rom": "hsè-hniʔ shḭ bì", "en": "She's ten." }
+        { "s": "A", "my": "ဆယ်နှစ် ရှိပြီ", "rom": "hsè-hniʔ shḭ bì", "en": "She's ten (နှစ် here means 'years')." }
       ],
       "questions": [
         { "q": "Who does Su introduce first?", "options": ["Her mother", "Her father", "Her younger sister", "Her grandmother"], "answer": 0 },
@@ -338,14 +338,5 @@
       "items": ["feel.hot", "feel.tired", "feel.hungry", "feel.sad", "feel.happy"]
     }
   ],
-  "uncertain": [
-    { "id": "feel.thirsty", "why": "Unsure whether ဆာ is voiced in ရေဆာ (yèi hsà vs yèi zà) in normal Yangon speech." },
-    { "id": "feel.full", "why": "Vowel of ပြည့် written as pyḛ (ɛ); some transcriptions give pyeḭ." },
-    { "id": "fam.younger-brother", "why": "ညီ is strictly a man's younger brother (women say မောင်); simplified with a note." },
-    { "id": "fam.younger-sister", "why": "ညီမ is traditionally a woman's younger sister (men: နှမ); I believe men also use ညီမ colloquially, but please check." },
-    { "id": "fam.grandfather", "why": "Spelling varies (အဘိုး / အဖိုး); pronunciation ə-hpó either way." },
-    { "id": "fam.married-q", "why": "Voicing of ထောင် in အိမ်ထောင် given as dàun." },
-    { "id": "q.how-many-people", "why": "နှစ် in ဘယ်နှစ် romanized as reduced hnə; check it's not said fully as hniʔ." },
-    { "id": "d.questions", "why": "Line 4 uses verb + မလို့ ('because I'm going to'), not taught in the lessons." }
-  ]
+  "uncertain": []
 }

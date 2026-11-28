@@ -17,9 +17,25 @@ if (!reading) {
   course.scriptModules.push(reading)
 }
 const files = readdirSync(new URL('drafts/', root)).filter((f) => f.endsWith('.json')).sort()
+// The same Burmese phrase written in two modules becomes one item; later references point to the first.
+const byText = new Map(speaking.map((i) => [i.my, i.id]))
 for (const f of files) {
   const d = load(`drafts/${f}`)
-  for (const it of d.items ?? []) if (!has(speaking, it.id)) speaking.push(it)
+  const alias = new Map()
+  for (const it of d.items ?? []) {
+    const dup = byText.get(it.my)
+    if (dup && dup !== it.id && !it.speaker) {
+      alias.set(it.id, dup)
+      console.log(`  ${it.id} duplicates ${dup}: merged`)
+      continue
+    }
+    if (!has(speaking, it.id)) speaking.push(it)
+    byText.set(it.my, it.id)
+  }
+  const fix = (ids) => [...new Set((ids ?? []).map((id) => alias.get(id) ?? id))]
+  for (const m of d.modules ?? []) for (const l of m.lessons) l.items = fix(l.items)
+  for (const r of d.reading ?? []) r.items = fix(r.items)
+  for (const p of d.patterns ?? []) p.from = alias.get(p.from) ?? p.from
   for (const m of d.modules ?? []) if (!has(course.modules, m.id)) course.modules.push(m)
   for (const x of d.dialogues ?? []) if (!has(dialogues, x.id)) dialogues.push(x)
   for (const x of d.patterns ?? []) if (!has(patterns, x.id)) patterns.push(x)
