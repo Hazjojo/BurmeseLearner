@@ -3,14 +3,14 @@ import { listeners, loadState, saveState, type AppState } from './lib/store'
 import { getScheduler } from './lib/srs'
 import type { Sync } from './lib/sync'
 import { Course, Home, LessonView, ReviewView } from './screens/Learn'
-import { Phrasebook, Settings } from './screens/Other'
+import { Settings } from './screens/Other'
 import { DialoguePlayer, Practice, type Dialogue } from './screens/Practice'
 import { setAISync } from './lib/ai'
 import { QuickAdd } from './screens/QuickAdd'
 import { SyncPanel } from './screens/SyncPanel'
 import { ErrorBoundary } from './ErrorBoundary'
 
-type Tab = 'home' | 'course' | 'tones' | 'phrases' | 'settings'
+type Tab = 'home' | 'course' | 'script' | 'tones' | 'settings'
 type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | { kind: 'dialogue'; d: Dialogue } | null
 
 export default function App() {
@@ -107,9 +107,9 @@ export default function App() {
       <main>
         {guard(<>
         {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} />}
-        {tab === 'course' && <Course state={state} onLesson={openLesson} onDialogue={(d) => setOverlay({ kind: 'dialogue', d })} />}
-        {tab === 'tones' && <Practice state={state} update={update} sync={sync} />}
-        {tab === 'phrases' && <Phrasebook state={state} update={update} onAdd={() => setOverlay({ kind: 'add' })} />}
+        {tab === 'course' && <Course state={state} track="speak" onLesson={openLesson} onDialogue={(d) => setOverlay({ kind: 'dialogue', d })} />}
+        {tab === 'script' && <Course state={state} track="script" onLesson={openLesson} onDialogue={(d) => setOverlay({ kind: 'dialogue', d })} />}
+        {tab === 'tones' && <Practice state={state} update={update} sync={sync} onAdd={() => setOverlay({ kind: 'add' })} />}
         {tab === 'settings' && (
           <>
             <Settings state={state} update={update} />
@@ -122,9 +122,9 @@ export default function App() {
         {(
           [
             ['home', '🏠', 'Home'],
-            ['course', '🗺️', 'Course'],
+            ['course', '🗣', 'Speaking'],
+            ['script', '✍️', 'Script'],
             ['tones', '🎧', 'Practice'],
-            ['phrases', '📖', 'Phrases'],
             ['settings', '⚙️', 'Settings'],
           ] as const
         ).map(([t, icon, label]) => (

@@ -7,6 +7,7 @@ import { Mm, Rom } from '../components'
 import { Tones } from './Tones'
 import { Conversation } from './Conversation'
 import { Writing } from './Writing'
+import { Phrasebook } from './Other'
 import { AlphabetChart } from './Learn'
 import type { Sync } from '../lib/sync'
 
@@ -23,8 +24,8 @@ export interface Dialogue {
 export const DIALOGUES = dialoguesJson as Dialogue[]
 
 /** Practice hub: listening, ear training, speaking with AI. */
-export function Practice({ state, update, sync }: { state: AppState; update: Update; sync: Sync | null }) {
-  const [view, setView] = useState<'menu' | 'listen' | 'ear' | 'speak' | 'write' | 'chart'>('menu')
+export function Practice({ state, update, sync, onAdd }: { state: AppState; update: Update; sync: Sync | null; onAdd: () => void }) {
+  const [view, setView] = useState<'menu' | 'listen' | 'ear' | 'speak' | 'write' | 'chart' | 'phrases'>('menu')
   const [dialogue, setDialogue] = useState<Dialogue | null>(null)
   if (dialogue) return <DialoguePlayer d={dialogue} state={state} update={update} onExit={() => setDialogue(null)} />
   if (view === 'ear')
@@ -32,6 +33,13 @@ export function Practice({ state, update, sync }: { state: AppState; update: Upd
       <>
         <BackBar onBack={() => setView('menu')} />
         <Tones state={state} update={update} />
+      </>
+    )
+  if (view === 'phrases')
+    return (
+      <>
+        <BackBar onBack={() => setView('menu')} />
+        <Phrasebook state={state} update={update} onAdd={onAdd} />
       </>
     )
   if (view === 'write') return <Writing state={state} update={update} onExit={() => setView('menu')} />
@@ -65,6 +73,13 @@ export function Practice({ state, update, sync }: { state: AppState; update: Upd
   return (
     <div className="screen">
       <h2>Practice</h2>
+      <button className="hero review" onClick={() => setView('phrases')}>
+        <span className="hero-icon">📖</span>
+        <span className="hero-body">
+          <span className="hero-title">Phrasebook</span>
+          <span className="small">Everything you've learned, by topic, plus your own phrases</span>
+        </span>
+      </button>
       <h3>Reading & writing</h3>
       <button className="hero review" onClick={() => setView('write')}>
         <span className="hero-icon">✍️</span>

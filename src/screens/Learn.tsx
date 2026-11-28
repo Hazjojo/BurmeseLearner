@@ -112,29 +112,14 @@ const ROW = 118
 const W = 320
 const OFF = [0, 72, 104, 72, 0, -72, -104, -72]
 
-export function Course({ state, onLesson, onDialogue }: { state: AppState; onLesson: (id: string) => void; onDialogue: (d: Dialogue) => void }) {
-  const [track, setTrack] = useState<Track>(() => {
-    try {
-      return (localStorage.getItem('courseTrack') as Track) || 'speak'
-    } catch {
-      return 'speak'
-    }
-  })
-  const pick = (t: Track) => {
-    setTrack(t)
-    try {
-      localStorage.setItem('courseTrack', t)
-    } catch {
-      /* ignore */
-    }
-  }
-  return <CourseMap key={track} state={state} track={track} onTrack={pick} onLesson={onLesson} onDialogue={onDialogue} />
+/** One course map per bottom-bar tab: Speaking or Script. */
+export function Course({ state, track, onLesson, onDialogue }: { state: AppState; track: Track; onLesson: (id: string) => void; onDialogue: (d: Dialogue) => void }) {
+  return <CourseMap key={track} state={state} track={track} onLesson={onLesson} onDialogue={onDialogue} />
 }
 
-function CourseMap({ state, track, onTrack, onLesson, onDialogue }: {
+function CourseMap({ state, track, onLesson, onDialogue }: {
   state: AppState
   track: Track
-  onTrack: (t: Track) => void
   onLesson: (id: string) => void
   onDialogue: (d: Dialogue) => void
 }) {
@@ -146,30 +131,11 @@ function CourseMap({ state, track, onTrack, onLesson, onDialogue }: {
   let step = 0 // keeps the zigzag continuous across modules
   return (
     <div className="screen map-screen">
-      <h2>Course map</h2>
-      {/* Two courses, learned side by side: a big, obvious switch between their maps. */}
-      <div className="track-switch" role="tablist">
-        {(
-          [
-            ['speak', '🗣', 'Speaking', 'Phrases & conversation'],
-            ['script', '✍️', 'Script', 'Reading & writing'],
-          ] as const
-        ).map(([t, icon, title, sub]) => {
-          const ls = lessonsOf(t)
-          const n = ls.filter((l) => state.lessons[l.id]).length
-          return (
-            <button key={t} role="tab" aria-selected={track === t} className={`track-tab ${track === t ? 'active' : ''}`} onClick={() => onTrack(t)}>
-              <span className="track-icon">{icon}</span>
-              <span className="track-text">
-                <b>{title}</b>
-                <span className="small">{sub}</span>
-                <span className="small track-count">
-                  {n}/{ls.length} lessons
-                </span>
-              </span>
-            </button>
-          )
-        })}
+      <div className="map-title">
+        <h2>{track === 'script' ? '✍️ Script' : '🗣 Speaking'}</h2>
+        <span className="small muted">
+          {track === 'script' ? 'Reading & writing' : 'Phrases & conversation'} · {lessonsOf(track).filter((l) => state.lessons[l.id]).length}/{lessonsOf(track).length} lessons
+        </span>
       </div>
       {modulesOf(track).map((m, mi) => {
         const nodes: Node[] = m.lessons.flatMap((l) => [{ kind: 'lesson' as const, lesson: l }, ...DIALOGUES.filter((d) => d.after === l.id).map((d) => ({ kind: 'dialogue' as const, d }))])
