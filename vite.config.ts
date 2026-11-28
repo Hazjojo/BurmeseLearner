@@ -5,10 +5,12 @@ import { VitePWA } from 'vite-plugin-pwa'
 // BASE_PATH lets the same build run at a sub-path (GitHub Pages: /BurmeseLearner/) or at the root (Firebase).
 export default defineConfig({
   base: process.env.BASE_PATH ?? '/',
+  define: { __BUILD__: JSON.stringify(new Date().toISOString().slice(0, 16).replace('T', ' ')) },
   plugins: [
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      injectRegister: false, // registered in src/main.tsx with update checks
       includeAssets: ['icon.svg', 'apple-touch-icon.png'],
       manifest: {
         name: 'BurmeseLearner',

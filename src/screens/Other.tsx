@@ -163,6 +163,7 @@ export function Settings({ state, update }: { state: AppState; update: Update })
         </label>
       </div>
       {msg && <p className="small">{msg}</p>}
+      <p className="muted small">App version: {__BUILD__}</p>
     </div>
   )
 }
