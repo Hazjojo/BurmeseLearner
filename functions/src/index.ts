@@ -4,8 +4,8 @@ import { initializeApp } from 'firebase-admin/app'
 import { FieldValue, getFirestore } from 'firebase-admin/firestore'
 import { defineSecret } from 'firebase-functions/params'
 import { HttpsError, onCall, type CallableRequest } from 'firebase-functions/v2/https'
-import { GoogleGenAI, Type } from '@google/genai'
-import { buildPrompt, type ConverseInput } from './prompt.js'
+import { GoogleGenAI, ThinkingLevel, Type } from '@google/genai'
+import { buildPrompt, ROM_SCHEME, type ConverseInput } from './prompt.js'
 
 initializeApp()
 const db = getFirestore()
@@ -74,11 +74,32 @@ async function synthesise(text: string, voice: string): Promise<string> {
   return Buffer.from(await res.arrayBuffer()).toString('base64')
 }
 
+const ROM_SCHEMA_OBJ = {
+  type: Type.OBJECT,
+  properties: { rom: { type: Type.STRING }, en: { type: Type.STRING } },
+  required: ['rom', 'en'],
+}
+/** Romanize recognised Burmese (and give its meaning) so the learner can read what was heard. */
+async function romanize(text: string): Promise<{ rom: string; en: string }> {
+  if (!text) return { rom: '', en: '' }
+  try {
+    return await generate(
+      `Romanize colloquial Burmese for a learner and give a short English meaning.\n${ROM_SCHEME}`,
+      `Burmese: ${text}\nReturn JSON {rom, en}.`,
+      ROM_SCHEMA_OBJ,
+    )
+  } catch {
+    return { rom: '', en: '' }
+  }
+}
+
 export const transcribe = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSeconds: 30, memory: '256MiB' }, async (req) => {
+  const data = (req.data ?? {}) as { wav?: string; warm?: boolean; romanize?: boolean }
+  if (data.warm) return { ok: true } // wakes the server up before it's needed
   await guard(req)
-  const wav = (req.data as { wav?: string })?.wav
-  if (typeof wav !== 'string' || wav.length > 3_000_000) throw new HttpsError('invalid-argument', 'Recording missing or too long.')
-  return recognise(wav)
+  if (typeof data.wav !== 'string' || data.wav.length > 3_000_000) throw new HttpsError('invalid-argument', 'Recording missing or too long.')
+  const heard = await recognise(data.wav)
+  return data.romanize ? { ...heard, ...(await romanize(heard.text)) } : heard
 })
 
 export const speak = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSeconds: 30, memory: '256MiB' }, async (req) => {
@@ -96,7 +117,12 @@ const REPLY_SCHEMA = {
       properties: { my: { type: Type.STRING }, rom: { type: Type.STRING }, en: { type: Type.STRING } },
       required: ['my', 'rom', 'en'],
     },
-    heard: { type: Type.STRING, description: 'What you understood the learner to mean, in English.' },
+    learner: {
+      type: Type.OBJECT,
+      description: "The learner's last message as you understood it: Burmese (cleaned up, as they most likely meant it), romanization, English meaning. Empty strings if there is no learner message yet.",
+      properties: { my: { type: Type.STRING }, rom: { type: Type.STRING }, en: { type: Type.STRING } },
+      required: ['my', 'rom', 'en'],
+    },
     feedback: { type: Type.STRING, description: 'Short English tip on the learner’s last message, or empty.' },
     better: {
       type: Type.OBJECT,
@@ -114,20 +140,23 @@ const REPLY_SCHEMA = {
     },
     end: { type: Type.BOOLEAN },
   },
-  required: ['reply', 'heard', 'feedback', 'better', 'suggestions', 'end'],
+  required: ['reply', 'learner', 'feedback', 'better', 'suggestions', 'end'],
 }
 
 let ai: GoogleGenAI | null = null
-async function generate(system: string, prompt: string) {
+async function generate(system: string, prompt: string, schema: object = REPLY_SCHEMA) {
   ai ??= new GoogleGenAI({ enterprise: true, project: process.env.GCLOUD_PROJECT, location: 'global' })
   let lastErr: unknown
   for (const model of MODELS) {
     try {
-      const res = await ai.models.generateContent({
-        model,
-        contents: prompt,
-        config: { systemInstruction: system, responseMimeType: 'application/json', responseSchema: REPLY_SCHEMA, temperature: 0.6 },
-      })
+      const config = { systemInstruction: system, responseMimeType: 'application/json', responseSchema: schema, temperature: 0.6 }
+      // Minimal "thinking" keeps replies fast enough to feel like a conversation.
+      const res = await ai.models
+        .generateContent({ model, contents: prompt, config: { ...config, thinkingConfig: { thinkingLevel: ThinkingLevel.MINIMAL } } })
+        .catch((e) => {
+          if (/thinking/i.test(String(e))) return ai!.models.generateContent({ model, contents: prompt, config })
+          throw e
+        })
       return JSON.parse(res.text ?? '{}')
     } catch (e) {
       lastErr = e
@@ -137,12 +166,25 @@ async function generate(system: string, prompt: string) {
   throw new HttpsError('internal', `AI reply failed: ${lastErr instanceof Error ? lastErr.message : lastErr}`)
 }
 
+/**
+ * One conversation turn in a single round trip: (learner audio → text) → AI reply → reply audio.
+ * Send `wav` with the learner's recording, or put a typed message as the last history entry.
+ */
 export const converse = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSeconds: 60, memory: '512MiB' }, async (req) => {
+  if ((req.data as { warm?: boolean })?.warm) return { ok: true }
   await guard(req)
-  const input = req.data as ConverseInput
+  const input = req.data as ConverseInput & { wav?: string }
   if (!input?.scenario?.setup || !Array.isArray(input.history) || input.history.length > 60) throw new HttpsError('invalid-argument', 'Bad conversation.')
+  let heardText: string | null = null
+  if (typeof input.wav === 'string') {
+    if (input.wav.length > 3_000_000) throw new HttpsError('invalid-argument', 'Recording too long.')
+    const heard = await recognise(input.wav)
+    if (!heard.text) return { heardNothing: true }
+    heardText = heard.text
+    input.history = [...input.history, { who: 'me', my: heard.text }]
+  }
   const { system, prompt } = buildPrompt(input)
   const out = await generate(system, prompt)
   const audio = out?.reply?.my ? await synthesise(out.reply.my, input.scenario.voice === 1 ? 'my-MM-ThihaNeural' : 'my-MM-NilarNeural') : null
-  return { ...out, audio }
+  return { ...out, audio, heardText }
 })

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
-import { aiAvailable, base64ToBlob, converse, speakText, transcribe, type AIReply, type Line } from '../lib/ai'
-import { playBlob, startRecording, type Recorder } from '../lib/audio'
+import { aiAvailable, base64ToBlob, converse, speakText, warmUp, type AIReply, type Line } from '../lib/ai'
+import { openMic, playBlob, recordFrom, type Recorder } from '../lib/audio'
 import type { AppState } from '../lib/store'
 import type { Sync } from '../lib/sync'
 import { knownItems } from '../learn'
@@ -57,6 +57,8 @@ interface Turn {
   en?: string
   audio?: Blob
   reply?: AIReply
+  /** my turn waiting for the server */
+  pending?: boolean
 }
 
 export function Conversation({ state, sync, onExit }: { state: AppState; sync: Sync | null; onExit: () => void }) {
@@ -95,76 +97,123 @@ export function Conversation({ state, sync, onExit }: { state: AppState; sync: S
   return <Chat key={scenario.id} scenario={scenario} state={state} onBack={() => setScenario(null)} />
 }
 
+type MicMode = 'idle' | 'holding' | 'tapped'
+
 function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState; onBack: () => void }) {
   const [turns, setTurns] = useState<Turn[]>([])
-  const [busy, setBusy] = useState<'thinking' | 'listening' | null>(null)
+  const [thinking, setThinking] = useState(false)
   const [err, setErr] = useState('')
-  const [rec, setRec] = useState<Recorder | null>(null)
-  const [heard, setHeard] = useState<string | null>(null)
+  const [note, setNote] = useState('')
+  const [mode, setMode] = useState<MicMode>('idle')
+  const [secs, setSecs] = useState(0)
   const [typed, setTyped] = useState('')
   const [showEn, setShowEn] = useState<Set<number>>(new Set())
+  const [showHelp, setShowHelp] = useState(false)
+  const stream = useRef<MediaStream | null>(null)
+  const rec = useRef<Recorder | null>(null)
+  const t0 = useRef(0)
   const bottom = useRef<HTMLDivElement>(null)
+  const turnsRef = useRef<Turn[]>([])
+  turnsRef.current = turns
   const known = useRef(knownItems(state).map((i) => `${i.my} — ${i.en}`))
 
   useEffect(() => {
-    // Braces matter: newer browsers return a Promise from scrollIntoView, and React would treat it as a cleanup function.
     bottom.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [turns, heard, busy])
+  }, [turns, thinking])
+
+  // Open the mic once for the whole conversation, so pressing the button records instantly.
   useEffect(() => {
-    send(null)
+    warmUp()
+    openMic()
+      .then((s) => (stream.current = s))
+      .catch(() => setErr('Microphone not available. Allow microphone access in your browser settings, or type instead.'))
+    ask(null)
+    return () => {
+      rec.current?.cancel()
+      stream.current?.getTracks().forEach((t) => t.stop())
+    }
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  async function send(mine: string | null) {
+  useEffect(() => {
+    if (mode === 'idle') return
+    setSecs(0)
+    const id = setInterval(() => setSecs(Math.floor((Date.now() - t0.current) / 1000)), 250)
+    return () => clearInterval(id)
+  }, [mode])
+
+  const historyOf = (ts: Turn[]) => ts.filter((t) => !t.pending && t.my).map((t) => ({ who: t.who, my: t.my, en: t.who === 'ai' ? t.en : undefined }))
+
+  /** One turn: optional recording (or typed text) in, AI reply out. */
+  async function ask(recording: Blob | null, typedText?: string) {
     setErr('')
-    const history: Turn[] = mine ? [...turns, { who: 'me', my: mine }] : turns
-    setTurns(history)
-    setHeard(null)
-    setTyped('')
-    setBusy('thinking')
+    setNote('')
+    setShowHelp(false)
+    const before = turnsRef.current
+    const base = typedText ? [...before, { who: 'me' as const, my: typedText }] : before
+    if (recording) setTurns([...base, { who: 'me', my: '', pending: true }])
+    else setTurns(base)
+    setThinking(true)
     try {
-      const r = await converse({
-        scenario,
-        history: history.map((t) => ({ who: t.who, my: t.my, en: t.who === 'ai' ? t.en : undefined })),
-        known: known.current,
-        speaker: state.settings.speaker,
-      })
+      const r = await converse({ scenario, history: historyOf(base), known: known.current, speaker: state.settings.speaker }, recording ?? undefined)
+      if (!r) {
+        setTurns(base)
+        setNote("I didn't catch that. Hold the button and speak a little slower, close to the phone.")
+        return
+      }
       const audio = r.audio ? base64ToBlob(r.audio, 'audio/mpeg') : undefined
-      setTurns([...history, { who: 'ai', my: r.reply.my, rom: r.reply.rom, en: r.reply.en, audio, reply: r }])
+      const mine: Turn[] = recording
+        ? [{ who: 'me', my: r.learner.my || r.heardText || '', rom: r.learner.rom, en: r.learner.en }]
+        : typedText
+          ? [{ who: 'me', my: typedText, rom: r.learner.rom, en: r.learner.en }]
+          : []
+      setTurns([...before, ...mine, { who: 'ai', my: r.reply.my, rom: r.reply.rom, en: r.reply.en, audio, reply: r }])
       if (audio) playBlob(audio)
     } catch (e) {
+      setTurns(base.filter((t) => !t.pending))
       setErr(e instanceof Error ? e.message : String(e))
     } finally {
-      setBusy(null)
+      setThinking(false)
     }
   }
 
-  async function toggleMic() {
-    setErr('')
-    if (rec) {
-      const blob = await rec.stop()
-      setRec(null)
-      setBusy('listening')
-      try {
-        const text = await transcribe(blob)
-        setHeard(text || '')
-      } catch (e) {
-        setErr(e instanceof Error ? e.message : String(e))
-      } finally {
-        setBusy(null)
-      }
-    } else {
-      try {
-        setHeard(null)
-        setRec(await startRecording())
-      } catch {
-        setErr('Microphone not available. Check the browser permission.')
-      }
+  // Press and hold to talk; or tap once to start and tap again to send.
+  const startRec = () => {
+    if (!stream.current || thinking) return
+    rec.current = recordFrom(stream.current)
+    t0.current = Date.now()
+    navigator.vibrate?.(15)
+  }
+  const finishRec = async () => {
+    const r = rec.current
+    rec.current = null
+    setMode('idle')
+    if (!r) return
+    const held = Date.now() - t0.current
+    const blob = await r.stop()
+    navigator.vibrate?.(10)
+    if (held < 500) {
+      setNote('That was very short. Hold the button while you speak.')
+      return
     }
+    ask(blob)
+  }
+  const onDown = (e: React.PointerEvent) => {
+    e.preventDefault()
+    if (mode === 'tapped') return void finishRec()
+    if (mode !== 'idle') return
+    startRec()
+    if (rec.current) setMode('holding')
+  }
+  const onUp = () => {
+    if (mode !== 'holding') return
+    if (Date.now() - t0.current < 350) setMode('tapped') // quick tap: keep recording until the next tap
+    else finishRec()
   }
 
   const last = turns[turns.length - 1]
   const lastReply = last?.who === 'ai' ? last.reply : undefined
   const ended = !!lastReply?.end
+  const recording = mode !== 'idle'
 
   return (
     <div className="screen chat-screen">
@@ -176,8 +225,28 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
       </div>
       <div className="chat">
         {turns.map((t, i) => {
-          const fb = turns[i + 1]?.reply // the AI's comment on this learner turn comes with its next reply
-          return t.who === 'ai' ? (
+          const fb = turns[i + 1]?.reply // the AI's comment on this turn arrives with its next reply
+          if (t.who === 'me')
+            return (
+              <div key={i} className={`bubble right ${t.pending ? 'pending' : ''}`}>
+                {t.pending ? (
+                  <span className="dots">
+                    <i />
+                    <i />
+                    <i />
+                  </span>
+                ) : (
+                  <>
+                    <Mm text={t.my} size="sm" />
+                    {t.rom && <Rom rom={t.rom} />}
+                    {t.en && <span className="small muted">“{t.en}”</span>}
+                    {fb?.feedback && <span className="note small">💡 {fb.feedback}</span>}
+                    {fb?.better?.my && <LineView line={fb.better} label="Try:" />}
+                  </>
+                )}
+              </div>
+            )
+          return (
             <div key={i} className="bubble left">
               <Mm text={t.my} size="sm" />
               {state.settings.showRom && t.rom && <Rom rom={t.rom} />}
@@ -197,20 +266,22 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
                 </button>
               </span>
             </div>
-          ) : (
-            <div key={i} className="bubble right">
-              <Mm text={t.my} size="sm" />
-              {fb?.heard && <span className="small muted">Understood as: “{fb.heard}”</span>}
-              {fb?.feedback && <span className="note small">💡 {fb.feedback}</span>}
-              {fb?.better?.my && <LineView line={fb.better} label="Try:" />}
-            </div>
           )
         })}
-        {busy && <div className="bubble left muted">{busy === 'thinking' ? '…' : 'Listening to you…'}</div>}
+        {thinking && !turns.some((t) => t.pending) && (
+          <div className="bubble left">
+            <span className="dots">
+              <i />
+              <i />
+              <i />
+            </span>
+          </div>
+        )}
         <div ref={bottom} />
       </div>
 
       {err && <p className="error small">{err}</p>}
+      {note && <p className="small note">{note}</p>}
 
       {ended ? (
         <div className="actions">
@@ -220,60 +291,48 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
           </button>
         </div>
       ) : (
-        <div className="actions chat-input">
-          {lastReply && lastReply.suggestions?.length > 0 && heard === null && !rec && (
+        <div className="actions talk-bar">
+          {showHelp && lastReply && lastReply.suggestions.length > 0 && (
             <div className="suggestions">
-              <span className="small muted">You could say:</span>
               {lastReply.suggestions.map((s, k) => (
                 <LineView key={k} line={s} />
               ))}
             </div>
           )}
-          {heard !== null ? (
-            <div className="heard">
-              {heard ? (
-                <>
-                  <span className="small muted">I heard:</span>
-                  <Mm text={heard} size="sm" />
-                  <div className="row gap-sm">
-                    <button className="btn" onClick={() => setHeard(null)}>
-                      Try again
-                    </button>
-                    <button className="btn primary wide" onClick={() => send(heard)}>
-                      Send
-                    </button>
-                  </div>
-                </>
-              ) : (
-                <>
-                  <span className="small">I didn't catch that. Try again a little slower, close to the mic.</span>
-                  <button className="btn" onClick={() => setHeard(null)}>
-                    OK
-                  </button>
-                </>
-              )}
-            </div>
-          ) : (
-            <div className="row gap-sm">
-              <input
-                type="text"
-                placeholder="or type (Burmese or English)"
-                value={typed}
-                disabled={!!busy || !!rec}
-                onChange={(e) => setTyped(e.target.value)}
-                onKeyDown={(e) => e.key === 'Enter' && typed.trim() && send(typed.trim())}
-              />
-              {typed.trim() ? (
-                <button className="btn primary" disabled={!!busy} onClick={() => send(typed.trim())}>
-                  Send
-                </button>
-              ) : (
-                <button className={`btn mic ${rec ? 'recording' : ''}`} disabled={!!busy} onClick={toggleMic} aria-label={rec ? 'Stop' : 'Speak'}>
-                  {rec ? '■' : '🎙'}
-                </button>
-              )}
-            </div>
-          )}
+          <div className="talk-row">
+            <button className="btn small ghost" disabled={!lastReply?.suggestions.length} onClick={() => setShowHelp(!showHelp)}>
+              💡 Ideas
+            </button>
+            <button
+              className={`talk-btn ${recording ? 'recording' : ''}`}
+              disabled={thinking || !stream.current}
+              onPointerDown={onDown}
+              onPointerUp={onUp}
+              onPointerCancel={onUp}
+              onContextMenu={(e) => e.preventDefault()}
+              aria-label={recording ? 'Recording: release or tap to send' : 'Hold to talk'}
+            >
+              {recording ? '■' : '🎙'}
+            </button>
+            <span className="talk-hint small muted">
+              {thinking ? 'Thinking…' : mode === 'holding' ? `Recording ${secs}s · release to send` : mode === 'tapped' ? `Recording ${secs}s · tap to send` : 'Hold to talk'}
+            </span>
+          </div>
+          <div className="row gap-sm">
+            <input
+              type="text"
+              placeholder="or type (Burmese or English)"
+              value={typed}
+              disabled={thinking || recording}
+              onChange={(e) => setTyped(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && typed.trim() && (ask(null, typed.trim()), setTyped(''))}
+            />
+            {typed.trim() && (
+              <button className="btn primary" disabled={thinking} onClick={() => (ask(null, typed.trim()), setTyped(''))}>
+                Send
+              </button>
+            )}
+          </div>
         </div>
       )}
     </div>

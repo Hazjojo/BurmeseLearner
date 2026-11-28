@@ -53,3 +53,29 @@ export function playBlob(blob: Blob, rate = 1): Promise<void> {
     a.play().catch(() => resolve())
   })
 }
+
+/** Open the microphone once and keep it ready, so recording starts instantly (no permission/start-up lag each time). */
+export function openMic(): Promise<MediaStream> {
+  if (!navigator.mediaDevices?.getUserMedia) return Promise.reject(new Error('No microphone access in this browser'))
+  return navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } })
+}
+
+/** Start recording from an already-open microphone. Stopping doesn't close the mic. */
+export function recordFrom(stream: MediaStream): Recorder {
+  const mimeType = pickMimeType()
+  const rec = new MediaRecorder(stream, mimeType ? { mimeType } : undefined)
+  const chunks: BlobPart[] = []
+  rec.ondataavailable = (e) => e.data.size && chunks.push(e.data)
+  rec.start()
+  return {
+    stop: () =>
+      new Promise<Blob>((resolve) => {
+        rec.onstop = () => resolve(new Blob(chunks, { type: rec.mimeType || mimeType || 'audio/webm' }))
+        rec.stop()
+      }),
+    cancel: () => {
+      rec.onstop = null
+      if (rec.state !== 'inactive') rec.stop()
+    },
+  }
+}

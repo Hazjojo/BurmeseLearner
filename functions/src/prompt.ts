@@ -7,7 +7,7 @@ export interface ConverseInput {
   speaker: 'm' | 'f' | 'both'
 }
 
-const ROM_SCHEME = `Romanization (pronunciation-based, Yangon): mark the tone of every syllable on its first vowel letter:
+export const ROM_SCHEME = `Romanization (pronunciation-based, Yangon): mark the tone of every syllable on its first vowel letter:
 low = grave (à), high = acute (á), creaky = combining tilde below (a̰), checked/stopped = final ʔ (aʔ), reduced/weak syllable = ə.
 Aspirated consonants: hk, hp, ht, hs. Voiceless nasals: hm, hn. ky/ch/gy for palatals, th for သ, y for ယ/ရ, sh for ရှ.
 Write voicing changes as heard (ပါ after a syllable = bà, တယ် = dè). Separate words with spaces, syllables of one word with hyphens.
@@ -26,6 +26,7 @@ Rules for your reply:
 - Keep the conversation going, usually by asking one simple question the learner can answer.
 - The learner's messages often come from speech recognition: tones are lost and words may be misheard. Interpret generously and reply to what they most likely meant. If you truly can't tell, ask them kindly to repeat (in Burmese).
 - If the learner writes in English or asks for help, reply in Burmese to keep the role-play going, and put the help in "feedback".
+- "learner": the learner's LAST message as you understood it — Burmese as they most likely meant it, its romanization, and its English meaning. Empty strings if they haven't spoken yet.
 - "feedback": one short, kind English sentence about the learner's LAST message, only if there was a clear grammar/word mistake; otherwise "". Never comment on tones or pronunciation (you can't hear them).
 - "better": if feedback is given, the corrected Burmese for what they meant (my, rom, en); otherwise empty strings.
 - "suggestions": 2 short, easy things the learner could say next (my, rom, en), using known words where possible.

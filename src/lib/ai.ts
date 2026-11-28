@@ -13,7 +13,10 @@ export interface Line {
 }
 export interface AIReply {
   reply: Line
-  heard: string
+  /** The learner's last message as the AI understood it (Burmese, romanization, English). */
+  learner: Line
+  /** What speech recognition heard, if the turn was spoken. */
+  heardText: string | null
   feedback: string
   better: Line
   suggestions: Line[]
@@ -21,20 +24,40 @@ export interface AIReply {
   audio: string | null
 }
 
-export async function transcribe(recording: Blob): Promise<string> {
+export interface Heard {
+  text: string
+  rom: string
+  en: string
+}
+/** Speech → Burmese text, with romanization and meaning. */
+export async function transcribe(recording: Blob): Promise<Heard> {
   if (!sync) throw new Error('Sign in to use speech checking.')
-  const r = await sync.call<{ text: string }>('transcribe', { wav: await toWav16kBase64(recording) })
-  return r.text
+  const r = await sync.call<Partial<Heard>>('transcribe', { wav: await toWav16kBase64(recording), romanize: true })
+  return { text: r.text ?? '', rom: typeof r.rom === 'string' ? r.rom : '', en: typeof r.en === 'string' ? r.en : '' }
 }
 
-export function converse(input: {
-  scenario: { title: string; setup: string; role: string; voice?: number }
-  history: { who: 'ai' | 'me'; my: string; en?: string }[]
-  known: string[]
-  speaker: 'm' | 'f' | 'both'
-}): Promise<AIReply> {
+/** Wake the server functions up ahead of time so the first real request is quick. */
+export function warmUp() {
+  if (!sync) return
+  sync.call('transcribe', { warm: true }).catch(() => {})
+  sync.call('converse', { warm: true }).catch(() => {})
+}
+
+/** One conversation turn. Pass a recording to have it transcribed and answered in a single trip. Resolves to null if nothing was heard. */
+export async function converse(
+  input: {
+    scenario: { title: string; setup: string; role: string; voice?: number }
+    history: { who: 'ai' | 'me'; my: string; en?: string }[]
+    known: string[]
+    speaker: 'm' | 'f' | 'both'
+  },
+  recording?: Blob,
+): Promise<AIReply | null> {
   if (!sync) throw new Error('Sign in to use conversation practice.')
-  return sync.call<unknown>('converse', input).then(cleanReply)
+  const payload = recording ? { ...input, wav: await toWav16kBase64(recording) } : input
+  const raw = await sync.call<Record<string, unknown>>('converse', payload)
+  if (raw?.heardNothing) return null
+  return cleanReply(raw)
 }
 
 const str = (v: unknown): string => (typeof v === 'string' ? v : v == null ? '' : typeof v === 'object' ? JSON.stringify(v) : String(v))
@@ -49,7 +72,8 @@ export function cleanReply(raw: unknown): AIReply {
   if (!reply.my) throw new Error('The AI sent an empty reply. Please try again.')
   return {
     reply,
-    heard: str(r.heard),
+    learner: line(r.learner),
+    heardText: typeof r.heardText === 'string' ? r.heardText : null,
     feedback: str(r.feedback),
     better: line(r.better),
     suggestions: Array.isArray(r.suggestions) ? r.suggestions.map(line).filter((l) => l.my) : [],

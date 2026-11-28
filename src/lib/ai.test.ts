@@ -23,6 +23,7 @@ describe('cleanReply', () => {
     expect(r.suggestions).toEqual([])
     expect(r.end).toBe(false)
     expect(r.better).toEqual({ my: '', rom: '', en: '' })
+    expect(r.learner).toEqual({ my: '', rom: '', en: '' })
   })
   it('rejects an empty reply', () => {
     expect(() => cleanReply({})).toThrow()

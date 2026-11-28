@@ -351,7 +351,7 @@ function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>
   const [outcome, setOutcome] = useState<Outcome | null>(null)
   const [rec, setRec] = useState<Recorder | null>(null)
   const [checking, setChecking] = useState(false)
-  const [heard, setHeard] = useState<{ text: string; score: number } | null>(null)
+  const [heard, setHeard] = useState<{ text: string; rom: string; score: number } | null>(null)
   const mine = useRef<Blob | null>(null)
   const canCheck = aiAvailable()
   useEffect(() => {
@@ -366,12 +366,13 @@ function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>
       if (!canCheck) return
       setChecking(true)
       try {
-        const text = await transcribe(blob)
-        const score = similarity(text, item.my)
-        setHeard({ text, score })
+        const h = await transcribe(blob)
+        const score = similarity(h.text, item.my)
+        // If it matches the target, show the course's own romanization; otherwise the generated one.
+        setHeard({ text: h.text, rom: score >= 0.85 ? item.rom : h.rom, score })
         setRevealed(true)
       } catch {
-        setHeard({ text: '', score: 0 })
+        setHeard({ text: '', rom: '', score: 0 })
       } finally {
         setChecking(false)
       }
@@ -408,6 +409,7 @@ function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>
             {heard.text ? (
               <>
                 <span className="small">I heard:</span> <Mm text={heard.text} size="sm" />
+                {heard.rom && <Rom rom={heard.rom} />}
                 <div className="small">
                   {verdict === 'right' ? 'That matches ✓' : verdict === 'hinted' ? 'Close: compare with the answer' : "That doesn't match yet"}
                   <span className="muted"> (tones can't be checked: listen and compare)</span>
