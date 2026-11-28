@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -7,6 +7,9 @@
     <link rel="icon" href="%BASE_URL%icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="%BASE_URL%apple-touch-icon.png" />
     <title>BurmeseLearner</title>
+    <script>
+      try { document.documentElement.dataset.theme = localStorage.getItem('theme') || 'light' } catch (e) {}
+    </script>
   </head>
   <body>
     <div id="root"></div>

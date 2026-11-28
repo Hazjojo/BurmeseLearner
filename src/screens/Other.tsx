@@ -6,30 +6,25 @@ import { Mm, PlayButton, Rom, ToneLegend } from '../components'
 
 type Update = (fn: (s: AppState) => AppState) => void
 
-/** Everything in the course plus my own phrases, grouped like the course, searchable. */
+type Cat = { id: string; icon: string; title: string; summary?: string; color?: string; groups: [string, Item[]][] }
+
+/** Phrasebook: categories (matching the course modules) first; each opens its own page of phrases. */
 export function Phrasebook({ state, update, onAdd }: { state: AppState; update: Update; onAdd: () => void }) {
   const [q, setQ] = useState('')
-  const [cat, setCat] = useState('all')
-  const [onlyLearned, setOnlyLearned] = useState(false)
-  const match = (i: Item) => {
-    if (onlyLearned && !state.introduced[i.id]) return false
-    const t = q.trim().toLowerCase()
-    return !t || i.en.toLowerCase().includes(t) || i.my.includes(t) || i.rom.normalize('NFD').replace(/[\u0300-\u036f\u0330]/g, '').includes(t)
-  }
-  // Categories follow the course modules (and their lessons), plus my own phrases.
-  const cats: { id: string; icon: string; title: string; color?: string; groups: [string, Item[]][] }[] = [
-    ...(state.custom.length ? [{ id: 'mine', icon: '⭐', title: 'My phrases', groups: [['', state.custom] as [string, Item[]]] }] : []),
+  const [open, setOpen] = useState<string | null>(null)
+  const cats: Cat[] = [
+    ...(state.custom.length ? [{ id: 'mine', icon: '⭐', title: 'My phrases', summary: 'Phrases you added yourself', groups: [['', state.custom] as [string, Item[]]] }] : []),
     ...MODULES.map((m) => ({
       id: m.id,
       icon: m.icon,
       title: m.title,
+      summary: m.summary,
       color: m.color,
       groups: m.lessons
         .filter((l) => l.items?.length)
         .map((l) => [l.title, (l.items ?? []).map((id) => getItem(id)).filter((i): i is Item => !!i)] as [string, Item[]]),
     })).filter((c) => c.groups.length),
   ]
-  const shown = cats.filter((c) => cat === 'all' || c.id === cat)
   const remove = (id: string) => {
     if (!confirm('Delete this phrase and its review history?')) return
     update((s) => ({
@@ -39,7 +34,36 @@ export function Phrasebook({ state, update, onAdd }: { state: AppState; update: 
     }))
     deleteRecording(id)
   }
-  let any = false
+  const term = q.trim().toLowerCase()
+  const match = (i: Item) =>
+    i.en.toLowerCase().includes(term) || i.my.includes(term) || i.rom.normalize('NFD').replace(/[\u0300-\u036f\u0330]/g, '').includes(term)
+
+  const cat = cats.find((c) => c.id === open)
+  if (cat) {
+    return (
+      <div className="screen" style={cat.color ? ({ '--mod': cat.color } as CSSProperties) : undefined}>
+        <button className="btn small ghost" onClick={() => setOpen(null)}>
+          ← Phrasebook
+        </button>
+        <div className="map-banner">
+          <span className="map-banner-icon">{cat.icon}</span>
+          <div className="grow">
+            <div className="module-title">{cat.title}</div>
+            {cat.summary && <div className="small">{cat.summary}</div>}
+          </div>
+        </div>
+        {cat.groups.map(([title, items]) => (
+          <div key={title || cat.id}>
+            {title && <div className="small muted subhead">{title}</div>}
+            <PhraseList items={items} state={state} onRemove={remove} />
+          </div>
+        ))}
+      </div>
+    )
+  }
+
+  const all = cats.flatMap((c) => c.groups.flatMap(([, items]) => items))
+  const results = term ? all.filter(match) : []
   return (
     <div className="screen">
       <div className="row between">
@@ -48,64 +72,65 @@ export function Phrasebook({ state, update, onAdd }: { state: AppState; update: 
           ＋ Add my own
         </button>
       </div>
-      <input type="text" placeholder="Search English, Burmese or romanization" value={q} onChange={(e) => setQ(e.target.value)} />
-      <div className="chips">
-        <button className={`chip ${cat === 'all' ? 'active' : ''}`} onClick={() => setCat('all')}>
-          All
-        </button>
-        {cats.map((c) => (
-          <button key={c.id} className={`chip ${cat === c.id ? 'active' : ''}`} onClick={() => setCat(c.id)}>
-            {c.icon} {c.title}
-          </button>
-        ))}
-      </div>
-      <label className="row gap-sm small">
-        <input type="checkbox" checked={onlyLearned} onChange={(e) => setOnlyLearned(e.target.checked)} /> Only what I've learned
-      </label>
-      {shown.map((c) => {
-        const groups = c.groups.map(([t, items]) => [t, items.filter(match)] as [string, Item[]]).filter(([, items]) => items.length)
-        if (!groups.length) return null
-        any = true
-        return (
-          <section key={c.id} className="phrase-cat" style={c.color ? ({ '--mod': c.color } as CSSProperties) : undefined}>
-            <h3 className="cat-title">
-              <span className="cat-icon">{c.icon}</span> {c.title}
-            </h3>
-            {groups.map(([title, items]) => (
-              <div key={title || c.id}>
-                {title && <div className="small muted subhead">{title}</div>}
-                <ul className="list">
-                  {items.map((i) => (
-                    <li key={i.id}>
-                      <span className="row gap-sm grow">
-                        {i.emoji ? <Pic item={i} size="sm" /> : <span className="pic pic-sm glyph-pic">{i.my}</span>}
-                        <span className="stack tight">
-                          <span className="row gap-sm">
-                            <Mm text={i.my} size="sm" />
-                            {state.introduced[i.id] && <span className="pill">learned</span>}
-                          </span>
-                          {i.rom && <Rom rom={i.rom} />}
-                          <span className="small">{i.en}</span>
-                        </span>
-                      </span>
-                      <span className="row gap-sm">
-                        <PlayButton my={i.my} itemId={i.id} />
-                        {i.custom && (
-                          <button className="btn small" onClick={() => remove(i.id)} aria-label="Delete">
-                            🗑
-                          </button>
-                        )}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </section>
+      <input type="text" placeholder="🔎 Search all phrases" value={q} onChange={(e) => setQ(e.target.value)} />
+      {term ? (
+        results.length ? (
+          <PhraseList items={results} state={state} onRemove={remove} />
+        ) : (
+          <p className="muted">Nothing matches “{q}”.</p>
         )
-      })}
-      {!any && <p className="muted">Nothing matches.</p>}
+      ) : (
+        <div className="cat-grid">
+          {cats.map((c) => {
+            const items = c.groups.flatMap(([, i]) => i)
+            const learned = items.filter((i) => state.introduced[i.id]).length
+            return (
+              <button key={c.id} className="cat-card" style={c.color ? ({ '--mod': c.color } as CSSProperties) : undefined} onClick={() => setOpen(c.id)}>
+                <span className="cat-card-icon">{c.icon}</span>
+                <span className="cat-card-title">{c.title}</span>
+                <span className="small muted">
+                  {items.length} {items.length === 1 ? 'item' : 'items'}
+                  {learned ? ` · ${learned} learned` : ''}
+                </span>
+                <span className="cat-card-bar">
+                  <span style={{ width: `${items.length ? Math.round((learned / items.length) * 100) : 0}%` }} />
+                </span>
+              </button>
+            )
+          })}
+        </div>
+      )}
     </div>
+  )
+}
+
+function PhraseList({ items, state, onRemove }: { items: Item[]; state: AppState; onRemove: (id: string) => void }) {
+  return (
+    <ul className="list">
+      {items.map((i) => (
+        <li key={i.id}>
+          <span className="row gap-sm grow">
+            {i.emoji ? <Pic item={i} size="sm" /> : <span className="pic pic-sm glyph-pic">{i.my}</span>}
+            <span className="stack tight">
+              <span className="row gap-sm">
+                <Mm text={i.my} size="sm" />
+                {state.introduced[i.id] && <span className="pill">learned</span>}
+              </span>
+              {i.rom && <Rom rom={i.rom} />}
+              <span className="small">{i.en}</span>
+            </span>
+          </span>
+          <span className="row gap-sm">
+            <PlayButton my={i.my} itemId={i.id} />
+            {i.custom && (
+              <button className="btn small" onClick={() => onRemove(i.id)} aria-label="Delete">
+                🗑
+              </button>
+            )}
+          </span>
+        </li>
+      ))}
+    </ul>
   )
 }
 
@@ -141,6 +166,16 @@ export function Settings({ state, update }: { state: AppState; update: Update })
           <option value="both">show both</option>
         </select>
       </label>
+      <div className="field">
+        <span>Appearance</span>
+        <div className="seg">
+          {(['light', 'dark', 'system'] as const).map((t) => (
+            <button key={t} className={s.theme === t ? 'active' : ''} onClick={() => set('theme', t)}>
+              {t === 'light' ? '☀️ Light' : t === 'dark' ? '🌙 Dark' : '📱 Match phone'}
+            </button>
+          ))}
+        </div>
+      </div>
       <label className="row gap-sm">
         <input type="checkbox" checked={s.showRom} onChange={(e) => set('showRom', e.target.checked)} /> Show romanization in questions
       </label>

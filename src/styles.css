@@ -17,8 +17,27 @@
   --easy: #2563c9;
   color-scheme: light;
 }
+:root[data-theme='dark'] {
+    --bg: #171513;
+    --surface: #221f1c;
+    --text: #eee9e2;
+    --muted: #a39d94;
+    --border: #3a352f;
+    --accent: #d27a6a;
+    --accent-text: #1a1210;
+    --low: #7fb0ff;
+    --high: #ff8a80;
+    --creaky: #c79bff;
+    --checked: #6fd69c;
+    --weak: #a39d94;
+    --again: #ff8a80;
+    --hard: #f0b45a;
+    --good: #6fd69c;
+    --easy: #7fb0ff;
+    color-scheme: dark;
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root[data-theme='system'] {
     --bg: #171513;
     --surface: #221f1c;
     --text: #eee9e2;
@@ -230,8 +249,15 @@ main .chat-screen { min-height: calc(100dvh - 80px); }
   --mod: var(--accent);
   --shadow: 0 2px 0 rgba(60, 40, 20, 0.06), 0 6px 18px rgba(60, 40, 20, 0.06);
 }
+:root[data-theme='dark'] {
+    --bg: #15120f;
+    --surface: #221d18;
+    --border: #3a322a;
+    --accent: #e0745d;
+    --shadow: 0 2px 0 rgba(0, 0, 0, 0.3), 0 6px 18px rgba(0, 0, 0, 0.25);
+}
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root[data-theme='system'] {
     --bg: #15120f;
     --surface: #221d18;
     --border: #3a322a;
@@ -321,3 +347,13 @@ h1, h2, h3, .hero-title, .module-title { font-weight: 800; letter-spacing: -0.01
 .tabs { z-index: 10; }
 .map-banner { position: relative; top: auto; }
 .map-path { margin-top: 44px; }
+/* Phrasebook categories */
+.cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+.cat-card { display: flex; flex-direction: column; align-items: flex-start; gap: 4px; text-align: left; padding: 14px; border-radius: 18px; border: 1px solid var(--border); border-bottom: 4px solid var(--mod); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; box-shadow: var(--shadow); }
+.cat-card:active { transform: translateY(2px); }
+.cat-card-icon { font-size: 1.8rem; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 14px; background: color-mix(in srgb, var(--mod) 15%, var(--surface)); }
+.cat-card-title { font-weight: 800; line-height: 1.2; }
+.cat-card-bar { width: 100%; height: 6px; border-radius: 999px; background: var(--border); overflow: hidden; margin-top: 4px; }
+.cat-card-bar span { display: block; height: 100%; background: var(--mod); }
+.screen > .map-banner { margin: 8px 0 4px; }
+.seg { flex-wrap: wrap; }

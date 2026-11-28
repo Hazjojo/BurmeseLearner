@@ -10,6 +10,7 @@ export interface Settings {
   /** Hide romanization on the question side once an item is well known (tap to show). */
   fadeRom: boolean
   desiredRetention: number
+  theme: 'light' | 'dark' | 'system'
 }
 export interface ItemMeta {
   checked?: boolean
@@ -52,7 +53,7 @@ export interface AppState {
   updatedAt: string
 }
 
-export const DEFAULT_SETTINGS: Settings = { speaker: 'both', newPerDay: 8, showRom: true, fadeRom: true, desiredRetention: 0.9 }
+export const DEFAULT_SETTINGS: Settings = { speaker: 'both', newPerDay: 8, showRom: true, fadeRom: true, desiredRetention: 0.9, theme: 'light' }
 export const emptyState = (): AppState => ({
   version: 1,
   settings: { ...DEFAULT_SETTINGS },

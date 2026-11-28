@@ -47,6 +47,19 @@ export default function App() {
     })
   }, [replace])
 
+  // Light / dark / follow the phone. Remembered locally too so the first paint is right.
+  const theme = state?.settings.theme ?? 'light'
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    try {
+      localStorage.setItem('theme', theme)
+    } catch {
+      /* private mode */
+    }
+    const dark = theme === 'dark' || (theme === 'system' && matchMedia('(prefers-color-scheme: dark)').matches)
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#15120f' : '#fbf6ee')
+  }, [theme])
+
   useEffect(() => {
     if (state) getScheduler(state.settings.desiredRetention)
   }, [state?.settings.desiredRetention]) // eslint-disable-line react-hooks/exhaustive-deps
