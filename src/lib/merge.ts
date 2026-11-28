@@ -53,6 +53,22 @@ export function mergeStates(local: AppState, remote: AppState): AppState {
     lessons: { ...older.lessons, ...newer.lessons },
     // In-progress lessons follow whichever copy changed last (a finished lesson clears its draft).
     drafts: newer.drafts ?? {},
+    // Study log: per day, keep the bigger counts from either device.
+    activity: mergeActivity(local.activity ?? {}, remote.activity ?? {}),
     updatedAt: newer.updatedAt,
   }
+}
+
+function mergeActivity(a: AppState['activity'], b: AppState['activity']): AppState['activity'] {
+  const out: AppState['activity'] = { ...b }
+  for (const [d, x] of Object.entries(a)) {
+    const y = out[d] ?? {}
+    out[d] = {
+      answers: Math.max(x.answers ?? 0, y.answers ?? 0),
+      lessons: Math.max(x.lessons ?? 0, y.lessons ?? 0),
+      seconds: Math.max(x.seconds ?? 0, y.seconds ?? 0),
+      dueLeft: Math.min(x.dueLeft ?? Infinity, y.dueLeft ?? Infinity) === Infinity ? undefined : Math.min(x.dueLeft ?? Infinity, y.dueLeft ?? Infinity),
+    }
+  }
+  return out
 }

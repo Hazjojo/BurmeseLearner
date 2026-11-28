@@ -30,6 +30,7 @@ export default defineConfig({
         // Never answer Firebase's reserved URLs (sign-in handler, init.json) with the cached app shell,
         // or the Google sign-in redirect lands back in the app instead of completing (endless loop).
         navigateFallbackDenylist: [/^\/__\//],
+        importScripts: ['push-sw.js'], // daily reminder notifications
       },
     }),
   ],

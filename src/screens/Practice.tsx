@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import dialoguesJson from '../../content/dialogues.json'
 import { lessonById } from '../content'
 import { say } from '../lib/speech'
+import { tick } from '../lib/activity'
 import type { AppState } from '../lib/store'
 import { Mm, Rom } from '../components'
 import { Tones } from './Tones'
@@ -44,7 +45,7 @@ export function Practice({ state, update, sync, onAdd }: { state: AppState; upda
     )
   if (view === 'write') return <Writing state={state} update={update} onExit={() => setView('menu')} />
   if (view === 'chart') return <AlphabetChart state={state} onBack={() => setView('menu')} />
-  if (view === 'speak') return <Conversation state={state} sync={sync} onExit={() => setView('menu')} />
+  if (view === 'speak') return <Conversation state={state} sync={sync} update={update} onExit={() => setView('menu')} />
   if (view === 'listen')
     return (
       <div className="screen">
@@ -190,6 +191,7 @@ export function DialoguePlayer({ d, update, onExit }: { d: Dialogue; state: AppS
               className={`btn option ${picked === null ? '' : i === q.answer ? 'correct' : i === picked ? 'wrong' : 'dim'}`}
               disabled={picked !== null}
               onClick={() => {
+                tick()
                 setPicked(i)
                 if (i === q.answer) setRight((r) => r + 1)
               }}

@@ -1,7 +1,19 @@
 import { useState } from 'react'
 import type { Sync } from '../lib/sync'
 
-export function SyncPanel({ sync, onSyncNow }: { sync: Sync | null; onSyncNow: () => void }) {
+export function SyncPanel({ sync, onSyncNow, reminder, onReminder }: { sync: Sync | null; onSyncNow: () => void; reminder: string; onReminder: (t: string) => void }) {
+  const [time, setTime] = useState(reminder || '19:00')
+  const [rmsg, setRmsg] = useState('')
+  const setRem = async (t: string) => {
+    setRmsg('')
+    try {
+      await sync!.setReminder(t)
+      onReminder(t)
+      setRmsg(t ? `Reminder set for ${t} each day (skipped if you've already practised).` : 'Reminder off.')
+    } catch (e) {
+      setRmsg(e instanceof Error ? e.message : String(e))
+    }
+  }
   const [err, setErr] = useState('')
   return (
     <div className="screen pt0">
@@ -33,6 +45,26 @@ export function SyncPanel({ sync, onSyncNow }: { sync: Sync | null; onSyncNow: (
         </>
       )}
       {err && <p className="small error">{err}</p>}
+      <h3>Daily reminder</h3>
+      {!sync?.user ? (
+        <p className="muted small">Sign in (above) to get a daily reminder notification.</p>
+      ) : (
+        <>
+          <p className="muted small">A notification at this time if you haven't practised yet that day. On iPhone it only works when the app is added to your Home Screen.</p>
+          <div className="row gap-sm wrap">
+            <input type="time" value={time} onChange={(e) => setTime(e.target.value)} className="time-input" />
+            <button className="btn primary" onClick={() => setRem(time)}>
+              {reminder ? 'Update' : 'Turn on'}
+            </button>
+            {reminder && (
+              <button className="btn" onClick={() => setRem('')}>
+                Turn off
+              </button>
+            )}
+          </div>
+          {rmsg && <p className="small">{rmsg}</p>}
+        </>
+      )}
     </div>
   )
 }

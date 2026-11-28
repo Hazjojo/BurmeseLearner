@@ -1,0 +1,1261 @@
+{
+ "modules": [
+  {
+   "id": "m11",
+   "title": "Numbers & money",
+   "summary": "Count to ten thousand, ask prices and pay.",
+   "icon": "💰",
+   "color": "#a0521a",
+   "lessons": [
+    {
+     "id": "m11.l1",
+     "title": "Eleven to twenty",
+     "intro": [
+      "Eleven to nineteen are just 'ten + number': ဆယ့်တစ် (hsḛ-tiʔ) is 'ten-one'. Notice ဆယ် 'ten' turns creaky (ဆယ့်) when another number follows it.",
+      "Twenty is 'two tens', နှစ်ဆယ်. The 'two' shrinks to a quick, weak hnə, just as 'one' does in တစ်ဆယ် (tə-hsè)."
+     ],
+     "items": [
+      "num.11",
+      "num.12",
+      "num.15",
+      "num.19",
+      "num.20"
+     ]
+    },
+    {
+     "id": "m11.l2",
+     "title": "Tens & combining",
+     "intro": [
+      "Tens are 'number + ten'. The ten changes its sound: after an open syllable it's voiced to zè (သုံးဆယ် thóun-zè), after a checked one (ʔ) it stays hsè (ခြောက်ဆယ် chauʔ-hsè).",
+      "တစ် 'one', နှစ် 'two' and ခုနစ် 'seven' shrink to weak syllables (tə, hnə, hkṵn-hnə) before ten, hundred and thousand. Bigger numbers are simply stacked: နှစ်ဆယ့်ငါး 'two-ten-five' is 25."
+     ],
+     "items": [
+      "num.30",
+      "num.50",
+      "num.60",
+      "num.70",
+      "num.25"
+     ]
+    },
+    {
+     "id": "m11.l3",
+     "title": "Hundreds & thousands",
+     "intro": [
+      "ရာ (yà) is a hundred, ထောင် (htàun) a thousand and သောင်း (tháun) ten thousand. With kyat, prices run into thousands quickly, so these are the numbers you'll hear most at the market.",
+      "When more numbers follow, the bigger unit turns creaky: တစ်ရာ့ငါးဆယ် 150, တစ်ထောင့်ငါးရာ 1,500."
+     ],
+     "items": [
+      "num.100",
+      "num.150",
+      "num.1000",
+      "num.1500",
+      "num.5000",
+      "num.10000"
+     ]
+    },
+    {
+     "id": "m11.l4",
+     "title": "How much is it?",
+     "intro": [
+      "ဘယ်လောက်လဲ (bè-lauʔ lé) 'how much?' works for any price. ဈေး (zéi) means 'price' (and also 'market'): 'price big' is expensive, 'price plentiful' is cheap.",
+      "A little friendly bargaining is normal at markets, less so in shops with fixed prices. A smile and နည်းနည်း လျှော့ပေးပါ go a long way."
+     ],
+     "items": [
+      "num.how-much",
+      "num.kyat",
+      "num.expensive",
+      "num.cheap",
+      "num.bit-cheaper",
+      "num.comes-to",
+      "num.pay"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m12",
+   "title": "Time & days",
+   "summary": "Today, tomorrow, days of the week and telling the time.",
+   "icon": "🕐",
+   "color": "#4a4fb0",
+   "lessons": [
+    {
+     "id": "m12.l1",
+     "title": "Today & tomorrow",
+     "intro": [
+      "Time words usually go at the start of the sentence: မနက်ဖြန် သွားမယ် 'tomorrow (I) will go'. Burmese verbs never change, so these words do much of the work English does with tenses.",
+      "ဒီ (dì) means 'this': ဒီနေ့ 'this day' is today."
+     ],
+     "items": [
+      "time.today",
+      "time.tomorrow",
+      "time.yesterday",
+      "time.now",
+      "time.later",
+      "time.when"
+     ]
+    },
+    {
+     "id": "m12.l2",
+     "title": "Morning to night",
+     "intro": [
+      "မနက် (mə-neʔ) is the morning, နေ့လည် (nḛ-lè) the middle of the day, ညနေ (nya̰-nèi) late afternoon into evening, and ည (nya̰) night.",
+      "Put ဒီ in front again for 'this…': ဒီည 'tonight'."
+     ],
+     "items": [
+      "time.morning",
+      "time.afternoon",
+      "time.evening",
+      "time.night",
+      "time.tonight",
+      "time.every-day"
+     ]
+    },
+    {
+     "id": "m12.l3",
+     "title": "Days of the week",
+     "intro": [
+      "Day names are said with နေ့ (nḛ, 'day') after them.",
+      "The day you were born on matters in Myanmar: it's tied to astrology and often decides the first letter of a person's name. Ask your partner's family which day they were born on!"
+     ],
+     "items": [
+      "time.monday",
+      "time.tuesday",
+      "time.wednesday",
+      "time.thursday",
+      "time.friday",
+      "time.saturday",
+      "time.sunday"
+     ]
+    },
+    {
+     "id": "m12.l4",
+     "title": "What time is it?",
+     "intro": [
+      "'What time is it?' is literally 'how many hours has it become?'. Hours are number + နာရီ (nà-yì): ငါးနာရီ 'five o'clock'. Add ခွဲ (hkwé, 'half') for half past.",
+      "Put morning or evening in front to be clear: ညနေ ငါးနာရီ is 5 pm, မနက် ငါးနာရီ 5 am."
+     ],
+     "items": [
+      "time.what-day",
+      "time.what-time",
+      "time.hour",
+      "time.five-oclock",
+      "time.half-past",
+      "time.see-you-tomorrow",
+      "time.see-you-later"
+     ]
+    }
+   ]
+  },
+  {
+   "id": "m13",
+   "title": "Counting things",
+   "summary": "Counter words for people, animals, cups and more.",
+   "icon": "🧮",
+   "color": "#0f7068",
+   "lessons": [
+    {
+     "id": "m13.l1",
+     "title": "Counting people",
+     "intro": [
+      "When you count things in Burmese you add a counter word after the number, a bit like 'two cups of…' or 'three head of cattle' in English. The order is noun + number + counter: လူ သုံးယောက် 'person three (counter)' = three people.",
+      "ယောက် (yauʔ) counts people. The noun is dropped when it's obvious: just သုံးယောက်ပါ 'three, please'."
+     ],
+     "items": [
+      "cls.person",
+      "cls.yauk",
+      "cls.one-person",
+      "cls.three-people",
+      "cls.how-many-people",
+      "cls.four-of-us"
+     ]
+    },
+    {
+     "id": "m13.l2",
+     "title": "Animals & things",
+     "intro": [
+      "ကောင် (kàun) counts animals. ခု (hkṵ) is the general counter for objects: if you're not sure which counter to use, ခု usually works.",
+      "The sound changes you met with numbers happen here too: တစ် and နှစ် shrink to tə and hnə, and the counter is often voiced after an open syllable (သုံးခု thóun-gṵ)."
+     ],
+     "items": [
+      "cls.kaung",
+      "cls.dog",
+      "cls.cat",
+      "cls.two-dogs",
+      "cls.khu",
+      "cls.one-of-these",
+      "cls.how-many"
+     ]
+    },
+    {
+     "id": "m13.l3",
+     "title": "Cups, bottles & plates",
+     "intro": [
+      "Drinks are counted by their container: ခွက် (hkweʔ) for cups and glasses, ပုလင်း (bə-lín) for bottles. ပွဲ (pwé) counts servings of food.",
+      "To order, say the thing, the amount, then ပေးပါ 'please give': လက်ဖက်ရည် နှစ်ခွက် ပေးပါ. Burmese tea (လက်ဖက်ရည်) is strong, sweet milk tea; the teashop is where people meet and chat."
+     ],
+     "items": [
+      "cls.tea",
+      "cls.coffee",
+      "cls.kwet",
+      "cls.two-teas",
+      "cls.bottle",
+      "cls.water-bottle",
+      "cls.pwe"
+     ]
+    },
+    {
+     "id": "m13.l4",
+     "title": "Round & flat things",
+     "intro": [
+      "လုံး (lóun) counts round things: eggs, fruit, balls. ရွက် (yweʔ) means 'leaf' and counts flat sheets: leaves, paper and banknotes."
+     ],
+     "items": [
+      "cls.loun",
+      "cls.two-eggs",
+      "cls.ywet",
+      "cls.paper",
+      "cls.two-notes"
+     ]
+    }
+   ]
+  }
+ ],
+ "items": [
+  {
+   "id": "num.11",
+   "unit": 11,
+   "my": "ဆယ့်တစ်",
+   "rom": "hsḛ-tiʔ",
+   "en": "eleven (11)",
+   "emoji": "1️⃣",
+   "note": "ဆယ် 'ten' turns creaky (ဆယ့်) when another number follows it.",
+   "lit": "ten-one"
+  },
+  {
+   "id": "num.12",
+   "unit": 11,
+   "my": "ဆယ့်နှစ်",
+   "rom": "hsḛ-hniʔ",
+   "en": "twelve (12)",
+   "emoji": "🕛",
+   "lit": "ten-two"
+  },
+  {
+   "id": "num.15",
+   "unit": 11,
+   "my": "ဆယ့်ငါး",
+   "rom": "hsḛ-ngá",
+   "en": "fifteen (15)",
+   "emoji": "🖐️",
+   "lit": "ten-five"
+  },
+  {
+   "id": "num.19",
+   "unit": 11,
+   "my": "ဆယ့်ကိုး",
+   "rom": "hsḛ-kó",
+   "en": "nineteen (19)",
+   "emoji": "🔢",
+   "lit": "ten-nine"
+  },
+  {
+   "id": "num.20",
+   "unit": 11,
+   "my": "နှစ်ဆယ်",
+   "rom": "hnə-hsè",
+   "en": "twenty (20)",
+   "emoji": "✌️",
+   "note": "နှစ် 'two' shrinks to a weak hnə before ten, hundred and thousand.",
+   "lit": "two-ten"
+  },
+  {
+   "id": "num.25",
+   "unit": 11,
+   "my": "နှစ်ဆယ့်ငါး",
+   "rom": "hnə-hsḛ-ngá",
+   "en": "twenty-five (25)",
+   "emoji": "🎂",
+   "note": "Just stack the parts: two-ten-five.",
+   "lit": "two-ten-five"
+  },
+  {
+   "id": "num.30",
+   "unit": 11,
+   "my": "သုံးဆယ်",
+   "rom": "thóun-zè",
+   "en": "thirty (30)",
+   "emoji": "🔢",
+   "note": "After an open syllable, ဆယ် is voiced: zè.",
+   "lit": "three-ten"
+  },
+  {
+   "id": "num.50",
+   "unit": 11,
+   "my": "ငါးဆယ်",
+   "rom": "ngá-zè",
+   "en": "fifty (50)",
+   "emoji": "🔢",
+   "lit": "five-ten"
+  },
+  {
+   "id": "num.60",
+   "unit": 11,
+   "my": "ခြောက်ဆယ်",
+   "rom": "chauʔ-hsè",
+   "en": "sixty (60)",
+   "emoji": "🔢",
+   "note": "After a checked syllable (ʔ) there's no voicing: hsè stays hsè.",
+   "lit": "six-ten"
+  },
+  {
+   "id": "num.70",
+   "unit": 11,
+   "my": "ခုနစ်ဆယ်",
+   "rom": "hkṵn-hnə-hsè",
+   "en": "seventy (70)",
+   "emoji": "🔢",
+   "note": "ခုနစ် 'seven' also shrinks its last syllable before ten.",
+   "lit": "seven-ten"
+  },
+  {
+   "id": "num.100",
+   "unit": 11,
+   "my": "တစ်ရာ",
+   "rom": "tə-yà",
+   "en": "one hundred (100)",
+   "emoji": "💯",
+   "lit": "one-hundred"
+  },
+  {
+   "id": "num.150",
+   "unit": 11,
+   "my": "တစ်ရာ့ငါးဆယ်",
+   "rom": "tə-ya̰ ngá-zè",
+   "en": "one hundred and fifty (150)",
+   "emoji": "🔢",
+   "note": "ရာ turns creaky (ရာ့) when more numbers follow.",
+   "lit": "one-hundred five-ten"
+  },
+  {
+   "id": "num.1000",
+   "unit": 11,
+   "my": "တစ်ထောင်",
+   "rom": "tə-htàun",
+   "en": "one thousand (1,000)",
+   "emoji": "🔢",
+   "lit": "one-thousand"
+  },
+  {
+   "id": "num.1500",
+   "unit": 11,
+   "my": "တစ်ထောင့်ငါးရာ",
+   "rom": "tə-hta̰un ngá-yà",
+   "en": "one thousand five hundred (1,500)",
+   "emoji": "🔢",
+   "note": "ထောင် turns creaky (ထောင့်) when more numbers follow.",
+   "lit": "one-thousand five-hundred"
+  },
+  {
+   "id": "num.5000",
+   "unit": 11,
+   "my": "ငါးထောင်",
+   "rom": "ngá-dàun",
+   "en": "five thousand (5,000)",
+   "emoji": "💵",
+   "note": "ထောင် is voiced to dàun after an open syllable.",
+   "lit": "five-thousand"
+  },
+  {
+   "id": "num.10000",
+   "unit": 11,
+   "my": "တစ်သောင်း",
+   "rom": "tə-tháun",
+   "en": "ten thousand (10,000)",
+   "emoji": "💰",
+   "note": "Burmese has its own word for 10,000, very handy for prices.",
+   "lit": "one-ten-thousand"
+  },
+  {
+   "id": "num.how-much",
+   "unit": 11,
+   "my": "ဒါ ဘယ်လောက်လဲ",
+   "rom": "dà bè-lauʔ lé",
+   "en": "How much is this?",
+   "emoji": "🏷️",
+   "lit": "this how-much ?"
+  },
+  {
+   "id": "num.kyat",
+   "unit": 11,
+   "my": "ကျပ်",
+   "rom": "kyaʔ",
+   "en": "kyat (Myanmar money)",
+   "emoji": "💴",
+   "note": "Comes after the number: ငါးထောင် ကျပ် '5,000 kyat'. Often left out when the price is obvious."
+  },
+  {
+   "id": "num.expensive",
+   "unit": 11,
+   "my": "ဈေးကြီးတယ်",
+   "rom": "zéi-gyí dè",
+   "en": "It's expensive",
+   "emoji": "💸",
+   "lit": "price big"
+  },
+  {
+   "id": "num.cheap",
+   "unit": 11,
+   "my": "ဈေးပေါတယ်",
+   "rom": "zéi pàw dè",
+   "en": "It's cheap",
+   "emoji": "🪙",
+   "lit": "price plentiful"
+  },
+  {
+   "id": "num.bit-cheaper",
+   "unit": 11,
+   "my": "နည်းနည်း လျှော့ပေးပါ",
+   "rom": "né-né sho̰ péi bà",
+   "en": "A bit cheaper, please",
+   "emoji": "🤏",
+   "note": "Verb + ပေးပါ = 'please do it for me'. လျှော့ means 'reduce'.",
+   "lit": "a little reduce give please"
+  },
+  {
+   "id": "num.comes-to",
+   "unit": 11,
+   "my": "ဘယ်လောက် ကျလဲ",
+   "rom": "bè-lauʔ kya̰ lé",
+   "en": "How much does it come to?",
+   "emoji": "🧾",
+   "note": "Use this for a total, e.g. when paying at a restaurant.",
+   "lit": "how-much come-to ?"
+  },
+  {
+   "id": "num.pay",
+   "unit": 11,
+   "my": "ငွေရှင်းမယ်",
+   "rom": "ngwèi shín mè",
+   "en": "I'd like to pay (the bill)",
+   "emoji": "💳",
+   "note": "Say this to the waiter when you want the bill.",
+   "lit": "money settle will"
+  },
+  {
+   "id": "time.today",
+   "unit": 12,
+   "my": "ဒီနေ့",
+   "rom": "dì-nḛ",
+   "en": "today",
+   "emoji": "📅",
+   "lit": "this day"
+  },
+  {
+   "id": "time.tomorrow",
+   "unit": 12,
+   "my": "မနက်ဖြန်",
+   "rom": "mə-neʔ-hpyàn",
+   "en": "tomorrow",
+   "emoji": "➡️"
+  },
+  {
+   "id": "time.yesterday",
+   "unit": 12,
+   "my": "မနေ့က",
+   "rom": "mə-nḛ-ga̰",
+   "en": "yesterday",
+   "emoji": "⬅️",
+   "note": "The က (ga̰) at the end marks a time in the past."
+  },
+  {
+   "id": "time.now",
+   "unit": 12,
+   "my": "အခု",
+   "rom": "ə-hkṵ",
+   "en": "now",
+   "emoji": "⏱️",
+   "note": "Often shortened to ခု (hkṵ)."
+  },
+  {
+   "id": "time.later",
+   "unit": 12,
+   "my": "နောက်မှ",
+   "rom": "nauʔ-hma̰",
+   "en": "later",
+   "emoji": "⏳",
+   "lit": "after-only"
+  },
+  {
+   "id": "time.when",
+   "unit": 12,
+   "my": "ဘယ်တော့ လာမလဲ",
+   "rom": "bè-da̰w là mə-lé",
+   "en": "When will you come?",
+   "emoji": "❔",
+   "note": "ဘယ်တော့ 'when' is for the future."
+  },
+  {
+   "id": "time.morning",
+   "unit": 12,
+   "my": "မနက်",
+   "rom": "mə-neʔ",
+   "en": "morning",
+   "emoji": "🌅"
+  },
+  {
+   "id": "time.afternoon",
+   "unit": 12,
+   "my": "နေ့လည်",
+   "rom": "nḛ-lè",
+   "en": "midday / early afternoon",
+   "emoji": "🌞",
+   "lit": "day-middle"
+  },
+  {
+   "id": "time.evening",
+   "unit": 12,
+   "my": "ညနေ",
+   "rom": "nya̰-nèi",
+   "en": "evening / late afternoon",
+   "emoji": "🌇"
+  },
+  {
+   "id": "time.night",
+   "unit": 12,
+   "my": "ည",
+   "rom": "nya̰",
+   "en": "night",
+   "emoji": "🌙"
+  },
+  {
+   "id": "time.tonight",
+   "unit": 12,
+   "my": "ဒီည",
+   "rom": "dì-nya̰",
+   "en": "tonight",
+   "emoji": "🌃",
+   "lit": "this night"
+  },
+  {
+   "id": "time.every-day",
+   "unit": 12,
+   "my": "နေ့တိုင်း",
+   "rom": "nḛ-dáin",
+   "en": "every day",
+   "emoji": "🔁",
+   "lit": "day-each"
+  },
+  {
+   "id": "time.monday",
+   "unit": 12,
+   "my": "တနင်္လာနေ့",
+   "rom": "tə-nìn-là-nḛ",
+   "en": "Monday",
+   "emoji": "🌙"
+  },
+  {
+   "id": "time.tuesday",
+   "unit": 12,
+   "my": "အင်္ဂါနေ့",
+   "rom": "ìn-gà-nḛ",
+   "en": "Tuesday",
+   "emoji": "🔴"
+  },
+  {
+   "id": "time.wednesday",
+   "unit": 12,
+   "my": "ဗုဒ္ဓဟူးနေ့",
+   "rom": "bouʔ-də-hú-nḛ",
+   "en": "Wednesday",
+   "emoji": "🟢"
+  },
+  {
+   "id": "time.thursday",
+   "unit": 12,
+   "my": "ကြာသပတေးနေ့",
+   "rom": "kyà-thə-bə-déi-nḛ",
+   "en": "Thursday",
+   "emoji": "🟡"
+  },
+  {
+   "id": "time.friday",
+   "unit": 12,
+   "my": "သောကြာနေ့",
+   "rom": "thauʔ-kyà-nḛ",
+   "en": "Friday",
+   "emoji": "🔵"
+  },
+  {
+   "id": "time.saturday",
+   "unit": 12,
+   "my": "စနေနေ့",
+   "rom": "sə-nèi-nḛ",
+   "en": "Saturday",
+   "emoji": "🟣"
+  },
+  {
+   "id": "time.sunday",
+   "unit": 12,
+   "my": "တနင်္ဂနွေနေ့",
+   "rom": "tə-nìn-gə-nwèi-nḛ",
+   "en": "Sunday",
+   "emoji": "☀️"
+  },
+  {
+   "id": "time.what-day",
+   "unit": 12,
+   "my": "ဒီနေ့ ဘာနေ့လဲ",
+   "rom": "dì-nḛ bà-nḛ lé",
+   "en": "What day is it today?",
+   "emoji": "🗓️",
+   "lit": "today what day ?"
+  },
+  {
+   "id": "time.what-time",
+   "unit": 12,
+   "my": "အခု ဘယ်နှစ်နာရီ ရှိပြီလဲ",
+   "rom": "ə-hkṵ bè-hnə-nà-yì shḭ bì lé",
+   "en": "What time is it now?",
+   "emoji": "🕰️",
+   "lit": "now how-many hours has-become ?"
+  },
+  {
+   "id": "time.hour",
+   "unit": 12,
+   "my": "နာရီ",
+   "rom": "nà-yì",
+   "en": "hour / o'clock / clock / watch",
+   "emoji": "⌚",
+   "note": "Number + နာရီ is both '5 o'clock' and '5 hours'."
+  },
+  {
+   "id": "time.five-oclock",
+   "unit": 12,
+   "my": "ငါးနာရီ",
+   "rom": "ngá-nà-yì",
+   "en": "five o'clock / five hours",
+   "emoji": "🕔"
+  },
+  {
+   "id": "time.half-past",
+   "unit": 12,
+   "my": "ငါးနာရီခွဲ",
+   "rom": "ngá-nà-yì hkwé",
+   "en": "half past five",
+   "emoji": "🕠",
+   "note": "ခွဲ = 'half', added after the hour.",
+   "lit": "five hour half"
+  },
+  {
+   "id": "time.see-you-tomorrow",
+   "unit": 12,
+   "my": "မနက်ဖြန် တွေ့မယ်",
+   "rom": "mə-neʔ-hpyàn twḛ mè",
+   "en": "See you tomorrow",
+   "emoji": "👋",
+   "lit": "tomorrow meet will"
+  },
+  {
+   "id": "time.see-you-later",
+   "unit": 12,
+   "my": "နောက်မှ တွေ့မယ်",
+   "rom": "nauʔ-hma̰ twḛ mè",
+   "en": "See you later",
+   "emoji": "🙋",
+   "lit": "later meet will"
+  },
+  {
+   "id": "cls.person",
+   "unit": 13,
+   "my": "လူ",
+   "rom": "lù",
+   "en": "person / people",
+   "emoji": "🧍"
+  },
+  {
+   "id": "cls.yauk",
+   "unit": 13,
+   "my": "ယောက်",
+   "rom": "yauʔ",
+   "en": "(counter for people)",
+   "emoji": "👥",
+   "note": "Comes after the number: noun + number + ယောက်."
+  },
+  {
+   "id": "cls.one-person",
+   "unit": 13,
+   "my": "တစ်ယောက်",
+   "rom": "tə-yauʔ",
+   "en": "one person",
+   "emoji": "☝️",
+   "note": "Like ten, hundred and thousand, counters make တစ် 'one' shrink to tə."
+  },
+  {
+   "id": "cls.three-people",
+   "unit": 13,
+   "my": "လူ သုံးယောက်",
+   "rom": "lù thóun-yauʔ",
+   "en": "three people",
+   "emoji": "👨‍👩‍👦",
+   "lit": "person three counter"
+  },
+  {
+   "id": "cls.how-many-people",
+   "unit": 13,
+   "my": "ဘယ်နှစ်ယောက်လဲ",
+   "rom": "bè-hnə-yauʔ lé",
+   "en": "How many people?",
+   "emoji": "🙋",
+   "note": "You'll hear this when you walk into a restaurant.",
+   "lit": "how-many counter ?"
+  },
+  {
+   "id": "cls.four-of-us",
+   "unit": 13,
+   "my": "လေးယောက်ပါ",
+   "rom": "léi-yauʔ pà",
+   "en": "There are four of us",
+   "emoji": "4️⃣",
+   "note": "ပါ is said 'pà' after a checked syllable.",
+   "lit": "four counter (polite)"
+  },
+  {
+   "id": "cls.kaung",
+   "unit": 13,
+   "my": "ကောင်",
+   "rom": "kàun",
+   "en": "(counter for animals)",
+   "emoji": "🐾"
+  },
+  {
+   "id": "cls.dog",
+   "unit": 13,
+   "my": "ခွေး",
+   "rom": "hkwéi",
+   "en": "dog",
+   "emoji": "🐕"
+  },
+  {
+   "id": "cls.cat",
+   "unit": 13,
+   "my": "ကြောင်",
+   "rom": "kyàun",
+   "en": "cat",
+   "emoji": "🐈"
+  },
+  {
+   "id": "cls.two-dogs",
+   "unit": 13,
+   "my": "ခွေး နှစ်ကောင်",
+   "rom": "hkwéi hnə-kàun",
+   "en": "two dogs",
+   "emoji": "🐕",
+   "lit": "dog two counter"
+  },
+  {
+   "id": "cls.khu",
+   "unit": 13,
+   "my": "ခု",
+   "rom": "hkṵ",
+   "en": "(general counter for things)",
+   "emoji": "📦",
+   "note": "If you don't know the right counter, ခု usually works for objects."
+  },
+  {
+   "id": "cls.one-of-these",
+   "unit": 13,
+   "my": "ဒါ တစ်ခု ပေးပါ",
+   "rom": "dà tə-hkṵ péi bà",
+   "en": "One of these, please",
+   "emoji": "👉",
+   "lit": "this one-counter give please"
+  },
+  {
+   "id": "cls.how-many",
+   "unit": 13,
+   "my": "ဘယ်နှစ်ခုလဲ",
+   "rom": "bè-hnə-hkṵ lé",
+   "en": "How many (things)?",
+   "emoji": "❓"
+  },
+  {
+   "id": "cls.tea",
+   "unit": 13,
+   "my": "လက်ဖက်ရည်",
+   "rom": "laʔ-hpeʔ-yèi",
+   "en": "tea (Burmese milk tea)",
+   "emoji": "🍵",
+   "lit": "tea-leaf liquid"
+  },
+  {
+   "id": "cls.coffee",
+   "unit": 13,
+   "my": "ကော်ဖီ",
+   "rom": "kàw-hpì",
+   "en": "coffee",
+   "emoji": "☕"
+  },
+  {
+   "id": "cls.kwet",
+   "unit": 13,
+   "my": "ခွက်",
+   "rom": "hkweʔ",
+   "en": "(counter for cups and glasses) / cup",
+   "emoji": "🥤"
+  },
+  {
+   "id": "cls.two-teas",
+   "unit": 13,
+   "my": "လက်ဖက်ရည် နှစ်ခွက် ပေးပါ",
+   "rom": "laʔ-hpeʔ-yèi hnə-hkweʔ péi bà",
+   "en": "Two cups of tea, please",
+   "emoji": "🍵",
+   "lit": "tea two cup give please"
+  },
+  {
+   "id": "cls.bottle",
+   "unit": 13,
+   "my": "ပုလင်း",
+   "rom": "bə-lín",
+   "en": "bottle / (counter for bottles)",
+   "emoji": "🍾"
+  },
+  {
+   "id": "cls.water-bottle",
+   "unit": 13,
+   "my": "ရေ တစ်ပုလင်း",
+   "rom": "yèi tə-bə-lín",
+   "en": "a bottle of water",
+   "emoji": "💧",
+   "lit": "water one bottle"
+  },
+  {
+   "id": "cls.pwe",
+   "unit": 13,
+   "my": "မုန့်ဟင်းခါး တစ်ပွဲ",
+   "rom": "mo̰un-hín-gá tə-bwé",
+   "en": "one bowl of mohinga",
+   "emoji": "🍜",
+   "note": "ပွဲ (pwé) counts servings or plates of food.",
+   "lit": "mohinga one serving"
+  },
+  {
+   "id": "cls.loun",
+   "unit": 13,
+   "my": "လုံး",
+   "rom": "lóun",
+   "en": "(counter for round things)",
+   "emoji": "⚪"
+  },
+  {
+   "id": "cls.two-eggs",
+   "unit": 13,
+   "my": "ကြက်ဥ နှစ်လုံး",
+   "rom": "kyeʔ-ṵ hnə-lóun",
+   "en": "two eggs",
+   "emoji": "🥚",
+   "lit": "egg two round-counter"
+  },
+  {
+   "id": "cls.ywet",
+   "unit": 13,
+   "my": "ရွက်",
+   "rom": "yweʔ",
+   "en": "(counter for sheets, leaves, banknotes)",
+   "emoji": "🍃"
+  },
+  {
+   "id": "cls.paper",
+   "unit": 13,
+   "my": "စာရွက် တစ်ရွက်",
+   "rom": "sà-yweʔ tə-yweʔ",
+   "en": "one sheet of paper",
+   "emoji": "📄",
+   "note": "Paper is literally 'writing-leaf', so its counter is the same word.",
+   "lit": "writing-leaf one sheet"
+  },
+  {
+   "id": "cls.two-notes",
+   "unit": 13,
+   "my": "ထောင်တန် နှစ်ရွက်",
+   "rom": "htàun-dàn hnə-yweʔ",
+   "en": "two 1,000-kyat notes",
+   "emoji": "💵",
+   "note": "ထောင်တန် = 'thousand-worth' note.",
+   "lit": "thousand-worth two sheet"
+  }
+ ],
+ "verbs": {},
+ "patterns": [],
+ "dialogues": [
+  {
+   "id": "d.market",
+   "title": "At the market",
+   "after": "m11.l4",
+   "speakers": {
+    "A": {
+     "name": "Hnin",
+     "voice": 0
+    },
+    "B": {
+     "name": "Kyaw",
+     "voice": 1
+    }
+   },
+   "lines": [
+    {
+     "s": "B",
+     "my": "ဒါ ဘယ်လောက်လဲ",
+     "rom": "dà bè-lauʔ lé",
+     "en": "How much is this?"
+    },
+    {
+     "s": "A",
+     "my": "သုံးထောင်ပါ",
+     "rom": "thóun-dàun bà",
+     "en": "Three thousand."
+    },
+    {
+     "s": "B",
+     "my": "ဈေးကြီးတယ်",
+     "rom": "zéi-gyí dè",
+     "en": "That's expensive."
+    },
+    {
+     "s": "A",
+     "my": "ဈေးမကြီးပါဘူး",
+     "rom": "zéi mə-kyí bà bú",
+     "en": "It's not expensive!"
+    },
+    {
+     "s": "B",
+     "my": "နည်းနည်း လျှော့ပေးပါ",
+     "rom": "né-né sho̰ péi bà",
+     "en": "A bit cheaper, please."
+    },
+    {
+     "s": "A",
+     "my": "နှစ်ထောင့်ငါးရာ ရပါတယ်",
+     "rom": "hnə-hta̰un ngá-yà ya̰ bà dè",
+     "en": "Two thousand five hundred is OK."
+    },
+    {
+     "s": "B",
+     "my": "ကောင်းပြီ၊ ဝယ်မယ်",
+     "rom": "káun bì, wè mè",
+     "en": "Good, I'll buy it."
+    },
+    {
+     "s": "A",
+     "my": "ကျေးဇူးတင်ပါတယ်",
+     "rom": "kyéi-zú tìn bà dè",
+     "en": "Thank you."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What was the first price?",
+     "options": [
+      "3,000 kyat",
+      "2,500 kyat",
+      "5,000 kyat",
+      "1,500 kyat"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "What price did they agree on?",
+     "options": [
+      "2,500 kyat",
+      "3,000 kyat",
+      "2,000 kyat",
+      "1,000 kyat"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "d.plans",
+   "title": "Tomorrow evening",
+   "after": "m12.l4",
+   "speakers": {
+    "A": {
+     "name": "Su",
+     "voice": 0
+    },
+    "B": {
+     "name": "Zaw",
+     "voice": 1
+    }
+   },
+   "lines": [
+    {
+     "s": "A",
+     "my": "မနက်ဖြန် လာမလား",
+     "rom": "mə-neʔ-hpyàn là mə-lá",
+     "en": "Will you come tomorrow?"
+    },
+    {
+     "s": "B",
+     "my": "မနက်ဖြန် စနေနေ့ ဟုတ်လား",
+     "rom": "mə-neʔ-hpyàn sə-nèi-nḛ houʔ lá",
+     "en": "Tomorrow is Saturday, right?"
+    },
+    {
+     "s": "A",
+     "my": "ဟုတ်ကဲ့",
+     "rom": "houʔ kḛ",
+     "en": "Yes."
+    },
+    {
+     "s": "B",
+     "my": "ဟုတ်ကဲ့၊ လာမယ်",
+     "rom": "houʔ kḛ, là mè",
+     "en": "OK, I'll come."
+    },
+    {
+     "s": "A",
+     "my": "ဘယ်နှစ်နာရီ လာမလဲ",
+     "rom": "bè-hnə-nà-yì là mə-lé",
+     "en": "What time will you come?"
+    },
+    {
+     "s": "B",
+     "my": "ညနေ ငါးနာရီ လာမယ်",
+     "rom": "nya̰-nèi ngá-nà-yì là mè",
+     "en": "I'll come at five in the evening."
+    },
+    {
+     "s": "A",
+     "my": "ကောင်းတယ်၊ ထမင်း လာစားပါ",
+     "rom": "káun dè, htə-mín là sá bà",
+     "en": "Great, come and eat with us."
+    },
+    {
+     "s": "B",
+     "my": "ကျေးဇူးတင်ပါတယ်၊ မနက်ဖြန် တွေ့မယ်",
+     "rom": "kyéi-zú tìn bà dè, mə-neʔ-hpyàn twḛ mè",
+     "en": "Thank you. See you tomorrow."
+    }
+   ],
+   "questions": [
+    {
+     "q": "What day is tomorrow?",
+     "options": [
+      "Saturday",
+      "Sunday",
+      "Friday",
+      "Monday"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "When will Zaw come?",
+     "options": [
+      "5 in the evening",
+      "5 in the morning",
+      "Half past five",
+      "At night"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "d.teashop",
+   "title": "At the teashop",
+   "after": "m13.l3",
+   "speakers": {
+    "A": {
+     "name": "Aung",
+     "voice": 1
+    },
+    "B": {
+     "name": "May",
+     "voice": 0
+    }
+   },
+   "lines": [
+    {
+     "s": "A",
+     "my": "ဘယ်နှစ်ယောက်လဲ",
+     "rom": "bè-hnə-yauʔ lé",
+     "en": "How many people?"
+    },
+    {
+     "s": "B",
+     "my": "သုံးယောက်ပါ",
+     "rom": "thóun-yauʔ pà",
+     "en": "Three of us."
+    },
+    {
+     "s": "A",
+     "my": "ဘာ သောက်မလဲ",
+     "rom": "bà thauʔ mə-lé",
+     "en": "What would you like to drink?"
+    },
+    {
+     "s": "B",
+     "my": "လက်ဖက်ရည် နှစ်ခွက်နဲ့ ကော်ဖီ တစ်ခွက် ပေးပါ",
+     "rom": "laʔ-hpeʔ-yèi hnə-hkweʔ nḛ kàw-hpì tə-hkweʔ péi bà",
+     "en": "Two teas and one coffee, please."
+    },
+    {
+     "s": "A",
+     "my": "ရေ ရော",
+     "rom": "yèi yàw",
+     "en": "And water?"
+    },
+    {
+     "s": "B",
+     "my": "ရေ တစ်ပုလင်း ပေးပါ",
+     "rom": "yèi tə-bə-lín péi bà",
+     "en": "A bottle of water, please."
+    },
+    {
+     "s": "A",
+     "my": "ဟုတ်ကဲ့",
+     "rom": "houʔ kḛ",
+     "en": "Sure."
+    }
+   ],
+   "questions": [
+    {
+     "q": "How many people are there?",
+     "options": [
+      "Three",
+      "Two",
+      "Four",
+      "One"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "What drinks did May order?",
+     "options": [
+      "Two teas, one coffee and a bottle of water",
+      "Three teas",
+      "Two coffees and one tea",
+      "One tea and two bottles of water"
+     ],
+     "answer": 0
+    }
+   ]
+  }
+ ],
+ "scenarios": [
+  {
+   "id": "sc.market",
+   "title": "Bargaining at the market",
+   "blurb": "Prices, 'too expensive', paying",
+   "role": "Ma Hnin, a cheerful market seller",
+   "setup": "The learner is at your stall in a Yangon market looking at fruit and small goods. Tell them prices in kyat (use round numbers like 1,500, 3,000, 5,000), let them ask 'how much?', react when they say it's expensive, and agree to a small discount if they ask politely.",
+   "voice": 0,
+   "after": "m11.l4"
+  },
+  {
+   "id": "sc.plans",
+   "title": "Making plans",
+   "blurb": "Days, times, 'see you tomorrow'",
+   "role": "Ko Zaw, the learner's partner's cousin",
+   "setup": "You want to invite the learner to a family meal this week. Ask which day suits them (use day names), what time they can come (morning, evening, o'clock, half past), and end with 'see you tomorrow' or 'see you later'.",
+   "voice": 1,
+   "after": "m12.l4"
+  },
+  {
+   "id": "sc.teashop",
+   "title": "Ordering at a teashop",
+   "blurb": "How many people, cups, bottles",
+   "role": "Ko Aung, a busy teashop waiter",
+   "setup": "The learner comes into your teashop. Ask how many people, what they'd like to drink and eat, and confirm the order using counters (two cups of tea, a bottle of water, one bowl of mohinga). At the end tell them the total in kyat.",
+   "voice": 1,
+   "after": "m13.l3"
+  }
+ ],
+ "reading": [
+  {
+   "id": "s4.m11",
+   "title": "Read: Numbers & money",
+   "intro": [
+    "Prices on market signs are usually written in Burmese digits (၁၀၀၀ = 1,000), but you'll also see numbers spelled out. Look for ဆယ်, ရာ and ထောင်: the shape of each tells you the size of the number."
+   ],
+   "items": [
+    "num.20",
+    "num.100",
+    "num.1000",
+    "num.kyat",
+    "num.how-much",
+    "num.expensive"
+   ]
+  },
+  {
+   "id": "s4.m12",
+   "title": "Read: Time & days",
+   "intro": [
+    "နေ့ 'day' appears in lots of time words: ဒီနေ့, မနေ့က, and every day of the week. Spot it first, then read the rest."
+   ],
+   "items": [
+    "time.today",
+    "time.tomorrow",
+    "time.now",
+    "time.night",
+    "time.saturday",
+    "time.see-you-tomorrow"
+   ]
+  },
+  {
+   "id": "s4.m13",
+   "title": "Read: Counting things",
+   "intro": [
+    "Counters are short, common words, so they're good reading practice. Find the number in each phrase; the counter is the syllable right after it."
+   ],
+   "items": [
+    "cls.person",
+    "cls.one-person",
+    "cls.three-people",
+    "cls.how-many-people",
+    "cls.water-bottle"
+   ]
+  }
+ ],
+ "uncertain": [
+  {
+   "id": "num.kyat",
+   "why": "After a number, ကျပ် may be voiced in fast speech (e.g. 'ngá-dàun jaʔ'); left as kyaʔ."
+  },
+  {
+   "id": "num.cheap",
+   "why": "Not sure whether ပေါ is voiced (bàw) in ဈေးပေါ; written pàw."
+  },
+  {
+   "id": "num.70",
+   "why": "Unsure whether ဆယ် is voiced (zè) after the reduced hnə in ခုနစ်ဆယ်; written hsè."
+  },
+  {
+   "id": "num.bit-cheaper",
+   "why": "ပေး as a helper verb may be voiced (béi) after an open/creaky syllable; written péi (also in cls.one-of-these, cls.two-teas)."
+  },
+  {
+   "id": "num.1500",
+   "why": "Creaky ထောင့် written hta̰un; check the romanization of the creaky -aun syllable and the voicing in နှစ်ထောင့် (d.market)."
+  },
+  {
+   "id": "cls.bottle",
+   "why": "ပုလင်း is spelled pu- but I believe it's said bə-lín colloquially; please confirm."
+  },
+  {
+   "id": "cls.two-notes",
+   "why": "ထောင်တန် for a 1,000-kyat note and its romanization htàun-dàn are fairly but not fully certain."
+  },
+  {
+   "id": "time.later",
+   "why": "နောက်မှ 'later' is natural in 'see you later'/'do it later', but on its own it's a bit incomplete; ok as a word."
+  },
+  {
+   "id": "d.market",
+   "why": "ကောင်းပြီ romanized káun bì (voiced ပြီ); and 'ရပါတယ်' as the seller's acceptance of a price."
+  }
+ ]
+}

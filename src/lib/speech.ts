@@ -32,6 +32,17 @@ const fetchClip = (url: string) => {
   return blobCache.get(url)!
 }
 
+/** The generated clip for some Burmese text as a Blob (first voice unless `voice` is given). */
+export async function clipBlob(my: string, voice = 0): Promise<Blob | undefined> {
+  const clips = clipsFor(my)
+  if (!clips.length) return undefined
+  try {
+    return await fetchClip(clips[voice % clips.length])
+  } catch {
+    return undefined
+  }
+}
+
 /**
  * Speak Burmese text. Priority: my own recording for the item (quick-added phrases),
  * then a generated clip (voice = index, or random for variety), then the device's Burmese voice if it has one.

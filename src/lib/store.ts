@@ -11,6 +11,16 @@ export interface Settings {
   fadeRom: boolean
   desiredRetention: number
   theme: 'light' | 'dark' | 'system'
+  dailyGoal: 'any' | 'lesson' | 'min10' | 'min20'
+  /** Daily reminder time "HH:MM", or '' for off. */
+  reminder: string
+}
+export interface DayActivity {
+  answers?: number
+  lessons?: number
+  seconds?: number
+  /** reviews still due at the last update (for the 'reviews + lesson' goal) */
+  dueLeft?: number
 }
 export interface ItemMeta {
   checked?: boolean
@@ -49,11 +59,13 @@ export interface AppState {
   lessons: Record<string, { at: string; score: number }>
   /** Lessons left part-way through, so they can be resumed (any device). */
   drafts: Record<string, LessonDraft>
+  /** Study log per local day (YYYY-MM-DD), for the streak, daily goal and stats. */
+  activity: Record<string, DayActivity>
   /** ISO time of the last local change (used when merging with the cloud copy). */
   updatedAt: string
 }
 
-export const DEFAULT_SETTINGS: Settings = { speaker: 'both', newPerDay: 8, showRom: true, fadeRom: true, desiredRetention: 0.9, theme: 'light' }
+export const DEFAULT_SETTINGS: Settings = { speaker: 'both', newPerDay: 8, showRom: true, fadeRom: true, desiredRetention: 0.9, theme: 'light', dailyGoal: 'lesson', reminder: '' }
 export const emptyState = (): AppState => ({
   version: 1,
   settings: { ...DEFAULT_SETTINGS },
@@ -64,6 +76,7 @@ export const emptyState = (): AppState => ({
   toneLog: [],
   lessons: {},
   drafts: {},
+  activity: {},
   updatedAt: new Date(0).toISOString(),
 })
 

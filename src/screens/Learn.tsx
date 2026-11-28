@@ -5,6 +5,9 @@ import { BASE_ITEMS } from '../content'
 import { exItem, Pic, Runner, type Exercise, type Outcome, type RunnerSnapshot } from '../exercises'
 import { completeLesson, dueKeys, gradeCard, knownItems, lessonExercises, nextLesson, reviewPlan, unlockable } from '../learn'
 import { clipsFor, say } from '../lib/speech'
+import { tick } from '../lib/activity'
+import { computeStreak, dayKey, goalProgress, GOALS } from '../lib/streak'
+import { WeekStrip } from './Stats'
 import type { AppState, LessonDraft } from '../lib/store'
 import { Mm, PlayButton, Rom, ToneLegend } from '../components'
 import { DIALOGUES, type Dialogue } from './Practice'
@@ -22,13 +25,18 @@ const lessonBlurb = (l: Lesson) => {
 
 // ---------------- Home ----------------
 
-export function Home({ state, banner, onLesson, onReview, onCourse }: {
+export function Home({ state, banner, onLesson, onReview, onCourse, onToday, onStats }: {
   state: AppState
   banner?: React.ReactNode
   onLesson: (id: string) => void
   onReview: () => void
   onCourse: () => void
+  onToday: () => void
+  onStats: () => void
 }) {
+  const st = computeStreak(state)
+  const goal = GOALS.find((g) => g.id === st.goal)!
+  const todayPct = Math.round(goalProgress(state.activity?.[dayKey()], st.goal, dueKeys(state).length) * 100)
   const due = dueKeys(state).length + Math.min(8, unlockable(state).length)
   const draftId = Object.entries(state.drafts ?? {}).sort((a, b) => b[1].at.localeCompare(a[1].at))[0]?.[0]
   const resume = draftId ? LESSONS.find((l) => l.id === draftId) : undefined
@@ -46,11 +54,23 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
           <Mm text="မင်္ဂလာပါ" size="md" />
           <div className="small muted">mìn-gə-là-bà · Ready to learn?</div>
         </div>
-        <div className="ring" style={{ '--pct': `${pct}%` } as CSSProperties} title={`${pct}% of the course`}>
-          <span>{pct}%</span>
-        </div>
+        <button className={`streak-chip ${st.todayDone ? 'lit' : ''}`} onClick={onStats} aria-label="Streak and stats">
+          <span className="flame">🔥</span>
+          <b>{st.streak}</b>
+          {st.freezes > 0 && <span className="small">❄️{st.freezes}</span>}
+        </button>
       </header>
       {banner}
+      <button className="today-card" onClick={onToday}>
+        <span className="today-top">
+          <span className="today-title">▶ Today's session</span>
+          <span className="small">{st.todayDone ? 'Goal done ✓' : `Goal: ${goal.label}`}</span>
+        </span>
+        <span className="goal-track">
+          <span className="goal-fill" style={{ width: `${todayPct}%` }} />
+        </span>
+        <WeekStrip state={state} />
+      </button>
       {next ? (
         <button className="hero lesson-hero" style={modStyle(next.module)} onClick={() => onLesson(next.id)}>
           <span className="hero-icon">{kindIcon(next, next.module)}</span>
@@ -98,9 +118,15 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
           <span>words & phrases</span>
         </div>
       </div>
-      <button className="btn wide" onClick={onCourse}>
-        🗺️ Open the course map
-      </button>
+      <div className="row gap-sm">
+        <button className="btn wide" onClick={onCourse}>
+          🗺️ Course map
+        </button>
+        <button className="btn wide" onClick={onStats}>
+          📊 Your stats
+        </button>
+      </div>
+      <p className="small muted center-text">{pct}% of the whole course done</p>
     </div>
   )
 }
@@ -259,6 +285,7 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
     setScore(stats)
     const s = stats.total ? stats.right / stats.total : 1
     const apply = await completeLesson(lesson, state, results.current, plan.drills, s)
+    tick(0, 1)
     const tl = toneLog.current
     update((st) => {
       const drafts = { ...st.drafts }

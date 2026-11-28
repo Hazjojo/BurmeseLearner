@@ -4,9 +4,17 @@ import { openMic, playBlob, recordFrom, type Recorder } from '../lib/audio'
 import type { AppState } from '../lib/store'
 import type { Sync } from '../lib/sync'
 import { knownItems } from '../learn'
+import scenariosJson from '../../content/scenarios.json'
+import { lessonById } from '../content'
+import { cardKey, type Item } from '../content'
+import { newCard } from '../lib/srs'
+type Update = (fn: (s: AppState) => AppState) => void
+import { tick } from '../lib/activity'
 import { Mm, Rom } from '../components'
 
 interface Scenario {
+  /** Lesson that teaches the words it needs ('' = always ready). */
+  after?: string
   id: string
   title: string
   blurb: string
@@ -15,40 +23,7 @@ interface Scenario {
   voice: number
 }
 
-const SCENARIOS: Scenario[] = [
-  {
-    id: 'meet',
-    title: 'Meeting someone new',
-    blurb: 'Hello, names, where you’re from',
-    role: 'Su, a friendly young woman',
-    setup: 'You meet the learner for the first time at a friend’s party. Greet them and ask simple questions: their name, where they’re from, whether they speak Burmese.',
-    voice: 0,
-  },
-  {
-    id: 'dinner',
-    title: 'Dinner with the family',
-    blurb: 'Food, drink, “it’s delicious”',
-    role: 'U Aung, a kind older man hosting dinner',
-    setup: 'The learner is a guest at your family’s home for dinner. Welcome them, offer food and water, ask if they have eaten and whether they like the food.',
-    voice: 1,
-  },
-  {
-    id: 'going',
-    title: 'Where are you going?',
-    blurb: 'Plans, wanting, going',
-    role: 'Thura, a neighbour',
-    setup: 'You bump into the learner on the street. Ask where they are going, what they will do, and invite them to come and eat or drink something.',
-    voice: 1,
-  },
-  {
-    id: 'free',
-    title: 'Easy chat',
-    blurb: 'A relaxed chat about your day',
-    role: 'Su, a patient friend',
-    setup: 'A relaxed, very simple chat about the learner’s day, food, family and learning Burmese.',
-    voice: 0,
-  },
-]
+const SCENARIOS = scenariosJson as Scenario[]
 
 interface Turn {
   who: 'ai' | 'me'
@@ -61,7 +36,7 @@ interface Turn {
   pending?: boolean
 }
 
-export function Conversation({ state, sync, onExit }: { state: AppState; sync: Sync | null; onExit: () => void }) {
+export function Conversation({ state, sync, onExit, update }: { state: AppState; sync: Sync | null; onExit: () => void; update?: Update }) {
   const [scenario, setScenario] = useState<Scenario | null>(null)
   if (!sync || !aiAvailable()) {
     return (
@@ -84,22 +59,51 @@ export function Conversation({ state, sync, onExit }: { state: AppState; sync: S
         <p className="muted small">
           Pick a situation. Your partner speaks first. Reply out loud using the 🎙 button (or type). They'll keep it simple and use words you know.
         </p>
-        {SCENARIOS.map((s) => (
-          <button key={s.id} className="hero review" onClick={() => setScenario(s)}>
-            <span className="hero-title">{s.title}</span>
-            <span className="small">{s.blurb}</span>
-          </button>
-        ))}
+        {[...SCENARIOS]
+          .sort((a, b) => Number(!!a.after && !state.lessons[a.after]) - Number(!!b.after && !state.lessons[b.after]))
+          .map((s) => {
+            const ready = !s.after || !!state.lessons[s.after]
+            return (
+              <button key={s.id} className={`hero review ${ready ? '' : 'not-ready'}`} onClick={() => setScenario(s)}>
+                <span className="hero-body">
+                  <span className="hero-title">{s.title}</span>
+                  <span className="small">{s.blurb}</span>
+                  {!ready && <span className="small muted">Best after “{lessonById(s.after!)?.title}”</span>}
+                </span>
+              </button>
+            )
+          })}
         <p className="muted small">Your partner is an AI. Its Burmese is good but not perfect, so treat it as practice, not as the final word.</p>
       </div>
     )
   }
-  return <Chat key={scenario.id} scenario={scenario} state={state} onBack={() => setScenario(null)} />
+  return <Chat key={scenario.id} scenario={scenario} state={state} update={update} onBack={() => setScenario(null)} />
 }
 
 type MicMode = 'idle' | 'holding' | 'tapped'
 
-function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState; onBack: () => void }) {
+function Chat({ scenario, state, onBack, update }: { scenario: Scenario; state: AppState; onBack: () => void; update?: Update }) {
+  const [saved, setSaved] = useState<Set<string>>(new Set())
+  /** Save a line from the conversation as my own phrase: it joins the Phrasebook and my reviews. */
+  const save = async (l: { my: string; rom?: string; en?: string }) => {
+    if (!update || saved.has(l.my) || state.custom.some((c) => c.my === l.my)) return setSaved(new Set([...saved, l.my]))
+    const id = `u.${Date.now().toString(36)}`
+    const card = await newCard()
+    const item: Item = { id, strand: 'speak', unit: 0, my: l.my, rom: l.rom ?? '', en: l.en ?? '', note: `From a conversation: ${scenario.title}`, custom: true, emoji: '💬' }
+    update((s) => ({
+      ...s,
+      custom: [...s.custom, item],
+      cards: { ...s.cards, [cardKey(id, 'recog')]: card },
+      introduced: { ...s.introduced, [id]: new Date().toISOString() },
+    }))
+    setSaved(new Set([...saved, l.my]))
+  }
+  const SaveBtn = ({ l }: { l: { my: string; rom?: string; en?: string } }) =>
+    update ? (
+      <button className="btn small ghost" onClick={() => save(l)} disabled={saved.has(l.my)}>
+        {saved.has(l.my) ? '✓ Saved' : '＋ Save'}
+      </button>
+    ) : null
   const [turns, setTurns] = useState<Turn[]>([])
   const [thinking, setThinking] = useState(false)
   const [err, setErr] = useState('')
@@ -168,6 +172,7 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
           : []
       setTurns([...before, ...mine, { who: 'ai', my: r.reply.my, rom: r.reply.rom, en: r.reply.en, audio, reply: r }])
       if (audio) playBlob(audio)
+      if (recording || typedText) tick()
     } catch (e) {
       setTurns(base.filter((t) => !t.pending))
       setErr(e instanceof Error ? e.message : String(e))
@@ -241,7 +246,12 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
                     {t.rom && <Rom rom={t.rom} />}
                     {t.en && <span className="small muted">“{t.en}”</span>}
                     {fb?.feedback && <span className="note small">💡 {fb.feedback}</span>}
-                    {fb?.better?.my && <LineView line={fb.better} label="Try:" />}
+                    {fb?.better?.my && (
+                      <>
+                        <LineView line={fb.better} label="Try:" />
+                        <SaveBtn l={fb.better} />
+                      </>
+                    )}
                   </>
                 )}
               </div>
@@ -264,6 +274,7 @@ function Chat({ scenario, state, onBack }: { scenario: Scenario; state: AppState
                 <button className="btn small ghost" onClick={() => setShowEn(new Set([...showEn, i]))}>
                   {showEn.has(i) ? t.en : 'English?'}
                 </button>
+                <SaveBtn l={t} />
               </span>
             </div>
           )

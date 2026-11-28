@@ -9,9 +9,14 @@ import { setAISync } from './lib/ai'
 import { QuickAdd } from './screens/QuickAdd'
 import { SyncPanel } from './screens/SyncPanel'
 import { ErrorBoundary } from './ErrorBoundary'
+import { TodaySession } from './screens/Today'
+import { Stats } from './screens/Stats'
+import { setActivityHook } from './lib/activity'
+import { addActivity, dayKey } from './lib/streak'
+import { dueKeys } from './learn'
 
 type Tab = 'home' | 'course' | 'script' | 'tones' | 'settings'
-type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | { kind: 'dialogue'; d: Dialogue } | null
+type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | { kind: 'dialogue'; d: Dialogue } | { kind: 'today' } | { kind: 'stats' } | null
 
 export default function App() {
   const [state, setState] = useState<AppState | null>(null)
@@ -76,6 +81,19 @@ export default function App() {
     [sync],
   )
 
+  // Every answer anywhere in the app feeds today's study log (streak, daily goal, stats).
+  useEffect(() => {
+    setActivityHook((add) => update((s) => addActivity(s, { ...add, dueLeft: dueKeys(s).length })))
+  }, [update])
+  // Keep today's "reviews still due" current as cards get graded (for the reviews + lesson goal).
+  useEffect(() => {
+    if (!state) return
+    const today = dayKey()
+    const a = state.activity?.[today]
+    const due = dueKeys(state).length
+    if (a && a.dueLeft !== due) update((s) => ({ ...s, activity: { ...s.activity, [today]: { ...s.activity[today], dueLeft: due } } }))
+  }, [state?.cards]) // eslint-disable-line react-hooks/exhaustive-deps
+
   if (!state) return <div className="screen center muted">Loading…</div>
 
   const close = () => setOverlay(null)
@@ -87,6 +105,8 @@ export default function App() {
   if (overlay?.kind === 'lesson') return guard(<LessonView key={overlay.id} lessonId={overlay.id} state={state} update={update} onExit={close} />)
   if (overlay?.kind === 'review') return guard(<ReviewView state={state} update={update} onExit={close} />)
   if (overlay?.kind === 'add') return guard(<QuickAdd update={update} onDone={close} />)
+  if (overlay?.kind === 'today') return guard(<TodaySession state={state} update={update} onExit={close} />)
+  if (overlay?.kind === 'stats') return guard(<Stats state={state} onBack={close} />)
   if (overlay?.kind === 'dialogue') return guard(<DialoguePlayer d={overlay.d} state={state} update={update} onExit={close} />)
 
   const banner =
@@ -106,14 +126,19 @@ export default function App() {
     <div className="app">
       <main>
         {guard(<>
-        {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} />}
+        {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} onToday={() => setOverlay({ kind: 'today' })} onStats={() => setOverlay({ kind: 'stats' })} />}
         {tab === 'course' && <Course state={state} track="speak" onLesson={openLesson} onDialogue={(d) => setOverlay({ kind: 'dialogue', d })} />}
         {tab === 'script' && <Course state={state} track="script" onLesson={openLesson} onDialogue={(d) => setOverlay({ kind: 'dialogue', d })} />}
         {tab === 'tones' && <Practice state={state} update={update} sync={sync} onAdd={() => setOverlay({ kind: 'add' })} />}
         {tab === 'settings' && (
           <>
             <Settings state={state} update={update} />
-            <SyncPanel sync={sync} onSyncNow={async () => sync && replace(await sync.fullSync(latest.current!))} />
+            <SyncPanel
+              sync={sync}
+              onSyncNow={async () => sync && replace(await sync.fullSync(latest.current!))}
+              reminder={state.settings.reminder ?? ''}
+              onReminder={(t) => update((s) => ({ ...s, settings: { ...s.settings, reminder: t } }))}
+            />
           </>
         )}
         </>)}

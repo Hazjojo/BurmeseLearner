@@ -1,6 +1,7 @@
 import { useState, type CSSProperties } from 'react'
 import { getItem, MODULES, SCRIPT_MODULES, parseKey, type Item } from '../content'
 import { Pic } from '../exercises'
+import { GOALS } from '../lib/streak'
 import { deleteRecording, exportBackup, importBackup, type AppState, type Settings as S } from '../lib/store'
 import { Mm, PlayButton, Rom, ToneLegend } from '../components'
 
@@ -166,6 +167,17 @@ export function Settings({ state, update }: { state: AppState; update: Update })
           <option value="both">show both</option>
         </select>
       </label>
+      <div className="field">
+        <span>Daily goal</span>
+        <div className="goal-options">
+          {GOALS.map((g) => (
+            <button key={g.id} className={`chip ${s.dailyGoal === g.id ? 'active' : ''}`} onClick={() => set('dailyGoal', g.id)}>
+              {g.label}
+            </button>
+          ))}
+        </div>
+        <span className="muted small">{GOALS.find((g) => g.id === s.dailyGoal)?.detail}. Meeting it keeps your 🔥 streak going; every 7 days earns a ❄️ freeze that covers a missed day.</span>
+      </div>
       <div className="field">
         <span>Appearance</span>
         <div className="seg">

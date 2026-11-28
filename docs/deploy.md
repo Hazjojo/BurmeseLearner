@@ -62,3 +62,11 @@ A small server function (`functions/`) checks your spoken Burmese with Azure spe
 4. If conversation replies fail with a permission error: IAM → the *Default compute service account* (`<number>-compute@developer.gserviceaccount.com`) → add **Vertex AI User**.
 
 Costs at one learner's scale: Azure speech recognition free tier (5 audio hours/month), Gemini Flash a few pence per hour of conversation, Cloud Functions free tier. The function caps usage at 400 calls/day and only answers the first account that uses it (yours).
+
+## 5. Daily reminder notifications
+
+1. Firebase console → ⚙ **Project settings → Cloud Messaging → Web Push certificates → Generate key pair**. Copy the **key pair** string (it's a public key, safe to share).
+2. GitHub repo → *Settings → Secrets and variables → Actions → **Variables*** → new variable `FIREBASE_VAPID_KEY` = that string.
+3. Push or re-run CI. Then in the app: *Settings → Daily reminder → Turn on*, and allow notifications. On iPhone this only works from the Home Screen app.
+
+A scheduled function (`sendReminders`, every 15 minutes) sends the reminder at your chosen time, and skips it if you've already practised that day.

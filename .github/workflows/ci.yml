@@ -13,6 +13,8 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm run build
+        env:
+          VITE_VAPID_KEY: ${{ vars.FIREBASE_VAPID_KEY }}
       - name: Server functions build & test
         working-directory: functions
         run: npm ci && npm run build && npm test
@@ -68,7 +70,7 @@ jobs:
           echo "$SA" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
           gcloud auth activate-service-account --key-file "$RUNNER_TEMP/sa.json" --quiet
-          gcloud services enable aiplatform.googleapis.com secretmanager.googleapis.com cloudfunctions.googleapis.com run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com --project "$PROJECT"
+          gcloud services enable aiplatform.googleapis.com secretmanager.googleapis.com cloudfunctions.googleapis.com run.googleapis.com cloudbuild.googleapis.com artifactregistry.googleapis.com cloudscheduler.googleapis.com fcm.googleapis.com --project "$PROJECT"
           (cd functions && npm ci && npm run build)
           printf %s "$AZURE_SPEECH_KEY" | npx -y firebase-tools@15.37.0 functions:secrets:set AZURE_SPEECH_KEY --data-file=- --project "$PROJECT" --non-interactive --force
           npx -y firebase-tools@15.37.0 deploy --only functions --project "$PROJECT" --non-interactive --force

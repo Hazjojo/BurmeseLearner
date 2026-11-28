@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { TONE_SETS, type ToneSet } from '../content'
 import { ExerciseView, type Exercise } from '../exercises'
 import { clipsFor } from '../lib/speech'
+import { tick } from '../lib/activity'
 import type { AppState, ToneTrial } from '../lib/store'
 import { Mm } from '../components'
 
@@ -65,6 +66,7 @@ export function Tones({ state, update }: { state: AppState; update: Update }) {
         pool={[]}
         showRom
         onDone={(o) => {
+          tick()
           if (ex.kind === 'tone') {
             const t = { t: new Date().toISOString(), set: ex.set.id, asked: ex.asked, chose: o === 'wrong' ? -1 : ex.asked }
             update((s) => ({ ...s, toneLog: [...s.toneLog, t].slice(-5000) }))

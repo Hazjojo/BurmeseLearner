@@ -188,3 +188,48 @@ export const converse = onCall({ region: REGION, secrets: [AZURE_KEY], timeoutSe
   const audio = out?.reply?.my ? await synthesise(out.reply.my, input.scenario.voice === 1 ? 'my-MM-ThihaNeural' : 'my-MM-NilarNeural') : null
   return { ...out, audio, heardText }
 })
+
+// ---------------- Daily reminders ----------------
+import { onSchedule } from 'firebase-functions/v2/scheduler'
+import { getMessaging } from 'firebase-admin/messaging'
+
+/** Local date "YYYY-MM-DD" and minutes since midnight in a time zone. */
+function localNow(tz: string, now = new Date()) {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat('en-GB', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', hourCycle: 'h23' })
+      .formatToParts(now)
+      .map((p) => [p.type, p.value]),
+  )
+  return { date: `${parts.year}-${parts.month}-${parts.day}`, minutes: Number(parts.hour) * 60 + Number(parts.minute) }
+}
+
+/** Every 15 minutes: nudge anyone whose reminder time has come and who hasn't practised yet today. */
+export const sendReminders = onSchedule({ schedule: 'every 15 minutes', region: REGION, timeoutSeconds: 120 }, async () => {
+  const snap = await db.collection('reminders').where('enabled', '==', true).get()
+  for (const d of snap.docs) {
+    const r = d.data() as { time?: string; tz?: string; token?: string; lastSent?: string }
+    if (!r.time || !r.token) continue
+    const tz = r.tz || 'Europe/London'
+    const { date, minutes } = localNow(tz)
+    const [h, m] = r.time.split(':').map(Number)
+    const due = h * 60 + m
+    if (minutes < due || minutes >= due + 30 || r.lastSent === date) continue
+    const user = await db.doc(`users/${d.id}`).get()
+    const today = (user.data()?.activity ?? {})[date] as { answers?: number } | undefined
+    const practised = (today?.answers ?? 0) > 0
+    await d.ref.set({ lastSent: date }, { merge: true })
+    if (practised) continue
+    try {
+      await getMessaging().send({
+        token: r.token,
+        webpush: {
+          notification: { title: 'Time for Burmese 🔥', body: 'A few minutes today keeps your streak going.', icon: '/icon-192.png' },
+          fcmOptions: { link: '/' },
+        },
+      })
+    } catch (e) {
+      // Expired or revoked token: stop trying until the reminder is set again.
+      if (/registration-token-not-registered|invalid-registration-token|invalid-argument/i.test(String(e))) await d.ref.set({ enabled: false }, { merge: true })
+    }
+  }
+})

@@ -1,0 +1,901 @@
+{
+  "modules": [
+    {
+      "id": "m17",
+      "title": "Past & plans",
+      "summary": "Say what you did, what you will do, what you must and can do.",
+      "icon": "⏳",
+      "color": "#3d5a99",
+      "lessons": [
+        {
+          "id": "m17.l1",
+          "title": "Did it, done it, not yet",
+          "intro": [
+            "Plain verb + တယ် can already mean past, and time words like မနေ့က 'yesterday' usually do the work. To make the past clear, add ခဲ့ (gḛ): သွားခဲ့တယ် 'I went'.",
+            "Verb + ပြီးပြီ (pyí bì) means 'already done'. For 'not yet', wrap the verb in မ … သေးဘူး: မစားရသေးဘူး 'I haven't eaten yet'."
+          ],
+          "items": [
+            "tense.went",
+            "tense.yesterday",
+            "tense.where-yesterday",
+            "tense.drank-already",
+            "tense.done",
+            "tense.not-yet-eaten"
+          ],
+          "drills": [
+            "pat.past",
+            "pat.already"
+          ]
+        },
+        {
+          "id": "m17.l2",
+          "title": "Plans & must",
+          "intro": [
+            "You already know မယ် (mè) for the future and ချင်တယ် (jìn dè) for 'want to'. Add တော့ before မယ် for 'about to, right now': စားတော့မယ် 'I'm going to eat now'.",
+            "ရ (ya̰) after a verb means 'have to': သွားရမယ် 'I have to go'. Say it when you need to leave a family visit."
+          ],
+          "items": [
+            "tense.tomorrow",
+            "tense.tomorrow-what",
+            "tense.about-to-eat",
+            "tense.must-go",
+            "tense.must-work",
+            "tense.want-go-myanmar",
+            "tense.dont-have-to"
+          ],
+          "drills": [
+            "pat.must",
+            "pat.future",
+            "pat.want"
+          ]
+        },
+        {
+          "id": "m17.l3",
+          "title": "Have you ever…?",
+          "intro": [
+            "ဖူး (hpú) after a verb means 'have ever done'. ရောက်ဖူးလား 'have you ever been (there)?' is a favourite question for visitors.",
+            "For 'never', use the usual negative: မ + verb + ဖူးဘူး. After an open syllable ဖူး usually sounds like bú."
+          ],
+          "items": [
+            "tense.arrived",
+            "tense.ever-been-q",
+            "tense.been-once",
+            "tense.never-been",
+            "tense.ever-eaten-mohinga"
+          ],
+          "drills": [
+            "pat.ever-q"
+          ]
+        },
+        {
+          "id": "m17.l4",
+          "title": "Can & can't",
+          "intro": [
+            "Burmese has two words for 'can'. နိုင် (nàin) is being able to or having the chance: လာနိုင်တယ် 'I can come'. တတ် (daʔ) is a learned skill: ရေကူးတတ်တယ် 'I can swim'.",
+            "To ask permission, use verb + လို့ရလား: ထိုင်လို့ရလား 'Can I sit?'"
+          ],
+          "items": [
+            "tense.can-come",
+            "tense.cant-come",
+            "tense.can-cook-q",
+            "tense.cant-swim",
+            "tense.may-i-sit"
+          ],
+          "drills": [
+            "pat.can"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m18",
+      "title": "Opinions & small talk",
+      "summary": "Share what you think, react, compliment the food and chat about the weather.",
+      "icon": "☕",
+      "color": "#a0522d",
+      "lessons": [
+        {
+          "id": "m18.l1",
+          "title": "I think, I like",
+          "intro": [
+            "ထင်တယ် (htìn dè) 'I think' goes at the end, after the opinion: ကောင်းမယ် ထင်တယ် 'I think it'll be good'.",
+            "ကြိုက်တယ် is 'like'. Put အရမ်း (ə-yán) 'very' in front to make it stronger."
+          ],
+          "items": [
+            "talk.i-think",
+            "talk.think-good",
+            "talk.what-think",
+            "talk.like-a-lot",
+            "talk.dont-like",
+            "talk.dont-know"
+          ]
+        },
+        {
+          "id": "m18.l2",
+          "title": "Good, beautiful, fun",
+          "intro": [
+            "Describing words work like verbs: လှတယ် 'is beautiful', ကောင်းတယ် 'is good'. Make them negative the same way: မကောင်းဘူး 'not good'.",
+            "စရာကောင်းတယ် after a verb means 'worth doing': ပျော်စရာကောင်းတယ် 'it's fun'."
+          ],
+          "items": [
+            "talk.not-good",
+            "talk.beautiful",
+            "talk.very-beautiful",
+            "talk.interesting",
+            "talk.fun",
+            "talk.great"
+          ]
+        },
+        {
+          "id": "m18.l3",
+          "title": "Me too & agreeing",
+          "intro": [
+            "လည်း (lé) after a word means 'too, also': ကျွန်မလည်း ကြိုက်တယ် 'I like it too'.",
+            "Burmese conversation avoids flat disagreement. မထင်ဘူး 'I don't think so' or ဖြစ်နိုင်တယ် 'maybe' are gentle ways to disagree."
+          ],
+          "items": [
+            "talk.thats-right",
+            "talk.agree",
+            "talk.like-too-m",
+            "talk.like-too-f",
+            "talk.same",
+            "talk.dont-think-so",
+            "talk.maybe"
+          ]
+        },
+        {
+          "id": "m18.l4",
+          "title": "Compliments & weather",
+          "intro": [
+            "Praising the food is the best compliment you can give at a family meal. Say it often!",
+            "Weather is easy small talk: Yangon is usually hot or rainy. ဒီနေ့ 'today' + အရမ်းပူတယ် 'really hot' will always get a reply."
+          ],
+          "items": [
+            "talk.food-delicious",
+            "talk.good-cook",
+            "talk.nice-home",
+            "talk.hot-today",
+            "talk.raining",
+            "talk.cold",
+            "talk.learning-for-family"
+          ]
+        }
+      ]
+    }
+  ],
+  "items": [
+    {
+      "id": "tense.went",
+      "unit": 17,
+      "my": "သွားခဲ့တယ်",
+      "rom": "thwá gḛ dè",
+      "en": "I went",
+      "emoji": "🚶",
+      "note": "ခဲ့ (gḛ) after a verb makes it clearly past. After a checked syllable it's said hkḛ."
+    },
+    {
+      "id": "tense.yesterday",
+      "unit": 17,
+      "my": "မနေ့က",
+      "rom": "mə-nḛ ga̰",
+      "en": "yesterday",
+      "emoji": "📅"
+    },
+    {
+      "id": "tense.where-yesterday",
+      "unit": 17,
+      "my": "မနေ့က ဘယ်သွားလဲ",
+      "rom": "mə-nḛ ga̰ bè thwá lé",
+      "en": "Where did you go yesterday?",
+      "emoji": "🗺️",
+      "note": "No past marker needed: မနေ့က 'yesterday' already sets the time."
+    },
+    {
+      "id": "tense.drank-already",
+      "unit": 17,
+      "my": "သောက်ပြီးပြီ",
+      "rom": "thauʔ pyí bì",
+      "en": "I've already had a drink",
+      "emoji": "🥤",
+      "note": "Verb + ပြီးပြီ (pyí bì) = already done.",
+      "lit": "drink finish already"
+    },
+    {
+      "id": "tense.done",
+      "unit": 17,
+      "my": "ပြီးပြီ",
+      "rom": "pyí bì",
+      "en": "Done! / Finished",
+      "emoji": "✅"
+    },
+    {
+      "id": "tense.not-yet-eaten",
+      "unit": 17,
+      "my": "မစားရသေးဘူး",
+      "rom": "mə-sá ya̰ théi bú",
+      "en": "I haven't eaten yet",
+      "emoji": "🍽️",
+      "note": "မ + verb + (ရ)သေးဘူး = not yet. The answer to 'Have you eaten?' when you haven't."
+    },
+    {
+      "id": "tense.tomorrow",
+      "unit": 17,
+      "my": "မနက်ဖြန်",
+      "rom": "mə-neʔ hpyàn",
+      "en": "tomorrow",
+      "emoji": "🌅"
+    },
+    {
+      "id": "tense.tomorrow-what",
+      "unit": 17,
+      "my": "မနက်ဖြန် ဘာလုပ်မလဲ",
+      "rom": "mə-neʔ hpyàn bà louʔ mə-lé",
+      "en": "What are you doing tomorrow?",
+      "emoji": "❓"
+    },
+    {
+      "id": "tense.about-to-eat",
+      "unit": 17,
+      "my": "စားတော့မယ်",
+      "rom": "sá da̰w mè",
+      "en": "I'm going to eat now",
+      "emoji": "🥢",
+      "note": "တော့မယ် (da̰w mè) = about to, going to right now."
+    },
+    {
+      "id": "tense.must-go",
+      "unit": 17,
+      "my": "သွားရမယ်",
+      "rom": "thwá ya̰ mè",
+      "en": "I have to go",
+      "emoji": "🏃",
+      "note": "Verb + ရမယ် (ya̰ mè) = have to / must."
+    },
+    {
+      "id": "tense.must-work",
+      "unit": 17,
+      "my": "အလုပ်လုပ်ရမယ်",
+      "rom": "ə-louʔ louʔ ya̰ mè",
+      "en": "I have to work",
+      "emoji": "💼",
+      "lit": "work do must"
+    },
+    {
+      "id": "tense.want-go-myanmar",
+      "unit": 17,
+      "my": "မြန်မာပြည် သွားချင်တယ်",
+      "rom": "myəmà pyì thwá jìn dè",
+      "en": "I want to go to Myanmar",
+      "emoji": "✈️"
+    },
+    {
+      "id": "tense.dont-have-to",
+      "unit": 17,
+      "my": "မသွားလည်း ရပါတယ်",
+      "rom": "mə-thwá lé ya̰ bà dè",
+      "en": "You don't have to go",
+      "emoji": "🙆",
+      "note": "မ + verb + လည်း ရတယ် = it's fine not to…",
+      "lit": "even not going, it's OK"
+    },
+    {
+      "id": "tense.arrived",
+      "unit": 17,
+      "my": "ရောက်ပြီ",
+      "rom": "yauʔ pyì",
+      "en": "We're here! / I've arrived",
+      "emoji": "📍",
+      "note": "ရောက် (yauʔ) = arrive, get to. Verb + ပြီ = it has happened now."
+    },
+    {
+      "id": "tense.ever-been-q",
+      "unit": 17,
+      "my": "ပုဂံ ရောက်ဖူးလား",
+      "rom": "bə-gàn yauʔ hpú lá",
+      "en": "Have you ever been to Bagan?",
+      "emoji": "🛕",
+      "note": "Verb + ဖူး (hpú) = have ever done it."
+    },
+    {
+      "id": "tense.been-once",
+      "unit": 17,
+      "my": "တစ်ခါ ရောက်ဖူးတယ်",
+      "rom": "tə-hkà yauʔ hpú dè",
+      "en": "I've been once",
+      "emoji": "☝️"
+    },
+    {
+      "id": "tense.never-been",
+      "unit": 17,
+      "my": "မရောက်ဖူးဘူး",
+      "rom": "mə-yauʔ hpú bú",
+      "en": "I've never been",
+      "emoji": "🙅",
+      "note": "မ + verb + ဖူးဘူး = have never."
+    },
+    {
+      "id": "tense.ever-eaten-mohinga",
+      "unit": 17,
+      "my": "မုန့်ဟင်းခါး စားဖူးလား",
+      "rom": "mo̰un-hín-gá sá bú lá",
+      "en": "Have you ever had mohinga?",
+      "emoji": "🍜",
+      "note": "After an open syllable ဖူး is usually voiced: bú."
+    },
+    {
+      "id": "tense.can-come",
+      "unit": 17,
+      "my": "လာနိုင်တယ်",
+      "rom": "là nàin dè",
+      "en": "I can come",
+      "emoji": "👍",
+      "note": "Verb + နိုင်တယ် = can (be able to, have the chance)."
+    },
+    {
+      "id": "tense.cant-come",
+      "unit": 17,
+      "my": "မလာနိုင်ဘူး",
+      "rom": "mə-là nàin bú",
+      "en": "I can't come",
+      "emoji": "👎"
+    },
+    {
+      "id": "tense.can-cook-q",
+      "unit": 17,
+      "my": "ထမင်းချက်တတ်လား",
+      "rom": "htə-mín chaʔ taʔ lá",
+      "en": "Can you cook?",
+      "emoji": "🍳",
+      "note": "Verb + တတ် = know how to (a learned skill). After a checked syllable it's taʔ, otherwise daʔ."
+    },
+    {
+      "id": "tense.cant-swim",
+      "unit": 17,
+      "my": "ရေမကူးတတ်ဘူး",
+      "rom": "yèi mə-kú daʔ bú",
+      "en": "I can't swim",
+      "emoji": "🏊",
+      "lit": "water not-swim know-how"
+    },
+    {
+      "id": "tense.may-i-sit",
+      "unit": 17,
+      "my": "ထိုင်လို့ရလား",
+      "rom": "htàin lo̰ ya̰ lá",
+      "en": "Can I sit down?",
+      "emoji": "🪑",
+      "note": "Verb + လို့ရလား = may I…? / is it OK to…?"
+    },
+    {
+      "id": "talk.i-think",
+      "unit": 18,
+      "my": "ထင်တယ်",
+      "rom": "htìn dè",
+      "en": "I think so",
+      "emoji": "💭"
+    },
+    {
+      "id": "talk.think-good",
+      "unit": 18,
+      "my": "ကောင်းမယ် ထင်တယ်",
+      "rom": "káun mè htìn dè",
+      "en": "I think it'll be good",
+      "emoji": "🤔",
+      "note": "The opinion comes first, ထင်တယ် 'I think' comes last."
+    },
+    {
+      "id": "talk.what-think",
+      "unit": 18,
+      "my": "ဘယ်လို ထင်လဲ",
+      "rom": "bè-lò htìn lé",
+      "en": "What do you think?",
+      "emoji": "🗣️"
+    },
+    {
+      "id": "talk.like-a-lot",
+      "unit": 18,
+      "my": "အရမ်းကြိုက်တယ်",
+      "rom": "ə-yán kyaiʔ tè",
+      "en": "I really like it",
+      "emoji": "😍",
+      "note": "အရမ်း (ə-yán) = very, really."
+    },
+    {
+      "id": "talk.dont-like",
+      "unit": 18,
+      "my": "မကြိုက်ဘူး",
+      "rom": "mə-kyaiʔ bú",
+      "en": "I don't like it",
+      "emoji": "😕"
+    },
+    {
+      "id": "talk.dont-know",
+      "unit": 18,
+      "my": "မသိဘူး",
+      "rom": "mə-thḭ bú",
+      "en": "I don't know",
+      "emoji": "🤷"
+    },
+    {
+      "id": "talk.not-good",
+      "unit": 18,
+      "my": "မကောင်းဘူး",
+      "rom": "mə-káun bú",
+      "en": "It's not good",
+      "emoji": "👎"
+    },
+    {
+      "id": "talk.beautiful",
+      "unit": 18,
+      "my": "လှတယ်",
+      "rom": "hla̰ dè",
+      "en": "It's beautiful / pretty",
+      "emoji": "🌸"
+    },
+    {
+      "id": "talk.very-beautiful",
+      "unit": 18,
+      "my": "အရမ်းလှတယ်",
+      "rom": "ə-yán hla̰ dè",
+      "en": "It's really beautiful",
+      "emoji": "✨"
+    },
+    {
+      "id": "talk.interesting",
+      "unit": 18,
+      "my": "စိတ်ဝင်စားစရာ ကောင်းတယ်",
+      "rom": "seiʔ wìn zá zə-yà káun dè",
+      "en": "It's interesting",
+      "emoji": "🧐",
+      "note": "Verb + စရာကောင်းတယ် = it's worth …-ing.",
+      "lit": "heart-enter worth good"
+    },
+    {
+      "id": "talk.fun",
+      "unit": 18,
+      "my": "ပျော်စရာ ကောင်းတယ်",
+      "rom": "pyàw zə-yà káun dè",
+      "en": "It's fun",
+      "emoji": "🎉"
+    },
+    {
+      "id": "talk.great",
+      "unit": 18,
+      "my": "သိပ်ကောင်းတာပဲ",
+      "rom": "theiʔ káun dà bé",
+      "en": "That's great!",
+      "emoji": "🙌"
+    },
+    {
+      "id": "talk.thats-right",
+      "unit": 18,
+      "my": "ဟုတ်တယ်",
+      "rom": "houʔ tè",
+      "en": "That's right / Yes, it is",
+      "emoji": "👌"
+    },
+    {
+      "id": "talk.agree",
+      "unit": 18,
+      "my": "သဘောတူတယ်",
+      "rom": "thə-bàw tù dè",
+      "en": "I agree",
+      "emoji": "🤝"
+    },
+    {
+      "id": "talk.like-too-m",
+      "unit": 18,
+      "my": "ကျွန်တော်လည်း ကြိုက်တယ်",
+      "rom": "kyə-nàw lé kyaiʔ tè",
+      "en": "I like it too",
+      "emoji": "🙋‍♂️",
+      "note": "လည်း (lé) after a word = also, too.",
+      "speaker": "m"
+    },
+    {
+      "id": "talk.like-too-f",
+      "unit": 18,
+      "my": "ကျွန်မလည်း ကြိုက်တယ်",
+      "rom": "kyə-ma̰ lé kyaiʔ tè",
+      "en": "I like it too",
+      "emoji": "🙋‍♀️",
+      "note": "လည်း (lé) after a word = also, too.",
+      "speaker": "f"
+    },
+    {
+      "id": "talk.same",
+      "unit": 18,
+      "my": "အတူတူပဲ",
+      "rom": "ə-tù-dù bé",
+      "en": "Same here / It's the same",
+      "emoji": "🟰"
+    },
+    {
+      "id": "talk.dont-think-so",
+      "unit": 18,
+      "my": "မထင်ဘူး",
+      "rom": "mə-htìn bú",
+      "en": "I don't think so",
+      "emoji": "🙃",
+      "note": "A soft way to disagree."
+    },
+    {
+      "id": "talk.maybe",
+      "unit": 18,
+      "my": "ဖြစ်နိုင်တယ်",
+      "rom": "hpyiʔ nàin dè",
+      "en": "Maybe / It's possible",
+      "emoji": "🤞"
+    },
+    {
+      "id": "talk.food-delicious",
+      "unit": 18,
+      "my": "မြန်မာ အစားအစာ စားလို့ကောင်းတယ်",
+      "rom": "myəmà ə-sá ə-sà sá lo̰ káun dè",
+      "en": "Myanmar food is delicious",
+      "emoji": "🍛"
+    },
+    {
+      "id": "talk.good-cook",
+      "unit": 18,
+      "my": "ဟင်းချက်တော်တယ်",
+      "rom": "hín chaʔ tàw dè",
+      "en": "You're a great cook",
+      "emoji": "👩‍🍳",
+      "note": "ဟင်း = curry / dishes, တော် = skilled, good at."
+    },
+    {
+      "id": "talk.nice-home",
+      "unit": 18,
+      "my": "အိမ် လှတယ်",
+      "rom": "èin hla̰ dè",
+      "en": "Your home is lovely",
+      "emoji": "🏡"
+    },
+    {
+      "id": "talk.hot-today",
+      "unit": 18,
+      "my": "ဒီနေ့ အရမ်းပူတယ်",
+      "rom": "dì-nḛ ə-yán pù dè",
+      "en": "It's really hot today",
+      "emoji": "☀️"
+    },
+    {
+      "id": "talk.raining",
+      "unit": 18,
+      "my": "မိုးရွာတယ်",
+      "rom": "mó ywà dè",
+      "en": "It's raining",
+      "emoji": "🌧️",
+      "lit": "sky/rain falls"
+    },
+    {
+      "id": "talk.cold",
+      "unit": 18,
+      "my": "အေးတယ်",
+      "rom": "éi dè",
+      "en": "It's cold / cool",
+      "emoji": "❄️"
+    },
+    {
+      "id": "talk.learning-for-family",
+      "unit": 18,
+      "my": "ချစ်သူ့ မိသားစုအတွက် မြန်မာစကား သင်နေတာပါ",
+      "rom": "chiʔ thṵ mḭ-thá-zṵ ə-tweʔ myəmà zəgá thìn nèi dà bà",
+      "en": "I'm learning Burmese for my partner's family",
+      "emoji": "❤️",
+      "note": "အတွက် (ə-tweʔ) = for. ချစ်သူ = partner, sweetheart."
+    }
+  ],
+  "patterns": [
+    {
+      "id": "pat.past",
+      "from": "tense.went",
+      "my": "{v}ခဲ့တယ်",
+      "rom": [
+        "{v} gḛ dè",
+        "{v} hkḛ dè"
+      ],
+      "en": "I {past}",
+      "note": "Verb + ခဲ့တယ် = clearly past."
+    },
+    {
+      "id": "pat.already",
+      "from": "tense.drank-already",
+      "my": "{v}ပြီးပြီ",
+      "rom": [
+        "{v} pyí bì",
+        "{v} pyí bì"
+      ],
+      "en": "I already {past}",
+      "note": "Verb + ပြီးပြီ = already done."
+    },
+    {
+      "id": "pat.must",
+      "from": "tense.must-go",
+      "my": "{v}ရမယ်",
+      "rom": [
+        "{v} ya̰ mè",
+        "{v} ya̰ mè"
+      ],
+      "en": "I have to {base}",
+      "note": "Verb + ရမယ် = have to / must."
+    },
+    {
+      "id": "pat.can",
+      "from": "tense.can-come",
+      "my": "{v}နိုင်တယ်",
+      "rom": [
+        "{v} nàin dè",
+        "{v} nàin dè"
+      ],
+      "en": "I can {base}",
+      "note": "Verb + နိုင်တယ် = can, be able to."
+    },
+    {
+      "id": "pat.ever-q",
+      "from": "tense.ever-been-q",
+      "my": "{v}ဖူးလား",
+      "rom": [
+        "{v} bú lá",
+        "{v} hpú lá"
+      ],
+      "en": "Have you ever had the chance to {base}?",
+      "note": "Verb + ဖူးလား = have you ever …?"
+    }
+  ],
+  "dialogues": [
+    {
+      "id": "d.past-plans",
+      "title": "Yesterday and tomorrow",
+      "after": "m17.l3",
+      "speakers": {
+        "A": {
+          "name": "Su",
+          "voice": 0
+        },
+        "B": {
+          "name": "Aung",
+          "voice": 1
+        }
+      },
+      "lines": [
+        {
+          "s": "A",
+          "my": "မနေ့က ဘယ်သွားလဲ",
+          "rom": "mə-nḛ ga̰ bè thwá lé",
+          "en": "Where did you go yesterday?"
+        },
+        {
+          "s": "B",
+          "my": "ဈေး သွားခဲ့တယ်",
+          "rom": "zéi thwá gḛ dè",
+          "en": "I went to the market."
+        },
+        {
+          "s": "A",
+          "my": "ထမင်းစားပြီးပြီလား",
+          "rom": "htə-mín sá pyí bì lá",
+          "en": "Have you eaten?"
+        },
+        {
+          "s": "B",
+          "my": "မစားရသေးဘူး",
+          "rom": "mə-sá ya̰ théi bú",
+          "en": "Not yet."
+        },
+        {
+          "s": "A",
+          "my": "မုန့်ဟင်းခါး စားမလား",
+          "rom": "mo̰un-hín-gá sá mə-lá",
+          "en": "Will you have some mohinga?"
+        },
+        {
+          "s": "B",
+          "my": "စားမယ်",
+          "rom": "sá mè",
+          "en": "Yes, I will."
+        },
+        {
+          "s": "A",
+          "my": "ပုဂံ ရောက်ဖူးလား",
+          "rom": "bə-gàn yauʔ hpú lá",
+          "en": "Have you ever been to Bagan?"
+        },
+        {
+          "s": "B",
+          "my": "မရောက်ဖူးဘူး သွားချင်တယ်",
+          "rom": "mə-yauʔ hpú bú thwá jìn dè",
+          "en": "I've never been. I want to go."
+        }
+      ],
+      "questions": [
+        {
+          "q": "Where did Aung go yesterday?",
+          "options": [
+            "To the market",
+            "To Bagan",
+            "To work",
+            "Nowhere"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "Has Aung been to Bagan?",
+          "options": [
+            "No, but he wants to go",
+            "Yes, once",
+            "Yes, many times",
+            "He's going tomorrow"
+          ],
+          "answer": 0
+        }
+      ]
+    },
+    {
+      "id": "d.dinner-talk",
+      "title": "Dinner with the family",
+      "after": "m18.l4",
+      "speakers": {
+        "A": {
+          "name": "Khin",
+          "voice": 0
+        },
+        "B": {
+          "name": "Thura",
+          "voice": 1
+        }
+      },
+      "lines": [
+        {
+          "s": "A",
+          "my": "ထမင်းစားပါ",
+          "rom": "htə-mín sá bà",
+          "en": "Please, eat."
+        },
+        {
+          "s": "B",
+          "my": "ကျေးဇူးတင်ပါတယ်",
+          "rom": "kyéi-zú tìn bà dè",
+          "en": "Thank you."
+        },
+        {
+          "s": "A",
+          "my": "စားလို့ကောင်းလား",
+          "rom": "sá lo̰ káun lá",
+          "en": "Is it tasty?"
+        },
+        {
+          "s": "B",
+          "my": "အရမ်းစားလို့ကောင်းတယ် ဟင်းချက်တော်တယ်",
+          "rom": "ə-yán sá lo̰ káun dè hín chaʔ tàw dè",
+          "en": "It's really delicious. You're a great cook."
+        },
+        {
+          "s": "A",
+          "my": "မြန်မာ အစားအစာ ကြိုက်လား",
+          "rom": "myəmà ə-sá ə-sà kyaiʔ lá",
+          "en": "Do you like Myanmar food?"
+        },
+        {
+          "s": "B",
+          "my": "အရမ်းကြိုက်တယ်",
+          "rom": "ə-yán kyaiʔ tè",
+          "en": "I really like it."
+        },
+        {
+          "s": "A",
+          "my": "ဒီနေ့ အရမ်းပူတယ် နော်",
+          "rom": "dì-nḛ ə-yán pù dè nàw",
+          "en": "It's really hot today, isn't it?"
+        },
+        {
+          "s": "B",
+          "my": "ဟုတ်တယ် အရမ်းပူတယ်",
+          "rom": "houʔ tè ə-yán pù dè",
+          "en": "Yes, it's really hot."
+        }
+      ],
+      "questions": [
+        {
+          "q": "What does Thura think of the food?",
+          "options": [
+            "It's really delicious",
+            "It's too spicy",
+            "He doesn't like it",
+            "He hasn't tried it"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "What's the weather like?",
+          "options": [
+            "Really hot",
+            "Raining",
+            "Cold",
+            "Windy"
+          ],
+          "answer": 0
+        }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "sc.weekend",
+      "title": "Last weekend, next weekend",
+      "blurb": "past and plans",
+      "role": "Your partner's cousin, a friendly woman in her twenties from Yangon",
+      "setup": "You're chatting over tea. Ask the learner simple questions about what they did yesterday or last weekend, what they're doing tomorrow, whether they've ever been to places in Myanmar (Bagan, Mandalay, Inle Lake) or tried Burmese foods (mohinga, tea-leaf salad), and what they can do (cook, swim, speak Burmese). Use simple colloquial Burmese with ခဲ့, ပြီးပြီ, မ…သေးဘူး, မယ်, ရမယ်, ဖူး, နိုင်, တတ်. Keep sentences short.",
+      "voice": 0,
+      "after": "m17.l4"
+    },
+    {
+      "id": "sc.dinner-chat",
+      "title": "Small talk at dinner",
+      "blurb": "opinions and compliments",
+      "role": "Your partner's father, a warm, chatty man in his sixties",
+      "setup": "The learner is having dinner at the family's home in Yangon. Ask whether they like the food, what they think of Yangon and Myanmar, chat about the hot or rainy weather, and ask why they're learning Burmese. React warmly to compliments. Use simple colloquial Burmese and short sentences; give the learner chances to say I think, I like, me too, it's beautiful, it's delicious.",
+      "voice": 1,
+      "after": "m18.l4"
+    }
+  ],
+  "reading": [
+    {
+      "id": "s4.m17",
+      "title": "Read: Past & plans",
+      "intro": [
+        "Look for the little words after the verb: ခဲ့ (past), ပြီ (already), ရ (must), နိုင် (can), ဖူး (ever)."
+      ],
+      "items": [
+        "tense.went",
+        "tense.done",
+        "tense.not-yet-eaten",
+        "tense.must-go",
+        "tense.can-come",
+        "tense.never-been"
+      ]
+    },
+    {
+      "id": "s4.m18",
+      "title": "Read: Opinions & small talk",
+      "intro": [
+        "Short sentences you'll say at every family meal. Spot the negative frame မ … ဘူး."
+      ],
+      "items": [
+        "talk.i-think",
+        "talk.beautiful",
+        "talk.dont-like",
+        "talk.thats-right",
+        "talk.raining",
+        "talk.cold"
+      ]
+    }
+  ],
+  "uncertain": [
+    {
+      "id": "pat.ever-q",
+      "why": "Voicing of ဖူး after an open syllable: written bú (as commonly heard), but some speakers keep hpú. Check with partner."
+    },
+    {
+      "id": "tense.ever-eaten-mohinga",
+      "why": "Same ဖူး voicing question (sá bú lá vs sá hpú lá)."
+    },
+    {
+      "id": "talk.interesting",
+      "why": "Voicing in စိတ်ဝင်စား (wìn zá vs wìn sá) not fully certain."
+    },
+    {
+      "id": "talk.agree",
+      "why": "Whether တူ is voiced (tù vs dù) in သဘောတူတယ် in normal speech."
+    },
+    {
+      "id": "talk.learning-for-family",
+      "why": "ချစ်သူ means boyfriend/girlfriend; for a spouse, the learner may prefer ကျွန်တော့်မိန်းမ / ကျွန်မယောက်ျား (my wife/husband). Also check ချစ်သူ့ (creaky possessive) spelling."
+    },
+    {
+      "id": "tense.not-yet-eaten",
+      "why": "Both မစားရသေးဘူး and မစားသေးဘူး are used; chose the version with ရ. Confirm which sounds more natural to the family."
+    }
+  ]
+}

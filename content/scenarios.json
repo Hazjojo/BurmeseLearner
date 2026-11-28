@@ -1,0 +1,38 @@
+[
+ {
+  "id": "meet",
+  "title": "Meeting someone new",
+  "blurb": "Hello, names, where you’re from",
+  "role": "Su, a friendly young woman",
+  "setup": "You meet the learner for the first time at a friend’s party. Greet them and ask simple questions: their name, where they’re from, whether they speak Burmese.",
+  "voice": 0,
+  "after": ""
+ },
+ {
+  "id": "dinner",
+  "title": "Dinner with the family",
+  "blurb": "Food, drink, “it’s delicious”",
+  "role": "U Aung, a kind older man hosting dinner",
+  "setup": "The learner is a guest at your family’s home for dinner. Welcome them, offer food and water, ask if they have eaten and whether they like the food.",
+  "voice": 1,
+  "after": "m5.l1"
+ },
+ {
+  "id": "going",
+  "title": "Where are you going?",
+  "blurb": "Plans, wanting, going",
+  "role": "Thura, a neighbour",
+  "setup": "You bump into the learner on the street. Ask where they are going, what they will do, and invite them to come and eat or drink something.",
+  "voice": 1,
+  "after": "m4.l3"
+ },
+ {
+  "id": "free",
+  "title": "Easy chat",
+  "blurb": "A relaxed chat about your day",
+  "role": "Su, a patient friend",
+  "setup": "A relaxed, very simple chat about the learner’s day, food, family and learning Burmese.",
+  "voice": 0,
+  "after": ""
+ }
+]

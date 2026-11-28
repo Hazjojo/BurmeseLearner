@@ -19,11 +19,20 @@ function pool(kind: Kind): Item[] {
 }
 
 /** Free writing practice: letters, vowel/tone syllables or whole words, traced or from memory. */
-export function Writing({ state, update, onExit }: { state: AppState; update: Update; onExit: () => void }) {
+export function Writing({ state, update, onExit, quick }: { state: AppState; update: Update; onExit: () => void; quick?: number }) {
   const [kind, setKind] = useState<Kind>('letters')
   const [onlyLearned, setOnlyLearned] = useState(true)
   const [mode, setMode] = useState<Mode>('mix')
-  const [round, setRound] = useState<Exercise[] | null>(null)
+  // Quick mode (Today's session): a short mixed round of learned letters (or words), started straight away.
+  const [round, setRound] = useState<Exercise[] | null>(() => {
+    if (!quick) return null
+    const letters = pool('letters').filter((i) => state.introduced[i.id])
+    const src = letters.length >= 3 ? letters : pool('words').filter((i) => state.introduced[i.id])
+    const use = src.length ? src : pool('letters').slice(0, 5)
+    return shuffle(use)
+      .slice(0, quick)
+      .map((item, i) => ({ kind: 'draw' as const, item, trace: i % 2 === 0 }))
+  })
   const [done, setDone] = useState<{ right: number; total: number } | null>(null)
   const latest = useRef(state)
   latest.current = state
@@ -54,8 +63,8 @@ export function Writing({ state, update, onExit }: { state: AppState; update: Up
           const card = await gradeCard(key, o, latest.current)
           update((s) => ({ ...s, cards: { ...s.cards, [key]: card } }))
         }}
-        onFinish={setDone}
-        onExit={() => setRound(null)}
+        onFinish={(d) => (quick ? onExit() : setDone(d))}
+        onExit={() => (quick ? onExit() : setRound(null))}
       />
     )
   }

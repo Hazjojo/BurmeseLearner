@@ -1,0 +1,351 @@
+{
+  "modules": [
+    {
+      "id": "m8",
+      "title": "Questions",
+      "summary": "Ask who, what, where, when, why, how and how much, and answer simply.",
+      "icon": "❓",
+      "color": "#6a46b0",
+      "lessons": [
+        {
+          "id": "m8.l1",
+          "title": "What & who",
+          "intro": [
+            "Almost every Burmese question word is built from ဘာ (bà) 'what' or ဘယ် (bè) 'which'. ဘယ် + သူ 'person' gives ဘယ်သူ (bè-thù) 'who'.",
+            "The question word sits where the answer would go, and the sentence ends in လဲ (lé). Yes/no questions end in လား (lá) instead: ချင်လား (jìn lá) 'do you want to…?'."
+          ],
+          "items": ["q.what", "q.who", "q.who-is", "q.what-doing", "q.what-eat", "q.want-eat-q"],
+          "drills": ["pat.want-q"]
+        },
+        {
+          "id": "m8.l2",
+          "title": "Where & when",
+          "intro": [
+            "ဘယ်မှာ (bè-hmà) means 'where (at)'. Answer with ဒီမှာ (dì-hmà) 'here' or ဟိုမှာ (hò-hmà) 'over there': same pattern, different first word.",
+            "ဘယ်တော့ (bè-da̰w) asks 'when' about the future. For a clock time, ask ဘယ်အချိန် (bè ə-chèin) 'what time'."
+          ],
+          "items": ["q.where", "q.toilet", "q.here", "q.there", "q.when", "q.when-come", "q.what-time"]
+        },
+        {
+          "id": "m8.l3",
+          "title": "Why, how & which",
+          "intro": [
+            "ဘာလို့ (bà-lo̰) is 'why'. To answer 'because…', put လို့ (lo̰) after the reason: အလုပ်များလို့ 'because I'm busy'.",
+            "ဘယ်လို (bè-lò) is 'how', and ဘယ်ဟာ (bè-hà) is 'which one'. Handy when someone offers you a choice of dishes."
+          ],
+          "items": ["q.why", "q.why-not-come", "q.because-busy", "q.how", "q.how-go", "q.which", "q.which-like"],
+          "drills": ["pat.why-not"]
+        },
+        {
+          "id": "m8.l4",
+          "title": "How much & simple answers",
+          "intro": [
+            "ဘယ်လောက် (bè-lauʔ) is 'how much', for prices and amounts. 'How many' needs a counting word: ယောက် (yauʔ) for people, ခု (hkṵ) for things.",
+            "Short answers matter as much as questions. ရှိလား 'is there…?' gets ရှိတယ် 'there is' or မရှိဘူး 'there isn't'. And မသိဘူး 'I don't know' is always allowed."
+          ],
+          "items": ["q.how-much", "q.how-many-people", "q.how-many-things", "q.is-there", "q.isnt", "q.dont-know", "q.can-i"]
+        }
+      ]
+    },
+    {
+      "id": "m9",
+      "title": "People & family",
+      "summary": "Brothers, sisters, children and elders, and how to talk to them.",
+      "icon": "👪",
+      "color": "#ad3f66",
+      "lessons": [
+        {
+          "id": "m9.l1",
+          "title": "Brothers & sisters",
+          "intro": [
+            "Burmese has no single word for 'brother' or 'sister': it always says older or younger. အစ်ကို (ə-kò) is an older brother, အစ်မ (ə-ma̰) an older sister.",
+            "These words are also used to address people a bit older than you, even strangers: calling a young man အစ်ကို is friendly and polite."
+          ],
+          "items": ["fam.older-brother", "fam.older-sister", "fam.younger-brother", "fam.younger-sister", "fam.siblings-q", "fam.one-older-brother"]
+        },
+        {
+          "id": "m9.l2",
+          "title": "Husband, wife & children",
+          "intro": [
+            "သား (thá) is 'son' and သမီး (thə-mí) is 'daughter'. Parents also call their children သား and သမီး directly, like 'son!' or 'sweetheart'.",
+            "Questions about marriage and children are normal friendly small talk in Myanmar, not nosy."
+          ],
+          "items": ["fam.husband", "fam.wife", "fam.son", "fam.daughter", "fam.children-q", "fam.married-q"]
+        },
+        {
+          "id": "m9.l3",
+          "title": "This is my…",
+          "intro": [
+            "To introduce someone, say ဒါ (dà) 'this', then the person, then ပါ (bà): ဒါ ကျွန်တော့် အမေပါ 'this is my mother'.",
+            "'My' is just 'I' placed before the noun. ကျွန်တော် (men) becomes creaky ကျွန်တော့် (kyə-na̰w); ကျွန်မ (women) stays the same."
+          ],
+          "items": ["fam.family", "fam.parents", "fam.grandmother", "fam.grandfather", "fam.this-is-mother-m", "fam.this-is-mother-f", "fam.partner"]
+        },
+        {
+          "id": "m9.l4",
+          "title": "Aunty, uncle & age",
+          "intro": [
+            "People rarely use a bare first name. Older women are အန်တီ (àn-tì) 'aunty' and older men ဦးလေး (ú-léi) 'uncle', even if they're not relatives. Many people also call their partner's parents အမေ and အဖေ.",
+            "Before a name, ဦး (ú) and ဒေါ် (dàw) show respect to older men and women: ဦးအောင်, ဒေါ်ခင်. For people around your own age, use ကို (kò) for men and မ (ma̰) for women.",
+            "Asking someone's age is normal and polite: it tells people which of these words to use."
+          ],
+          "items": ["fam.aunty", "fam.uncle", "fam.u", "fam.daw", "fam.how-old", "fam.age-30"]
+        }
+      ]
+    },
+    {
+      "id": "m10",
+      "title": "Feelings & health",
+      "summary": "Say how you feel, and look after someone who isn't well.",
+      "icon": "🤒",
+      "color": "#2b7a8c",
+      "lessons": [
+        {
+          "id": "m10.l1",
+          "title": "Tired & hungry",
+          "intro": [
+            "Feelings are verbs in Burmese, so they take the same endings as any verb: ပင်ပန်းတယ် 'I'm tired', ဗိုက်ဆာလား 'are you hungry?'.",
+            "Many feelings are described through the body. ဗိုက် (baiʔ) is 'stomach': a hungry stomach is ဗိုက်ဆာ, a full one ဗိုက်ပြည့်."
+          ],
+          "items": ["feel.tired", "feel.sleepy", "feel.hungry", "feel.hungry-q", "feel.thirsty", "feel.full"]
+        },
+        {
+          "id": "m10.l2",
+          "title": "Hot, cold & sick",
+          "intro": [
+            "You already know နေကောင်းလား 'how are you?' (literally 'are you well?'). Put it in the negative frame and you have 'I'm not well': နေမကောင်းဘူး.",
+            "Aches use the body part + the feeling: ခေါင်း 'head' + ကိုက် 'ache' = a headache."
+          ],
+          "items": ["feel.hot", "feel.cold", "feel.sick", "feel.fever", "feel.headache", "feel.stomachache", "feel.medicine-q"]
+        },
+        {
+          "id": "m10.l3",
+          "title": "Are you OK?",
+          "intro": [
+            "အဆင်ပြေလား (ə-hsìn pyèi lá) is the everyday 'are you OK? / is everything alright?'. It works for people, plans and situations.",
+            "Burmese families take care of each other out loud: expect to hear 'rest!', 'be careful!' and 'get well soon' a lot. ပါစေ (bà zèi) at the end makes a wish: 'may it be so'."
+          ],
+          "items": ["feel.are-you-ok", "feel.im-ok", "feel.whats-wrong", "feel.rest", "feel.careful", "feel.take-care", "feel.get-well"]
+        },
+        {
+          "id": "m10.l4",
+          "title": "Happy, sad & bored",
+          "intro": [
+            "စိတ် (seiʔ) means 'mind': many feelings are built on it. စိတ် + ပူ 'hot' = worried, literally a hot mind.",
+            "To tell someone not to do something, wrap the verb: မ + verb + ပါနဲ့ (bà nḛ). စိတ်မပူပါနဲ့ 'don't worry'."
+          ],
+          "items": ["feel.happy", "feel.having-fun-q", "feel.sad", "feel.bored", "feel.worried", "feel.dont-worry"],
+          "drills": ["pat.dont"]
+        }
+      ]
+    }
+  ],
+  "items": [
+    { "id": "q.what", "unit": 8, "my": "ဘာ", "rom": "bà", "en": "what", "note": "Question words go where the answer would be; end the sentence with လဲ.", "emoji": "❓" },
+    { "id": "q.who", "unit": 8, "my": "ဘယ်သူ", "rom": "bè-thù", "en": "who", "lit": "which person", "emoji": "🧑" },
+    { "id": "q.who-is", "unit": 8, "my": "သူ ဘယ်သူလဲ", "rom": "thù bè-thù lé", "en": "Who is he / she?", "note": "သူ means both 'he' and 'she'.", "emoji": "🕵️" },
+    { "id": "q.what-doing", "unit": 8, "my": "ဘာလုပ်နေလဲ", "rom": "bà louʔ nèi lé", "en": "What are you doing?", "lit": "what do -ing ?", "note": "A common friendly opener, a bit like 'what are you up to?'.", "emoji": "🤷" },
+    { "id": "q.what-eat", "unit": 8, "my": "ဘာစားမလဲ", "rom": "bà sá mə-lé", "en": "What will you eat?", "emoji": "🍜" },
+    { "id": "q.want-eat-q", "unit": 8, "my": "စားချင်လား", "rom": "sá jìn lá", "en": "Do you want to eat?", "note": "Verb + ချင်လား = 'do you want to…?'.", "emoji": "🍽️" },
+    { "id": "q.where", "unit": 8, "my": "ဘယ်မှာ", "rom": "bè-hmà", "en": "where (at)", "note": "မှာ means 'at'. 'Where to?' is just ဘယ် before the verb: ဘယ်သွားမလဲ.", "emoji": "📍" },
+    { "id": "q.toilet", "unit": 8, "my": "အိမ်သာ ဘယ်မှာလဲ", "rom": "èin-thà bè-hmà lé", "en": "Where's the toilet?", "emoji": "🚻" },
+    { "id": "q.here", "unit": 8, "my": "ဒီမှာ", "rom": "dì-hmà", "en": "here", "emoji": "👇" },
+    { "id": "q.there", "unit": 8, "my": "ဟိုမှာ", "rom": "hò-hmà", "en": "over there", "emoji": "👉" },
+    { "id": "q.when", "unit": 8, "my": "ဘယ်တော့", "rom": "bè-da̰w", "en": "when (in the future)", "note": "For the past, say ဘယ်တုန်းက (bè-dóun-ga̰) 'when did…?'.", "emoji": "📅" },
+    { "id": "q.when-come", "unit": 8, "my": "ဘယ်တော့ လာမလဲ", "rom": "bè-da̰w là mə-lé", "en": "When will you come?", "emoji": "🗓️" },
+    { "id": "q.what-time", "unit": 8, "my": "ဘယ်အချိန်", "rom": "bè ə-chèin", "en": "what time / when", "lit": "which time", "note": "ဘယ်အချိန် သွားမလဲ 'what time are you going?'.", "emoji": "⏰" },
+    { "id": "q.why", "unit": 8, "my": "ဘာလို့လဲ", "rom": "bà-lo̰ lé", "en": "Why?", "lit": "what-because ?", "emoji": "🤔" },
+    { "id": "q.why-not-come", "unit": 8, "my": "ဘာလို့ မလာတာလဲ", "rom": "bà-lo̰ mə-là dà lé", "en": "Why didn't you come?", "note": "Verb + တာလဲ asks about something that already happened.", "emoji": "🚪" },
+    { "id": "q.because-busy", "unit": 8, "my": "အလုပ်များလို့", "rom": "ə-louʔ myá lo̰", "en": "Because I'm busy", "lit": "work many because", "note": "Reason + လို့ = 'because…'.", "emoji": "💼" },
+    { "id": "q.how", "unit": 8, "my": "ဘယ်လို", "rom": "bè-lò", "en": "how", "lit": "which way", "emoji": "🛠️" },
+    { "id": "q.how-go", "unit": 8, "my": "ဘယ်လို သွားမလဲ", "rom": "bè-lò thwá mə-lé", "en": "How will you get there?", "lit": "how go will ?", "emoji": "🚕" },
+    { "id": "q.which", "unit": 8, "my": "ဘယ်ဟာလဲ", "rom": "bè-hà lé", "en": "Which one?", "emoji": "☝️" },
+    { "id": "q.which-like", "unit": 8, "my": "ဘယ်ဟာ ကြိုက်လဲ", "rom": "bè-hà kyaiʔ lé", "en": "Which one do you like?", "emoji": "🤩" },
+    { "id": "q.how-much", "unit": 8, "my": "ဒါ ဘယ်လောက်လဲ", "rom": "dà bè-lauʔ lé", "en": "How much is this?", "note": "ဘယ်လောက် = how much: prices, amounts, distances.", "emoji": "💰" },
+    { "id": "q.how-many-people", "unit": 8, "my": "ဘယ်နှစ်ယောက်လဲ", "rom": "bè-hnə-yauʔ lé", "en": "How many people?", "note": "ယောက် is the counting word for people.", "emoji": "👥" },
+    { "id": "q.how-many-things", "unit": 8, "my": "ဘယ်နှစ်ခုလဲ", "rom": "bè-hnə-hkṵ lé", "en": "How many (things)?", "note": "ခု is the general counting word for things.", "emoji": "🔢" },
+    { "id": "q.is-there", "unit": 8, "my": "ရေ ရှိလား", "rom": "yèi shḭ lá", "en": "Is there any water? / Do you have water?", "note": "Thing + ရှိလား = 'is there…? / do you have…?'.", "emoji": "🚰" },
+    { "id": "q.isnt", "unit": 8, "my": "မရှိဘူး", "rom": "mə-shḭ bú", "en": "There isn't / I don't have any", "emoji": "🫙" },
+    { "id": "q.dont-know", "unit": 8, "my": "မသိဘူး", "rom": "mə-thḭ bú", "en": "I don't know", "emoji": "🤷‍♀️" },
+    { "id": "q.can-i", "unit": 8, "my": "ရလား", "rom": "ya̰ lá", "en": "Is that OK? / Can I?", "note": "Answer ရပါတယ် 'that's fine'.", "emoji": "🙆" },
+
+    { "id": "fam.older-brother", "unit": 9, "my": "အစ်ကို", "rom": "ə-kò", "en": "older brother", "note": "Also a friendly way to address a man a little older than you.", "emoji": "👦" },
+    { "id": "fam.older-sister", "unit": 9, "my": "အစ်မ", "rom": "ə-ma̰", "en": "older sister", "note": "Also a friendly way to address a woman a little older than you.", "emoji": "👧" },
+    { "id": "fam.younger-brother", "unit": 9, "my": "ညီ", "rom": "nyì", "en": "younger brother", "note": "Traditionally a man's younger brother; women often say မောင် (màun) for theirs.", "emoji": "🧒" },
+    { "id": "fam.younger-sister", "unit": 9, "my": "ညီမ", "rom": "nyì-ma̰", "en": "younger sister", "note": "Traditionally a woman's younger sister; men may say နှမ (hnə-ma̰), but ညီမ is widely heard.", "emoji": "👧" },
+    { "id": "fam.siblings-q", "unit": 9, "my": "မောင်နှမ ဘယ်နှစ်ယောက် ရှိလဲ", "rom": "màun-hnə-ma̰ bè-hnə-yauʔ shḭ lé", "en": "How many brothers and sisters do you have?", "lit": "siblings how-many-people exist ?", "emoji": "👨‍👩‍👧‍👦" },
+    { "id": "fam.one-older-brother", "unit": 9, "my": "အစ်ကို တစ်ယောက် ရှိတယ်", "rom": "ə-kò tə-yauʔ shḭ dè", "en": "I have one older brother", "note": "Person + number + ယောက်. တစ် 'one' shortens to tə.", "emoji": "☝️" },
+    { "id": "fam.husband", "unit": 9, "my": "ယောက်ျား", "rom": "yauʔ-kyá", "en": "husband", "note": "Everyday word. The politer word is အမျိုးသား (ə-myó-thá).", "emoji": "🤵" },
+    { "id": "fam.wife", "unit": 9, "my": "မိန်းမ", "rom": "méin-ma̰", "en": "wife", "note": "Everyday word (also 'woman'). The politer word is အမျိုးသမီး (ə-myó-thə-mí).", "emoji": "👰" },
+    { "id": "fam.son", "unit": 9, "my": "သား", "rom": "thá", "en": "son", "emoji": "👦" },
+    { "id": "fam.daughter", "unit": 9, "my": "သမီး", "rom": "thə-mí", "en": "daughter", "emoji": "👧" },
+    { "id": "fam.children-q", "unit": 9, "my": "ကလေး ရှိလား", "rom": "hkə-lé shḭ lá", "en": "Do you have children?", "note": "ကလေး = child, kid.", "emoji": "👶" },
+    { "id": "fam.married-q", "unit": 9, "my": "အိမ်ထောင် ရှိလား", "rom": "èin-dàun shḭ lá", "en": "Are you married?", "lit": "household exist ?", "emoji": "💍" },
+    { "id": "fam.family", "unit": 9, "my": "မိသားစု", "rom": "mḭ-thá-zṵ", "en": "family", "lit": "mother-child-group", "emoji": "👨‍👩‍👧" },
+    { "id": "fam.parents", "unit": 9, "my": "မိဘ", "rom": "mḭ-ba̰", "en": "parents", "lit": "mother-father", "emoji": "👫" },
+    { "id": "fam.grandmother", "unit": 9, "my": "အဖွား", "rom": "ə-hpwá", "en": "grandmother", "note": "Also used to address any elderly woman.", "emoji": "👵" },
+    { "id": "fam.grandfather", "unit": 9, "my": "အဘိုး", "rom": "ə-hpó", "en": "grandfather", "note": "Also used to address any elderly man.", "emoji": "👴" },
+    { "id": "fam.this-is-mother-m", "unit": 9, "speaker": "m", "my": "ဒါ ကျွန်တော့် အမေပါ", "rom": "dà kyə-na̰w ə-mèi bà", "en": "This is my mother (male speaker)", "emoji": "👩" },
+    { "id": "fam.this-is-mother-f", "unit": 9, "speaker": "f", "my": "ဒါ ကျွန်မ အမေပါ", "rom": "dà kyə-ma̰ ə-mèi bà", "en": "This is my mother (female speaker)", "emoji": "👩" },
+    { "id": "fam.partner", "unit": 9, "my": "ချစ်သူ", "rom": "chiʔ-thù", "en": "boyfriend / girlfriend", "lit": "love-person", "emoji": "💑" },
+    { "id": "fam.aunty", "unit": 9, "my": "အန်တီ", "rom": "àn-tì", "en": "aunty", "note": "From English. Polite way to address an older woman, such as a friend's mother.", "emoji": "👩‍🦳" },
+    { "id": "fam.uncle", "unit": 9, "my": "ဦးလေး", "rom": "ú-léi", "en": "uncle", "note": "Polite way to address an older man, related or not.", "emoji": "👨‍🦳" },
+    { "id": "fam.u", "unit": 9, "my": "ဦး", "rom": "ú", "en": "U (title for an older man)", "note": "Goes before the name: ဦးအောင် 'U Aung'.", "emoji": "🎩" },
+    { "id": "fam.daw", "unit": 9, "my": "ဒေါ်", "rom": "dàw", "en": "Daw (title for an older woman)", "note": "Goes before the name: ဒေါ်ခင် 'Daw Khin'.", "emoji": "🌸" },
+    { "id": "fam.how-old", "unit": 9, "my": "အသက် ဘယ်လောက် ရှိပြီလဲ", "rom": "ə-theʔ bè-lauʔ shḭ bì lé", "en": "How old are you?", "lit": "age how-much exist now ?", "emoji": "🎂" },
+    { "id": "fam.age-30", "unit": 9, "my": "အသက် သုံးဆယ် ရှိပြီ", "rom": "ə-theʔ thóun-zè shḭ bì", "en": "I'm thirty", "note": "သုံး 'three' + ဆယ် 'ten' = thirty. ဆယ် is said 'zè' after another number.", "emoji": "🎉" },
+
+    { "id": "feel.tired", "unit": 10, "my": "ပင်ပန်းတယ်", "rom": "pìn-bán dè", "en": "I'm tired", "note": "Tired from effort, work or travel.", "emoji": "😩" },
+    { "id": "feel.sleepy", "unit": 10, "my": "အိပ်ချင်တယ်", "rom": "eiʔ chìn dè", "en": "I'm sleepy", "lit": "want to sleep", "emoji": "😴" },
+    { "id": "feel.hungry", "unit": 10, "my": "ဗိုက်ဆာတယ်", "rom": "baiʔ hsà dè", "en": "I'm hungry", "lit": "stomach hungry", "emoji": "🍽️" },
+    { "id": "feel.hungry-q", "unit": 10, "my": "ဗိုက်ဆာလား", "rom": "baiʔ hsà lá", "en": "Are you hungry?", "emoji": "🍲" },
+    { "id": "feel.thirsty", "unit": 10, "my": "ရေဆာတယ်", "rom": "yèi hsà dè", "en": "I'm thirsty", "lit": "water hungry", "emoji": "🥤" },
+    { "id": "feel.full", "unit": 10, "my": "ဗိုက်ပြည့်ပြီ", "rom": "baiʔ pyḛ bì", "en": "I'm full", "note": "Useful when the family keeps refilling your plate.", "emoji": "😌" },
+    { "id": "feel.hot", "unit": 10, "my": "ပူတယ်", "rom": "pù dè", "en": "It's hot", "note": "For weather or things. For feeling hot and sticky, people say အိုက်တယ် (aiʔ tè).", "emoji": "🥵" },
+    { "id": "feel.cold", "unit": 10, "my": "ချမ်းတယ်", "rom": "chán dè", "en": "I'm cold", "note": "How you feel. For cold weather or a cold drink, say အေးတယ် (èi dè).", "emoji": "🥶" },
+    { "id": "feel.sick", "unit": 10, "my": "နေမကောင်းဘူး", "rom": "nèi mə-káun bú", "en": "I'm not well / I'm sick", "lit": "not well", "emoji": "🤒" },
+    { "id": "feel.fever", "unit": 10, "my": "ဖျားနေတယ်", "rom": "hpyá nèi dè", "en": "I have a fever", "emoji": "🌡️" },
+    { "id": "feel.headache", "unit": 10, "my": "ခေါင်းကိုက်တယ်", "rom": "hkáun kaiʔ tè", "en": "I have a headache", "lit": "head aches", "emoji": "🤕" },
+    { "id": "feel.stomachache", "unit": 10, "my": "ဗိုက်နာတယ်", "rom": "baiʔ nà dè", "en": "I have a stomach ache", "lit": "stomach hurts", "emoji": "🤢" },
+    { "id": "feel.medicine-q", "unit": 10, "my": "ဆေးသောက်ပြီးပြီလား", "rom": "hséi thauʔ pyí bì lá", "en": "Have you taken your medicine?", "lit": "medicine drink already ?", "note": "You 'drink' medicine in Burmese, even tablets.", "emoji": "💊" },
+    { "id": "feel.are-you-ok", "unit": 10, "my": "အဆင်ပြေလား", "rom": "ə-hsìn pyèi lá", "en": "Are you OK? / Is everything alright?", "emoji": "🫂" },
+    { "id": "feel.im-ok", "unit": 10, "my": "အဆင်ပြေပါတယ်", "rom": "ə-hsìn pyèi bà dè", "en": "I'm fine / It's all fine", "emoji": "👌" },
+    { "id": "feel.whats-wrong", "unit": 10, "my": "ဘာဖြစ်တာလဲ", "rom": "bà hpyiʔ tà lé", "en": "What's wrong? / What happened?", "lit": "what happened ?", "emoji": "😟" },
+    { "id": "feel.rest", "unit": 10, "my": "အနားယူပါ", "rom": "ə-ná yù bà", "en": "Get some rest", "lit": "take a rest, please", "emoji": "🛌" },
+    { "id": "feel.careful", "unit": 10, "my": "သတိထားပါ", "rom": "thə-dḭ htá bà", "en": "Be careful! / Watch out!", "lit": "keep awareness", "emoji": "⚠️" },
+    { "id": "feel.take-care", "unit": 10, "my": "ဂရုစိုက်ပါ", "rom": "gə-yṵ saiʔ pà", "en": "Take care", "note": "Look after yourself; also said when someone leaves on a trip.", "emoji": "💛" },
+    { "id": "feel.get-well", "unit": 10, "my": "မြန်မြန် နေကောင်းပါစေ", "rom": "myàn-myàn nèi káun bà zèi", "en": "Get well soon", "lit": "quickly be-well may-it-be", "note": "ပါစေ at the end turns a sentence into a wish.", "emoji": "💐" },
+    { "id": "feel.happy", "unit": 10, "my": "ပျော်တယ်", "rom": "pyàw dè", "en": "I'm happy / I'm having fun", "emoji": "😄" },
+    { "id": "feel.having-fun-q", "unit": 10, "my": "ပျော်လား", "rom": "pyàw lá", "en": "Are you having fun?", "emoji": "🥳" },
+    { "id": "feel.sad", "unit": 10, "my": "ဝမ်းနည်းတယ်", "rom": "wún-né dè", "en": "I'm sad", "note": "The opposite of ဝမ်းသာ 'glad'.", "emoji": "😢" },
+    { "id": "feel.bored", "unit": 10, "my": "ပျင်းတယ်", "rom": "pyín dè", "en": "I'm bored", "note": "Also means 'lazy', depending on context.", "emoji": "🥱" },
+    { "id": "feel.worried", "unit": 10, "my": "စိတ်ပူတယ်", "rom": "seiʔ pù dè", "en": "I'm worried", "lit": "mind hot", "emoji": "😰" },
+    { "id": "feel.dont-worry", "unit": 10, "my": "စိတ်မပူပါနဲ့", "rom": "seiʔ mə-pù bà nḛ", "en": "Don't worry", "note": "မ + verb + ပါနဲ့ = please don't.", "emoji": "🤗" }
+  ],
+  "patterns": [
+    { "id": "pat.want-q", "from": "q.want-eat-q", "my": "{v}ချင်လား", "rom": ["{v} jìn lá", "{v} chìn lá"], "en": "Do you want to {base}?", "note": "Verb + ချင်လား = 'do you want to…?'." },
+    { "id": "pat.why-not", "from": "q.why-not-come", "my": "ဘာလို့ မ{v}တာလဲ", "rom": ["bà-lo̰ mə-{v} dà lé", "bà-lo̰ mə-{v} tà lé"], "en": "Why didn't you {base}?", "note": "ဘာလို့ + negative verb + တာလဲ = 'why didn't you…?'." },
+    { "id": "pat.dont", "from": "feel.dont-worry", "my": "မ{v}ပါနဲ့", "rom": ["mə-{v} bà nḛ", "mə-{v} pà nḛ"], "en": "Please don't {base}", "note": "မ + verb + ပါနဲ့ = polite 'don't'." }
+  ],
+  "dialogues": [
+    {
+      "id": "d.questions",
+      "title": "So many questions",
+      "after": "m8.l4",
+      "speakers": { "A": { "name": "Hnin", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
+      "lines": [
+        { "s": "A", "my": "ဘာလုပ်နေလဲ", "rom": "bà louʔ nèi lé", "en": "What are you doing?" },
+        { "s": "B", "my": "မြန်မာစကား သင်နေတယ်", "rom": "myəmà zəgá thìn nèi dè", "en": "I'm learning Burmese." },
+        { "s": "A", "my": "ဘာလို့လဲ", "rom": "bà-lo̰ lé", "en": "Why?" },
+        { "s": "B", "my": "မြန်မာပြည် သွားမလို့ပါ", "rom": "myəmà-pyì thwá mə-lo̰ bà", "en": "Because I'm going to Myanmar." },
+        { "s": "A", "my": "ဘယ်တော့ သွားမလဲ", "rom": "bè-da̰w thwá mə-lé", "en": "When are you going?" },
+        { "s": "B", "my": "မသိဘူး", "rom": "mə-thḭ bú", "en": "I don't know." },
+        { "s": "A", "my": "ဘယ်နှစ်ယောက် သွားမလဲ", "rom": "bè-hnə-yauʔ thwá mə-lé", "en": "How many of you are going?" },
+        { "s": "B", "my": "နှစ်ယောက်", "rom": "hnə-yauʔ", "en": "Two of us." }
+      ],
+      "questions": [
+        { "q": "Why is Thura learning Burmese?", "options": ["He's going to Myanmar", "For his job", "He's bored", "His teacher told him to"], "answer": 0 },
+        { "q": "When is he going?", "options": ["He doesn't know", "Tomorrow", "Next year", "Never"], "answer": 0 }
+      ]
+    },
+    {
+      "id": "d.family",
+      "title": "Meet my family",
+      "after": "m9.l4",
+      "speakers": { "A": { "name": "Su", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
+      "lines": [
+        { "s": "A", "my": "ဒါ ကျွန်မ အမေပါ", "rom": "dà kyə-ma̰ ə-mèi bà", "en": "This is my mother." },
+        { "s": "B", "my": "မင်္ဂလာပါ အန်တီ", "rom": "mìn-gə-là-bà àn-tì", "en": "Hello, aunty." },
+        { "s": "A", "my": "ဒါ ကျွန်မ အစ်ကိုပါ", "rom": "dà kyə-ma̰ ə-kò bà", "en": "And this is my older brother." },
+        { "s": "B", "my": "မောင်နှမ ဘယ်နှစ်ယောက် ရှိလဲ", "rom": "màun-hnə-ma̰ bè-hnə-yauʔ shḭ lé", "en": "How many brothers and sisters do you have?" },
+        { "s": "A", "my": "အစ်ကို တစ်ယောက် ညီမ တစ်ယောက် ရှိတယ်", "rom": "ə-kò tə-yauʔ nyì-ma̰ tə-yauʔ shḭ dè", "en": "One older brother and one younger sister." },
+        { "s": "B", "my": "ညီမ အသက် ဘယ်လောက် ရှိပြီလဲ", "rom": "nyì-ma̰ ə-theʔ bè-lauʔ shḭ bì lé", "en": "How old is your younger sister?" },
+        { "s": "A", "my": "ဆယ်နှစ် ရှိပြီ", "rom": "hsè-hniʔ shḭ bì", "en": "She's ten." }
+      ],
+      "questions": [
+        { "q": "Who does Su introduce first?", "options": ["Her mother", "Her father", "Her younger sister", "Her grandmother"], "answer": 0 },
+        { "q": "How old is Su's younger sister?", "options": ["Ten", "Three", "Thirty", "Two"], "answer": 0 }
+      ]
+    },
+    {
+      "id": "d.unwell",
+      "title": "Not feeling well",
+      "after": "m10.l3",
+      "speakers": { "A": { "name": "Su", "voice": 0 }, "B": { "name": "Thura", "voice": 1 } },
+      "lines": [
+        { "s": "A", "my": "အဆင်ပြေလား", "rom": "ə-hsìn pyèi lá", "en": "Are you OK?" },
+        { "s": "B", "my": "နေမကောင်းဘူး", "rom": "nèi mə-káun bú", "en": "I'm not well." },
+        { "s": "A", "my": "ဘာဖြစ်တာလဲ", "rom": "bà hpyiʔ tà lé", "en": "What's wrong?" },
+        { "s": "B", "my": "ခေါင်းကိုက်တယ် ပင်ပန်းတယ်", "rom": "hkáun kaiʔ tè pìn-bán dè", "en": "I have a headache. I'm tired." },
+        { "s": "A", "my": "ဆေးသောက်ပြီးပြီလား", "rom": "hséi thauʔ pyí bì lá", "en": "Have you taken any medicine?" },
+        { "s": "B", "my": "သောက်ပြီးပြီ", "rom": "thauʔ pyí bì", "en": "Yes, I have." },
+        { "s": "A", "my": "အနားယူပါ", "rom": "ə-ná yù bà", "en": "Get some rest." },
+        { "s": "A", "my": "မြန်မြန် နေကောင်းပါစေ", "rom": "myàn-myàn nèi káun bà zèi", "en": "Get well soon." },
+        { "s": "B", "my": "ကျေးဇူးတင်ပါတယ်", "rom": "kyéi-zú tìn bà dè", "en": "Thank you." }
+      ],
+      "questions": [
+        { "q": "What's wrong with Thura?", "options": ["A headache and tiredness", "A stomach ache", "He's hungry", "He's cold"], "answer": 0 },
+        { "q": "Has he taken medicine?", "options": ["Yes", "No", "He doesn't have any", "He doesn't know"], "answer": 0 }
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "sc.questions",
+      "title": "The curious cousin",
+      "blurb": "Who, what, where, when, why",
+      "role": "Hnin, the partner's chatty young cousin",
+      "setup": "You meet the learner at a family gathering and are very curious about them. Ask short, simple questions one at a time: what they are doing, where they live, when they came, why they are learning Burmese, which food they like. Encourage the learner to ask you questions back, and answer them simply (it's fine to say 'I don't know').",
+      "voice": 0,
+      "after": "m8.l4"
+    },
+    {
+      "id": "sc.family",
+      "title": "Meeting the family",
+      "blurb": "Siblings, children, age",
+      "role": "Daw Khin, the partner's warm, talkative mother",
+      "setup": "The learner is visiting your home for the first time. Welcome them and ask simple questions about their family: brothers and sisters (older or younger), parents, grandparents, whether they are married or have children, and their age. Gently encourage them to call you 'aunty' and introduce family members with 'this is my…'.",
+      "voice": 0,
+      "after": "m9.l4"
+    },
+    {
+      "id": "sc.unwell",
+      "title": "Feeling under the weather",
+      "blurb": "Are you OK? Tired, hungry, sick",
+      "role": "Ko Min, the partner's caring older brother",
+      "setup": "The learner looks tired at a family meal. Ask if they are OK, whether they are hungry, thirsty, hot or cold, and if anything hurts. Offer water, food or medicine, tell them to rest and be careful, and wish them a quick recovery. Keep sentences short.",
+      "voice": 1,
+      "after": "m10.l4"
+    }
+  ],
+  "reading": [
+    {
+      "id": "s4.m8",
+      "title": "Read: Questions",
+      "intro": ["Question words all start with ဘ: spot ဘာ 'what' and ဘယ် 'which' at the front, and လဲ or လား at the end."],
+      "items": ["q.what", "q.who", "q.where", "q.why", "q.dont-know"]
+    },
+    {
+      "id": "s4.m9",
+      "title": "Read: Family",
+      "intro": ["Many family words start with the vowel carrier အ. Look for the letter that follows it: ကို, မ, ဖွား, ဘိုး."],
+      "items": ["fam.older-brother", "fam.older-sister", "fam.son", "fam.daughter", "fam.grandmother", "fam.family"]
+    },
+    {
+      "id": "s4.m10",
+      "title": "Read: Feelings",
+      "intro": ["Feelings are verbs, so most of these end in တယ်. Read the word in front of it to find the feeling."],
+      "items": ["feel.hot", "feel.tired", "feel.hungry", "feel.sad", "feel.happy"]
+    }
+  ],
+  "uncertain": [
+    { "id": "feel.thirsty", "why": "Unsure whether ဆာ is voiced in ရေဆာ (yèi hsà vs yèi zà) in normal Yangon speech." },
+    { "id": "feel.full", "why": "Vowel of ပြည့် written as pyḛ (ɛ); some transcriptions give pyeḭ." },
+    { "id": "fam.younger-brother", "why": "ညီ is strictly a man's younger brother (women say မောင်); simplified with a note." },
+    { "id": "fam.younger-sister", "why": "ညီမ is traditionally a woman's younger sister (men: နှမ); I believe men also use ညီမ colloquially, but please check." },
+    { "id": "fam.grandfather", "why": "Spelling varies (အဘိုး / အဖိုး); pronunciation ə-hpó either way." },
+    { "id": "fam.married-q", "why": "Voicing of ထောင် in အိမ်ထောင် given as dàun." },
+    { "id": "q.how-many-people", "why": "နှစ် in ဘယ်နှစ် romanized as reduced hnə; check it's not said fully as hniʔ." },
+    { "id": "d.questions", "why": "Line 4 uses verb + မလို့ ('because I'm going to'), not taught in the lessons." }
+  ]
+}

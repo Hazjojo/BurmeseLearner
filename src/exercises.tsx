@@ -3,6 +3,8 @@ import { romTokens, type Item, type ToneSet } from './content'
 import { say, clipsFor } from './lib/speech'
 import { Mm, Rom } from './components'
 import { aiAvailable, similarity, transcribe } from './lib/ai'
+import { tick } from './lib/activity'
+import { PitchCompare } from './PitchCompare'
 import { playBlob, startRecording, type Recorder } from './lib/audio'
 
 export type Outcome = 'right' | 'hinted' | 'wrong'
@@ -406,6 +408,7 @@ function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>
             </button>
           )}
         </div>
+        {mine.current && !rec && revealed && <PitchCompare key={mine.current.size} my={item.my} mine={mine.current} />}
         {heard && (
           <div className={`heard-result ${verdict}`}>
             {heard.text ? (
@@ -803,6 +806,7 @@ export function Runner({
   if (!cur) return null
   const firstPass = exercises.length
   const done = (o: Outcome) => {
+    tick()
     if (!cur.retry) {
       onResult?.(cur.ex, o)
       setStats((s) => ({ right: s.right + (o === 'wrong' ? 0 : 1), total: s.total + 1 }))

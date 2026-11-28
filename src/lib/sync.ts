@@ -79,6 +79,20 @@ export class Sync {
   }
   signOut = () => signOut(getAuth(this.app))
 
+  /** Turn the daily reminder on (time "HH:MM") or off (''). Asks for notification permission. */
+  async setReminder(time: string): Promise<void> {
+    if (!this.user) throw new Error('Sign in first.')
+    const ref = doc(this.db, 'reminders', this.user.uid)
+    if (!time) return void (await setDoc(ref, { enabled: false }, { merge: true }))
+    const vapidKey = import.meta.env.VITE_VAPID_KEY as string | undefined
+    if (!vapidKey) throw new Error('Reminders need one more setup step (see docs/deploy.md: web push key).')
+    if (!('Notification' in window)) throw new Error('This browser can’t show notifications. On iPhone, add the app to your Home Screen first.')
+    if ((await Notification.requestPermission()) !== 'granted') throw new Error('Notifications are blocked for this app in your browser settings.')
+    const { getMessaging, getToken } = await import('firebase/messaging')
+    const token = await getToken(getMessaging(this.app), { vapidKey, serviceWorkerRegistration: await navigator.serviceWorker.ready })
+    await setDoc(ref, { enabled: true, time, tz: Intl.DateTimeFormat().resolvedOptions().timeZone, token, updatedAt: new Date().toISOString() }, { merge: true })
+  }
+
   /** Call a server function (functions/src/index.ts). */
   async call<T>(name: string, data: unknown): Promise<T> {
     const fn = httpsCallable<unknown, T>(getFunctions(this.app, 'europe-west2'), name, { timeout: 70_000 })
