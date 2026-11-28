@@ -1,6 +1,7 @@
 import { get, set, del, keys } from 'idb-keyval'
 import type { StoredCard, StoredLog } from './srs'
 import type { Item } from '../content'
+import type { Exercise, Outcome, RunnerSnapshot } from '../exercises'
 
 export interface Settings {
   speaker: 'm' | 'f' | 'both'
@@ -22,6 +23,17 @@ export interface ToneTrial {
   /** index the learner chose */
   chose: number
 }
+export interface LessonDraft {
+  at: string
+  step: 'teach' | 'practice'
+  ti: number
+  exercises: Exercise[]
+  drills: Item[]
+  /** itemId → worst outcome so far */
+  results: Record<string, Outcome>
+  toneLog: ToneTrial[]
+  runner?: RunnerSnapshot
+}
 export interface AppState {
   version: 1
   settings: Settings
@@ -34,6 +46,8 @@ export interface AppState {
   toneLog: ToneTrial[]
   /** lessonId → when completed and score (0–1). */
   lessons: Record<string, { at: string; score: number }>
+  /** Lessons left part-way through, so they can be resumed (any device). */
+  drafts: Record<string, LessonDraft>
   /** ISO time of the last local change (used when merging with the cloud copy). */
   updatedAt: string
 }
@@ -48,6 +62,7 @@ export const emptyState = (): AppState => ({
   custom: [],
   toneLog: [],
   lessons: {},
+  drafts: {},
   updatedAt: new Date(0).toISOString(),
 })
 

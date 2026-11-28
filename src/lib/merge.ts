@@ -51,6 +51,8 @@ export function mergeStates(local: AppState, remote: AppState): AppState {
     custom,
     toneLog,
     lessons: { ...older.lessons, ...newer.lessons },
+    // In-progress lessons follow whichever copy changed last (a finished lesson clears its draft).
+    drafts: newer.drafts ?? {},
     updatedAt: newer.updatedAt,
   }
 }

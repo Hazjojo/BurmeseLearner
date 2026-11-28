@@ -5,7 +5,8 @@
   "my": "မင်္ဂလာပါ",
   "rom": "mìn-gə-là-bà",
   "en": "Hello",
-  "note": "Polite greeting, any time of day. Literally 'it is auspicious'."
+  "note": "Polite greeting, any time of day. Literally 'it is auspicious'.",
+  "emoji": "👋"
  },
  {
   "id": "s.how-are-you",
@@ -14,7 +15,8 @@
   "rom": "nèi káun lá",
   "en": "How are you?",
   "lit": "stay well + ?",
-  "note": "လား turns a statement into a yes/no question."
+  "note": "လား turns a statement into a yes/no question.",
+  "emoji": "🙂"
  },
  {
   "id": "s.im-well",
@@ -22,14 +24,16 @@
   "my": "နေကောင်းပါတယ်",
   "rom": "nèi káun bà dè",
   "en": "I'm well",
-  "note": "ပါ adds politeness; တယ် ends a statement."
+  "note": "ပါ adds politeness; တယ် ends a statement.",
+  "emoji": "😊"
  },
  {
   "id": "s.thank-you",
   "unit": 1,
   "my": "ကျေးဇူးတင်ပါတယ်",
   "rom": "kyéi-zú tìn bà dè",
-  "en": "Thank you"
+  "en": "Thank you",
+  "emoji": "🙏"
  },
  {
   "id": "s.its-ok",
@@ -37,14 +41,16 @@
   "my": "ရပါတယ်",
   "rom": "ya̰ bà dè",
   "en": "It's OK / No problem",
-  "note": "Also a reply to 'thank you' or 'sorry'."
+  "note": "Also a reply to 'thank you' or 'sorry'.",
+  "emoji": "👌"
  },
  {
   "id": "s.yes",
   "unit": 1,
   "my": "ဟုတ်ကဲ့",
   "rom": "houʔ kḛ",
-  "en": "Yes (polite)"
+  "en": "Yes (polite)",
+  "emoji": "✅"
  },
  {
   "id": "s.no",
@@ -52,14 +58,16 @@
   "my": "မဟုတ်ဘူး",
   "rom": "mə-houʔ bú",
   "en": "No / That's not right",
-  "note": "Negation frame: မ + verb + ဘူး."
+  "note": "Negation frame: မ + verb + ဘူး.",
+  "emoji": "❌"
  },
  {
   "id": "s.sorry",
   "unit": 1,
   "my": "တောင်းပန်ပါတယ်",
   "rom": "táun-bàn bà dè",
-  "en": "Sorry / I apologise"
+  "en": "Sorry / I apologise",
+  "emoji": "😔"
  },
  {
   "id": "s.i-male",
@@ -68,7 +76,8 @@
   "my": "ကျွန်တော်",
   "rom": "kyə-nàw",
   "en": "I / me (male speaker)",
-  "note": "Polite 'I' used by men."
+  "note": "Polite 'I' used by men.",
+  "emoji": "🙋‍♂️"
  },
  {
   "id": "s.i-female",
@@ -77,7 +86,8 @@
   "my": "ကျွန်မ",
   "rom": "kyə-ma̰",
   "en": "I / me (female speaker)",
-  "note": "Polite 'I' used by women."
+  "note": "Polite 'I' used by women.",
+  "emoji": "🙋‍♀️"
  },
  {
   "id": "s.nice-to-meet",
@@ -85,7 +95,8 @@
   "my": "တွေ့ရတာ ဝမ်းသာပါတယ်",
   "rom": "twḛ ya̰ dà wún-thà bà dè",
   "en": "Nice to meet you",
-  "lit": "getting to meet = glad"
+  "lit": "getting to meet = glad",
+  "emoji": "🤝"
  },
  {
   "id": "s.going-now",
@@ -93,7 +104,8 @@
   "my": "သွားတော့မယ်",
   "rom": "thwá da̰w mè",
   "en": "I'll be going now (goodbye)",
-  "note": "Common way to say goodbye when leaving."
+  "note": "Common way to say goodbye when leaving.",
+  "emoji": "🚶"
  },
  {
   "id": "r.dont-understand",
@@ -102,7 +114,8 @@
   "rom": "ná mə-lè bú",
   "en": "I don't understand",
   "lit": "ear not understand",
-  "note": "Negation frame again: မ + လည် + ဘူး."
+  "note": "Negation frame again: မ + လည် + ဘူး.",
+  "emoji": "🤷"
  },
  {
   "id": "r.slowly",
@@ -110,7 +123,8 @@
   "my": "ဖြည်းဖြည်း ပြောပါ",
   "rom": "hpyé-hpyé pyáw bà",
   "en": "Please speak slowly",
-  "note": "Verb + ပါ = polite request."
+  "note": "Verb + ပါ = polite request.",
+  "emoji": "🐢"
  },
  {
   "id": "r.again",
@@ -118,7 +132,8 @@
   "my": "ထပ်ပြောပါဦး",
   "rom": "htaʔ pyáw bà ú",
   "en": "Please say it again",
-  "note": "ဦး softens a request: 'please, (once more)'."
+  "note": "ဦး softens a request: 'please, (once more)'.",
+  "emoji": "🔁"
  },
  {
   "id": "r.what-is-this",
@@ -126,7 +141,8 @@
   "my": "ဒါ ဘာလဲ",
   "rom": "dà bà lé",
   "en": "What is this?",
-  "note": "လဲ ends a question-word question (what/where/how)."
+  "note": "လဲ ends a question-word question (what/where/how).",
+  "emoji": "❓"
  },
  {
   "id": "r.how-say",
@@ -134,7 +150,8 @@
   "my": "မြန်မာလို ဘယ်လို ပြောလဲ",
   "rom": "myəmà lò bè-lò pyáw lé",
   "en": "How do you say it in Burmese?",
-  "lit": "Burmese-way how say ?"
+  "lit": "Burmese-way how say ?",
+  "emoji": "💬"
  },
  {
   "id": "r.learning",
@@ -142,7 +159,8 @@
   "my": "မြန်မာစကား သင်နေတယ်",
   "rom": "myəmà zəgá thìn nèi dè",
   "en": "I'm learning Burmese",
-  "note": "Verb + နေ = ongoing action ('-ing')."
+  "note": "Verb + နေ = ongoing action ('-ing').",
+  "emoji": "📚"
  },
  {
   "id": "r.a-little",
@@ -150,7 +168,8 @@
   "my": "မြန်မာစကား နည်းနည်း ပြောတတ်ပါတယ်",
   "rom": "myəmà zəgá né-né pyáw daʔ bà dè",
   "en": "I can speak a little Burmese",
-  "note": "Verb + တတ် = know how to."
+  "note": "Verb + တတ် = know how to.",
+  "emoji": "🤏"
  },
  {
   "id": "m.my-name-male",
@@ -159,7 +178,8 @@
   "my": "ကျွန်တော့်နာမည် ___ ပါ",
   "rom": "kyə-na̰w nàn-mè ___ bà",
   "en": "My name is ___ (male speaker)",
-  "note": "ကျွန်တော် becomes ကျွန်တော့် (creaky) when it means 'my'."
+  "note": "ကျွန်တော် becomes ကျွန်တော့် (creaky) when it means 'my'.",
+  "emoji": "📛"
  },
  {
   "id": "m.my-name-female",
@@ -167,7 +187,8 @@
   "speaker": "f",
   "my": "ကျွန်မနာမည် ___ ပါ",
   "rom": "kyə-ma̰ nàn-mè ___ bà",
-  "en": "My name is ___ (female speaker)"
+  "en": "My name is ___ (female speaker)",
+  "emoji": "📛"
  },
  {
   "id": "m.whats-your-name",
@@ -175,7 +196,8 @@
   "my": "နာမည် ဘယ်လို ခေါ်လဲ",
   "rom": "nàn-mè bè-lò hkàw lé",
   "en": "What's your name?",
-  "lit": "name how call ?"
+  "lit": "name how call ?",
+  "emoji": "🏷️"
  },
  {
   "id": "m.where-from",
@@ -183,7 +205,8 @@
   "my": "ဘယ်က လာလဲ",
   "rom": "bè ga̰ là lé",
   "en": "Where are you from?",
-  "lit": "where from come ?"
+  "lit": "where from come ?",
+  "emoji": "🌍"
  },
  {
   "id": "m.from-england",
@@ -191,28 +214,32 @@
   "my": "အင်္ဂလန်က လာပါတယ်",
   "rom": "ìn-gə-làn ga̰ là bà dè",
   "en": "I'm from England",
-  "note": "Noun + က = 'from'."
+  "note": "Noun + က = 'from'.",
+  "emoji": "🇬🇧"
  },
  {
   "id": "m.really",
   "unit": 3,
   "my": "ဟုတ်လား",
   "rom": "houʔ lá",
-  "en": "Really? / Is that so?"
+  "en": "Really? / Is that so?",
+  "emoji": "😮"
  },
  {
   "id": "m.good",
   "unit": 3,
   "my": "ကောင်းတယ်",
   "rom": "káun dè",
-  "en": "It's good"
+  "en": "It's good",
+  "emoji": "👍"
  },
  {
   "id": "m.glad",
   "unit": 3,
   "my": "ဝမ်းသာပါတယ်",
   "rom": "wún-thà bà dè",
-  "en": "I'm glad / happy"
+  "en": "I'm glad / happy",
+  "emoji": "😄"
  },
  {
   "id": "f.eaten-yet",
@@ -220,7 +247,8 @@
   "my": "ထမင်းစားပြီးပြီလား",
   "rom": "htə-mín sá pyí bì lá",
   "en": "Have you eaten?",
-  "note": "A very common friendly greeting, like 'how are you?'."
+  "note": "A very common friendly greeting, like 'how are you?'.",
+  "emoji": "🍛"
  },
  {
   "id": "f.eaten",
@@ -228,7 +256,8 @@
   "my": "စားပြီးပြီ",
   "rom": "sá pyí bì",
   "en": "I've already eaten",
-  "note": "Verb + ပြီးပြီ = already done."
+  "note": "Verb + ပြီးပြီ = already done.",
+  "emoji": "😋"
  },
  {
   "id": "f.delicious",
@@ -236,35 +265,40 @@
   "my": "စားလို့ကောင်းတယ်",
   "rom": "sá lo̰ káun dè",
   "en": "It's delicious",
-  "lit": "eat-for good"
+  "lit": "eat-for good",
+  "emoji": "🤤"
  },
  {
   "id": "f.rice",
   "unit": 4,
   "my": "ထမင်း",
   "rom": "htə-mín",
-  "en": "rice / a meal"
+  "en": "rice / a meal",
+  "emoji": "🍚"
  },
  {
   "id": "f.water",
   "unit": 4,
   "my": "ရေ",
   "rom": "yèi",
-  "en": "water"
+  "en": "water",
+  "emoji": "💧"
  },
  {
   "id": "f.mother",
   "unit": 4,
   "my": "အမေ",
   "rom": "ə-mèi",
-  "en": "mother"
+  "en": "mother",
+  "emoji": "👩"
  },
  {
   "id": "f.father",
   "unit": 4,
   "my": "အဖေ",
   "rom": "ə-hpèi",
-  "en": "father"
+  "en": "father",
+  "emoji": "👨"
  },
  {
   "id": "v.go",
@@ -272,7 +306,8 @@
   "my": "သွား",
   "rom": "thwá",
   "en": "go",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🚶"
  },
  {
   "id": "v.come",
@@ -280,7 +315,8 @@
   "my": "လာ",
   "rom": "là",
   "en": "come",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🏃"
  },
  {
   "id": "v.eat",
@@ -288,7 +324,8 @@
   "my": "စား",
   "rom": "sá",
   "en": "eat",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🍽️"
  },
  {
   "id": "v.drink",
@@ -296,7 +333,8 @@
   "my": "သောက်",
   "rom": "thauʔ",
   "en": "drink",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🥤"
  },
  {
   "id": "v.speak",
@@ -304,7 +342,8 @@
   "my": "ပြော",
   "rom": "pyáw",
   "en": "speak / say",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🗣️"
  },
  {
   "id": "v.sit",
@@ -312,7 +351,8 @@
   "my": "ထိုင်",
   "rom": "htàin",
   "en": "sit",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🪑"
  },
  {
   "id": "v.sleep",
@@ -320,7 +360,8 @@
   "my": "အိပ်",
   "rom": "eiʔ",
   "en": "sleep",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "😴"
  },
  {
   "id": "v.look",
@@ -328,7 +369,8 @@
   "my": "ကြည့်",
   "rom": "kyḭ",
   "en": "look / watch",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "👀"
  },
  {
   "id": "v.do",
@@ -336,7 +378,8 @@
   "my": "လုပ်",
   "rom": "louʔ",
   "en": "do / work",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🛠️"
  },
  {
   "id": "v.buy",
@@ -344,7 +387,8 @@
   "my": "ဝယ်",
   "rom": "wè",
   "en": "buy",
-  "note": "VERB — combine with the sentence patterns."
+  "note": "VERB — combine with the sentence patterns.",
+  "emoji": "🛒"
  },
  {
   "id": "p.go",
@@ -352,7 +396,8 @@
   "my": "သွားတယ်",
   "rom": "thwá dè",
   "en": "(I) go / went",
-  "note": "PATTERN — verb + တယ် = a plain statement. Burmese often drops 'I/you' when it's obvious."
+  "note": "PATTERN — verb + တယ် = a plain statement. Burmese often drops 'I/you' when it's obvious.",
+  "emoji": "🚶"
  },
  {
   "id": "p.not-go",
@@ -360,7 +405,8 @@
   "my": "မသွားဘူး",
   "rom": "mə-thwá bú",
   "en": "(I'm) not going / didn't go",
-  "note": "PATTERN — မ + verb + ဘူး = negative."
+  "note": "PATTERN — မ + verb + ဘူး = negative.",
+  "emoji": "🚫"
  },
  {
   "id": "p.will-go",
@@ -368,7 +414,8 @@
   "my": "သွားမယ်",
   "rom": "thwá mè",
   "en": "(I) will go",
-  "note": "PATTERN — verb + မယ် = future / intention."
+  "note": "PATTERN — verb + မယ် = future / intention.",
+  "emoji": "🗓️"
  },
  {
   "id": "p.will-you-go",
@@ -376,7 +423,8 @@
   "my": "သွားမလား",
   "rom": "thwá mə-lá",
   "en": "Will you go?",
-  "note": "PATTERN — verb + မလား = future yes/no question."
+  "note": "PATTERN — verb + မလား = future yes/no question.",
+  "emoji": "🤔"
  },
  {
   "id": "p.where-go",
@@ -384,7 +432,8 @@
   "my": "ဘယ်သွားမလဲ",
   "rom": "bè thwá mə-lé",
   "en": "Where are you going?",
-  "note": "PATTERN — question word + verb + မလဲ."
+  "note": "PATTERN — question word + verb + မလဲ.",
+  "emoji": "🧭"
  },
  {
   "id": "p.want-eat",
@@ -392,7 +441,8 @@
   "my": "စားချင်တယ်",
   "rom": "sá jìn dè",
   "en": "(I) want to eat",
-  "note": "PATTERN — verb + ချင် = want to."
+  "note": "PATTERN — verb + ချင် = want to.",
+  "emoji": "😋"
  },
  {
   "id": "p.like",
@@ -400,14 +450,16 @@
   "my": "ကြိုက်တယ်",
   "rom": "kyaiʔ tè",
   "en": "(I) like it",
-  "note": "After a checked syllable, တယ် stays 'tè' (no voicing)."
+  "note": "After a checked syllable, တယ် stays 'tè' (no voicing).",
+  "emoji": "❤️"
  },
  {
   "id": "p.like-q",
   "unit": 5,
   "my": "ကြိုက်လား",
   "rom": "kyaiʔ lá",
-  "en": "Do you like it?"
+  "en": "Do you like it?",
+  "emoji": "💭"
  },
  {
   "id": "p.have",
@@ -415,7 +467,8 @@
   "my": "ရှိတယ်",
   "rom": "shḭ dè",
   "en": "There is / (I) have",
-  "note": "PATTERN — ရှိ = exist / have."
+  "note": "PATTERN — ရှိ = exist / have.",
+  "emoji": "🎁"
  },
  {
   "id": "p.sit-please",
@@ -423,7 +476,8 @@
   "my": "ထိုင်ပါ",
   "rom": "htàin bà",
   "en": "Please sit down",
-  "note": "PATTERN — verb + ပါ = polite request."
+  "note": "PATTERN — verb + ပါ = polite request.",
+  "emoji": "🪑"
  },
  {
   "id": "n.1",
@@ -431,7 +485,8 @@
   "my": "တစ်",
   "rom": "tiʔ",
   "en": "one (1)",
-  "note": "Before another word it often reduces to 'tə'."
+  "note": "Before another word it often reduces to 'tə'.",
+  "emoji": "1️⃣"
  },
  {
   "id": "n.2",
@@ -439,21 +494,24 @@
   "my": "နှစ်",
   "rom": "hniʔ",
   "en": "two (2)",
-  "note": "Voiceless n — breathe out through the nose."
+  "note": "Voiceless n — breathe out through the nose.",
+  "emoji": "2️⃣"
  },
  {
   "id": "n.3",
   "unit": 6,
   "my": "သုံး",
   "rom": "thóun",
-  "en": "three (3)"
+  "en": "three (3)",
+  "emoji": "3️⃣"
  },
  {
   "id": "n.4",
   "unit": 6,
   "my": "လေး",
   "rom": "léi",
-  "en": "four (4)"
+  "en": "four (4)",
+  "emoji": "4️⃣"
  },
  {
   "id": "n.5",
@@ -461,41 +519,47 @@
   "my": "ငါး",
   "rom": "ngá",
   "en": "five (5)",
-  "note": "Same word as 'fish' — context tells them apart."
+  "note": "Same word as 'fish' — context tells them apart.",
+  "emoji": "5️⃣"
  },
  {
   "id": "n.6",
   "unit": 6,
   "my": "ခြောက်",
   "rom": "chauʔ",
-  "en": "six (6)"
+  "en": "six (6)",
+  "emoji": "6️⃣"
  },
  {
   "id": "n.7",
   "unit": 6,
   "my": "ခုနစ်",
   "rom": "hkṵn-hniʔ",
-  "en": "seven (7)"
+  "en": "seven (7)",
+  "emoji": "7️⃣"
  },
  {
   "id": "n.8",
   "unit": 6,
   "my": "ရှစ်",
   "rom": "shiʔ",
-  "en": "eight (8)"
+  "en": "eight (8)",
+  "emoji": "8️⃣"
  },
  {
   "id": "n.9",
   "unit": 6,
   "my": "ကိုး",
   "rom": "kó",
-  "en": "nine (9)"
+  "en": "nine (9)",
+  "emoji": "9️⃣"
  },
  {
   "id": "n.10",
   "unit": 6,
   "my": "တစ်ဆယ်",
   "rom": "tə-hsè",
-  "en": "ten (10)"
+  "en": "ten (10)",
+  "emoji": "🔟"
  }
 ]

@@ -66,9 +66,15 @@ function Feedback({ outcome, children, onContinue }: { outcome: Outcome; childre
   )
 }
 
+/** The phrase's picture (emoji in a soft circle). */
+export function Pic({ item, size = 'md' }: { item?: { emoji?: string }; size?: 'sm' | 'md' | 'lg' }) {
+  return item?.emoji ? <span className={`pic pic-${size}`} aria-hidden="true">{item.emoji}</span> : null
+}
+
 function Answer({ item, showRom = true }: { item: Item; showRom?: boolean }) {
   return (
     <div className="answer">
+      <Pic item={item} size="sm" />
       <Mm text={item.my} size="md" />
       {showRom && item.rom && <Rom rom={item.rom} />}
       <div className="small">{item.en}</div>
@@ -133,8 +139,8 @@ function useChoice<T>(correct: T, wrong: T[], onDone: (o: Outcome) => void) {
 
 function ChooseMeaning({ ex, pool, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'choose-meaning' }>>) {
   const { item } = ex
-  const wrong = useMemo(() => distractors(item, pool, 3).map((d) => d.en), [item, pool])
-  const c = useChoice(item.en, wrong, onDone)
+  const wrong = useMemo(() => distractors(item, pool, 3), [item, pool])
+  const c = useChoice<Item>(item, wrong, onDone)
   const [showText, setShowText] = useState(!ex.listen)
   useEffect(() => {
     if (c.answered !== null) setShowText(true)
@@ -155,7 +161,19 @@ function ChooseMeaning({ ex, pool, showRom, onDone }: ExProps<Extract<Exercise, 
           </button>
         )}
       </div>
-      <Choice options={c.options} correct={item.en} render={(o) => o} onAnswer={c.setAnswered} answered={c.answered} hinted={c.hinted} />
+      <Choice
+        options={c.options}
+        correct={item}
+        render={(o) => (
+          <span className="opt-pic">
+            <Pic item={o} size="sm" />
+            {o.en}
+          </span>
+        )}
+        onAnswer={c.setAnswered}
+        answered={c.answered}
+        hinted={c.hinted}
+      />
       <Footer outcome={c.outcome} onHint={c.answered === null && !c.hinted.size ? c.hint : undefined} onContinue={c.done}>
         {c.outcome === 'wrong' && <Answer item={item} showRom={showRom} />}
       </Footer>
@@ -174,6 +192,7 @@ function ChooseBurmese({ ex, pool, showRom, onDone }: ExProps<Extract<Exercise, 
     <>
       <div className="prompt">
         <div className="muted small">How do you say…</div>
+        <Pic item={item} size="lg" />
         <div className="en big">{item.en}</div>
       </div>
       <Choice
@@ -227,6 +246,7 @@ function Tiles({ ex, pool, onDone }: ExProps<Extract<Exercise, { kind: 'tiles' }
     <>
       <div className="prompt">
         <div className="muted small">Build it in Burmese</div>
+        <Pic item={item} size="lg" />
         <div className="en big">{item.en}</div>
       </div>
       <div className="tile-answer">
@@ -311,7 +331,10 @@ function Match({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'match
         <div className="col">
           {right.map((i) => (
             <button key={i.id} className={`btn option ${done.has(i.id) ? 'matched' : bad === i.id ? 'wrong' : ''}`} disabled={done.has(i.id)} onClick={() => pickRight(i.id)}>
-              {i.en}
+              <span className="opt-pic">
+                <Pic item={i} size="sm" />
+                {i.en}
+              </span>
             </button>
           ))}
         </div>
@@ -367,6 +390,7 @@ function Say({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'say' }>
     <>
       <div className="prompt">
         <div className="muted small">Say it out loud in Burmese</div>
+        <Pic item={item} size="lg" />
         <div className="en big">{item.en}</div>
         <div className="row gap-sm wrap">
           <button className={`btn mic ${rec ? 'recording' : ''}`} onClick={toggle} disabled={checking || !!outcome} aria-label={rec ? 'Stop' : 'Record'}>
@@ -442,7 +466,12 @@ function Recall({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'reca
         <PlayBig my={item.my} itemId={item.id} />
         <Mm text={item.my} size="lg" />
         {showRom && item.rom && <Rom rom={item.rom} />}
-        {revealed && <div className="en big">{item.en}</div>}
+        {revealed && (
+          <div className="row gap-sm">
+            <Pic item={item} />
+            <div className="en big">{item.en}</div>
+          </div>
+        )}
         {revealed && item.note && <div className="note">{item.note}</div>}
       </div>
       {outcome ? (
@@ -578,6 +607,12 @@ export function ExerciseView(props: ExProps<Exercise>) {
  * Runs a list of exercises. Anything answered wrong comes back once more later in the run.
  * onResult fires for each exercise's first attempt (used to schedule reviews as you go).
  */
+export interface RunnerSnapshot {
+  queue: { ex: Exercise; retry: boolean }[]
+  pos: number
+  stats: { right: number; total: number }
+}
+
 export function Runner({
   exercises,
   pool,
@@ -586,6 +621,8 @@ export function Runner({
   onResult,
   onFinish,
   onExit,
+  initial,
+  onProgress,
 }: {
   exercises: Exercise[]
   pool: Item[]
@@ -594,10 +631,17 @@ export function Runner({
   onResult?: (ex: Exercise, o: Outcome) => void
   onFinish: (stats: { right: number; total: number }) => void
   onExit: () => void
+  /** Resume a saved run. */
+  initial?: RunnerSnapshot
+  /** Called after every answer, so the run can be saved and resumed later. */
+  onProgress?: (snap: RunnerSnapshot) => void
 }) {
-  const [queue, setQueue] = useState<{ ex: Exercise; retry: boolean }[]>(() => exercises.map((ex) => ({ ex, retry: false })))
-  const [pos, setPos] = useState(0)
-  const [stats, setStats] = useState({ right: 0, total: 0 })
+  const [queue, setQueue] = useState<RunnerSnapshot['queue']>(() => initial?.queue ?? exercises.map((ex) => ({ ex, retry: false })))
+  const [pos, setPos] = useState(initial?.pos ?? 0)
+  const [stats, setStats] = useState(initial?.stats ?? { right: 0, total: 0 })
+  useEffect(() => {
+    if (pos > 0) onProgress?.({ queue, pos, stats })
+  }, [pos]) // eslint-disable-line react-hooks/exhaustive-deps
   const cur = queue[pos]
   useEffect(() => {
     if (!cur) onFinish(stats)

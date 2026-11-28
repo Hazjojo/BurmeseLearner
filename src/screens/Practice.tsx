@@ -90,7 +90,7 @@ function BackBar({ onBack, inline }: { onBack: () => void; inline?: boolean }) {
   )
 }
 
-function DialoguePlayer({ d, update, onExit }: { d: Dialogue; state: AppState; update: Update; onExit: () => void }) {
+export function DialoguePlayer({ d, update, onExit }: { d: Dialogue; state: AppState; update: Update; onExit: () => void }) {
   const [showText, setShowText] = useState(false)
   const [showEn, setShowEn] = useState(false)
   const [slow, setSlow] = useState(true)

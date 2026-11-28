@@ -1,24 +1,35 @@
-import { useState } from 'react'
-import { BASE_ITEMS, parseKey, type Item } from '../content'
+import { useState, type CSSProperties } from 'react'
+import { getItem, MODULES, parseKey, type Item } from '../content'
+import { Pic } from '../exercises'
 import { deleteRecording, exportBackup, importBackup, type AppState, type Settings as S } from '../lib/store'
 import { Mm, PlayButton, Rom, ToneLegend } from '../components'
 
 type Update = (fn: (s: AppState) => AppState) => void
 
-/** Everything in the course plus my own phrases, searchable. */
+/** Everything in the course plus my own phrases, grouped like the course, searchable. */
 export function Phrasebook({ state, update, onAdd }: { state: AppState; update: Update; onAdd: () => void }) {
   const [q, setQ] = useState('')
+  const [cat, setCat] = useState('all')
   const [onlyLearned, setOnlyLearned] = useState(false)
   const match = (i: Item) => {
     if (onlyLearned && !state.introduced[i.id]) return false
     const t = q.trim().toLowerCase()
-    return !t || i.en.toLowerCase().includes(t) || i.my.includes(t) || i.rom.normalize('NFD').replace(/[̀-̰ͯ]/g, '').includes(t)
+    return !t || i.en.toLowerCase().includes(t) || i.my.includes(t) || i.rom.normalize('NFD').replace(/[\u0300-\u036f\u0330]/g, '').includes(t)
   }
-  const groups: [string, Item[]][] = [
-    ['My phrases', state.custom],
-    ['Speaking', BASE_ITEMS.filter((i) => i.strand === 'speak')],
-    ['Script', BASE_ITEMS.filter((i) => i.strand === 'script')],
+  // Categories follow the course modules (and their lessons), plus my own phrases.
+  const cats: { id: string; icon: string; title: string; color?: string; groups: [string, Item[]][] }[] = [
+    ...(state.custom.length ? [{ id: 'mine', icon: '⭐', title: 'My phrases', groups: [['', state.custom] as [string, Item[]]] }] : []),
+    ...MODULES.map((m) => ({
+      id: m.id,
+      icon: m.icon,
+      title: m.title,
+      color: m.color,
+      groups: m.lessons
+        .filter((l) => l.items?.length)
+        .map((l) => [l.title, (l.items ?? []).map((id) => getItem(id)).filter((i): i is Item => !!i)] as [string, Item[]]),
+    })).filter((c) => c.groups.length),
   ]
+  const shown = cats.filter((c) => cat === 'all' || c.id === cat)
   const remove = (id: string) => {
     if (!confirm('Delete this phrase and its review history?')) return
     update((s) => ({
@@ -28,6 +39,7 @@ export function Phrasebook({ state, update, onAdd }: { state: AppState; update: 
     }))
     deleteRecording(id)
   }
+  let any = false
   return (
     <div className="screen">
       <div className="row between">
@@ -37,40 +49,62 @@ export function Phrasebook({ state, update, onAdd }: { state: AppState; update: 
         </button>
       </div>
       <input type="text" placeholder="Search English, Burmese or romanization" value={q} onChange={(e) => setQ(e.target.value)} />
+      <div className="chips">
+        <button className={`chip ${cat === 'all' ? 'active' : ''}`} onClick={() => setCat('all')}>
+          All
+        </button>
+        {cats.map((c) => (
+          <button key={c.id} className={`chip ${cat === c.id ? 'active' : ''}`} onClick={() => setCat(c.id)}>
+            {c.icon} {c.title}
+          </button>
+        ))}
+      </div>
       <label className="row gap-sm small">
         <input type="checkbox" checked={onlyLearned} onChange={(e) => setOnlyLearned(e.target.checked)} /> Only what I've learned
       </label>
-      {groups.map(([name, items]) => {
-        const shown = items.filter(match)
-        if (!shown.length) return null
+      {shown.map((c) => {
+        const groups = c.groups.map(([t, items]) => [t, items.filter(match)] as [string, Item[]]).filter(([, items]) => items.length)
+        if (!groups.length) return null
+        any = true
         return (
-          <section key={name}>
-            <h3>{name}</h3>
-            <ul className="list">
-              {shown.map((i) => (
-                <li key={i.id}>
-                  <div className="stack tight">
-                    <span className="row gap-sm">
-                      <Mm text={i.my} size="sm" />
-                      {state.introduced[i.id] && <span className="pill">learned</span>}
-                    </span>
-                    {i.rom && <Rom rom={i.rom} />}
-                    <span className="small">{i.en}</span>
-                  </div>
-                  <span className="row gap-sm">
-                    <PlayButton my={i.my} itemId={i.id} />
-                    {i.custom && (
-                      <button className="btn small" onClick={() => remove(i.id)} aria-label="Delete">
-                        🗑
-                      </button>
-                    )}
-                  </span>
-                </li>
-              ))}
-            </ul>
+          <section key={c.id} className="phrase-cat" style={c.color ? ({ '--mod': c.color } as CSSProperties) : undefined}>
+            <h3 className="cat-title">
+              <span className="cat-icon">{c.icon}</span> {c.title}
+            </h3>
+            {groups.map(([title, items]) => (
+              <div key={title || c.id}>
+                {title && <div className="small muted subhead">{title}</div>}
+                <ul className="list">
+                  {items.map((i) => (
+                    <li key={i.id}>
+                      <span className="row gap-sm grow">
+                        {i.emoji ? <Pic item={i} size="sm" /> : <span className="pic pic-sm glyph-pic">{i.my}</span>}
+                        <span className="stack tight">
+                          <span className="row gap-sm">
+                            <Mm text={i.my} size="sm" />
+                            {state.introduced[i.id] && <span className="pill">learned</span>}
+                          </span>
+                          {i.rom && <Rom rom={i.rom} />}
+                          <span className="small">{i.en}</span>
+                        </span>
+                      </span>
+                      <span className="row gap-sm">
+                        <PlayButton my={i.my} itemId={i.id} />
+                        {i.custom && (
+                          <button className="btn small" onClick={() => remove(i.id)} aria-label="Delete">
+                            🗑
+                          </button>
+                        )}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </section>
         )
       })}
+      {!any && <p className="muted">Nothing matches.</p>}
     </div>
   )
 }

@@ -17,6 +17,8 @@ export interface Item {
   lit?: string
   note?: string
   speaker?: 'm' | 'f'
+  /** A simple picture for the phrase. */
+  emoji?: string
   /** Set for pattern drills generated from a pattern × verb. */
   drill?: { pattern: string; from: string; verb: string }
   /** Set for items I added myself. */
@@ -62,6 +64,7 @@ export const DRILLS: Item[] = PATTERNS.flatMap((pat) =>
       rom: pat.rom[checked ? 1 : 0].replace('{v}', v.rom),
       en: pat.en.replace('{base}', forms.base).replace('{past}', forms.past),
       note: pat.note,
+      emoji: v.emoji,
       drill: { pattern: pat.id, from: pat.from, verb: verbId },
     }
   }),
@@ -111,6 +114,8 @@ export interface Module {
   id: string
   title: string
   summary: string
+  icon: string
+  color: string
   lessons: Lesson[]
 }
 export const MODULES = (course as { modules: Module[] }).modules

@@ -4,14 +4,14 @@ import { getScheduler } from './lib/srs'
 import type { Sync } from './lib/sync'
 import { Course, Home, LessonView, ReviewView } from './screens/Learn'
 import { Phrasebook, Settings } from './screens/Other'
-import { Practice } from './screens/Practice'
+import { DialoguePlayer, Practice, type Dialogue } from './screens/Practice'
 import { setAISync } from './lib/ai'
 import { QuickAdd } from './screens/QuickAdd'
 import { SyncPanel } from './screens/SyncPanel'
 import { ErrorBoundary } from './ErrorBoundary'
 
 type Tab = 'home' | 'course' | 'tones' | 'phrases' | 'settings'
-type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | null
+type Overlay = { kind: 'lesson'; id: string } | { kind: 'review' } | { kind: 'add' } | { kind: 'dialogue'; d: Dialogue } | null
 
 export default function App() {
   const [state, setState] = useState<AppState | null>(null)
@@ -74,6 +74,7 @@ export default function App() {
   if (overlay?.kind === 'lesson') return guard(<LessonView key={overlay.id} lessonId={overlay.id} state={state} update={update} onExit={close} />)
   if (overlay?.kind === 'review') return guard(<ReviewView state={state} update={update} onExit={close} />)
   if (overlay?.kind === 'add') return guard(<QuickAdd update={update} onDone={close} />)
+  if (overlay?.kind === 'dialogue') return guard(<DialoguePlayer d={overlay.d} state={state} update={update} onExit={close} />)
 
   const banner =
     sync && !sync.user ? (
@@ -93,7 +94,7 @@ export default function App() {
       <main>
         {guard(<>
         {tab === 'home' && <Home state={state} banner={banner} onLesson={openLesson} onReview={() => setOverlay({ kind: 'review' })} onCourse={() => setTab('course')} />}
-        {tab === 'course' && <Course state={state} onLesson={openLesson} />}
+        {tab === 'course' && <Course state={state} onLesson={openLesson} onDialogue={(d) => setOverlay({ kind: 'dialogue', d })} />}
         {tab === 'tones' && <Practice state={state} update={update} sync={sync} />}
         {tab === 'phrases' && <Phrasebook state={state} update={update} onAdd={() => setOverlay({ kind: 'add' })} />}
         {tab === 'settings' && (
@@ -108,7 +109,7 @@ export default function App() {
         {(
           [
             ['home', '🏠', 'Home'],
-            ['course', '📚', 'Course'],
+            ['course', '🗺️', 'Course'],
             ['tones', '🎧', 'Practice'],
             ['phrases', '📖', 'Phrases'],
             ['settings', '⚙️', 'Settings'],

@@ -1,12 +1,22 @@
-import { useMemo, useRef, useState } from 'react'
-import { lessonItems, lessonKind, LESSONS, MODULES, toneSetById, type Item, type Lesson } from '../content'
-import { exItem, Runner, type Exercise, type Outcome } from '../exercises'
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { lessonItems, lessonKind, LESSONS, MODULES, toneSetById, type Item, type Lesson, type Module } from '../content'
+import { exItem, Pic, Runner, type Exercise, type Outcome, type RunnerSnapshot } from '../exercises'
 import { completeLesson, dueKeys, gradeCard, knownItems, lessonExercises, nextLesson, reviewPlan, unlockable } from '../learn'
 import { clipsFor, say } from '../lib/speech'
-import type { AppState } from '../lib/store'
+import type { AppState, LessonDraft } from '../lib/store'
 import { Mm, PlayButton, Rom, ToneLegend } from '../components'
+import { DIALOGUES, type Dialogue } from './Practice'
 
 type Update = (fn: (s: AppState) => AppState) => void
+const modStyle = (m: Module) => ({ '--mod': m.color }) as CSSProperties
+const kindIcon = (l: Lesson, m: Module) => (lessonKind(l) === 'tones' ? '👂' : lessonKind(l) === 'script' ? '✍️' : m.icon)
+
+const lessonBlurb = (l: Lesson) => {
+  const k = lessonKind(l)
+  if (k === 'tones') return `Listening · ${l.toneSets?.length ?? 0} sound sets`
+  if (k === 'script') return `Script · ${l.items?.length ?? 0} letters`
+  return `${l.items?.length ?? 0} phrases${l.drills?.length ? ' + sentence building' : ''}`
+}
 
 // ---------------- Home ----------------
 
@@ -18,33 +28,48 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
   onCourse: () => void
 }) {
   const due = dueKeys(state).length + Math.min(8, unlockable(state).length)
-  const next = nextLesson(state)
+  const draftId = Object.entries(state.drafts ?? {}).sort((a, b) => b[1].at.localeCompare(a[1].at))[0]?.[0]
+  const resume = draftId ? LESSONS.find((l) => l.id === draftId) : undefined
+  const next = resume ?? nextLesson(state)
   const done = LESSONS.filter((l) => state.lessons[l.id]).length
   const phrases = knownItems(state).filter((i) => i.strand === 'speak').length
+  const pct = Math.round((done / LESSONS.length) * 100)
   return (
     <div className="screen">
-      <h1>
-        <Mm text="မင်္ဂလာပါ" size="md" />
-      </h1>
+      <header className="home-head">
+        <div>
+          <Mm text="မင်္ဂလာပါ" size="md" />
+          <div className="small muted">mìn-gə-là-bà · Ready to learn?</div>
+        </div>
+        <div className="ring" style={{ '--pct': `${pct}%` } as CSSProperties} title={`${pct}% of the course`}>
+          <span>{pct}%</span>
+        </div>
+      </header>
       {banner}
-      {due > 0 && (
-        <button className="hero review" onClick={onReview}>
-          <span className="hero-kicker">Review</span>
-          <span className="hero-title">{due} to practise</span>
-          <span className="small">About {Math.max(1, Math.round((due * 12) / 60))} min · keeps what you've learned fresh</span>
-        </button>
-      )}
       {next ? (
-        <button className="hero" onClick={() => onLesson(next.id)}>
-          <span className="hero-kicker">{done ? 'Continue' : 'Start here'} · {next.module.title}</span>
-          <span className="hero-title">{next.title}</span>
-          <span className="small">{lessonBlurb(next)}</span>
+        <button className="hero lesson-hero" style={modStyle(next.module)} onClick={() => onLesson(next.id)}>
+          <span className="hero-icon">{kindIcon(next, next.module)}</span>
+          <span className="hero-body">
+            <span className="hero-kicker">{resume ? 'Resume' : done ? 'Continue' : 'Start here'} · {next.module.title}</span>
+            <span className="hero-title">{next.title}</span>
+            <span className="small">{resume ? 'Pick up where you left off' : lessonBlurb(next)}</span>
+          </span>
         </button>
       ) : (
         <div className="hero done">
           <span className="hero-title">Course complete 🎉</span>
-          <span className="small">More modules are on the way. Keep reviewing.</span>
+          <span className="small">Keep reviewing and practising.</span>
         </div>
+      )}
+      {due > 0 && (
+        <button className="hero review" onClick={onReview}>
+          <span className="hero-icon">🔁</span>
+          <span className="hero-body">
+            <span className="hero-kicker">Review</span>
+            <span className="hero-title">{due} to practise</span>
+            <span className="small">About {Math.max(1, Math.round((due * 12) / 60))} min · keeps it fresh</span>
+          </span>
+        </button>
       )}
       <div className="tiles">
         <div className="tile">
@@ -55,63 +80,99 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
         </div>
         <div className="tile">
           <b>{phrases}</b>
-          <span>words & phrases learned</span>
+          <span>words & phrases</span>
         </div>
       </div>
       <button className="btn wide" onClick={onCourse}>
-        See all modules
+        🗺️ Open the course map
       </button>
     </div>
   )
 }
 
-const lessonBlurb = (l: Lesson) => {
-  const k = lessonKind(l)
-  if (k === 'tones') return `Listening practice · ${l.toneSets?.length ?? 0} sound sets`
-  if (k === 'script') return `Script · ${l.items?.length ?? 0} letters`
-  return `${l.items?.length ?? 0} phrases${l.drills?.length ? ' + sentence building' : ''}`
-}
-
 // ---------------- Course map ----------------
 
-export function Course({ state, onLesson }: { state: AppState; onLesson: (id: string) => void }) {
+type Node = { kind: 'lesson'; lesson: Lesson } | { kind: 'dialogue'; d: Dialogue }
+const ROW = 118
+const W = 320
+const OFF = [0, 72, 104, 72, 0, -72, -104, -72]
+
+export function Course({ state, onLesson, onDialogue }: { state: AppState; onLesson: (id: string) => void; onDialogue: (d: Dialogue) => void }) {
   const next = nextLesson(state)
+  const currentRef = useRef<HTMLButtonElement>(null)
+  useEffect(() => {
+    currentRef.current?.scrollIntoView({ block: 'center' })
+  }, [])
+  let step = 0 // keeps the zigzag continuous across modules
   return (
-    <div className="screen">
-      <h2>Course</h2>
+    <div className="screen map-screen">
+      <h2>Course map</h2>
       {MODULES.map((m, mi) => {
+        const nodes: Node[] = m.lessons.flatMap((l) => [{ kind: 'lesson' as const, lesson: l }, ...DIALOGUES.filter((d) => d.after === l.id).map((d) => ({ kind: 'dialogue' as const, d }))])
+        const pts = nodes.map((_, i) => ({ x: W / 2 + OFF[(step + i) % OFF.length], y: i * ROW + 48 }))
+        step += nodes.length
+        const path = pts.map((p, i) => (i === 0 ? `M${p.x},${p.y}` : `C${pts[i - 1].x},${pts[i - 1].y + ROW / 2} ${p.x},${p.y - ROW / 2} ${p.x},${p.y}`)).join(' ')
         const doneCount = m.lessons.filter((l) => state.lessons[l.id]).length
         return (
-          <section key={m.id} className="module">
-            <div className="module-head">
-              <span className="module-num">{mi + 1}</span>
-              <div>
+          <section key={m.id} className="map-module" style={modStyle(m)}>
+            <div className="map-banner">
+              <span className="map-banner-icon">{m.icon}</span>
+              <div className="grow">
+                <div className="small banner-kicker">Module {mi + 1}</div>
                 <div className="module-title">{m.title}</div>
-                <div className="small muted">
-                  {m.summary} · {doneCount}/{m.lessons.length}
-                </div>
+                <div className="small">{m.summary}</div>
               </div>
+              <span className="small banner-count">
+                {doneCount}/{m.lessons.length}
+              </span>
             </div>
-            <ul className="lesson-list">
-              {m.lessons.map((l) => {
-                const rec = state.lessons[l.id]
-                return (
-                  <li key={l.id}>
-                    <button className={`lesson-row ${next?.id === l.id ? 'next' : ''}`} onClick={() => onLesson(l.id)}>
-                      <span className={`dot ${rec ? 'done' : ''}`}>{rec ? '✓' : ''}</span>
-                      <span className="grow">
-                        {l.title}
-                        <span className="small muted block">{lessonBlurb(l)}</span>
+            <div className="map-path" style={{ height: nodes.length * ROW, width: W }}>
+              <svg width={W} height={nodes.length * ROW} aria-hidden="true">
+                <path d={path} className="map-line" />
+              </svg>
+              {nodes.map((n, i) => {
+                const p = pts[i]
+                if (n.kind === 'dialogue') {
+                  const done = !!state.lessons[n.d.id]
+                  return (
+                    <div key={n.d.id} className="map-node-wrap" style={{ left: p.x, top: p.y }}>
+                      <button className={`map-node small-node ${done ? 'done' : ''}`} onClick={() => onDialogue(n.d)} aria-label={n.d.title}>
+                        🎧
+                      </button>
+                      <span className="map-label">
+                        {n.d.title}
+                        <span className="muted block">Listening</span>
                       </span>
-                      {rec && <span className="small muted">{Math.round(rec.score * 100)}%</span>}
+                    </div>
+                  )
+                }
+                const l = n.lesson
+                const done = state.lessons[l.id]
+                const draft = state.drafts?.[l.id]
+                const current = next?.id === l.id
+                return (
+                  <div key={l.id} className="map-node-wrap" style={{ left: p.x, top: p.y }}>
+                    {(current || draft) && <span className="map-flag">{draft ? 'RESUME' : 'START'}</span>}
+                    <button
+                      ref={current ? currentRef : undefined}
+                      className={`map-node ${done ? 'done' : ''} ${current ? 'current' : ''} ${draft ? 'draft' : ''}`}
+                      onClick={() => onLesson(l.id)}
+                      aria-label={l.title}
+                    >
+                      {done ? '★' : kindIcon(l, m)}
                     </button>
-                  </li>
+                    <span className="map-label">
+                      {l.title}
+                      {done && <span className="muted block">{Math.round(done.score * 100)}%</span>}
+                    </span>
+                  </div>
                 )
               })}
-            </ul>
+            </div>
           </section>
         )
       })}
+      <div className="map-end">🏁 More modules coming</div>
     </div>
   )
 }
@@ -122,11 +183,13 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
   const lesson = LESSONS.find((l) => l.id === lessonId)!
   const kind = lessonKind(lesson)
   const items = useMemo(() => lessonItems(lesson, state.settings.speaker), [lesson, state.settings.speaker])
-  const [step, setStep] = useState<'intro' | 'teach' | 'practice' | 'done'>('intro')
-  const [ti, setTi] = useState(0)
-  const plan = useMemo(() => lessonExercises(lesson, state), []) // eslint-disable-line react-hooks/exhaustive-deps
-  const results = useRef(new Map<string, Outcome>())
-  const toneLog = useRef<AppState['toneLog']>([])
+  const draft = useRef<LessonDraft | undefined>(state.drafts?.[lessonId]).current
+  const [step, setStep] = useState<'intro' | 'teach' | 'practice' | 'done'>(draft?.step ?? 'intro')
+  const [ti, setTi] = useState(draft?.ti ?? 0)
+  const plan = useMemo(() => (draft ? { exercises: draft.exercises, drills: draft.drills } : lessonExercises(lesson, state)), []) // eslint-disable-line react-hooks/exhaustive-deps
+  const results = useRef(new Map<string, Outcome>(Object.entries(draft?.results ?? {})))
+  const toneLog = useRef<AppState['toneLog']>(draft?.toneLog ?? [])
+  const runnerSnap = useRef<RunnerSnapshot | undefined>(draft?.runner)
   const [score, setScore] = useState<{ right: number; total: number } | null>(null)
   const pool = useMemo(() => {
     const k = knownItems(state)
@@ -134,14 +197,32 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
     return [...k, ...items.filter((i) => !ids.has(i.id)), ...plan.drills]
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
+  /** Save where I am, so leaving the lesson doesn't lose progress. */
+  const saveDraft = (s: 'teach' | 'practice', t: number) => {
+    const d: LessonDraft = {
+      at: new Date().toISOString(),
+      step: s,
+      ti: t,
+      exercises: plan.exercises,
+      drills: plan.drills,
+      results: Object.fromEntries(results.current),
+      toneLog: toneLog.current,
+      runner: runnerSnap.current,
+    }
+    update((st) => ({ ...st, drafts: { ...st.drafts, [lessonId]: JSON.parse(JSON.stringify(d)) } }))
+  }
+  useEffect(() => {
+    if (step === 'teach' || step === 'practice') saveDraft(step, ti)
+  }, [step, ti]) // eslint-disable-line react-hooks/exhaustive-deps
+
   const record = (ex: Exercise, o: Outcome) => {
-    const worse = (a?: Outcome, b?: Outcome) => (a === 'wrong' || b === 'wrong' ? 'wrong' : a === 'hinted' || b === 'hinted' ? 'hinted' : 'right')
+    const worse = (a?: Outcome, b?: Outcome): Outcome => (a === 'wrong' || b === 'wrong' ? 'wrong' : a === 'hinted' || b === 'hinted' ? 'hinted' : 'right')
     if (ex.kind === 'tone') {
       toneLog.current.push({ t: new Date().toISOString(), set: ex.set.id, asked: ex.asked, chose: o === 'wrong' ? -1 : ex.asked })
       return
     }
     const it = exItem(ex)
-    if (it) results.current.set(it.id, worse(results.current.get(it.id), o) as Outcome)
+    if (it) results.current.set(it.id, worse(results.current.get(it.id), o))
   }
 
   const finish = async (stats: { right: number; total: number }) => {
@@ -149,15 +230,30 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
     const s = stats.total ? stats.right / stats.total : 1
     const apply = await completeLesson(lesson, state, results.current, plan.drills, s)
     const tl = toneLog.current
-    update((st) => ({ ...apply(st), toneLog: [...st.toneLog, ...tl].slice(-5000) }))
+    update((st) => {
+      const drafts = { ...st.drafts }
+      delete drafts[lessonId]
+      return { ...apply(st), drafts, toneLog: [...st.toneLog, ...tl].slice(-5000) }
+    })
     setStep('done')
   }
 
+  const startOver = () => {
+    update((st) => {
+      const drafts = { ...st.drafts }
+      delete drafts[lessonId]
+      return { ...st, drafts }
+    })
+    onExit()
+  }
+
+  const m = LESSONS.find((l) => l.id === lessonId)!.module
   if (step === 'intro') {
     return (
-      <div className="screen lesson">
+      <div className="screen lesson" style={modStyle(m)}>
         <TopBar onExit={onExit} label={lesson.title} />
-        <div className="kicker">{LESSONS.find((l) => l.id === lessonId)!.module.title}</div>
+        <div className="lesson-hero-pic">{kindIcon(lesson, m)}</div>
+        <div className="kicker">{m.title}</div>
         <h2>{lesson.title}</h2>
         {lesson.intro.map((p, i) => (
           <p key={i} className="lesson-text">
@@ -165,6 +261,13 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
           </p>
         ))}
         {kind === 'tones' && <ToneLegend />}
+        {kind !== 'tones' && items.some((i) => i.emoji) && (
+          <div className="preview-pics">
+            {items.map((i) => (
+              <Pic key={i.id} item={i} size="sm" />
+            ))}
+          </div>
+        )}
         <div className="actions">
           <button className="btn primary wide big" onClick={() => setStep(kind === 'tones' ? 'teach' : items.length ? 'teach' : 'practice')}>
             {kind === 'tones' ? 'Listen to the examples' : `Learn ${items.length} new ${kind === 'script' ? 'letters' : 'phrases'}`}
@@ -178,10 +281,10 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
     const sets = (lesson.toneSets ?? []).map(toneSetById).filter(Boolean)
     const anyAudio = sets.some((s) => s!.options.some((o) => clipsFor(o.my).length))
     return (
-      <div className="screen lesson">
+      <div className="screen lesson" style={modStyle(m)}>
         <TopBar onExit={onExit} label={lesson.title} />
         <h3>Listen and compare</h3>
-        {!anyAudio && <p className="note">Audio for these sounds hasn't been generated yet, so the listening practice will be skipped for now.</p>}
+        {!anyAudio && <p className="note">Audio for these sounds isn't available, so the listening practice will be skipped.</p>}
         {sets.map((set) => (
           <div key={set!.id} className="card compact">
             <div className="small muted">{set!.contrast}</div>
@@ -209,11 +312,12 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
   }
 
   if (step === 'teach') {
-    const item = items[ti]
+    const item = items[Math.min(ti, items.length - 1)]
     return (
-      <div className="screen lesson">
+      <div className="screen lesson" style={modStyle(m)}>
         <TopBar onExit={onExit} label={`New ${ti + 1} / ${items.length}`} progress={(ti + 1) / (items.length + 1)} />
-        <div className="teach card">
+        <div className="teach card" key={item.id}>
+          {item.emoji && <Pic item={item} size="lg" />}
           <Mm text={item.my} size={kind === 'script' ? 'xl' : 'lg'} />
           {item.rom && <Rom rom={item.rom} />}
           <PlayButton key={item.id} my={item.my} itemId={item.id} autoPlay />
@@ -231,6 +335,11 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
             {ti + 1 < items.length ? 'Next' : "Let's practise"}
           </button>
         </div>
+        {draft && (
+          <button className="btn small ghost restart" onClick={startOver}>
+            Start this lesson over
+          </button>
+        )}
       </div>
     )
   }
@@ -241,7 +350,12 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
         exercises={plan.exercises}
         pool={pool}
         showRom={state.settings.showRom}
+        initial={draft?.runner}
         onResult={record}
+        onProgress={(snap) => {
+          runnerSnap.current = snap
+          saveDraft('practice', ti)
+        }}
         onFinish={finish}
         onExit={onExit}
       />
@@ -249,23 +363,42 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
   }
 
   const pct = score && score.total ? Math.round((score.right / score.total) * 100) : 100
-  const next = nextLesson({ ...state, lessons: { ...state.lessons, [lesson.id]: { at: '', score: 0 } } })
+  const after = nextLesson({ ...state, lessons: { ...state.lessons, [lesson.id]: { at: '', score: 0 } } })
   return (
-    <div className="screen center-content done-screen">
+    <div className="screen center-content done-screen" style={modStyle(m)}>
+      <Confetti />
       <div className="big-emoji">{pct >= 90 ? '🎉' : pct >= 60 ? '👍' : '💪'}</div>
       <h2>Lesson complete</h2>
       {score && score.total > 0 && (
+        <div className="score-ring" style={{ '--pct': `${pct}%` } as CSSProperties}>
+          <span>{pct}%</span>
+        </div>
+      )}
+      {score && score.total > 0 && (
         <p>
-          {score.right} / {score.total} right first time ({pct}%)
+          {score.right} / {score.total} right first time
         </p>
       )}
       {kind !== 'tones' && <p className="muted small">These now come back in your reviews just before you'd forget them.</p>}
       <div className="stack wide-stack">
         <button className="btn primary wide big" onClick={onExit}>
-          Done
+          Continue
         </button>
-        {next && <span className="small muted">Next up: {next.title}</span>}
+        {after && <span className="small muted">Next up: {after.title}</span>}
       </div>
+    </div>
+  )
+}
+
+function Confetti() {
+  const bits = useMemo(() => Array.from({ length: 18 }, (_, i) => ({ i, left: Math.random() * 100, delay: Math.random() * 0.8, e: ['🎉', '⭐', '✨', '🎊'][i % 4] })), [])
+  return (
+    <div className="confetti" aria-hidden="true">
+      {bits.map((b) => (
+        <span key={b.i} style={{ left: `${b.left}%`, animationDelay: `${b.delay}s` }}>
+          {b.e}
+        </span>
+      ))}
     </div>
   )
 }
@@ -273,7 +406,7 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
 function TopBar({ onExit, label, progress }: { onExit: () => void; label: string; progress?: number }) {
   return (
     <div className="runner-top">
-      <button className="btn small ghost" onClick={onExit} aria-label="Quit">
+      <button className="btn small ghost" onClick={onExit} aria-label="Leave (progress is saved)">
         ✕
       </button>
       {progress !== undefined ? (
@@ -300,6 +433,7 @@ export function ReviewView({ state, update, onExit }: { state: AppState; update:
   if (!plan.exercises.length) {
     return (
       <div className="screen center-content done-screen">
+        <div className="big-emoji">🌱</div>
         <h2>Nothing to review</h2>
         <p className="muted">Do a lesson and its phrases will start coming back here.</p>
         <button className="btn primary" onClick={onExit}>
@@ -311,6 +445,7 @@ export function ReviewView({ state, update, onExit }: { state: AppState; update:
   if (done) {
     return (
       <div className="screen center-content done-screen">
+        <Confetti />
         <div className="big-emoji">✅</div>
         <h2>Review done</h2>
         <p>
