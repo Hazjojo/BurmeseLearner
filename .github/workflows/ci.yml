@@ -56,8 +56,7 @@ jobs:
           echo "$SA" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
           npx -y firebase-tools@15.37.0 deploy --only firestore:rules --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive
-          # Storage needs the Blaze plan; skip quietly if it isn't set up yet.
-          npx -y firebase-tools@15.37.0 deploy --only storage --project "${{ vars.FIREBASE_PROJECT_ID }}" --non-interactive || echo "Storage not set up yet: recordings stay on-device"
+          # Recordings are only kept briefly on the device, so Cloud Storage isn't used.
       - name: Deploy server functions (speech checking & conversation)
         # Needs the AZURE_SPEECH_KEY repo secret and extra IAM roles on the deploy key (see docs/deploy.md).
         continue-on-error: true
