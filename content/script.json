@@ -1,14 +1,458 @@
 [
-  { "id": "c.ka", "unit": 1, "my": "က", "rom": "ka̰", "en": "consonant k", "note": "Every consonant carries a built-in short creaky 'a'." },
-  { "id": "c.hka", "unit": 1, "my": "ခ", "rom": "hka̰", "en": "consonant hk (aspirated k)", "note": "Puff of air, like the k in 'kit'." },
-  { "id": "c.ga", "unit": 1, "my": "ဂ", "rom": "ga̰", "en": "consonant g" },
-  { "id": "c.nga", "unit": 1, "my": "င", "rom": "nga̰", "en": "consonant ng", "note": "The 'ng' of 'sing', but at the start of a syllable." },
-  { "id": "c.sa", "unit": 1, "my": "စ", "rom": "sa̰", "en": "consonant s" },
-  { "id": "c.hsa", "unit": 1, "my": "ဆ", "rom": "hsa̰", "en": "consonant hs (aspirated s)" },
-  { "id": "c.ma", "unit": 1, "my": "မ", "rom": "ma̰", "en": "consonant m" },
-  { "id": "c.na", "unit": 1, "my": "န", "rom": "na̰", "en": "consonant n" },
-  { "id": "c.la", "unit": 1, "my": "လ", "rom": "la̰", "en": "consonant l" },
-  { "id": "c.pa", "unit": 1, "my": "ပ", "rom": "pa̰", "en": "consonant p" },
-  { "id": "v.aa", "unit": 1, "my": "ကာ", "rom": "kà", "en": "vowel sign ာ: long 'a', low tone", "note": "ာ after a consonant gives low tone (long, level)." },
-  { "id": "v.aa-high", "unit": 1, "my": "ကား", "rom": "ká", "en": "ာ + း: long 'a', high tone", "note": "း (two dots) marks high tone. ကား also means 'car'." }
+ {
+  "id": "c.ka",
+  "unit": 1,
+  "my": "က",
+  "rom": "ka̰",
+  "en": "k",
+  "note": "k as in ကား (ká) \"car\". The first letter of the alphabet.",
+  "row": "k",
+  "col": "plain"
+ },
+ {
+  "id": "c.hka",
+  "unit": 1,
+  "my": "ခ",
+  "rom": "hka̰",
+  "en": "hk (breathy k)",
+  "note": "The breathy partner of က: same k, plus a puff of air. Starts ခုနစ် (hkṵn-hniʔ) 'seven'.",
+  "row": "k",
+  "col": "breathy"
+ },
+ {
+  "id": "c.ga",
+  "unit": 1,
+  "my": "ဂ",
+  "rom": "ga̰",
+  "en": "g",
+  "note": "g. Voiced partner in the throat row. The ဂ in မင်္ဂလာပါ (mìn-gə-là-bà).",
+  "row": "k",
+  "col": "voiced"
+ },
+ {
+  "id": "c.nga",
+  "unit": 1,
+  "my": "င",
+  "rom": "nga̰",
+  "en": "ng",
+  "note": "The nasal of the throat row: 'ng' at the start of a word, as in ငါး (ngá) 'five'.",
+  "row": "k",
+  "col": "nasal"
+ },
+ {
+  "id": "c.sa",
+  "unit": 1,
+  "my": "စ",
+  "rom": "sa̰",
+  "en": "s",
+  "note": "s as in စား (sá) 'eat'.",
+  "row": "s",
+  "col": "plain"
+ },
+ {
+  "id": "c.hsa",
+  "unit": 1,
+  "my": "ဆ",
+  "rom": "hsa̰",
+  "en": "hs (breathy s)",
+  "note": "The breathy partner of စ: s with a puff of air.",
+  "row": "s",
+  "col": "breathy"
+ },
+ {
+  "id": "c.za",
+  "unit": 1,
+  "my": "ဇ",
+  "rom": "za̰",
+  "en": "z",
+  "note": "z as in ကျေးဇူး (kyéi-zú), the 'thank' in thank you.",
+  "row": "s",
+  "col": "voiced"
+ },
+ {
+  "id": "c.nya",
+  "unit": 1,
+  "my": "ည",
+  "rom": "nya̰",
+  "en": "ny",
+  "note": "The nasal of the palate row: 'ny'. Ends နာမည် (nàn-mè) 'name'.",
+  "row": "s",
+  "col": "nasal"
+ },
+ {
+  "id": "c.ta",
+  "unit": 1,
+  "my": "တ",
+  "rom": "ta̰",
+  "en": "t",
+  "note": "t as in တယ် (dè), the statement ending you hear constantly.",
+  "row": "t",
+  "col": "plain"
+ },
+ {
+  "id": "c.hta",
+  "unit": 1,
+  "my": "ထ",
+  "rom": "hta̰",
+  "en": "ht (breathy t)",
+  "note": "The breathy partner of တ. Starts ထမင်း (htə-mín) 'rice'.",
+  "row": "t",
+  "col": "breathy"
+ },
+ {
+  "id": "c.da",
+  "unit": 1,
+  "my": "ဒ",
+  "rom": "da̰",
+  "en": "d",
+  "note": "d as in ဒါ (dà) 'this'.",
+  "row": "t",
+  "col": "voiced"
+ },
+ {
+  "id": "c.na",
+  "unit": 1,
+  "my": "န",
+  "rom": "na̰",
+  "en": "n",
+  "note": "The nasal of the teeth row. Starts နေကောင်းလား (nèi káun lá) 'how are you?'.",
+  "row": "t",
+  "col": "nasal"
+ },
+ {
+  "id": "c.pa",
+  "unit": 1,
+  "my": "ပ",
+  "rom": "pa̰",
+  "en": "p",
+  "note": "p as in ပါ (bà), the politeness word you put almost everywhere.",
+  "row": "p",
+  "col": "plain"
+ },
+ {
+  "id": "c.hpa",
+  "unit": 1,
+  "my": "ဖ",
+  "rom": "hpa̰",
+  "en": "hp (breathy p)",
+  "note": "The breathy partner of ပ. Starts ဖြည်းဖြည်း (hpyé-hpyé) 'slowly'.",
+  "row": "p",
+  "col": "breathy"
+ },
+ {
+  "id": "c.ba",
+  "unit": 1,
+  "my": "ဗ",
+  "rom": "ba̰",
+  "en": "b",
+  "note": "b. The less common of the two b-letters.",
+  "row": "p",
+  "col": "voiced"
+ },
+ {
+  "id": "c.bha",
+  "unit": 1,
+  "my": "ဘ",
+  "rom": "ba̰",
+  "en": "b",
+  "note": "Also b, and the common one: ဘာ (bà) 'what?'. Same sound as ဗ.",
+  "row": "p",
+  "col": "voiced (2)"
+ },
+ {
+  "id": "c.ma",
+  "unit": 1,
+  "my": "မ",
+  "rom": "ma̰",
+  "en": "m",
+  "note": "The nasal of the lips row. Starts မင်္ဂလာပါ (mìn-gə-là-bà) 'hello'.",
+  "row": "p",
+  "col": "nasal"
+ },
+ {
+  "id": "c.ya",
+  "unit": 1,
+  "my": "ယ",
+  "rom": "ya̰",
+  "en": "y",
+  "note": "y. Hides in တယ် (dè), the statement ending.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "c.ra",
+  "unit": 1,
+  "my": "ရ",
+  "rom": "ya̰",
+  "en": "y (spelled r)",
+  "note": "Spelled 'r' but said 'y' in Yangon: ရေ (yèi) 'water'.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "c.la",
+  "unit": 1,
+  "my": "လ",
+  "rom": "la̰",
+  "en": "l",
+  "note": "l as in လား (lá), the yes/no question word.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "c.wa",
+  "unit": 1,
+  "my": "ဝ",
+  "rom": "wa̰",
+  "en": "w",
+  "note": "A plain circle: w for wheel. Starts ဝမ်းသာ (wún-thà) 'glad'.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "c.tha",
+  "unit": 1,
+  "my": "သ",
+  "rom": "tha̰",
+  "en": "th (as in thin)",
+  "note": "th, as in သွား (thwá) 'go'.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "c.ha",
+  "unit": 1,
+  "my": "ဟ",
+  "rom": "ha̰",
+  "en": "h",
+  "note": "h, as in ဟုတ်ကဲ့ (houʔ kḛ) 'yes'.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "c.a",
+  "unit": 1,
+  "my": "အ",
+  "rom": "a̰",
+  "en": "(vowel carrier)",
+  "note": "No consonant sound: it carries a vowel on its own. Starts အမေ (ə-mèi) 'mother'.",
+  "row": "x",
+  "col": ""
+ },
+ {
+  "id": "v.aa",
+  "unit": 2,
+  "my": "ကာ",
+  "rom": "kà",
+  "en": "ာ = long a, low tone",
+  "note": "A long 'a', relaxed and level (low tone)."
+ },
+ {
+  "id": "v.aa-high",
+  "unit": 2,
+  "my": "ကား",
+  "rom": "ká",
+  "en": "ာ + း = long a, high tone",
+  "note": "Two dots (း) sit up high, so: HIGH tone. ကား also means 'car'."
+ },
+ {
+  "id": "v.tall-aa",
+  "unit": 2,
+  "my": "ပါ",
+  "rom": "pà",
+  "en": "ါ = tall a (same sound as ာ)",
+  "note": "Same sound as ာ. The tall form is used after round letters like ပ ဂ ဒ ဝ ခ င, so they don't look like other letters."
+ },
+ {
+  "id": "v.i",
+  "unit": 2,
+  "my": "ကိ",
+  "rom": "kḭ",
+  "en": "ိ = short i, creaky",
+  "note": "A small circle on top: a short, creaky 'i'."
+ },
+ {
+  "id": "v.ii",
+  "unit": 2,
+  "my": "ကီ",
+  "rom": "kì",
+  "en": "ီ = long i, low",
+  "note": "Filled-in circle on top: a long 'i', low tone."
+ },
+ {
+  "id": "v.ii-high",
+  "unit": 2,
+  "my": "ကီး",
+  "rom": "kí",
+  "en": "ီ + း = long i, high",
+  "note": "Add the two high dots (း) and the tone goes high."
+ },
+ {
+  "id": "v.u",
+  "unit": 2,
+  "my": "ကု",
+  "rom": "kṵ",
+  "en": "ု = short u, creaky",
+  "note": "One hook below: a short, creaky 'u'."
+ },
+ {
+  "id": "v.uu",
+  "unit": 2,
+  "my": "ကူ",
+  "rom": "kù",
+  "en": "ူ = long u, low",
+  "note": "Two hooks below: a long 'u', low tone."
+ },
+ {
+  "id": "v.uu-high",
+  "unit": 2,
+  "my": "ကူး",
+  "rom": "kú",
+  "en": "ူ + း = long u, high",
+  "note": "Long u with the high dots: high tone."
+ },
+ {
+  "id": "v.e",
+  "unit": 2,
+  "my": "ကေ",
+  "rom": "kèi",
+  "en": "ေ = ei, low",
+  "note": "The trick: ေ is WRITTEN BEFORE the consonant but SAID AFTER it. ကေ = k + ei."
+ },
+ {
+  "id": "v.e-high",
+  "unit": 2,
+  "my": "ကေး",
+  "rom": "kéi",
+  "en": "ေ + း = ei, high",
+  "note": "Same written-first ေ, plus the high dots."
+ },
+ {
+  "id": "v.ai",
+  "unit": 2,
+  "my": "ကဲ",
+  "rom": "ké",
+  "en": "ဲ = e (as in bed), high",
+  "note": "This vowel is high tone on its own, no dots needed."
+ },
+ {
+  "id": "v.ai-creaky",
+  "unit": 2,
+  "my": "ကဲ့",
+  "rom": "kḛ",
+  "en": "ဲ + ့ = e, creaky",
+  "note": "A dot below (့) squeezes the sound: creaky tone. As in ဟုတ်ကဲ့ (houʔ kḛ) 'yes'."
+ },
+ {
+  "id": "v.aw",
+  "unit": 2,
+  "my": "ကော",
+  "rom": "káw",
+  "en": "ေ + ာ = aw, high",
+  "note": "Vowels combine like Lego: ေ in front + ာ behind = 'aw'. High tone."
+ },
+ {
+  "id": "v.aw-low",
+  "unit": 2,
+  "my": "ကော်",
+  "rom": "kàw",
+  "en": "ော် = aw, low",
+  "note": "Add ် on top and the aw becomes low tone."
+ },
+ {
+  "id": "v.o",
+  "unit": 2,
+  "my": "ကို",
+  "rom": "kò",
+  "en": "ိ + ု = o, low",
+  "note": "More Lego: circle on top + hook below = 'o'."
+ },
+ {
+  "id": "v.o-high",
+  "unit": 2,
+  "my": "ကိုး",
+  "rom": "kó",
+  "en": "ို + း = o, high",
+  "note": "ကိုး (kó) is also 'nine'."
+ },
+ {
+  "id": "x.ak",
+  "unit": 2,
+  "my": "ကက်",
+  "rom": "keʔ",
+  "en": "final က် = cut-off",
+  "note": "The mark ် 'kills' the letter's vowel. Any stop letter at the end (က် တ် ပ် စ်) = a sharp cut-off: checked tone."
+ },
+ {
+  "id": "x.at",
+  "unit": 2,
+  "my": "ကတ်",
+  "rom": "kaʔ",
+  "en": "final တ် = cut-off",
+  "note": "Different letter, same result: a short, sharply stopped syllable."
+ },
+ {
+  "id": "x.ap",
+  "unit": 2,
+  "my": "ကပ်",
+  "rom": "kaʔ",
+  "en": "final ပ် = cut-off",
+  "note": "You don't actually say the p: it just stops the sound."
+ },
+ {
+  "id": "x.in",
+  "unit": 2,
+  "my": "ကင်",
+  "rom": "kìn",
+  "en": "final င် = in (nasal)",
+  "note": "Nasal letters at the end (င် န် မ်) make the vowel nasal instead of stopping it."
+ },
+ {
+  "id": "x.an",
+  "unit": 2,
+  "my": "ကန်",
+  "rom": "kàn",
+  "en": "final န် = an (nasal)",
+  "note": "The n isn't really pronounced: the vowel goes nasal."
+ },
+ {
+  "id": "x.am",
+  "unit": 2,
+  "my": "ကမ်",
+  "rom": "kàn",
+  "en": "final မ် = an (nasal)",
+  "note": "Spelled with m, sounds the same as န်."
+ },
+ {
+  "id": "x.kya",
+  "unit": 2,
+  "my": "ကျ",
+  "rom": "kya̰",
+  "en": "ျ = adds y",
+  "note": "The hook ျ hanging on the right adds a 'y': k + y = ky."
+ },
+ {
+  "id": "x.kyra",
+  "unit": 2,
+  "my": "ကြ",
+  "rom": "kya̰",
+  "en": "ြ = adds y (spelled r)",
+  "note": "The bracket ြ wraps around the letter. Spelled 'r', but in Yangon it's said like ျ: ky."
+ },
+ {
+  "id": "x.kwa",
+  "unit": 2,
+  "my": "ကွ",
+  "rom": "kwa̰",
+  "en": "ွ = adds w",
+  "note": "The little loop below adds a 'w': k + w = kw."
+ },
+ {
+  "id": "x.hma",
+  "unit": 2,
+  "my": "မှ",
+  "rom": "hma̰",
+  "en": "ှ = breathy nasal",
+  "note": "The tail ှ makes a nasal breathy: breathe out through your nose before m. As in နှစ် (hniʔ) 'two'."
+ }
 ]

@@ -1,5 +1,5 @@
 import { useState, type CSSProperties } from 'react'
-import { getItem, MODULES, parseKey, type Item } from '../content'
+import { getItem, MODULES, SCRIPT_MODULES, parseKey, type Item } from '../content'
 import { Pic } from '../exercises'
 import { deleteRecording, exportBackup, importBackup, type AppState, type Settings as S } from '../lib/store'
 import { Mm, PlayButton, Rom, ToneLegend } from '../components'
@@ -14,7 +14,7 @@ export function Phrasebook({ state, update, onAdd }: { state: AppState; update: 
   const [open, setOpen] = useState<string | null>(null)
   const cats: Cat[] = [
     ...(state.custom.length ? [{ id: 'mine', icon: '⭐', title: 'My phrases', summary: 'Phrases you added yourself', groups: [['', state.custom] as [string, Item[]]] }] : []),
-    ...MODULES.map((m) => ({
+    ...[...MODULES, ...SCRIPT_MODULES].map((m) => ({
       id: m.id,
       icon: m.icon,
       title: m.title,

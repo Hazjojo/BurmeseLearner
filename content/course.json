@@ -309,37 +309,27 @@
       ],
       "icon": "🔢",
       "color": "#2563c9"
-    },
+    }
+  ],
+  "scriptModules": [
     {
-      "id": "m7",
-      "title": "Reading the script",
-      "summary": "Learn the Burmese alphabet a few letters at a time.",
+      "id": "s1",
+      "title": "Consonants",
+      "summary": "The alphabet, row by row, with the pattern that ties it together.",
+      "icon": "🔤",
+      "color": "#5a6475",
       "lessons": [
         {
-          "id": "m7.l1",
+          "id": "s1.l1",
           "kind": "script",
-          "title": "First consonants",
+          "title": "How the script works",
           "intro": [
-            "Burmese script is an abugida: each consonant letter already contains a vowel, a short creaky 'a'. Other vowels and tones are marks added around the consonant.",
-            "Many letters are built from circles. Look for the small differences: an opening, a tail, a second loop."
+            "Burmese letters are built from circles and curves. It was traditionally written by scratching palm leaves, where straight lines would split the leaf. So look closely at where each circle opens, and what's added to it: a tail, a second loop, a gap.",
+            "Every consonant comes with a built-in short 'a' sound (creaky tone). On its own, မ is 'ma̰', not just 'm'. Vowels and tones are small marks added around it.",
+            "Each letter gets a memory hook: a word you already know from the course."
           ],
           "items": [
-            "c.ka",
-            "c.hka",
-            "c.ga",
-            "c.nga",
-            "c.sa"
-          ]
-        },
-        {
-          "id": "m7.l2",
-          "kind": "script",
-          "title": "More consonants",
-          "intro": [
-            "ဆ (hs) is the aspirated partner of စ (s): notice the extra stroke."
-          ],
-          "items": [
-            "c.hsa",
+            "c.wa",
             "c.ma",
             "c.na",
             "c.la",
@@ -347,20 +337,212 @@
           ]
         },
         {
-          "id": "m7.l3",
+          "id": "s1.l2",
           "kind": "script",
-          "title": "Long a and high tone",
+          "title": "The sound grid: throat row",
           "intro": [
-            "ာ after a consonant gives a long 'a' in low tone. Add း (two dots) and it becomes high tone. Same letter, same vowel, different word."
+            "Here's the big shortcut: most consonants sit in a grid. Each ROW is a place in your mouth (throat, palate, teeth, lips). The COLUMNS go: plain, breathy (with a puff of air), voiced, voiced (a rare spelling), and nasal.",
+            "Learn the pattern once and every row makes sense. This row is made in the throat: k, hk, g, (g), ng.",
+            "The rare 4th-column letters mostly appear in religious or Pali words, so we skip them for now."
+          ],
+          "items": [
+            "c.ka",
+            "c.hka",
+            "c.ga",
+            "c.nga"
+          ]
+        },
+        {
+          "id": "s1.l3",
+          "kind": "script",
+          "title": "Palate row",
+          "intro": [
+            "Same pattern, further forward in the mouth: s, hs, z, ny.",
+            "Breathy partners again: စ (s) and ဆ (hs) differ only in the puff of air."
+          ],
+          "items": [
+            "c.sa",
+            "c.hsa",
+            "c.za",
+            "c.nya"
+          ]
+        },
+        {
+          "id": "s1.l4",
+          "kind": "script",
+          "title": "Teeth row",
+          "intro": [
+            "Tongue on the teeth: t, ht, d, n.",
+            "တ (t) and ထ (ht) are partners: notice how often you've already seen both, in တယ် and ထမင်း."
+          ],
+          "items": [
+            "c.ta",
+            "c.hta",
+            "c.da",
+            "c.na"
+          ]
+        },
+        {
+          "id": "s1.l5",
+          "kind": "script",
+          "title": "Lips row",
+          "intro": [
+            "Lips: p, hp, b, b, m. This row's two voiced letters are both used, and both say 'b'.",
+            "You now know the whole grid pattern."
+          ],
+          "items": [
+            "c.pa",
+            "c.hpa",
+            "c.ba",
+            "c.bha",
+            "c.ma"
+          ]
+        },
+        {
+          "id": "s1.l6",
+          "kind": "script",
+          "title": "The rest",
+          "intro": [
+            "These sit outside the grid: y, y (spelled r), l, w, th, h, and the vowel carrier အ.",
+            "ရ is a classic trap: it's spelled 'r' but said 'y' in Yangon. You'll see it in ရေ (water)."
+          ],
+          "items": [
+            "c.ya",
+            "c.ra",
+            "c.la",
+            "c.wa",
+            "c.tha",
+            "c.ha",
+            "c.a"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "title": "Vowels & tones",
+      "summary": "Marks around a letter set the vowel and the tone.",
+      "icon": "🎵",
+      "color": "#7d3cc2",
+      "lessons": [
+        {
+          "id": "s2.l1",
+          "kind": "script",
+          "title": "Long a & the high dots",
+          "intro": [
+            "ာ after a consonant gives a long 'a' in low tone.",
+            "The two dots း always push a syllable to HIGH tone: the dots sit up high. Same letter, same vowel, different word: ကာ vs ကား (car)."
           ],
           "items": [
             "v.aa",
-            "v.aa-high"
+            "v.aa-high",
+            "v.tall-aa"
+          ]
+        },
+        {
+          "id": "s2.l2",
+          "kind": "script",
+          "title": "i and u",
+          "intro": [
+            "Marks above and below: a small circle on top is 'i', a hook below is 'u'.",
+            "The short versions (ိ ု) are creaky; the long versions (ီ ူ) are low; add း for high."
+          ],
+          "items": [
+            "v.i",
+            "v.ii",
+            "v.ii-high",
+            "v.u",
+            "v.uu",
+            "v.uu-high"
+          ]
+        },
+        {
+          "id": "s2.l3",
+          "kind": "script",
+          "title": "The vowel written first",
+          "intro": [
+            "ေ is the famous trick of Burmese script: you WRITE it before the consonant, but SAY it after. ကေ is k + ei.",
+            "ဲ is 'e' as in 'bed', and it's high tone on its own. Add a dot below (့) and any syllable becomes creaky (squeezed)."
+          ],
+          "items": [
+            "v.e",
+            "v.e-high",
+            "v.ai",
+            "v.ai-creaky"
+          ]
+        },
+        {
+          "id": "s2.l4",
+          "kind": "script",
+          "title": "Lego vowels",
+          "intro": [
+            "Some vowels are two marks combined: ေ + ာ = 'aw', and ိ + ု = 'o'.",
+            "Then the same tone marks apply: း for high, ် to make 'aw' low."
+          ],
+          "items": [
+            "v.aw",
+            "v.aw-low",
+            "v.o",
+            "v.o-high"
           ]
         }
-      ],
-      "icon": "✍️",
-      "color": "#5a6475"
+      ]
+    },
+    {
+      "id": "s3",
+      "title": "Endings & stacks",
+      "summary": "Final sounds, and letters that attach to others.",
+      "icon": "🧩",
+      "color": "#2f7d5b",
+      "lessons": [
+        {
+          "id": "s3.l1",
+          "kind": "script",
+          "title": "The killer mark",
+          "intro": [
+            "The small mark ် on top 'kills' a letter's own vowel, so it becomes an ending.",
+            "Rule of thumb: a STOP letter at the end (က် တ် ပ် စ်) = a sharp cut-off (checked tone, ʔ). A NASAL letter at the end (င် န် မ်) = the vowel goes nasal."
+          ],
+          "items": [
+            "x.ak",
+            "x.at",
+            "x.ap",
+            "x.in",
+            "x.an",
+            "x.am"
+          ]
+        },
+        {
+          "id": "s3.l2",
+          "kind": "script",
+          "title": "Letters that attach",
+          "intro": [
+            "Four marks hook onto a consonant to change it: ျ and ြ add a 'y' (in Yangon they sound the same), ွ adds a 'w', and ှ makes it breathy.",
+            "You've met them already: ကျေးဇူး, ဖြည်းဖြည်း, သွား, နှစ်."
+          ],
+          "items": [
+            "x.kya",
+            "x.kyra",
+            "x.kwa",
+            "x.hma"
+          ]
+        },
+        {
+          "id": "s3.l3",
+          "kind": "script",
+          "title": "Read real words",
+          "intro": [
+            "Put it together: these are words from your speaking lessons. Sound them out letter by letter before you check."
+          ],
+          "items": [
+            "f.water",
+            "v.eat",
+            "n.5",
+            "f.rice",
+            "s.hello"
+          ]
+        }
+      ]
     }
   ]
 }

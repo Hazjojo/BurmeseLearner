@@ -1,5 +1,7 @@
-import { useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
-import { lessonItems, lessonKind, LESSONS, MODULES, toneSetById, type Item, type Lesson, type Module } from '../content'
+import { Fragment, useEffect, useMemo, useRef, useState, type CSSProperties } from 'react'
+import { lessonItems, lessonKind, LESSONS, lessonsOf, modulesOf, toneSetById, type Item, type Lesson, type Module, type Track } from '../content'
+import rareLetters from '../../content/rare-letters.json'
+import { BASE_ITEMS } from '../content'
 import { exItem, Pic, Runner, type Exercise, type Outcome, type RunnerSnapshot } from '../exercises'
 import { completeLesson, dueKeys, gradeCard, knownItems, lessonExercises, nextLesson, reviewPlan, unlockable } from '../learn'
 import { clipsFor, say } from '../lib/speech'
@@ -31,9 +33,12 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
   const draftId = Object.entries(state.drafts ?? {}).sort((a, b) => b[1].at.localeCompare(a[1].at))[0]?.[0]
   const resume = draftId ? LESSONS.find((l) => l.id === draftId) : undefined
   const next = resume ?? nextLesson(state)
-  const done = LESSONS.filter((l) => state.lessons[l.id]).length
+  const nextScript = nextLesson(state, 'script')
+  const speakLessons = lessonsOf('speak')
+  const done = speakLessons.filter((l) => state.lessons[l.id]).length
+  const scriptDone = lessonsOf('script').filter((l) => state.lessons[l.id]).length
   const phrases = knownItems(state).filter((i) => i.strand === 'speak').length
-  const pct = Math.round((done / LESSONS.length) * 100)
+  const pct = Math.round(((done + scriptDone) / LESSONS.length) * 100)
   return (
     <div className="screen">
       <header className="home-head">
@@ -61,6 +66,16 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
           <span className="small">Keep reviewing and practising.</span>
         </div>
       )}
+      {nextScript && nextScript.id !== next?.id && (
+        <button className="hero script-hero" style={modStyle(nextScript.module)} onClick={() => onLesson(nextScript.id)}>
+          <span className="hero-icon">✍️</span>
+          <span className="hero-body">
+            <span className="hero-kicker">{state.drafts?.[nextScript.id] ? 'Resume' : 'Alongside'} · Script</span>
+            <span className="hero-title">{nextScript.title}</span>
+            <span className="small">{lessonBlurb(nextScript)}</span>
+          </span>
+        </button>
+      )}
       {due > 0 && (
         <button className="hero review" onClick={onReview}>
           <span className="hero-icon">🔁</span>
@@ -74,9 +89,9 @@ export function Home({ state, banner, onLesson, onReview, onCourse }: {
       <div className="tiles">
         <div className="tile">
           <b>
-            {done}/{LESSONS.length}
+            {done}/{speakLessons.length}
           </b>
-          <span>lessons done</span>
+          <span>speaking lessons · {scriptDone}/{lessonsOf('script').length} script</span>
         </div>
         <div className="tile">
           <b>{phrases}</b>
@@ -98,7 +113,35 @@ const W = 320
 const OFF = [0, 72, 104, 72, 0, -72, -104, -72]
 
 export function Course({ state, onLesson, onDialogue }: { state: AppState; onLesson: (id: string) => void; onDialogue: (d: Dialogue) => void }) {
-  const next = nextLesson(state)
+  const [track, setTrack] = useState<Track>(() => {
+    try {
+      return (localStorage.getItem('courseTrack') as Track) || 'speak'
+    } catch {
+      return 'speak'
+    }
+  })
+  const [chart, setChart] = useState(false)
+  const pick = (t: Track) => {
+    setTrack(t)
+    try {
+      localStorage.setItem('courseTrack', t)
+    } catch {
+      /* ignore */
+    }
+  }
+  if (chart) return <AlphabetChart state={state} onBack={() => setChart(false)} />
+  return <CourseMap key={track} state={state} track={track} onTrack={pick} onChart={() => setChart(true)} onLesson={onLesson} onDialogue={onDialogue} />
+}
+
+function CourseMap({ state, track, onTrack, onChart, onLesson, onDialogue }: {
+  state: AppState
+  track: Track
+  onTrack: (t: Track) => void
+  onChart: () => void
+  onLesson: (id: string) => void
+  onDialogue: (d: Dialogue) => void
+}) {
+  const next = nextLesson(state, track)
   const currentRef = useRef<HTMLButtonElement>(null)
   useEffect(() => {
     currentRef.current?.scrollIntoView({ block: 'center' })
@@ -106,8 +149,23 @@ export function Course({ state, onLesson, onDialogue }: { state: AppState; onLes
   let step = 0 // keeps the zigzag continuous across modules
   return (
     <div className="screen map-screen">
-      <h2>Course map</h2>
-      {MODULES.map((m, mi) => {
+      <div className="row between">
+        <h2>Course map</h2>
+        <div className="seg">
+          <button className={track === 'speak' ? 'active' : ''} onClick={() => onTrack('speak')}>
+            🗣 Speaking
+          </button>
+          <button className={track === 'script' ? 'active' : ''} onClick={() => onTrack('script')}>
+            ✍️ Script
+          </button>
+        </div>
+      </div>
+      {track === 'script' && (
+        <button className="btn wide chart-btn" onClick={onChart}>
+          🔤 Alphabet chart & patterns
+        </button>
+      )}
+      {modulesOf(track).map((m, mi) => {
         const nodes: Node[] = m.lessons.flatMap((l) => [{ kind: 'lesson' as const, lesson: l }, ...DIALOGUES.filter((d) => d.after === l.id).map((d) => ({ kind: 'dialogue' as const, d }))])
         const pts = nodes.map((_, i) => ({ x: W / 2 + OFF[(step + i) % OFF.length], y: i * ROW + 48 }))
         step += nodes.length
@@ -320,6 +378,7 @@ export function LessonView({ lessonId, state, update, onExit }: { lessonId: stri
           {item.emoji && <Pic item={item} size="lg" />}
           <Mm text={item.my} size={kind === 'script' ? 'xl' : 'lg'} />
           {item.rom && <Rom rom={item.rom} />}
+          {item.row && <GridSpot item={item} />}
           <PlayButton key={item.id} my={item.my} itemId={item.id} autoPlay />
           <div className="en big">{item.en}</div>
           {item.lit && <div className="muted small">literally: {item.lit}</div>}
@@ -476,3 +535,117 @@ export function ReviewView({ state, update, onExit }: { state: AppState; update:
 }
 
 export type { Item }
+
+// ---------------- Alphabet chart ----------------
+
+const ROWS: { id: string; name: string; hint: string }[] = [
+  { id: 'k', name: 'Throat', hint: 'k-sounds' },
+  { id: 's', name: 'Palate', hint: 's-sounds' },
+  { id: 'r', name: 'Retroflex', hint: 'rare, Pali words' },
+  { id: 't', name: 'Teeth', hint: 't-sounds' },
+  { id: 'p', name: 'Lips', hint: 'p-sounds' },
+]
+const COLS = ['plain', 'breathy', 'voiced', 'voiced (rare)', 'nasal']
+const ROW_NAME: Record<string, string> = { k: 'Throat row', s: 'Palate row', t: 'Teeth row', p: 'Lips row', x: 'Outside the grid' }
+
+type Letter = { my: string; rom: string; row: string; col: string; id?: string; note?: string; rare?: boolean }
+const LETTERS: Letter[] = [
+  ...BASE_ITEMS.filter((i) => i.strand === 'script' && i.row).map((i) => ({ my: i.my, rom: i.rom, row: i.row!, col: i.col === 'voiced (2)' ? 'voiced (rare)' : i.col!, id: i.id, note: i.note })),
+  ...(rareLetters as Letter[]).map((l) => ({ ...l, rare: true })),
+]
+
+/** Where a letter sits in the sound grid, e.g. "Throat row · breathy". */
+function GridSpot({ item }: { item: Item }) {
+  return (
+    <span className="grid-spot small">
+      {ROW_NAME[item.row!]}
+      {item.col ? ` · ${item.col}` : ''}
+    </span>
+  )
+}
+
+function AlphabetChart({ state, onBack }: { state: AppState; onBack: () => void }) {
+  const [sel, setSel] = useState<Letter | null>(null)
+  const cell = (l?: Letter) =>
+    l ? (
+      <button
+        key={l.my}
+        className={`chart-cell ${l.rare ? 'rare' : ''} ${l.id && state.introduced[l.id] ? 'learned' : ''} ${sel?.my === l.my ? 'sel' : ''}`}
+        onClick={() => {
+          setSel(l)
+          say(l.my, { itemId: l.id })
+        }}
+      >
+        <span className="mm">{l.my}</span>
+        <span className="small">{l.rom}</span>
+      </button>
+    ) : (
+      <span className="chart-cell empty" />
+    )
+  const at = (row: string, col: string) => LETTERS.find((l) => l.row === row && l.col === col)
+  return (
+    <div className="screen">
+      <button className="btn small ghost" onClick={onBack}>
+        ← Course map
+      </button>
+      <h2>The alphabet</h2>
+      <p className="small muted">
+        Rows = where in the mouth. Columns = plain → breathy (puff of air) → voiced → nasal. Tap a letter to hear it. Faded letters are rare (mostly Pali words);
+        green ones you've learned.
+      </p>
+      <div className="chart">
+        <span />
+        {['plain', 'breathy', 'voiced', 'voiced²', 'nasal'].map((c) => (
+          <span key={c} className="chart-head small">
+            {c}
+          </span>
+        ))}
+        {ROWS.map((r) => (
+          <Fragment key={r.id}>
+            <span className="chart-row small">
+              <b>{r.name}</b>
+              <span className="muted">{r.hint}</span>
+            </span>
+            {COLS.map((c) => cell(at(r.id, c)))}
+          </Fragment>
+        ))}
+      </div>
+      <h3>Outside the grid</h3>
+      <div className="chart-others">{LETTERS.filter((l) => l.row === 'x').map((l) => cell(l))}</div>
+      {sel && (
+        <div className="card compact chart-detail">
+          <Mm text={sel.my} size="lg" />
+          <Rom rom={sel.rom} />
+          <div className="small">{sel.note ?? (sel.rare ? 'A rare letter, mostly in Pali or religious words. Recognise it; no need to learn it yet.' : '')}</div>
+        </div>
+      )}
+      <h3>Patterns to remember</h3>
+      <ul className="patterns">
+        <li>
+          <b>Circles everywhere.</b> Letters are built from circles (palm-leaf writing): look at where the circle opens and what's added.
+        </li>
+        <li>
+          <b>Breathy partners.</b> က/ခ, စ/ဆ, တ/ထ, ပ/ဖ: same sound, the second with a puff of air.
+        </li>
+        <li>
+          <b>Built-in vowel.</b> Every consonant says “a” (creaky) unless a mark changes it.
+        </li>
+        <li>
+          <b>း two dots up high = high tone.</b> <b>့ dot below = creaky.</b>
+        </li>
+        <li>
+          <b>ေ is written first, said last.</b> ကေ = k + ei.
+        </li>
+        <li>
+          <b>Lego vowels.</b> ေ + ာ = aw; ိ + ု = o.
+        </li>
+        <li>
+          <b>The killer mark ်.</b> Stop letter at the end = a sharp cut-off; nasal letter at the end = nasal vowel.
+        </li>
+        <li>
+          <b>Hooks that add sounds.</b> ျ / ြ add y, ွ adds w, ှ makes it breathy.
+        </li>
+      </ul>
+    </div>
+  )
+}

@@ -17,6 +17,9 @@ export interface Item {
   lit?: string
   note?: string
   speaker?: 'm' | 'f'
+  /** Script letters: row of the sound grid (k/s/t/p, or x = outside the grid) and column. */
+  row?: string
+  col?: string
   /** A simple picture for the phrase. */
   emoji?: string
   /** Set for pattern drills generated from a pattern × verb. */
@@ -118,8 +121,19 @@ export interface Module {
   color: string
   lessons: Lesson[]
 }
-export const MODULES = (course as { modules: Module[] }).modules
-export const LESSONS: (Lesson & { module: Module })[] = MODULES.flatMap((m) => m.lessons.map((l) => ({ ...l, module: m })))
+export type Track = 'speak' | 'script'
+const courseJson = course as { modules: Module[]; scriptModules: Module[] }
+/** Speaking course modules. */
+export const MODULES = courseJson.modules
+/** The separate script (alphabet) track, learned in parallel. */
+export const SCRIPT_MODULES = courseJson.scriptModules
+export const modulesOf = (t: Track) => (t === 'script' ? SCRIPT_MODULES : MODULES)
+export type PlacedLesson = Lesson & { module: Module; track: Track }
+export const LESSONS: PlacedLesson[] = [
+  ...MODULES.flatMap((m) => m.lessons.map((l) => ({ ...l, module: m, track: 'speak' as const }))),
+  ...SCRIPT_MODULES.flatMap((m) => m.lessons.map((l) => ({ ...l, module: m, track: 'script' as const }))),
+]
+export const lessonsOf = (t: Track) => LESSONS.filter((l) => l.track === t)
 export const lessonById = (id: string) => LESSONS.find((l) => l.id === id)
 export const lessonKind = (l: Lesson) => l.kind ?? 'phrases'
 

@@ -50,7 +50,7 @@ const toneIds = new Set(load('tones.json').map((t) => t.id))
 const patIds = new Set(load('patterns.json').map((p) => p.id))
 const taught = new Set()
 const lessonIds = new Set()
-for (const m of course.modules) {
+for (const m of [...course.modules, ...(course.scriptModules ?? [])]) {
   for (const l of m.lessons) {
     if (lessonIds.has(l.id)) errors.push(`course.json: duplicate lesson id ${l.id}`)
     lessonIds.add(l.id)

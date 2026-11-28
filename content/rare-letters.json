@@ -1,0 +1,11 @@
+[
+ { "my": "ဃ", "rom": "ga̰", "row": "k", "col": "voiced (rare)" },
+ { "my": "ဈ", "rom": "za̰", "row": "s", "col": "voiced (rare)" },
+ { "my": "ဋ", "rom": "ta̰", "row": "r", "col": "plain" },
+ { "my": "ဌ", "rom": "hta̰", "row": "r", "col": "breathy" },
+ { "my": "ဍ", "rom": "da̰", "row": "r", "col": "voiced" },
+ { "my": "ဎ", "rom": "da̰", "row": "r", "col": "voiced (rare)" },
+ { "my": "ဏ", "rom": "na̰", "row": "r", "col": "nasal" },
+ { "my": "ဓ", "rom": "da̰", "row": "t", "col": "voiced (rare)" },
+ { "my": "ဠ", "rom": "la̰", "row": "x", "col": "" }
+]

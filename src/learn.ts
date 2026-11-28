@@ -1,4 +1,4 @@
-import { cardKey, DRILLS, getItem, LESSONS, lessonItems, learningOrder, parseKey, romTokens, toneSetById, type Item, type Lesson } from './content'
+import { type Track, cardKey, DRILLS, getItem, LESSONS, lessonItems, learningOrder, parseKey, romTokens, toneSetById, type Item, type Lesson } from './content'
 import { shuffle, type Exercise, type Outcome } from './exercises'
 import { clipsFor } from './lib/speech'
 import { isDue, isEstablished, newCard, Rating, review, type Grade, type StoredCard } from './lib/srs'
@@ -9,7 +9,7 @@ const audible = (i: Item) => clipsFor(i.my).length > 0
 const multiWord = (i: Item) => romTokens(i.rom).length >= 2
 
 /** The first lesson not yet completed, in course order. */
-export const nextLesson = (s: AppState) => LESSONS.find((l) => !s.lessons[l.id])
+export const nextLesson = (s: AppState, track: Track = 'speak') => LESSONS.find((l) => l.track === track && !s.lessons[l.id])
 
 /** Items the learner has met (used as distractor pool and for drills). */
 export const knownItems = (s: AppState): Item[] =>
@@ -37,9 +37,7 @@ export function lessonExercises(lesson: Lesson, s: AppState): { exercises: Exerc
     return { exercises: shuffle(out), drills: [] }
   }
   const items = lessonItems(lesson, s.settings.speaker)
-  if (kind === 'script') {
-    return { exercises: [...items.map((item) => ({ kind: 'glyph' as const, item })), ...shuffle(items).map((item) => ({ kind: 'glyph' as const, item }))], drills: [] }
-  }
+  if (kind === 'script') return { exercises: scriptExercises(items), drills: [] }
   const meeting = new Set(items.map((i) => i.id))
   const drills = lessonDrills(lesson, s, meeting)
   const ex: Exercise[] = []
@@ -50,6 +48,24 @@ export function lessonExercises(lesson: Lesson, s: AppState): { exercises: Exerc
   ex.push(...drills.map((item) => ({ kind: 'tiles' as const, item })))
   ex.push(...shuffle(items).slice(0, 2).map((item) => ({ kind: 'say' as const, item })))
   return { exercises: ex, drills }
+}
+
+/**
+ * Script lessons: trace each new letter, then hear → pick the letter, see → pick the sound, match,
+ * and finally draw a couple from memory. Reading lessons (real words) sound out and read for meaning.
+ */
+function scriptExercises(items: Item[]): Exercise[] {
+  const letters = items.filter((i) => i.strand === 'script')
+  const words = items.filter((i) => i.strand !== 'script')
+  const ex: Exercise[] = []
+  ex.push(...letters.filter((i) => i.row).map((item) => ({ kind: 'draw' as const, item, trace: true })))
+  ex.push(...shuffle(letters).map((item) => ({ kind: 'hear-glyph' as const, item })))
+  ex.push(...shuffle(letters).map((item) => ({ kind: 'glyph' as const, item })))
+  if (letters.length >= 3) ex.push({ kind: 'match', items: shuffle(letters).slice(0, 5) })
+  ex.push(...shuffle(letters).slice(0, 2).map((item) => ({ kind: 'draw' as const, item, trace: false })))
+  ex.push(...words.map((item) => ({ kind: 'glyph' as const, item })))
+  ex.push(...shuffle(words).map((item) => ({ kind: 'choose-meaning' as const, item, listen: false })))
+  return ex
 }
 
 /** Fold lesson results into the state: items become cards scheduled by how well they went. */
@@ -122,7 +138,11 @@ export function exerciseForCard(key: string, s: AppState): Exercise | null {
   const c = s.cards[key]
   const young = !c || (c.stability ?? 0) < 7
   const r = Math.random()
-  if (type === 'glyph') return { kind: 'glyph', item }
+  if (type === 'glyph') {
+    // Script cards rotate between reading, listening and (once known) drawing from memory.
+    if (young) return r < 0.5 ? { kind: 'glyph', item } : { kind: 'hear-glyph', item }
+    return r < 0.35 ? { kind: 'glyph', item } : r < 0.7 ? { kind: 'hear-glyph', item } : { kind: 'draw', item, trace: false }
+  }
   if (type === 'recog') {
     if (young) return { kind: 'choose-meaning', item, listen: audible(item) && r < 0.6 }
     return r < 0.5 && audible(item) ? { kind: 'choose-meaning', item, listen: true } : { kind: 'recall', item }

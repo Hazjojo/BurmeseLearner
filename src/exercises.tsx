@@ -16,6 +16,8 @@ export type Exercise =
   | { kind: 'recall'; item: Item }
   | { kind: 'tone'; set: ToneSet; asked: number }
   | { kind: 'glyph'; item: Item }
+  | { kind: 'hear-glyph'; item: Item }
+  | { kind: 'draw'; item: Item; trace: boolean }
 
 export const exItem = (ex: Exercise): Item | undefined => ('item' in ex ? ex.item : undefined)
 
@@ -322,8 +324,8 @@ function Match({ ex, showRom, onDone }: ExProps<Extract<Exercise, { kind: 'match
               }}
             >
               <span className="stack tight center-content">
-                <Mm text={i.my} size="sm" />
-                {showRom && i.rom && <Rom rom={i.rom} />}
+                <Mm text={i.my} size={i.strand === 'script' ? 'md' : 'sm'} />
+                {showRom && i.strand !== 'script' && i.rom && <Rom rom={i.rom} />}
               </span>
             </button>
           ))}
@@ -572,6 +574,136 @@ function Glyph({ ex, pool, onDone }: ExProps<Extract<Exercise, { kind: 'glyph' }
   )
 }
 
+/** Hear a sound, pick the letter. */
+function HearGlyph({ ex, pool, onDone }: ExProps<Extract<Exercise, { kind: 'hear-glyph' }>>) {
+  const { item } = ex
+  const wrong = useMemo(() => distractors(item, pool, 3), [item, pool])
+  const c = useChoice<Item>(item, wrong, onDone)
+  return (
+    <>
+      <div className="prompt">
+        <div className="muted small">Which one says this?</div>
+        <PlayBig my={item.my} itemId={item.id} />
+      </div>
+      <Choice
+        options={c.options}
+        correct={item}
+        render={(o) => (
+          <span className="stack tight center-content">
+            <Mm text={o.my} size="lg" />
+            {c.answered !== null && <Rom rom={o.rom} />}
+          </span>
+        )}
+        onAnswer={c.setAnswered}
+        answered={c.answered}
+        hinted={c.hinted}
+      />
+      <Footer outcome={c.outcome} onHint={c.answered === null && !c.hinted.size ? c.hint : undefined} onContinue={c.done}>
+        {c.answered !== null && <div className="small">{item.note}</div>}
+      </Footer>
+    </>
+  )
+}
+
+/** Draw a letter with your finger (traced or from memory), then compare with the answer and mark yourself. */
+function Draw({ ex, onDone }: ExProps<Extract<Exercise, { kind: 'draw' }>>) {
+  const { item, trace } = ex
+  const canvas = useRef<HTMLCanvasElement>(null)
+  const drawing = useRef(false)
+  const [inked, setInked] = useState(false)
+  const [revealed, setRevealed] = useState(false)
+  const [outcome, setOutcome] = useState<Outcome | null>(null)
+  useEffect(() => {
+    say(item.my, { itemId: item.id })
+    const c = canvas.current!
+    const dpr = window.devicePixelRatio || 1
+    const size = c.clientWidth
+    c.width = size * dpr
+    c.height = size * dpr
+    const ctx = c.getContext('2d')!
+    ctx.scale(dpr, dpr)
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
+    ctx.lineWidth = Math.max(8, size / 28)
+    ctx.strokeStyle = getComputedStyle(c).color
+  }, [item])
+  const pos = (e: React.PointerEvent) => {
+    const r = canvas.current!.getBoundingClientRect()
+    return [e.clientX - r.left, e.clientY - r.top] as const
+  }
+  const down = (e: React.PointerEvent) => {
+    if (revealed) return
+    canvas.current!.setPointerCapture(e.pointerId)
+    drawing.current = true
+    const ctx = canvas.current!.getContext('2d')!
+    const [x, y] = pos(e)
+    ctx.beginPath()
+    ctx.moveTo(x, y)
+    ctx.lineTo(x + 0.1, y + 0.1)
+    ctx.stroke()
+    setInked(true)
+  }
+  const move = (e: React.PointerEvent) => {
+    if (!drawing.current) return
+    const ctx = canvas.current!.getContext('2d')!
+    const [x, y] = pos(e)
+    ctx.lineTo(x, y)
+    ctx.stroke()
+  }
+  const up = () => (drawing.current = false)
+  const clear = () => {
+    const c = canvas.current!
+    c.getContext('2d')!.clearRect(0, 0, c.width, c.height)
+    setInked(false)
+  }
+  return (
+    <>
+      <div className="prompt">
+        <div className="muted small">{trace ? 'Trace the letter with your finger' : 'Draw it from memory'}</div>
+        <div className="row gap-sm">
+          <Rom rom={item.rom} />
+          <span className="small muted">{item.en}</span>
+          <button className="btn icon" onClick={() => say(item.my, { itemId: item.id })} aria-label="Play">
+            🔊
+          </button>
+        </div>
+      </div>
+      <div className={`drawpad ${trace ? 'trace' : ''} ${revealed ? 'revealed' : ''}`}>
+        {(trace || revealed) && (
+          <span className="drawpad-glyph mm" lang="my" aria-hidden="true">
+            {item.my}
+          </span>
+        )}
+        <canvas ref={canvas} onPointerDown={down} onPointerMove={move} onPointerUp={up} onPointerCancel={up} onPointerLeave={up} />
+      </div>
+      {revealed && !outcome && <p className="small muted center-text">{trace ? 'How close was your tracing?' : 'The answer is shown over your drawing. Did you get the shape right?'}</p>}
+      {outcome ? (
+        <Feedback outcome={outcome} onContinue={() => onDone(outcome)}>
+          {item.note && <div className="small">{item.note}</div>}
+        </Feedback>
+      ) : !revealed ? (
+        <div className="actions row gap-sm">
+          <button className="btn" onClick={clear} disabled={!inked}>
+            Clear
+          </button>
+          <button className="btn primary wide" onClick={() => setRevealed(true)} disabled={!inked}>
+            Check
+          </button>
+        </div>
+      ) : (
+        <div className="actions row gap-sm">
+          <button className="btn wide" onClick={() => setOutcome('wrong')}>
+            Not quite
+          </button>
+          <button className="btn primary wide" onClick={() => setOutcome('right')}>
+            I got it
+          </button>
+        </div>
+      )}
+    </>
+  )
+}
+
 /** Shared footer: Hint before answering, feedback after. */
 function Footer({ outcome, onHint, onContinue, children }: { outcome: Outcome | null; onHint?: () => void; onContinue: () => void; children?: React.ReactNode }) {
   if (outcome)
@@ -602,6 +734,10 @@ export function ExerciseView(props: ExProps<Exercise>) {
       return <Tone {...props} ex={ex} />
     case 'glyph':
       return <Glyph {...props} ex={ex} />
+    case 'hear-glyph':
+      return <HearGlyph {...props} ex={ex} />
+    case 'draw':
+      return <Draw {...props} ex={ex} />
   }
 }
 

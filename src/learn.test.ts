@@ -27,3 +27,17 @@ describe('course', () => {
     expect(reviewPlan(after).exercises.length).toBe(0)
   })
 })
+
+describe('script track', () => {
+  it('script lessons trace, listen, read, match and draw from memory', () => {
+    const { exercises } = lessonExercises(lessonById('s1.l2')!, emptyState())
+    const kinds = exercises.map((e) => e.kind)
+    for (const k of ['draw', 'hear-glyph', 'glyph', 'match']) expect(kinds).toContain(k)
+    expect(exercises.some((e) => e.kind === 'draw' && e.trace)).toBe(true)
+    expect(exercises.some((e) => e.kind === 'draw' && !e.trace)).toBe(true)
+  })
+  it('keeps the speaking and script tracks separate', () => {
+    expect(nextLesson(emptyState())?.track).toBe('speak')
+    expect(nextLesson(emptyState(), 'script')?.id).toBe('s1.l1')
+  })
+})

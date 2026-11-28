@@ -371,3 +371,29 @@ h1, h2, h3, .hero-title, .module-title { font-weight: 800; letter-spacing: -0.01
 .dots i:nth-child(2) { animation-delay: 0.15s; }
 .dots i:nth-child(3) { animation-delay: 0.3s; }
 @keyframes dot { 50% { opacity: 0.25; transform: translateY(-3px); } }
+
+/* Script track */
+.script-hero { background: var(--surface); color: var(--text); border: 2px solid var(--mod); }
+.script-hero .hero-icon { background: color-mix(in srgb, var(--mod) 14%, var(--surface)); }
+.chart-btn { margin-top: 8px; }
+.grid-spot { background: color-mix(in srgb, var(--mod) 12%, var(--surface)); border-radius: 999px; padding: 3px 10px; font-weight: 700; }
+.center-text { text-align: center; }
+.drawpad { position: relative; width: min(84vw, 340px); aspect-ratio: 1; margin: 6px auto 10px; border-radius: 22px; background: var(--surface); border: 2px dashed var(--border); box-shadow: var(--shadow); color: var(--text); overflow: hidden; }
+.drawpad canvas { position: absolute; inset: 0; width: 100%; height: 100%; touch-action: none; cursor: crosshair; color: var(--text); }
+.drawpad-glyph { position: absolute; inset: 0; display: grid; place-items: center; font-size: min(52vw, 210px); line-height: 1; pointer-events: none; color: var(--mod); opacity: 0.14; }
+.drawpad.revealed .drawpad-glyph { opacity: 0.4; z-index: 1; }
+.chart { display: grid; grid-template-columns: 64px repeat(5, 1fr); gap: 5px; align-items: stretch; margin: 10px 0; }
+.chart-head { text-align: center; font-weight: 700; color: var(--muted); font-size: 0.68rem; }
+.chart-row { display: flex; flex-direction: column; justify-content: center; font-size: 0.72rem; line-height: 1.2; }
+.chart-cell { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0; padding: 4px 0; min-height: 58px; border-radius: 12px; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; }
+.chart-cell .mm { font-size: 1.6rem; line-height: 1.5; }
+.chart-cell .small { font-size: 0.7rem; }
+.chart-cell.rare { opacity: 0.4; }
+.chart-cell.learned { border-color: var(--good); background: color-mix(in srgb, var(--good) 10%, var(--surface)); }
+.chart-cell.sel { outline: 2px solid var(--accent); }
+.chart-cell.empty { border: 0; background: none; cursor: default; }
+.chart-others { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; }
+.chart-detail { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; margin-top: 12px; }
+.patterns { padding-left: 18px; line-height: 1.6; }
+.patterns li { margin-bottom: 6px; }
+.drawpad-glyph { font-size: min(74vw, 300px); line-height: 1; padding-bottom: 6%; }
