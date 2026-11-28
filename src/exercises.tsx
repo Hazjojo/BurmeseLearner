@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { romTokens, type Item, type ToneSet } from './content'
 import { say, clipsFor } from './lib/speech'
 import { Mm, Rom } from './components'
@@ -608,7 +608,11 @@ function HearGlyph({ ex, pool, onDone }: ExProps<Extract<Exercise, { kind: 'hear
 /** Draw a letter with your finger (traced or from memory), then compare with the answer and mark yourself. */
 function Draw({ ex, onDone }: ExProps<Extract<Exercise, { kind: 'draw' }>>) {
   const { item, trace } = ex
+  // Whole words get a wider pad, with the guide letters scaled to fit.
+  const glyphs = [...item.my].filter((ch) => /[\u1000-\u102A\u103F-\u104F]/.test(ch)).length
+  const wide = glyphs > 1
   const canvas = useRef<HTMLCanvasElement>(null)
+  const guide = useRef<HTMLSpanElement>(null)
   const drawing = useRef(false)
   const [inked, setInked] = useState(false)
   const [revealed, setRevealed] = useState(false)
@@ -617,9 +621,9 @@ function Draw({ ex, onDone }: ExProps<Extract<Exercise, { kind: 'draw' }>>) {
     say(item.my, { itemId: item.id })
     const c = canvas.current!
     const dpr = window.devicePixelRatio || 1
-    const size = c.clientWidth
-    c.width = size * dpr
-    c.height = size * dpr
+    const size = Math.min(c.clientWidth, c.clientHeight)
+    c.width = c.clientWidth * dpr
+    c.height = c.clientHeight * dpr
     const ctx = c.getContext('2d')!
     ctx.scale(dpr, dpr)
     ctx.lineCap = 'round'
@@ -627,6 +631,18 @@ function Draw({ ex, onDone }: ExProps<Extract<Exercise, { kind: 'draw' }>>) {
     ctx.lineWidth = Math.max(8, size / 28)
     ctx.strokeStyle = getComputedStyle(c).color
   }, [item])
+  // Shrink a whole-word guide until it fits the pad on one line.
+  useLayoutEffect(() => {
+    const g = guide.current
+    if (!g || !wide) return
+    const pad = g.parentElement!
+    let size = pad.clientHeight * 0.55
+    g.style.fontSize = `${size}px`
+    while (size > 18 && g.getBoundingClientRect().width > pad.clientWidth * 0.9) {
+      size *= 0.92
+      g.style.fontSize = `${size}px`
+    }
+  })
   const pos = (e: React.PointerEvent) => {
     const r = canvas.current!.getBoundingClientRect()
     return [e.clientX - r.left, e.clientY - r.top] as const
@@ -659,7 +675,7 @@ function Draw({ ex, onDone }: ExProps<Extract<Exercise, { kind: 'draw' }>>) {
   return (
     <>
       <div className="prompt">
-        <div className="muted small">{trace ? 'Trace the letter with your finger' : 'Draw it from memory'}</div>
+        <div className="muted small">{trace ? `Trace the ${wide ? 'word' : 'letter'} with your finger` : `Write the ${wide ? 'word' : 'letter'} from memory`}</div>
         <div className="row gap-sm">
           <Rom rom={item.rom} />
           <span className="small muted">{item.en}</span>
@@ -668,9 +684,9 @@ function Draw({ ex, onDone }: ExProps<Extract<Exercise, { kind: 'draw' }>>) {
           </button>
         </div>
       </div>
-      <div className={`drawpad ${trace ? 'trace' : ''} ${revealed ? 'revealed' : ''}`}>
+      <div className={`drawpad ${wide ? 'wide' : ''} ${trace ? 'trace' : ''} ${revealed ? 'revealed' : ''}`}>
         {(trace || revealed) && (
-          <span className="drawpad-glyph mm" lang="my" aria-hidden="true">
+          <span ref={guide} className="drawpad-glyph mm" lang="my" aria-hidden="true">
             {item.my}
           </span>
         )}

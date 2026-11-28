@@ -120,7 +120,6 @@ export function Course({ state, onLesson, onDialogue }: { state: AppState; onLes
       return 'speak'
     }
   })
-  const [chart, setChart] = useState(false)
   const pick = (t: Track) => {
     setTrack(t)
     try {
@@ -129,15 +128,13 @@ export function Course({ state, onLesson, onDialogue }: { state: AppState; onLes
       /* ignore */
     }
   }
-  if (chart) return <AlphabetChart state={state} onBack={() => setChart(false)} />
-  return <CourseMap key={track} state={state} track={track} onTrack={pick} onChart={() => setChart(true)} onLesson={onLesson} onDialogue={onDialogue} />
+  return <CourseMap key={track} state={state} track={track} onTrack={pick} onLesson={onLesson} onDialogue={onDialogue} />
 }
 
-function CourseMap({ state, track, onTrack, onChart, onLesson, onDialogue }: {
+function CourseMap({ state, track, onTrack, onLesson, onDialogue }: {
   state: AppState
   track: Track
   onTrack: (t: Track) => void
-  onChart: () => void
   onLesson: (id: string) => void
   onDialogue: (d: Dialogue) => void
 }) {
@@ -149,22 +146,31 @@ function CourseMap({ state, track, onTrack, onChart, onLesson, onDialogue }: {
   let step = 0 // keeps the zigzag continuous across modules
   return (
     <div className="screen map-screen">
-      <div className="row between">
-        <h2>Course map</h2>
-        <div className="seg">
-          <button className={track === 'speak' ? 'active' : ''} onClick={() => onTrack('speak')}>
-            🗣 Speaking
-          </button>
-          <button className={track === 'script' ? 'active' : ''} onClick={() => onTrack('script')}>
-            ✍️ Script
-          </button>
-        </div>
+      <h2>Course map</h2>
+      {/* Two courses, learned side by side: a big, obvious switch between their maps. */}
+      <div className="track-switch" role="tablist">
+        {(
+          [
+            ['speak', '🗣', 'Speaking', 'Phrases & conversation'],
+            ['script', '✍️', 'Script', 'Reading & writing'],
+          ] as const
+        ).map(([t, icon, title, sub]) => {
+          const ls = lessonsOf(t)
+          const n = ls.filter((l) => state.lessons[l.id]).length
+          return (
+            <button key={t} role="tab" aria-selected={track === t} className={`track-tab ${track === t ? 'active' : ''}`} onClick={() => onTrack(t)}>
+              <span className="track-icon">{icon}</span>
+              <span className="track-text">
+                <b>{title}</b>
+                <span className="small">{sub}</span>
+                <span className="small track-count">
+                  {n}/{ls.length} lessons
+                </span>
+              </span>
+            </button>
+          )
+        })}
       </div>
-      {track === 'script' && (
-        <button className="btn wide chart-btn" onClick={onChart}>
-          🔤 Alphabet chart & patterns
-        </button>
-      )}
       {modulesOf(track).map((m, mi) => {
         const nodes: Node[] = m.lessons.flatMap((l) => [{ kind: 'lesson' as const, lesson: l }, ...DIALOGUES.filter((d) => d.after === l.id).map((d) => ({ kind: 'dialogue' as const, d }))])
         const pts = nodes.map((_, i) => ({ x: W / 2 + OFF[(step + i) % OFF.length], y: i * ROW + 48 }))
@@ -564,7 +570,7 @@ function GridSpot({ item }: { item: Item }) {
   )
 }
 
-function AlphabetChart({ state, onBack }: { state: AppState; onBack: () => void }) {
+export function AlphabetChart({ state, onBack }: { state: AppState; onBack: () => void }) {
   const [sel, setSel] = useState<Letter | null>(null)
   const cell = (l?: Letter) =>
     l ? (
@@ -586,7 +592,7 @@ function AlphabetChart({ state, onBack }: { state: AppState; onBack: () => void 
   return (
     <div className="screen">
       <button className="btn small ghost" onClick={onBack}>
-        ← Course map
+        ← Practice
       </button>
       <h2>The alphabet</h2>
       <p className="small muted">

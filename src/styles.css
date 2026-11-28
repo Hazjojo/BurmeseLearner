@@ -397,3 +397,18 @@ h1, h2, h3, .hero-title, .module-title { font-weight: 800; letter-spacing: -0.01
 .patterns { padding-left: 18px; line-height: 1.6; }
 .patterns li { margin-bottom: 6px; }
 .drawpad-glyph { font-size: min(74vw, 300px); line-height: 1; padding-bottom: 6%; }
+.drawpad.wide { width: min(92vw, 560px); aspect-ratio: 3 / 2; }
+/* Course track switch */
+.track-switch { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 6px 0 4px; position: sticky; top: 0; z-index: 4; padding: 8px 0; background: var(--bg); }
+.track-tab { display: flex; align-items: center; gap: 10px; text-align: left; padding: 12px; border-radius: 16px; border: 2px solid var(--border); background: var(--surface); color: var(--text); font: inherit; cursor: pointer; box-shadow: var(--shadow); opacity: 0.75; }
+.track-tab.active { border-color: var(--accent); opacity: 1; background: color-mix(in srgb, var(--accent) 10%, var(--surface)); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent), var(--shadow); }
+.track-icon { font-size: 1.7rem; }
+.track-text { display: flex; flex-direction: column; line-height: 1.25; }
+.track-count { color: var(--muted); }
+.big-seg { display: grid; grid-template-columns: repeat(3, 1fr); width: 100%; }
+.big-seg button { padding: 10px 6px; font-weight: 700; }
+.preview-glyphs { display: flex; flex-wrap: wrap; gap: 6px 12px; margin: 14px 0; max-height: 160px; overflow: hidden; }
+.screen > h3 { margin-top: 18px; }
+.drawpad.wide .drawpad-glyph { white-space: nowrap; padding: 0 4%; }
+.drawpad.wide .drawpad-glyph { display: flex; align-items: center; justify-content: center; inset: 0; width: max-content; min-width: 100%; padding: 0; }
+.drawpad.wide .drawpad-glyph { inset: auto; left: 50%; top: 50%; transform: translate(-50%, -55%); width: max-content; min-width: 0; display: block; }

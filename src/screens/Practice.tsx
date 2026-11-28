@@ -6,6 +6,8 @@ import type { AppState } from '../lib/store'
 import { Mm, Rom } from '../components'
 import { Tones } from './Tones'
 import { Conversation } from './Conversation'
+import { Writing } from './Writing'
+import { AlphabetChart } from './Learn'
 import type { Sync } from '../lib/sync'
 
 type Update = (fn: (s: AppState) => AppState) => void
@@ -22,7 +24,7 @@ export const DIALOGUES = dialoguesJson as Dialogue[]
 
 /** Practice hub: listening, ear training, speaking with AI. */
 export function Practice({ state, update, sync }: { state: AppState; update: Update; sync: Sync | null }) {
-  const [view, setView] = useState<'menu' | 'listen' | 'ear' | 'speak'>('menu')
+  const [view, setView] = useState<'menu' | 'listen' | 'ear' | 'speak' | 'write' | 'chart'>('menu')
   const [dialogue, setDialogue] = useState<Dialogue | null>(null)
   if (dialogue) return <DialoguePlayer d={dialogue} state={state} update={update} onExit={() => setDialogue(null)} />
   if (view === 'ear')
@@ -32,6 +34,8 @@ export function Practice({ state, update, sync }: { state: AppState; update: Upd
         <Tones state={state} update={update} />
       </>
     )
+  if (view === 'write') return <Writing state={state} update={update} onExit={() => setView('menu')} />
+  if (view === 'chart') return <AlphabetChart state={state} onBack={() => setView('menu')} />
   if (view === 'speak') return <Conversation state={state} sync={sync} onExit={() => setView('menu')} />
   if (view === 'listen')
     return (
@@ -61,20 +65,42 @@ export function Practice({ state, update, sync }: { state: AppState; update: Upd
   return (
     <div className="screen">
       <h2>Practice</h2>
+      <h3>Reading & writing</h3>
+      <button className="hero review" onClick={() => setView('write')}>
+        <span className="hero-icon">✍️</span>
+        <span className="hero-body">
+          <span className="hero-title">Writing practice</span>
+          <span className="small">Write letters and words with your finger</span>
+        </span>
+      </button>
+      <button className="hero review" onClick={() => setView('chart')}>
+        <span className="hero-icon">🔤</span>
+        <span className="hero-body">
+          <span className="hero-title">Alphabet & patterns</span>
+          <span className="small">The sound grid, every letter, and the memory tricks</span>
+        </span>
+      </button>
+      <h3>Listening & speaking</h3>
       <button className="hero review" onClick={() => setView('listen')}>
-        <span className="hero-kicker">🎧 Listening</span>
-        <span className="hero-title">Dialogues</span>
-        <span className="small">Real conversations at slow and normal speed</span>
+        <span className="hero-icon">🎧</span>
+        <span className="hero-body">
+          <span className="hero-title">Dialogues</span>
+          <span className="small">Real conversations at slow and normal speed</span>
+        </span>
       </button>
       <button className="hero review" onClick={() => setView('ear')}>
-        <span className="hero-kicker">👂 Ear training</span>
-        <span className="hero-title">Tones & sounds</span>
-        <span className="small">Hear the difference, focusing on what you miss</span>
+        <span className="hero-icon">👂</span>
+        <span className="hero-body">
+          <span className="hero-title">Tones & sounds</span>
+          <span className="small">Hear the difference, focusing on what you miss</span>
+        </span>
       </button>
-      <button className="hero" onClick={() => setView('speak')}>
-        <span className="hero-kicker">🗣 Speaking</span>
-        <span className="hero-title">Talk with a partner</span>
-        <span className="small">Speak Burmese in everyday situations; an AI partner replies out loud</span>
+      <button className="hero lesson-hero" onClick={() => setView('speak')}>
+        <span className="hero-icon">🗣</span>
+        <span className="hero-body">
+          <span className="hero-title">Talk with a partner</span>
+          <span className="small">Speak Burmese in everyday situations; an AI partner replies out loud</span>
+        </span>
       </button>
     </div>
   )
